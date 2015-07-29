@@ -1,5 +1,5 @@
 {
-    "name": "sonata-project/dashboard-bundle",
+    "name": "php-labs/sonata-dashboard-bundle",
     "type": "symfony-bundle",
     "description": "Symfony SonataDashboardBundle",
     "keywords": ["dashboard", "sonata", "cms"],
@@ -45,7 +45,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.4.x-dev"
+            "dev-master": "0.0.x-dev"
         }
     }
 }

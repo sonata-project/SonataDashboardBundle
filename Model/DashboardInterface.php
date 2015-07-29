@@ -11,8 +11,6 @@
 
 namespace Sonata\DashboardBundle\Model;
 
-use Sonata\PageBundle\Model\PageBlockInterface;
-
 /**
  * DashboardInterface
  *
@@ -91,9 +89,9 @@ interface DashboardInterface
     /**
      * Add blocs
      *
-     * @param PageBlockInterface $block
+     * @param DashboardBlockInterface $block
      */
-    public function addBlocks(PageBlockInterface $block);
+    public function addBlocks(DashboardBlockInterface $block);
 
     /**
      * Get blocs
@@ -101,32 +99,6 @@ interface DashboardInterface
      * @return array
      */
     public function getBlocks();
-
-    /**
-     * Set template
-     *
-     * @param string $templateCode
-     */
-    public function setTemplateCode($templateCode);
-
-    /**
-     * Get template
-     *
-     * @return string
-     */
-    public function getTemplateCode();
-
-    /**
-     * @param int $position
-     *
-     * @return void
-     */
-    public function setPosition($position);
-
-    /**
-     * @return int
-     */
-    public function getPosition();
 
     /**
      * @return boolean

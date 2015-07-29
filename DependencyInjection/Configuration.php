@@ -34,13 +34,12 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $node = $treeBuilder->root('sonata_dashboard')->children();
 
-
         $node
             ->arrayNode('class')
                 ->addDefaultsIfNotSet()
                 ->children()
-                    ->scalarNode('dashboard')->defaultValue('Application\\Sonata\\DashboardBundle\\Entity\\Dashboard')->end()
-                    ->scalarNode('block')->defaultValue('Application\\Sonata\\PageBundle\\Entity\\Block')->end()
+                    ->scalarNode('dashboard')->defaultValue('Sonata\\DashboardBundle\\Entity\\BaseDashboard')->end()
+                    ->scalarNode('block')->defaultValue('Sonata\\DashboardBundle\\Entity\\Block')->end()
                 ->end()
             ->end()
         ;

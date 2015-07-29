@@ -6,12 +6,22 @@
 
     <parameters>
         <parameter key="sonata.dashboard.manager.dashboard.class">Sonata\DashboardBundle\Entity\DashboardManager</parameter>
+        <parameter key="sonata.dashboard.manager.block.class">Sonata\DashboardBundle\Entity\BlockManager</parameter>
+        <parameter key="sonata.dashboard.block_interactor.class">Sonata\DashboardBundle\Entity\BlockInteractor</parameter>
     </parameters>
 
     <services>
         <service id="sonata.dashboard.manager.dashboard" class="%sonata.dashboard.manager.dashboard.class%">
             <argument>%sonata.dashboard.dashboard.class%</argument>
             <argument type="service" id="doctrine" />
+        </service>
+        <service id="sonata.dashboard.manager.block" class="%sonata.dashboard.manager.block.class%">
+            <argument>%sonata.dashboard.block.class%</argument>
+            <argument type="service" id="doctrine" />
+        </service>
+        <service id="sonata.dashboard.block_interactor" class="%sonata.dashboard.block_interactor.class%">
+            <argument type="service" id="doctrine" />
+            <argument type="service" id="sonata.dashboard.manager.block" />
         </service>
     </services>
 

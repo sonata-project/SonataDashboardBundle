@@ -6,6 +6,166 @@
                 <source>dashboard</source>
                 <target>Dashboard</target>
             </trans-unit>
+            <trans-unit id="1" resname="form_dashboard.group_main_label">
+                <source>form_dashboard.group_main_label</source>
+                <target>Main</target>
+            </trans-unit>
+            <trans-unit id="2" resname="help_dashboard_name">
+                <source>help_dashboard_name</source>
+                <target>Dashboard's name</target>
+            </trans-unit>
+            <trans-unit id="3" resname="form.label_name">
+                <source>form.label_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="4" resname="form.label_enabled">
+                <source>form.label_enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="5" resname="breadcrumb.link_dashboard_batch">
+                <source>breadcrumb.link_dashboard_batch</source>
+                <target>Batch</target>
+            </trans-unit>
+            <trans-unit id="6" resname="breadcrumb.link_dashboard_create">
+                <source>breadcrumb.link_dashboard_create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="7" resname="breadcrumb.link_dashboard_delete">
+                <source>breadcrumb.link_dashboard_delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="8" resname="breadcrumb.link_dashboard_edit">
+                <source>breadcrumb.link_dashboard_edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="9" resname="breadcrumb.link_dashboard_list">
+                <source>breadcrumb.link_dashboard_list</source>
+                <target>Dashboard List</target>
+            </trans-unit>
+            <trans-unit id="10" resname="breadcrumb.link_dashboard_update">
+                <source>breadcrumb.link_dashboard_update</source>
+                <target>Update</target>
+            </trans-unit>
+            <trans-unit id="11" resname="breadcrumb.link_dashboard_show">
+                <source>breadcrumb.link_dashboard_show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="12" resname="dashboard.compose_dashboard">
+                <source>dashboard.compose_dashboard</source>
+                <target>Compose </target>
+            </trans-unit>
+            <trans-unit id="13" resname="sidemenu.link_edit_dashboard">
+                <source>sidemenu.link_edit_dashboard</source>
+                <target>Edit Dashboard</target>
+            </trans-unit>
+            <trans-unit id="14" resname="sidemenu.link_list_blocks">
+                <source>sidemenu.link_list_blocks</source>
+                <target>Edit widgets</target>
+            </trans-unit>
+            <trans-unit id="15" resname="sidemenu.link_compose_dashboard">
+                <source>sidemenu.link_compose_dashboard</source>
+                <target>Composer (beta)</target>
+            </trans-unit>
+            <trans-unit id="16" resname="sidemenu.link_list_dashboards">
+                <source>sidemenu.link_list_dashboards</source>
+                <target>List</target>
+            </trans-unit>
+            <trans-unit id="17" resname="list.label_enabled">
+                <source>list.label_enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="18" resname="list.label_edited">
+                <source>list.label_edited</source>
+                <target>Edited</target>
+            </trans-unit>
+            <trans-unit id="19" resname="list.label_name">
+                <source>list.label_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="20" resname="yes">
+                <source>yes</source>
+                <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="21" resname="cancel">
+                <source>cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="22" resname="loading">
+                <source>loading</source>
+                <target>Loading</target>
+            </trans-unit>
+            <trans-unit id="23" resname="composer.block.add.type">
+                <source>composer.block.add.type</source>
+                <target>Add a widget</target>
+            </trans-unit>
+            <trans-unit id="24" resname="composer.remove">
+                <source>composer.remove</source>
+                <target>Remove</target>
+            </trans-unit>
+            <trans-unit id="25" resname="composer.remove.confirm">
+                <source>composer.remove.confirm</source>
+                <target>Confirm remove ?</target>
+            </trans-unit>
+            <trans-unit id="26" resname="composer.disable">
+                <source>composer.disable</source>
+                <target>Disabled</target>
+            </trans-unit>
+            <trans-unit id="27" resname="composer.enable">
+                <source>composer.enable</source>
+                <target>Enable</target>
+            </trans-unit>
+            <trans-unit id="28" resname="breadcrumb.link_block_list">
+                <source>breadcrumb.link_block_list</source>
+                <target>Widgets list</target>
+            </trans-unit>
+            <trans-unit id="29" resname="list.label_type">
+                <source>list.label_type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="30" resname="list.label_updated_at">
+                <source>list.label_updated_at</source>
+                <target>Updated at</target>
+            </trans-unit>
+            <trans-unit id="31" resname="list.label_position">
+                <source>list.label_position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="32" resname="form.field_group_general">
+                <source>form.field_group_general</source>
+                <target>Block</target>
+            </trans-unit>
+            <trans-unit id="33" resname="form.field_group_options">
+                <source>form.field_group_options</source>
+                <target>Options</target>
+            </trans-unit>
+            <trans-unit id="34" resname="form.label_children">
+                <source>form.label_children</source>
+                <target>Children</target>
+            </trans-unit>
+            <trans-unit id="35" resname="form.label_parent">
+                <source>form.label_parent</source>
+                <target>Parent</target>
+            </trans-unit>
+            <trans-unit id="36" resname="form.label_position">
+                <source>form.label_position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="37" resname="compose.add_container">
+                <source>compose.add_container</source>
+                <target>Add a container</target>
+            </trans-unit>
+            <trans-unit id="38" resname="no_type_available">
+                <source>no_type_available</source>
+                <target>no_type_available</target>
+            </trans-unit>
+            <trans-unit id="39" resname="composer.remove.container.confirm">
+                <source>composer.remove.container.confirm</source>
+                <target>composer.remove.container.confirm</target>
+            </trans-unit>
+            <trans-unit id="40" resname="composer.default.container.name">
+                <source>composer.default.container.name</source>
+                <target>Container %position%</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

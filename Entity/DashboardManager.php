@@ -13,6 +13,8 @@ namespace Sonata\DashboardBundle\Entity;
 
 use Sonata\DashboardBundle\Model\DashboardManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
+use Sonata\DatagridBundle\Pager\Doctrine\Pager;
+use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
 /**
  * This class manages DashboardInterface persistency with the Doctrine ORM
@@ -21,5 +23,49 @@ use Sonata\CoreBundle\Model\BaseEntityManager;
  */
 class DashboardManager extends BaseEntityManager implements DashboardManagerInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getPager(array $criteria, $page, $limit = 10, array $sort = array())
+    {
+        $query = $this->getRepository()
+            ->createQueryBuilder('d')
+            ->select('d');
 
+        $fields = $this->getEntityManager()->getClassMetadata($this->class)->getFieldNames();
+
+        foreach ($sort as $field => $direction) {
+            if (!in_array($field, $fields)) {
+                throw new \RuntimeException(sprintf("Invalid sort field '%s' in '%s' class", $field, $this->class));
+            }
+        }
+        if (count($sort) == 0) {
+            $sort = array('name' => 'ASC');
+        }
+        foreach ($sort as $field => $direction) {
+            $query->orderBy(sprintf('d.%s', $field), strtoupper($direction));
+        }
+
+        $parameters = array();
+
+        if (isset($criteria['enabled'])) {
+            $query->andWhere('d.enabled = :enabled');
+            $parameters['enabled'] = $criteria['enabled'];
+        }
+
+        if (isset($criteria['edited'])) {
+            $query->andWhere('d.edited = :edited');
+            $parameters['edited'] = $criteria['edited'];
+        }
+
+        $query->setParameters($parameters);
+
+        $pager = new Pager();
+        $pager->setMaxPerPage($limit);
+        $pager->setQuery(new ProxyQuery($query));
+        $pager->setPage($page);
+        $pager->init();
+
+        return $pager;
+    }
 }

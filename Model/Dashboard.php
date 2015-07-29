@@ -11,8 +11,6 @@
 
 namespace Sonata\DashboardBundle\Model;
 
-use Sonata\PageBundle\Model\PageBlockInterface;
-
 /**
  * Dashboard
  *
@@ -29,10 +27,6 @@ abstract class Dashboard implements DashboardInterface
     protected $enabled;
 
     protected $blocks;
-
-    protected $templateCode;
-
-    protected $position = 1;
 
     protected $edited;
 
@@ -128,42 +122,6 @@ abstract class Dashboard implements DashboardInterface
     /**
      * {@inheritdoc}
      */
-    public function getTemplateCode()
-    {
-        return $this->templateCode;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setTemplateCode($templateCode)
-    {
-        $this->templateCode = $templateCode;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getEdited()
     {
         return $this->edited;
@@ -182,9 +140,9 @@ abstract class Dashboard implements DashboardInterface
     /**
      * {@inheritdoc}
      */
-    public function addBlocks(PageBlockInterface $blocs)
+    public function addBlocks(DashboardBlockInterface $blocs)
     {
-        $blocs->setPage($this);
+        $blocs->setDashboard($this);
 
         $this->blocks[] = $blocs;
     }
