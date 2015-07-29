@@ -1,0 +1,51 @@
+{
+    "name": "sonata-project/dashboard-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony SonataDashboardBundle",
+    "keywords": ["dashboard", "sonata", "cms"],
+    "homepage": "https://sonata-project.org/bundles/dashboard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Rabaix",
+            "email": "thomas.rabaix@sonata-project.org",
+            "homepage": "https://sonata-project.org"
+        },
+        {
+            "name": "Sonata Community",
+            "homepage": "https://github.com/sonata-project/SonataDashboardBundle/contributors"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "~2.3",
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/block-bundle": "~2.3@dev",
+        "sonata-project/seo-bundle": "~2.0@dev",
+        "sonata-project/doctrine-extensions" : "~1.0",
+        "sonata-project/cache-bundle": "~2.1,>=2.1.7",
+        "sonata-project/core-bundle": "~2.3,>=2.3.1",
+        "symfony-cmf/routing-bundle": "~1.1",
+        "sonata-project/notification-bundle": "~2.2",
+        "sonata-project/datagrid-bundle": "~2.2@dev",
+
+        "friendsofsymfony/rest-bundle": "~1.1",
+        "jms/serializer-bundle": "~0.11",
+        "nelmio/api-doc-bundle": "~2.4"
+    },
+    "require-dev": {
+        "sonata-project/admin-bundle": "dev-master",
+        "sonata-project/doctrine-orm-admin-bundle": "~2.2",
+        "sonata-project/core-bundle": "~2.3@dev"
+    },
+    "suggest": {
+        "sonata-project/doctrine-orm-admin-bundle": "~2.2"
+    },
+    "autoload": {
+        "psr-4": { "Sonata\\DashboardBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.4.x-dev"
+        }
+    }
+}

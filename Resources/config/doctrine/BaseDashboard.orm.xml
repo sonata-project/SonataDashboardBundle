@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Sonata\DashboardBundle\Entity\BaseDashboard">
+        <field name="position"     type="integer"  column="position" default="1"/>
+
+        <field name="enabled"      type="boolean"  column="enabled"  default="false" />
+        <field name="edited"       type="boolean"  column="edited"   default="false" />
+
+        <field name="name"         type="string"   column="name"     length="255"/>
+        <field name="templateCode" type="string"   column="template" nullable="false" />
+
+        <field name="createdAt"    type="datetime" column="created_at" />
+        <field name="updatedAt"    type="datetime" column="updated_at" />
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist" />
+            <lifecycle-callback type="preUpdate" method="preUpdate" />
+        </lifecycle-callbacks>
+    </mapped-superclass>
+</doctrine-mapping>
