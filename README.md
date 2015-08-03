@@ -1,0 +1,2 @@
+Sonata Dashboard Bundle
+====================
