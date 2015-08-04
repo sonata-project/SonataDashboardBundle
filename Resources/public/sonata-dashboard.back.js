@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * generated on: Tue Aug 04 2015 10:50:45 GMT+0200 (CEST)
- * revision:     f7e1fda71983847558495691f9c05f821dd79de4
+ * generated on: Tue Aug 04 2015 17:55:41 GMT+0200 (CEST)
+ * revision:     aa78a0619f906811d290a418c0728a8c1e5b678b
  *
  */
 /**
@@ -51,13 +51,14 @@
         $this.on('containerclick', function (e) {
             self.loadContainer(e.$container);
         });
-        $this.on('containerloaded',       this.handleContainerLoaded);
-        $this.on('blockcreated',          this.handleBlockCreated);
-        $this.on('blockremoved',          this.handleBlockRemoved);
-        $this.on('blockcreateformloaded', this.handleBlockCreateFormLoaded);
-        $this.on('blockpositionsupdate',  this.handleBlockPositionsUpdate);
-        $this.on('blockeditformloaded',   this.handleBlockEditFormLoaded);
-        $this.on('blockparentswitched',   this.handleBlockParentSwitched);
+        $this.on('containerloaded',          this.handleContainerLoaded);
+        $this.on('blockcreated',             this.handleBlockCreated);
+        $this.on('blockremoved',             this.handleBlockRemoved);
+        $this.on('blockcreateformloaded',    this.handleBlockCreateFormLoaded);
+        $this.on('blockpositionsupdate',     this.handleBlockPositionsUpdate);
+        $this.on('blockeditformloaded',      this.handleBlockEditFormLoaded);
+        $this.on('blockparentswitched',      this.handleBlockParentSwitched);
+        $this.on('blockcontainerformloaded', this.handleContainerEditFormLoaded);
     };
 
     /**
@@ -555,8 +556,6 @@
                 switchUrl      = $switchButton.attr('href'),
                 enabled        = parseInt($childBlock.attr('data-block-enabled'), 2);
                 parentId       = parseInt($childBlock.attr('data-parent-block-id'), 10);
-            
-            console.log(!enabled);
 
             $edit.click(function (e) {
                 e.preventDefault();
@@ -673,23 +672,26 @@
          * @param event
          */
         handleContainerLoaded: function (event) {
-            var self                     = this,
-                $childrenContainer       = this.$dynamicArea.find('.dashboard-composer__container__children'),
-                $children                = this.$dynamicArea.find('.dashboard-composer__container__child'),
-                $blockTypeSelector       = this.$dynamicArea.find('.dashboard-composer__block-type-selector'),
-                $blockTypeSelectorLoader = $blockTypeSelector.find('.dashboard-composer__block-type-selector__loader'),
-                $blockTypeSelectorSelect = $blockTypeSelector.find('select'),
-                $blockTypeSelectorButton = $blockTypeSelector.find('.dashboard-composer__block-type-selector__confirm'),
-                $containerSettings       = this.$dynamicArea.find('.dashboard-composer__container__settings'),
-                $containerSettingsButton = this.$dynamicArea.find('.dashboard-composer__container__view__header .btn'),
-                blockTypeSelectorUrl     = $blockTypeSelectorButton.attr('href'),
-                $remove                  = this.$dynamicArea.find('.dashboard-composer__container__settings__right__remove'),
-                $removeButton            = $remove.find('a'),
-                $removeConfirm           = $remove.find('.dashboard-composer__container__settings__right__remove__confirm'),
-                $removeCancel            = $removeConfirm.find('.cancel'),
-                $removeYes               = $removeConfirm.find('.yes'),
-                removeUrl                = $removeButton.attr('href'),
-                $container               = this.$containersArea.find('.dashboard-composer__dashboard-preview__container.active');
+            var self                      = this,
+                $childrenContainer        = this.$dynamicArea.find('.dashboard-composer__container__children'),
+                $children                 = this.$dynamicArea.find('.dashboard-composer__container__child'),
+                $blockTypeSelector        = this.$dynamicArea.find('.dashboard-composer__block-type-selector'),
+                $blockTypeSelectorLoader  = $blockTypeSelector.find('.dashboard-composer__block-type-selector__loader'),
+                $blockTypeSelectorSelect  = $blockTypeSelector.find('select'),
+                $blockTypeSelectorButton  = $blockTypeSelector.find('.dashboard-composer__block-type-selector__confirm'),
+                $containerLoader          = this.$dynamicArea.find('.dashboard-composer__container__view__loader'),
+                $containerSettings        = this.$dynamicArea.find('.dashboard-composer__container__settings'),
+                $containerSettingsContent = this.$dynamicArea.find('.dashboard-composer__container__settings__content'),
+                $containerSettingsButton  = this.$dynamicArea.find('.dashboard-composer__container__view__cogs .btn'),
+                containerEditUrl          = $containerSettings.data('href'),
+                blockTypeSelectorUrl      = $blockTypeSelectorButton.attr('href'),
+                $remove                   = this.$dynamicArea.find('.dashboard-composer__container__settings__right__remove'),
+                $removeButton             = $remove.find('a'),
+                $removeConfirm            = $remove.find('.dashboard-composer__container__settings__right__remove__confirm'),
+                $removeCancel             = $removeConfirm.find('.cancel'),
+                $removeYes                = $removeConfirm.find('.yes'),
+                removeUrl                 = $removeButton.attr('href'),
+                $container                = this.$containersArea.find('.dashboard-composer__dashboard-preview__container.active');
 
             applyAdmin(this.$dynamicArea);
 
@@ -796,7 +798,21 @@
             });
 
             $containerSettingsButton.on('click', function (e) {
-                $containerSettings.toggle();
+                $containerLoader.show()
+                $.ajax({
+                    url:     containerEditUrl,
+                    success: function (resp) {
+                        $containerLoader.hide();
+
+                        $containerSettingsContent.html(resp);
+
+                        var editFormEvent = $.Event('blockcontainerformloaded');
+                        $(self).trigger(editFormEvent);
+                        applyAdmin($container);
+
+                        $containerSettings.toggle();
+                    }
+                });
             });
 
             $children
@@ -808,7 +824,7 @@
         /**
          * Bind click handlers to template layout preview blocks.
          */
-        bindDashboardPreviewHandlers: function ($selectLast) {
+        bindDashboardPreviewHandlers: function ($position) {
             var self = this;
             this.$containerPreviews
                 .each(function () {
@@ -867,10 +883,10 @@
                 });
 
             if (this.$containerPreviews.length > 0) {
-                if ($selectLast == undefined) {
+                if ($position == undefined) {
                     this.loadContainer(this.$containerPreviews.eq(0));
                 } else {
-                    this.loadContainer(this.$containerPreviews.eq(this.$containerPreviews.length - 1));
+                    this.loadContainer(this.$containerPreviews.eq($position));
                 }
             }
         },
@@ -936,9 +952,56 @@
 
                         self.$containersArea.append(resp);
                         self.$containerPreviews = self.$dashboardPreview.find('.dashboard-composer__dashboard-preview__container');
-                        self.bindDashboardPreviewHandlers(true);
+                        self.bindDashboardPreviewHandlers(self.$containerPreviews.length - 1);
                     }
                 });
+            });
+        },
+
+        /**
+         * Handler called when container edition form is received.
+         * Makes the form handled through ajax.
+         */
+        handleContainerEditFormLoaded: function (event) {
+            var self               = this,
+                $containerSettings = this.$dynamicArea.find('.dashboard-composer__container__settings'),
+                $containerContent  = $containerSettings.find('.dashboard-composer__container__settings__content'),
+                $container         = this.$containersArea.find('.dashboard-composer__dashboard-preview__container.active'),
+                $containerName     = $container.find('strong'),
+                $containerLoader   = this.$dynamicArea.find('.dashboard-composer__container__view__loader'),
+                $form              = $containerContent.find('form'),
+                formAction         = $form.attr('action'),
+                formMethod         = $form.attr('method');
+
+            // hook into the form submit event.
+            $form.on('submit', function (e) {
+                e.preventDefault();
+
+                $containerLoader.show();
+
+                $.ajax({
+                    url:  formAction + '&' + $.param({'composer': 1}),
+                    data: $form.serialize(),
+                    type: formMethod,
+                    success: function (resp) {
+                        $containerLoader.hide();
+
+                        if (resp.result && resp.result === 'ok' && resp.objectId && resp.objectName) {
+                            $containerSettings.toggle();
+                            $containerName.html(resp.objectName);
+                            self.loadContainer(self.$containerPreviews.eq($container.index()));
+                        } else {
+                            var loadedEvent = $.Event('blockcontainerformloaded');
+                            loadedEvent.response = resp;
+
+                            $(self).trigger(loadedEvent);
+
+                            applyAdmin($container);
+                        }
+                    }
+                });
+
+                return false;
             });
         }
     };

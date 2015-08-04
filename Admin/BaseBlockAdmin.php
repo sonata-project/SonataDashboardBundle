@@ -50,6 +50,11 @@ abstract class BaseBlockAdmin extends Admin
     protected $containerBlockTypes = array();
 
     /**
+     * @var string
+     */
+    protected $defaultContainerType;
+
+    /**
      * {@inheritdoc}
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -213,6 +218,22 @@ abstract class BaseBlockAdmin extends Admin
     public function setContainerBlockTypes(array $containerBlockTypes)
     {
         $this->containerBlockTypes = $containerBlockTypes;
+    }
+
+    /**
+     * @param $defaultContainerType
+     */
+    public function setDefaultContainerType($defaultContainerType)
+    {
+        $this->defaultContainerType = $defaultContainerType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDefaultContainerType()
+    {
+        return $this->defaultContainerType;
     }
 
     /**

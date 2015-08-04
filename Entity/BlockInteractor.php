@@ -25,20 +25,33 @@ class BlockInteractor implements BlockInteractorInterface
 {
     protected $dashboardBlocksLoaded = [];
 
+    /**
+     * @var RegistryInterface
+     */
     protected $registry;
 
+    /**
+     * @var BlockManagerInterface
+     */
     protected $blockManager;
+
+    /**
+     * @var string
+     */
+    protected $defaultContainer;
 
     /**
      * Constructor
      *
      * @param RegistryInterface     $registry     Doctrine registry
      * @param BlockManagerInterface $blockManager Block manager
+     * @param string                $defaultContainer
      */
-    public function __construct(RegistryInterface $registry, BlockManagerInterface $blockManager)
+    public function __construct(RegistryInterface $registry, BlockManagerInterface $blockManager, $defaultContainer)
     {
-        $this->blockManager = $blockManager;
-        $this->registry     = $registry;
+        $this->blockManager     = $blockManager;
+        $this->registry         = $registry;
+        $this->defaultContainer = $defaultContainer;
     }
 
     /**
@@ -110,7 +123,7 @@ class BlockInteractor implements BlockInteractorInterface
         $container->setEnabled(isset($values['enabled']) ? $values['enabled'] : true);
         $container->setCreatedAt(new \DateTime);
         $container->setUpdatedAt(new \DateTime);
-        $container->setType('sonata.dashboard.block.container');
+        $container->setType($this->defaultContainer);
 
         if (isset($values['dashboard'])) {
             $container->setDashboard($values['dashboard']);

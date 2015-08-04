@@ -42,6 +42,10 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('block')->defaultValue('Sonata\\DashboardBundle\\Entity\\Block')->end()
                 ->end()
             ->end()
+            ->scalarNode('default_container')
+                ->defaultValue('sonata.dashboard.block.container')
+                ->cannotBeEmpty()
+            ->end()
         ;
 
         return $treeBuilder;

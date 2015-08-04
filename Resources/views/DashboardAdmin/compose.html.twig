@@ -24,7 +24,7 @@ file that was distributed with this source code.
                         <label>{{ 'compose.add_container'|trans({}, 'SonataDashboardBundle') }}</label>
                         <input class="dashboard-composer__block-container-header__input" type="text" />
                         <a class="btn btn-action btn-small dashboard-composer__block-container-header__confirm"
-                           href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.create', object, {'composer': true, 'type': 'sonata.dashboard.block.container'}) }}"
+                           href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.create', object, {'composer': true, 'type': admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').getDefaultContainerType()}) }}"
                                 ><i class="fa fa-plus"></i></a>
                         <span class="dashboard-composer__block-container-header__loader">{{ 'loading'|trans({}, 'SonataDashboardBundle') }}</span>
                         <div class="clearfix"></div>

@@ -22,6 +22,7 @@
         <service id="sonata.dashboard.block_interactor" class="%sonata.dashboard.block_interactor.class%">
             <argument type="service" id="doctrine" />
             <argument type="service" id="sonata.dashboard.manager.block" />
+            <argument>%sonata.dashboard.default_container%</argument>
         </service>
     </services>
 

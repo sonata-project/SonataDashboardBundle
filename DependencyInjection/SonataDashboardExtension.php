@@ -57,6 +57,12 @@ class SonataDashboardExtension extends Extension
 
         $container->setParameter('sonata.dashboard.admin.block.entity', $config['class']['block']);
         $container->setParameter('sonata.dashboard.admin.dashboard.entity', $config['class']['dashboard']);
+
+        //@todo : check this container is a service
+        //if (!$container->hasDefinition($config['default_container'])) {
+        //    throw new \RuntimeException(sprintf('The container %s must be an existing service', $config['default_container']));
+        //}
+        $container->setParameter('sonata.dashboard.default_container', $config['default_container']);
     }
 
     /**

@@ -1,12 +1,18 @@
 <div class="dashboard-composer__container__view block-view-{{ container.id }}" data-block-id="{{ container.id }}">
-    <h2 class="dashboard-composer__container__view__header">{{ container.name }}<div class="btn btn-default btn-sm pull-right"><i class="fa fa-cogs"></i></div></h2>
+    <h2 class="dashboard-composer__container__view__header">{{ container.name }}</h2>
+
+    <div class="dashboard-composer__container__view__cogs">
+        <div class="btn btn-default btn-sm pull-right"><i class="fa fa-cogs"></i></div>
+    </div>
 
     <span class="dashboard-composer__container__view__notice">{{ 'notice'|trans({}, 'SonataDashboardBundle') }}</span>
+    <span class="dashboard-composer__container__view__loader">{{ 'loading'|trans({}, 'SonataDashboardBundle') }}</span>
 
-    <div class="dashboard-composer__container__settings">
+    <div class="dashboard-composer__container__settings" data-href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.edit', dashboard, {'childId': container.id, 'composer': true }) }}">
         <label>Settings du container</label>
 
-        {# block containersettings #}
+        <div class="dashboard-composer__container__settings__content">
+        </div>
 
         <div class="dashboard-composer__container__settings__right">
             <div class="dashboard-composer__container__settings__right__remove">

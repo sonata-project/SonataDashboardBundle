@@ -12,6 +12,7 @@
 namespace Sonata\DashboardBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use Sonata\DashboardBundle\Admin\BaseBlockAdmin;
 use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -95,7 +96,7 @@ class BlockAdminController extends Controller
                 'admin'         => $this->admin,
                 'action'        => 'create'
             ));
-        } elseif ($parameters['type'] == "sonata.dashboard.block.container") {
+        } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
             $position  = count($dashboard->getBlocks()) + 1;
             $name      = $request->get('name') != '' ? $request->get('name') : $this->admin->trans('composer.default.container.name', array('%position%' => $position), '');

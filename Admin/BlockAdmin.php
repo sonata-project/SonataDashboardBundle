@@ -74,23 +74,22 @@ class BlockAdmin extends BaseBlockAdmin
 
         $formMapper->with($this->trans('form.field_group_general'), $generalGroupOptions);
 
+        $containerBlockTypes = $this->containerBlockTypes;
+        $isContainerRoot     = $block && in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isStandardBlock     = $block && !in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+
         if (!$isComposer) {
             $formMapper->add('name');
-        } else {
+        } elseif (!$isContainerRoot) {
             $formMapper->add('name', 'hidden');
         }
 
         $formMapper->end();
 
-        $isContainerRoot = $block && in_array($block->getType(), array('sonata.dashboard.block.container', 'sonata.block.service.container')) && !$this->hasParentFieldDescription();
-        $isStandardBlock = $block && !in_array($block->getType(), array('sonata.dashboard.block.container', 'sonata.block.service.container')) && !$this->hasParentFieldDescription();
-
         if ($isContainerRoot || $isStandardBlock) {
             $formMapper->with($this->trans('form.field_group_general'), $generalGroupOptions);
 
             $service = $this->blockManager->get($block);
-
-            $containerBlockTypes = $this->containerBlockTypes;
 
             // need to investigate on this case where $dashboard == null ... this should not be possible
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
@@ -129,6 +128,18 @@ class BlockAdmin extends BaseBlockAdmin
                 $service->buildCreateForm($formMapper, $block);
             }
 
+            // When editing a container in composer view, hide some settings
+            if ($isContainerRoot && $isComposer) {
+                $formMapper->remove('children');
+                $formMapper->add('name');
+
+                $formSettings = $formMapper->get('settings');
+
+                $formSettings->remove('code');
+                $formSettings->remove('layout');
+                $formSettings->remove('template');
+            }
+
             $formMapper->end();
 
         } else {
@@ -156,5 +167,15 @@ class BlockAdmin extends BaseBlockAdmin
         }
 
         return $parameters;
+    }
+
+    /**
+     * Override needed to make the dashboard composer cleaner
+     *
+     * {@inheritdoc}
+     */
+    public function toString($object)
+    {
+        return $object->getName();
     }
 }
