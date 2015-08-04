@@ -163,10 +163,11 @@ $color_red:       #f56954;
       font-size: 24px !important;
       line-height: 1em !important;
       color: $color_blue !important;
-
-      .fa-cogs {
-        cursor: pointer;
-        font-size: 20px;
+      .btn {
+        margin-top: -2px;
+        .fa {
+          color: #3c8dbc;
+        }
       }
     }
 

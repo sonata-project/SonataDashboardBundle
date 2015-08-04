@@ -1,21 +1,12 @@
 <div class="dashboard-composer__container__view block-view-{{ container.id }}" data-block-id="{{ container.id }}">
-    <h2 class="dashboard-composer__container__view__header">{{ container.name }}<i class="fa fa-cogs pull-right"></i></h2>
+    <h2 class="dashboard-composer__container__view__header">{{ container.name }}<div class="btn btn-default btn-sm pull-right"><i class="fa fa-cogs"></i></div></h2>
 
     <span class="dashboard-composer__container__view__notice">{{ 'notice'|trans({}, 'SonataDashboardBundle') }}</span>
-
-
-
-
-
-
-
-
-
-
 
     <div class="dashboard-composer__container__settings">
         <label>Settings du container</label>
 
+        {# block containersettings #}
 
         <div class="dashboard-composer__container__settings__right">
             <div class="dashboard-composer__container__settings__right__remove">

@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * generated on: Mon Aug 03 2015 17:45:58 GMT+0200 (CEST)
- * revision:     08f66c7292604514973dc3dbdf10f00c0882dc0e
+ * generated on: Tue Aug 04 2015 10:50:45 GMT+0200 (CEST)
+ * revision:     f7e1fda71983847558495691f9c05f821dd79de4
  *
  */
 /**
@@ -553,8 +553,10 @@
                 $switchLblSm   = $switchLabel.find('small'),
                 $switchLblIcon = $switchLabel.find('i'),
                 switchUrl      = $switchButton.attr('href'),
-                enabled        = parseInt($childBlock.attr('data-parent-block-enabled'), 1);
+                enabled        = parseInt($childBlock.attr('data-block-enabled'), 2);
                 parentId       = parseInt($childBlock.attr('data-parent-block-id'), 10);
+            
+            console.log(!enabled);
 
             $edit.click(function (e) {
                 e.preventDefault();
@@ -679,7 +681,7 @@
                 $blockTypeSelectorSelect = $blockTypeSelector.find('select'),
                 $blockTypeSelectorButton = $blockTypeSelector.find('.dashboard-composer__block-type-selector__confirm'),
                 $containerSettings       = this.$dynamicArea.find('.dashboard-composer__container__settings'),
-                $containerSettingsButton = this.$dynamicArea.find('.dashboard-composer__container__view__header .fa-cogs'),
+                $containerSettingsButton = this.$dynamicArea.find('.dashboard-composer__container__view__header .btn'),
                 blockTypeSelectorUrl     = $blockTypeSelectorButton.attr('href'),
                 $remove                  = this.$dynamicArea.find('.dashboard-composer__container__settings__right__remove'),
                 $removeButton            = $remove.find('a'),

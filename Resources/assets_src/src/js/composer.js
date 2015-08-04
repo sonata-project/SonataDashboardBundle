@@ -540,7 +540,7 @@
                 $switchLblSm   = $switchLabel.find('small'),
                 $switchLblIcon = $switchLabel.find('i'),
                 switchUrl      = $switchButton.attr('href'),
-                enabled        = parseInt($childBlock.attr('data-parent-block-enabled'), 1);
+                enabled        = parseInt($childBlock.attr('data-block-enabled'), 2);
                 parentId       = parseInt($childBlock.attr('data-parent-block-id'), 10);
 
             $edit.click(function (e) {
@@ -666,7 +666,7 @@
                 $blockTypeSelectorSelect = $blockTypeSelector.find('select'),
                 $blockTypeSelectorButton = $blockTypeSelector.find('.dashboard-composer__block-type-selector__confirm'),
                 $containerSettings       = this.$dynamicArea.find('.dashboard-composer__container__settings'),
-                $containerSettingsButton = this.$dynamicArea.find('.dashboard-composer__container__view__header .fa-cogs'),
+                $containerSettingsButton = this.$dynamicArea.find('.dashboard-composer__container__view__header .btn'),
                 blockTypeSelectorUrl     = $blockTypeSelectorButton.attr('href'),
                 $remove                  = this.$dynamicArea.find('.dashboard-composer__container__settings__right__remove'),
                 $removeButton            = $remove.find('a'),
