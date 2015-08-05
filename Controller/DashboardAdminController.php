@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Dashboard Admin Controller
+ * Dashboard Admin Controller.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
@@ -27,6 +27,7 @@ class DashboardAdminController extends CRUDController
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     *
      * @throws AccessDeniedException
      */
     public function composeAction(Request $request = null)
@@ -44,7 +45,7 @@ class DashboardAdminController extends CRUDController
             throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
         }
 
-        $containers = [];
+        $containers = array();
 
         // separate containers
         foreach ($dashboard->getBlocks() as $block) {
@@ -56,14 +57,14 @@ class DashboardAdminController extends CRUDController
 
         $csrfProvider = $this->get('form.csrf_provider');
 
-        return $this->render('SonataDashboardBundle:DashboardAdmin:compose.html.twig', [
+        return $this->render('SonataDashboardBundle:DashboardAdmin:compose.html.twig', array(
             'object'     => $dashboard,
             'action'     => 'edit',
             'containers' => $containers,
-            'csrfTokens' => [
+            'csrfTokens' => array(
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
-            ],
-        ]);
+            ),
+        ));
     }
 
     /**
@@ -85,10 +86,10 @@ class DashboardAdminController extends CRUDController
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig', [
+        return $this->render('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig', array(
             'blockServices' => $blockServices,
             'container'     => $block,
             'dashboard'     => $block->getDashboard(),
-        ]);
+        ));
     }
 }

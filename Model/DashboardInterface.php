@@ -12,14 +12,14 @@
 namespace Sonata\DashboardBundle\Model;
 
 /**
- * DashboardInterface
+ * DashboardInterface.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
 interface DashboardInterface
 {
     /**
-     * Returns the id
+     * Returns the id.
      *
      * @return mixed
      */
@@ -31,82 +31,82 @@ interface DashboardInterface
     public function setId($id);
 
     /**
-     * Set enabled
+     * Set enabled.
      *
-     * @param boolean $enabled
+     * @param bool $enabled
      */
     public function setEnabled($enabled);
 
     /**
-     * Get enabled
+     * Get enabled.
      *
-     * @return boolean $enabled
+     * @return bool $enabled
      */
     public function getEnabled();
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      */
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string $name
      */
     public function getName();
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
      */
     public function setCreatedAt(\DateTime $createdAt = null);
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime $createdAt
      */
     public function getCreatedAt();
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
      */
     public function setUpdatedAt(\DateTime $updatedAt = null);
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return \DateTime $updatedAt
      */
     public function getUpdatedAt();
 
     /**
-     * Add blocs
+     * Add blocs.
      *
      * @param DashboardBlockInterface $block
      */
     public function addBlocks(DashboardBlockInterface $block);
 
     /**
-     * Get blocs
+     * Get blocs.
      *
      * @return array
      */
     public function getBlocks();
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getEdited();
 
     /**
-     * @param boolean $edited
+     * @param bool $edited
      */
     public function setEdited($edited);
 }

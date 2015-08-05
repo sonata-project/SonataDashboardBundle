@@ -15,14 +15,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Sonata\DashboardBundle\Model\Block;
 
 /**
- * The class stores block information
+ * The class stores block information.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
 abstract class BaseBlock extends Block
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -30,38 +30,38 @@ abstract class BaseBlock extends Block
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function __construct()
     {
-        $this->children = new ArrayCollection;
+        $this->children = new ArrayCollection();
 
         parent::__construct();
     }
 
     /**
-     * Updates dates before creating/updating entity
+     * Updates dates before creating/updating entity.
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
-     * Updates dates before updating entity
+     * Updates dates before updating entity.
      */
     public function preUpdate()
     {
-        $this->updatedAt = new \DateTime;
+        $this->updatedAt = new \DateTime();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setChildren($children)
     {
-        $this->children = new ArrayCollection;
+        $this->children = new ArrayCollection();
 
         foreach ($children as $child) {
             $this->addChildren($child);

@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Sonata\DashboardBundle\Model\Dashboard;
 
 /**
- * The class stores Dashboard information
+ * The class stores Dashboard information.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
@@ -36,8 +36,8 @@ abstract class BaseDashboard extends Dashboard
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
@@ -45,6 +45,6 @@ abstract class BaseDashboard extends Dashboard
      */
     public function preUpdate()
     {
-        $this->updatedAt = new \DateTime;
+        $this->updatedAt = new \DateTime();
     }
 }

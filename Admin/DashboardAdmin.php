@@ -11,17 +11,17 @@
 
 namespace Sonata\DashboardBundle\Admin;
 
+use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Admin\AdminInterface;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Knp\Menu\ItemInterface as MenuItemInterface;
 
 /**
- * Admin definition for the Dashboard class
+ * Admin definition for the Dashboard class.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
@@ -93,7 +93,7 @@ class DashboardAdmin extends Admin
         ;
 
         $formMapper->setHelps(array(
-            'name' => $this->trans('help_dashboard_name')
+            'name' => $this->trans('help_dashboard_name'),
         ));
     }
 
@@ -123,7 +123,6 @@ class DashboardAdmin extends Admin
         }
 
         $admin = $this->isChild() ? $this->getParent() : $this;
-
 
         $id = $admin->getRequest()->get('id');
 

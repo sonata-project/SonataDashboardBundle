@@ -15,13 +15,12 @@ use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class SonataDashboardExtension
+ * Class SonataDashboardExtension.
  *
- * @package Sonata\DashboardBundle\DependencyInjection
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
 class SonataDashboardExtension extends Extension
@@ -45,7 +44,7 @@ class SonataDashboardExtension extends Extension
     }
 
     /**
-     * Registers service parameters from bundle configuration
+     * Registers service parameters from bundle configuration.
      *
      * @param ContainerBuilder $container Container builder
      * @param array            $config    Array of configuration
@@ -66,7 +65,7 @@ class SonataDashboardExtension extends Extension
     }
 
     /**
-     * Registers doctrine mapping on concrete dashboard entities
+     * Registers doctrine mapping on concrete dashboard entities.
      *
      * @param array $config
      */
@@ -81,7 +80,7 @@ class SonataDashboardExtension extends Extension
         $collector->addAssociation($config['class']['dashboard'], 'mapOneToMany', array(
             'fieldName'     => 'blocks',
             'targetEntity'  => $config['class']['block'],
-            'cascade' => array(
+            'cascade'       => array(
                 'remove',
                 'persist',
                 'refresh',
@@ -96,49 +95,49 @@ class SonataDashboardExtension extends Extension
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapOneToMany', array(
-            'fieldName' => 'children',
+            'fieldName'    => 'children',
             'targetEntity' => $config['class']['block'],
-            'cascade' => array(
+            'cascade'      => array(
                 'remove',
                 'persist',
             ),
-            'mappedBy' => 'parent',
+            'mappedBy'      => 'parent',
             'orphanRemoval' => true,
-            'orderBy' => array(
+            'orderBy'       => array(
                 'position' => 'ASC',
             ),
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
-            'fieldName' => 'parent',
+            'fieldName'    => 'parent',
             'targetEntity' => $config['class']['block'],
-            'cascade' => array(
+            'cascade'      => array(
             ),
-            'mappedBy' => null,
-            'inversedBy' => 'children',
+            'mappedBy'    => null,
+            'inversedBy'  => 'children',
             'joinColumns' => array(
                 array(
-                    'name' => 'parent_id',
+                    'name'                 => 'parent_id',
                     'referencedColumnName' => 'id',
-                    'onDelete' => 'CASCADE',
+                    'onDelete'             => 'CASCADE',
                 ),
             ),
             'orphanRemoval' => false,
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
-            'fieldName' => 'dashboard',
+            'fieldName'    => 'dashboard',
             'targetEntity' => $config['class']['dashboard'],
-            'cascade' => array(
+            'cascade'      => array(
                 'persist',
             ),
-            'mappedBy' => null,
-            'inversedBy' => 'blocks',
+            'mappedBy'    => null,
+            'inversedBy'  => 'blocks',
             'joinColumns' => array(
                 array(
-                    'name' => 'dashboard_id',
+                    'name'                 => 'dashboard_id',
                     'referencedColumnName' => 'id',
-                    'onDelete' => 'CASCADE',
+                    'onDelete'             => 'CASCADE',
                 ),
             ),
             'orphanRemoval' => false,

@@ -11,9 +11,11 @@
 
 namespace Sonata\DashboardBundle\Admin;
 
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\BlockBundle\Block\BlockServiceManagerInterface;
 use Sonata\Cache\CacheManagerInterface;
@@ -21,11 +23,9 @@ use Sonata\DashboardBundle\Entity\BaseBlock;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Doctrine\ORM\EntityRepository;
-use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Abstract admin class for the Block model
+ * Abstract admin class for the Block model.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
@@ -104,7 +104,6 @@ class BlockAdmin extends Admin
                 $subject->setSettings($resolver->resolve($subject->getSettings()));
             } catch (InvalidOptionsException $e) {
                 // @TODO : add a logging error or a flash message
-
             }
 
             $service->load($subject);
@@ -302,14 +301,14 @@ class BlockAdmin extends Admin
         $generalGroupOptions = $optionsGroupOptions = array();
         if ($isComposer) {
             $generalGroupOptions['class'] = 'hidden';
-            $optionsGroupOptions['name']  = '';
+            $optionsGroupOptions['name'] = '';
         }
 
         $formMapper->with($this->trans('form.field_group_general'), $generalGroupOptions);
 
         $containerBlockTypes = $this->containerBlockTypes;
-        $isContainerRoot     = $block && in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
-        $isStandardBlock     = $block && !in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isContainerRoot = $block && in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isStandardBlock = $block && !in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
 
         if (!$isComposer) {
             $formMapper->add('name');
@@ -328,15 +327,15 @@ class BlockAdmin extends Admin
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
                 $formMapper->add('parent', 'entity', array(
                     'class'         => $this->getClass(),
-                    'query_builder' => function(EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
+                    'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
                             ->andWhere('a.dashboard = :dashboard AND a.type IN (:types)')
                             ->setParameters(array(
                                 'dashboard' => $dashboard,
                                 'types'     => $containerBlockTypes,
                             ));
-                    }
-                ),array(
+                    },
+                ), array(
                     'admin_code' => $this->getCode(),
                 ));
             }
@@ -374,7 +373,6 @@ class BlockAdmin extends Admin
             }
 
             $formMapper->end();
-
         } else {
             $formMapper
                 ->with($this->trans('form.field_group_options'), $optionsGroupOptions)
@@ -389,7 +387,7 @@ class BlockAdmin extends Admin
     }
 
     /**
-     * Override needed to make the dashboard composer cleaner
+     * Override needed to make the dashboard composer cleaner.
      *
      * {@inheritdoc}
      */

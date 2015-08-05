@@ -14,9 +14,8 @@ namespace Sonata\DashboardBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class SonataDashboardBundle
+ * Class SonataDashboardBundle.
  *
- * @package Sonata\DashboardBundle
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
 class SonataDashboardBundle extends Bundle

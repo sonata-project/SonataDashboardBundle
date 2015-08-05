@@ -15,7 +15,7 @@ use Sonata\CoreBundle\Model\ManagerInterface;
 use Sonata\CoreBundle\Model\PageableManagerInterface;
 
 /**
- * Defines methods to interact with the persistency layer of a DashboardInterface
+ * Defines methods to interact with the persistency layer of a DashboardInterface.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */

@@ -12,7 +12,7 @@
 namespace Sonata\DashboardBundle\Model;
 
 /**
- * Dashboard
+ * Dashboard.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */

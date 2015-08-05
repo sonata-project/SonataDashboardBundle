@@ -14,11 +14,10 @@ namespace Sonata\DashboardBundle\Exception;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Exception used to handle a dashboard not found situation
+ * Exception used to handle a dashboard not found situation.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
 class DashboardNotFoundException extends NotFoundHttpException
 {
-
 }

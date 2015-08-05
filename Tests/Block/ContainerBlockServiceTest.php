@@ -17,31 +17,31 @@ use Sonata\BlockBundle\Tests\Block\Service\FakeTemplating;
 use Sonata\DashboardBundle\Block\ContainerBlockService;
 
 /**
- * Test Container Block service
+ * Test Container Block service.
  */
 class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * test the block execute() method
+     * test the block execute() method.
      */
     public function testExecute()
     {
         $templating = new FakeTemplating();
         $service    = new ContainerBlockService('core.container', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setName('block.name');
         $block->setType('core.container');
-        $block->setSettings([
+        $block->setSettings(array(
             'code' => 'block.code',
-        ]);
+        ));
 
-        $blockContext = new BlockContext($block, [
+        $blockContext = new BlockContext($block, array(
             'code'        => '',
             'layout'      => '{{ CONTENT }}',
             'class'       => '',
             'template'    => 'SonataDashboardBundle:Block:block_container.html.twig',
-        ]);
+        ));
 
         $service->execute($blockContext);
 
@@ -52,24 +52,24 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test the container layout
+     * test the container layout.
      */
     public function testLayout()
     {
         $templating = new FakeTemplating();
         $service    = new ContainerBlockService('core.container', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setName('block.name');
         $block->setType('core.container');
 
         // we manually perform the settings merge
-        $blockContext = new BlockContext($block, [
+        $blockContext = new BlockContext($block, array(
             'code'        => 'block.code',
             'layout'      => 'before{{ CONTENT }}after',
             'class'       => '',
             'template'    => 'SonataDashboardBundle:Block:block_container.html.twig',
-        ]);
+        ));
 
         $service->execute($blockContext);
 
@@ -81,21 +81,21 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * test the block's form builders
+     * test the block's form builders.
      */
     public function testFormBuilder()
     {
         $templating = new FakeTemplating();
         $service    = new ContainerBlockService('core.container', $templating);
 
-        $block = new Block;
+        $block = new Block();
         $block->setName('block.name');
         $block->setType('core.container');
-        $block->setSettings([
-            'name' => 'block.code'
-        ]);
+        $block->setSettings(array(
+            'name' => 'block.code',
+        ));
 
-        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
+        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', array(), array(), '', false);
         $formMapper->expects($this->exactly(6))->method('add');
 
         $service->buildCreateForm($formMapper, $block);

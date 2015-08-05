@@ -17,7 +17,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Render children dashboards
+ * Render children dashboards.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
@@ -35,15 +35,15 @@ class ContainerBlockService extends BaseContainerBlockService
                 array('code', 'text', array('required' => false)),
                 array('layout', 'textarea', array()),
                 array('class', 'text', array('required' => false)),
-                array('template', 'sonata_type_container_template_choice', array())
-            )
+                array('template', 'sonata_type_container_template_choice', array()),
+            ),
         ));
 
         $formMapper->add('children', 'sonata_type_collection', array(), array(
             'admin_code' => 'sonata.dashboard.admin.block',
             'edit'       => 'inline',
             'inline'     => 'table',
-            'sortable'   => 'position'
+            'sortable'   => 'position',
         ));
     }
 

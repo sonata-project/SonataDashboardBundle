@@ -14,7 +14,7 @@ namespace Sonata\DashboardBundle\Tests\Entity;
 use Sonata\DashboardBundle\Entity\DashboardManager;
 
 /**
- * Class DashboardManagerTest
+ * Class DashboardManagerTest.
  */
 class DashboardManagerTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));
 
         $qb = $this->getMock('Doctrine\ORM\QueryBuilder', array(), array(
-            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock()
+            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
         ));
 
         $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
@@ -97,7 +97,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
             })
             ->getPager(array(), 1, 10, array(
-                'name' => 'ASC',
+                'name'       => 'ASC',
                 'routeName'  => 'DESC',
             ));
     }

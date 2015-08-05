@@ -14,7 +14,7 @@ namespace Sonata\DashboardBundle\Tests\Entity;
 use Sonata\DashboardBundle\Entity\BlockManager;
 
 /**
- * Class BlockManagerTest
+ * Class BlockManagerTest.
  */
 class BlockManagerTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,7 +24,7 @@ class BlockManagerTest extends \PHPUnit_Framework_TestCase
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));
 
         $qb = $this->getMock('Doctrine\ORM\QueryBuilder', array(), array(
-            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock()
+            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
         ));
 
         $qb->expects($this->any())->method('select')->will($this->returnValue($qb));

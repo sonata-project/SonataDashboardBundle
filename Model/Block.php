@@ -15,7 +15,7 @@ use Sonata\BlockBundle\Model\BaseBlock;
 use Sonata\BlockBundle\Model\BlockInterface;
 
 /**
- * Block
+ * Block.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
@@ -27,7 +27,7 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
     protected $dashboard;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function addChildren(BlockInterface $child)
     {
@@ -41,7 +41,7 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setDashboard(DashboardInterface $dashboard = null)
     {
@@ -49,7 +49,7 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getDashboard()
     {

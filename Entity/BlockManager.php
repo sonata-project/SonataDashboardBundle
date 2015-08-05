@@ -17,7 +17,7 @@ use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
 /**
- * This class manages BlockInterface persistency with the Doctrine ORM
+ * This class manages BlockInterface persistency with the Doctrine ORM.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
@@ -34,7 +34,7 @@ class BlockManager extends BaseEntityManager implements BlockManagerInterface
     }
 
     /**
-     * Updates position for given block
+     * Updates position for given block.
      *
      * @param int  $id          Block Id
      * @param int  $position    New Position

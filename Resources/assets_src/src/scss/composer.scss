@@ -112,13 +112,22 @@ $color_red:       #f56954;
     min-height: 50px;
     display: none;
 
-    label {
+    & > label {
       display: inline-block;
-      margin: 0 0 0 15px;
+      margin: 0 0 0 19px;
     }
 
     &__content {
       margin-top: 10px;
+        .box{
+          margin-bottom: 0;
+          .box-header {
+            display: none;
+          }
+          .box-body {
+            padding: 19px;
+          }
+        }
     }
 
     &__right {

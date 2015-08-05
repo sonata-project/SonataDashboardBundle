@@ -20,7 +20,7 @@ class DashboardTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetterSetter()
     {
-        $dashboard = new Dashboard;
+        $dashboard = new Dashboard();
         $dashboard->setEnabled(true);
         $this->assertTrue($dashboard->getEnabled());
 

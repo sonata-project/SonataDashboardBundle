@@ -11,19 +11,19 @@
 
 namespace Sonata\DashboardBundle\Entity;
 
+use Sonata\BlockBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Sonata\BlockBundle\Model\BlockManagerInterface;
 
 /**
- * This class interacts with blocks
+ * This class interacts with blocks.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
 class BlockInteractor implements BlockInteractorInterface
 {
-    protected $dashboardBlocksLoaded = [];
+    protected $dashboardBlocksLoaded = array();
 
     /**
      * @var RegistryInterface
@@ -41,10 +41,10 @@ class BlockInteractor implements BlockInteractorInterface
     protected $defaultContainer;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param RegistryInterface     $registry     Doctrine registry
-     * @param BlockManagerInterface $blockManager Block manager
+     * @param RegistryInterface     $registry         Doctrine registry
+     * @param BlockManagerInterface $blockManager     Block manager
      * @param string                $defaultContainer
      */
     public function __construct(RegistryInterface $registry, BlockManagerInterface $blockManager, $defaultContainer)
@@ -63,9 +63,9 @@ class BlockInteractor implements BlockInteractorInterface
             ->select('b')
             ->from($this->blockManager->getClass(), 'b')
             ->where('b.id = :id')
-            ->setParameters([
-                'id' => $id
-            ])
+            ->setParameters(array(
+                'id' => $id,
+            ))
             ->getQuery()
             ->execute();
 
@@ -79,9 +79,9 @@ class BlockInteractor implements BlockInteractorInterface
     {
         $blocks = $this->getEntityManager()
             ->createQuery(sprintf('SELECT b FROM %s b INDEX BY b.id WHERE b.dashboard = :dashboard ORDER BY b.position ASC', $this->blockManager->getClass()))
-            ->setParameters([
-                'dashboard' => $dashboard->getId()
-            ])
+            ->setParameters(array(
+                'dashboard' => $dashboard->getId(),
+            ))
             ->execute();
 
         return $blocks;
@@ -90,7 +90,7 @@ class BlockInteractor implements BlockInteractorInterface
     /**
      * {@inheritdoc}
      */
-    public function saveBlocksPosition(array $data = [], $partial = true)
+    public function saveBlocksPosition(array $data = array(), $partial = true)
     {
         $em = $this->getEntityManager();
         $em->getConnection()->beginTransaction();
@@ -117,12 +117,12 @@ class BlockInteractor implements BlockInteractorInterface
     /**
      * {@inheritdoc}
      */
-    public function createNewContainer(array $values = [], \Closure $alter = null)
+    public function createNewContainer(array $values = array(), \Closure $alter = null)
     {
         $container = $this->blockManager->create();
         $container->setEnabled(isset($values['enabled']) ? $values['enabled'] : true);
-        $container->setCreatedAt(new \DateTime);
-        $container->setUpdatedAt(new \DateTime);
+        $container->setCreatedAt(new \DateTime());
+        $container->setUpdatedAt(new \DateTime());
         $container->setType($this->defaultContainer);
 
         if (isset($values['dashboard'])) {
@@ -135,7 +135,7 @@ class BlockInteractor implements BlockInteractorInterface
             $container->setName(isset($values['code']) ? $values['code'] : 'No name defined');
         }
 
-        $container->setSettings(['code' => isset($values['code']) ? $values['code'] : 'no code defined']);
+        $container->setSettings(array('code' => isset($values['code']) ? $values['code'] : 'no code defined'));
         $container->setPosition(isset($values['position']) ? $values['position'] : 1);
 
         if (isset($values['parent'])) {
@@ -157,7 +157,7 @@ class BlockInteractor implements BlockInteractorInterface
     public function loadDashboardBlocks(DashboardInterface $dashboard)
     {
         if (isset($this->dashboardBlocksLoaded[$dashboard->getId()])) {
-            return [];
+            return array();
         }
 
         $blocks = $this->getBlocksById($dashboard);

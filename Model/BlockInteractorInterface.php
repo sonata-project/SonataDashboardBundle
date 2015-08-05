@@ -12,14 +12,14 @@
 namespace Sonata\DashboardBundle\Model;
 
 /**
- * BlockInteractorInterface
+ * BlockInteractorInterface.
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
 interface BlockInteractorInterface
 {
     /**
-     * return a block with the given id
+     * return a block with the given id.
      *
      * @param mixed $id
      *
@@ -28,7 +28,7 @@ interface BlockInteractorInterface
     public function getBlock($id);
 
     /**
-     * return a flat list if dashboard's blocks
+     * return a flat list if dashboard's blocks.
      *
      * @param DashboardInterface $dashboard
      *
@@ -37,7 +37,7 @@ interface BlockInteractorInterface
     public function getBlocksById(DashboardInterface $dashboard);
 
     /**
-     * load blocks attached the given dashboard
+     * load blocks attached the given dashboard.
      *
      * @param DashboardInterface $dashboard
      *
@@ -46,7 +46,7 @@ interface BlockInteractorInterface
     public function loadDashboardBlocks(DashboardInterface $dashboard);
 
     /**
-     * save the blocks positions
+     * save the blocks positions.
      *
      * @param array $data
      * @param bool  $partial Should we use partial references? (Better for performance, but can lead to query issues.)
