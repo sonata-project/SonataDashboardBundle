@@ -12,7 +12,6 @@
 namespace Sonata\DashboardBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Sonata\DashboardBundle\Admin\BaseBlockAdmin;
 use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;

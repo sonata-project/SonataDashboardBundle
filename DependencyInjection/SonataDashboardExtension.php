@@ -15,7 +15,7 @@ use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
@@ -142,6 +142,27 @@ class SonataDashboardExtension extends Extension
                 ),
             ),
             'orphanRemoval' => false,
+        ));
+    }
+
+    /**
+     * Add class to compile.
+     */
+    public function configureClassesToCompile()
+    {
+        $this->addClassesToCompile(array(
+            'Sonata\\DashboardBundle\\Block\\ContainerBlockService',
+            'Sonata\\DashboardBundle\\Entity\\BaseBlock',
+            'Sonata\\DashboardBundle\\Entity\\BaseDashboard',
+            'Sonata\\DashboardBundle\\Entity\\BlockInteractor',
+            'Sonata\\DashboardBundle\\Entity\\BlockManager',
+            'Sonata\\DashboardBundle\\Entity\\DashboardManager',
+            'Sonata\\DashboardBundle\\Model\\Block',
+            'Sonata\\DashboardBundle\\Model\\BlockInteractorInterface',
+            'Sonata\\DashboardBundle\\Model\\Dashboard',
+            'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
+            'Sonata\\DashboardBundle\\Model\\DashboardInterface',
+            'Sonata\\DashboardBundle\\Model\\DashboardManagerInterface',
         ));
     }
 }
