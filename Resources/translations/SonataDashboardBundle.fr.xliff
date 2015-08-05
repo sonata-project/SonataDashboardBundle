@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="0" resname="dashboard">
+                <source>dashboard</source>
+                <target>Tableau de Bord</target>
+            </trans-unit>
+            <trans-unit id="1" resname="form_dashboard.group_main_label">
+                <source>form_dashboard.group_main_label</source>
+                <target>Informations principales</target>
+            </trans-unit>
+            <trans-unit id="2" resname="help_dashboard_name">
+                <source>help_dashboard_name</source>
+                <target>Nom du tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="3" resname="form.label_name">
+                <source>form.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="4" resname="form.label_enabled">
+                <source>form.label_enabled</source>
+                <target>Activé</target>
+            </trans-unit>
+            <trans-unit id="5" resname="breadcrumb.link_dashboard_batch">
+                <source>breadcrumb.link_dashboard_batch</source>
+                <target>Tableaux de bord traitées par lots</target>
+            </trans-unit>
+            <trans-unit id="6" resname="breadcrumb.link_dashboard_create">
+                <source>breadcrumb.link_dashboard_create</source>
+                <target>Création d'un tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="7" resname="breadcrumb.link_dashboard_delete">
+                <source>breadcrumb.link_dashboard_delete</source>
+                <target>Suppression d'un tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="8" resname="breadcrumb.link_dashboard_edit">
+                <source>breadcrumb.link_dashboard_edit</source>
+                <target>Edition d'un tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="9" resname="breadcrumb.link_dashboard_list">
+                <source>breadcrumb.link_dashboard_list</source>
+                <target>Liste des tableaux de bord</target>
+            </trans-unit>
+            <trans-unit id="10" resname="breadcrumb.link_dashboard_update">
+                <source>breadcrumb.link_dashboard_update</source>
+                <target>Mise à jour d'un tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="11" resname="breadcrumb.link_dashboard_show">
+                <source>breadcrumb.link_dashboard_show</source>
+                <target>Tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="12" resname="dashboard.compose_dashboard">
+                <source>dashboard.compose_dashboard</source>
+                <target>Mise en page du tableau de bord </target>
+            </trans-unit>
+            <trans-unit id="13" resname="sidemenu.link_edit_dashboard">
+                <source>sidemenu.link_edit_dashboard</source>
+                <target>Edition du tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="14" resname="sidemenu.link_list_blocks">
+                <source>sidemenu.link_list_blocks</source>
+                <target>Edition des widgets</target>
+            </trans-unit>
+            <trans-unit id="15" resname="sidemenu.link_compose_dashboard">
+                <source>sidemenu.link_compose_dashboard</source>
+                <target>Composition du tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="16" resname="sidemenu.link_list_dashboards">
+                <source>sidemenu.link_list_dashboards</source>
+                <target>Liste</target>
+            </trans-unit>
+            <trans-unit id="17" resname="list.label_enabled">
+                <source>list.label_enabled</source>
+                <target>Activé</target>
+            </trans-unit>
+            <trans-unit id="18" resname="list.label_edited">
+                <source>list.label_edited</source>
+                <target>Edité</target>
+            </trans-unit>
+            <trans-unit id="19" resname="list.label_name">
+                <source>list.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="20" resname="yes">
+                <source>yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="21" resname="cancel">
+                <source>cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="22" resname="loading">
+                <source>loading</source>
+                <target>Chargement</target>
+            </trans-unit>
+            <trans-unit id="23" resname="composer.block.add.type">
+                <source>composer.block.add.type</source>
+                <target>Ajouter un widget de type</target>
+            </trans-unit>
+            <trans-unit id="24" resname="composer.remove">
+                <source>composer.remove</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="25" resname="composer.remove.confirm">
+                <source>composer.remove.confirm</source>
+                <target>Confirmer la suppression ?</target>
+            </trans-unit>
+            <trans-unit id="26" resname="composer.disable">
+                <source>composer.disable</source>
+                <target>Désactiver</target>
+            </trans-unit>
+            <trans-unit id="27" resname="composer.enable">
+                <source>composer.enable</source>
+                <target>Activer</target>
+            </trans-unit>
+            <trans-unit id="28" resname="breadcrumb.link_block_list">
+                <source>breadcrumb.link_block_list</source>
+                <target>Liste des widgets</target>
+            </trans-unit>
+            <trans-unit id="29" resname="list.label_type">
+                <source>list.label_type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="30" resname="list.label_updated_at">
+                <source>list.label_updated_at</source>
+                <target>Mis à jour le</target>
+            </trans-unit>
+            <trans-unit id="31" resname="list.label_position">
+                <source>list.label_position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="32" resname="form.field_group_general">
+                <source>form.field_group_general</source>
+                <target>Bloc</target>
+            </trans-unit>
+            <trans-unit id="33" resname="form.field_group_options">
+                <source>form.field_group_options</source>
+                <target>Options</target>
+            </trans-unit>
+            <trans-unit id="34" resname="form.label_children">
+                <source>form.label_children</source>
+                <target>Enfants</target>
+            </trans-unit>
+            <trans-unit id="35" resname="form.label_parent">
+                <source>form.label_parent</source>
+                <target>Parent</target>
+            </trans-unit>
+            <trans-unit id="36" resname="form.label_position">
+                <source>form.label_position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="37" resname="compose.add_container">
+                <source>compose.add_container</source>
+                <target>Ajouter un conteneur</target>
+            </trans-unit>
+            <trans-unit id="38" resname="no_type_available">
+                <source>no_type_available</source>
+                <target>Aucun type disponible</target>
+            </trans-unit>
+            <trans-unit id="39" resname="composer.remove.container.confirm">
+                <source>composer.remove.container.confirm</source>
+                <target>Confirmer la suppression ? (Attention, cela entraine la suppression de tous les widgets)</target>
+            </trans-unit>
+            <trans-unit id="40" resname="composer.default.container.name">
+                <source>composer.default.container.name</source>
+                <target>Conteneur %position%</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
