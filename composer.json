@@ -1,5 +1,5 @@
 {
-    "name": "sonata-project/sonata-dashboard-bundle",
+    "name": "sonata-project/dashboard-bundle",
     "type": "symfony-bundle",
     "description": "Symfony SonataDashboardBundle",
     "keywords": ["dashboard", "sonata"],
