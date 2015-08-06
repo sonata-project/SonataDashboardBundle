@@ -32,8 +32,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $expected = array(
             'class' => array(
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
-                'block'     => 'Sonata\\DashboardBundle\\Entity\\Block',
+                'block'     => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
             ),
+            'default_container' => 'sonata.dashboard.block.container',
         );
 
         $this->assertEquals($expected, $config);
