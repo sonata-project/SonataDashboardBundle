@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\DashboardBundle\Tests\Entity;
+namespace Sonata\DashboardBundle\Tests\Model;
 
 use Sonata\BlockBundle\Model\Block;
 use Sonata\DashboardBundle\Entity\BlockInteractor;
@@ -33,7 +33,7 @@ class BlockInteractorTest extends \PHPUnit_Framework_TestCase
         $blockManager = $this->getMock('Sonata\BlockBundle\Model\BlockManagerInterface');
         $blockManager->expects($this->any())->method('create')->will($this->returnValue(new Block()));
 
-        $blockInteractor = new BlockInteractor($registry, $blockManager);
+        $blockInteractor = new BlockInteractor($registry, $blockManager, 'sonata.dashboard.block.container');
 
         $container = $blockInteractor->createNewContainer(array(
             'enabled' => true,

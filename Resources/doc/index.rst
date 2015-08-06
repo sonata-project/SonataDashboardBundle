@@ -1,5 +1,5 @@
 Dashboard Bundle
-===========
+================
 
 Reference Guide
 ---------------
