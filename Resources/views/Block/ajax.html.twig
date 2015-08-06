@@ -1,0 +1,18 @@
+{% block block %}
+    <div class="{{ block.settings.class }}" id="block-{{ block.id }}" >
+        <div class="info-box">
+            <span class="info-box-icon bg-{{ block.settings.color }}"><i class="{{ block.settings.icon }}"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ block.settings.title }}</span>
+                <span class="info-box-number"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        $.ajax({
+            url: "{{ block.settings.url }}"
+        }).done(function( data ) {
+            $('#block-{{ block.id }} .info-box-number').html(data);
+        });
+    </script>
+{% endblock block %}
