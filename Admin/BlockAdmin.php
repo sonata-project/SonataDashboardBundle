@@ -363,7 +363,7 @@ class BlockAdmin extends Admin
             // When editing a container in composer view, hide some settings
             if ($isContainerRoot && $isComposer) {
                 $formMapper->remove('children');
-                $formMapper->add('name');
+                $formMapper->add('name', 'text', array('required' => true));
 
                 $formSettings = $formMapper->get('settings');
 
