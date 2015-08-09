@@ -166,6 +166,18 @@
                 <source>composer.default.container.name</source>
                 <target>Conteneur %position%</target>
             </trans-unit>
+            <trans-unit id="41" resname="compose_blocks_label">
+                <source>compose_blocks_label</source>
+                <target>compose_blocks_label</target>
+            </trans-unit>
+            <trans-unit id="42" resname="composer.settings">
+                <source>composer.settings</source>
+                <target>Settings du container</target>
+            </trans-unit>
+            <trans-unit id="43" resname="blocks">
+                <source>blocks</source>
+                <target>blocks</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
