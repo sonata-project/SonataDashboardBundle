@@ -168,15 +168,15 @@
             </trans-unit>
             <trans-unit id="41" resname="compose_blocks_label">
                 <source>compose_blocks_label</source>
-                <target>compose_blocks_label</target>
+                <target>{0} widgets|{1} widget|[2,Inf] widgets</target>
             </trans-unit>
             <trans-unit id="42" resname="composer.settings">
                 <source>composer.settings</source>
-                <target>Settings du container</target>
+                <target>Paramètres du container</target>
             </trans-unit>
             <trans-unit id="43" resname="blocks">
                 <source>blocks</source>
-                <target>blocks</target>
+                <target>widgets</target>
             </trans-unit>
         </body>
     </file>
