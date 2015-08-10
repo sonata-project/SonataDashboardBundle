@@ -1,7 +1,7 @@
 <a class="dashboard-composer__dashboard-preview__container block-preview-{{ object.id }}" data-block-id="{{ object.id }}" href="{{ admin.generateUrl('compose_container_show', { 'id': object.id }) }}">
     <div class="dashboard-composer__dashboard-preview__container__content">
         <strong>{{ object.name|default('') }}</strong><br>
-        <small><span class="child-count">0</span> blocks</small>
+        <small><span class="child-count">0</span> {{ 'blocks'|trans({}, 'SonataDashboardBundle') }}</small>
         <span class="dashboard-composer__dashboard-preview__add-block">
             <i class="fa fa-circle-o"></i>
             <i class="fa fa-dot-circle-o"></i>

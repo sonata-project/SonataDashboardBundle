@@ -39,7 +39,7 @@ file that was distributed with this source code.
                                         >
                                     <div class="dashboard-composer__dashboard-preview__container__content">
                                         <strong>{{ container.block.name|default('') }}</strong><br>
-                                        <small><span class="child-count">{{ container.block.children|length }}</span> blocks</small>
+                                        <small><span class="child-count">{{ container.block.children|length }}</span> {% transchoice container.block.children|length from 'SonataDashboardBundle' %}compose_blocks_label{% endtranschoice %}</small>
                                         <span class="dashboard-composer__dashboard-preview__add-block">
                                             <i class="fa fa-circle-o"></i>
                                             <i class="fa fa-dot-circle-o"></i>
