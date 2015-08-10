@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * generated on: Wed Aug 05 2015 16:36:26 GMT+0200 (CEST)
- * revision:     4ac64d4ea9c19412b4dd0134a0f575df6565c5d5
+ * generated on: Mon Aug 10 2015 09:58:53 GMT+0200 (CEST)
+ * revision:     0e819b47be3a3ff72a401efd5016b78b956055b4
  *
  */
 /**
@@ -798,7 +798,7 @@
             });
 
             $containerSettingsButton.on('click', function (e) {
-                $containerLoader.show()
+                $containerLoader.show();
                 $.ajax({
                     url:     containerEditUrl,
                     success: function (resp) {
@@ -974,7 +974,7 @@
                 formMethod         = $form.attr('method');
 
             // hook into the form submit event.
-            $form.on('submit', function (e) {
+            $form.unbind().on('submit', function (e) {
                 e.preventDefault();
 
                 $containerLoader.show();

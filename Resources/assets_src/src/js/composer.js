@@ -785,7 +785,7 @@
             });
 
             $containerSettingsButton.on('click', function (e) {
-                $containerLoader.show()
+                $containerLoader.show();
                 $.ajax({
                     url:     containerEditUrl,
                     success: function (resp) {
@@ -961,7 +961,7 @@
                 formMethod         = $form.attr('method');
 
             // hook into the form submit event.
-            $form.on('submit', function (e) {
+            $form.unbind().on('submit', function (e) {
                 e.preventDefault();
 
                 $containerLoader.show();
