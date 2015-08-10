@@ -40,12 +40,12 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
             'code'        => '',
             'layout'      => '{{ CONTENT }}',
             'class'       => '',
-            'template'    => 'SonataDashboardBundle:Block:block_container.html.twig',
+            'template'    => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 
         $service->execute($blockContext);
 
-        $this->assertEquals('SonataDashboardBundle:Block:block_container.html.twig', $templating->view);
+        $this->assertEquals('SonataDashboardBundle:BlockAdmin:block_container.html.twig', $templating->view);
         $this->assertEquals('block.code', $templating->parameters['block']->getSetting('code'));
         $this->assertEquals('block.name', $templating->parameters['block']->getName());
         $this->assertInstanceOf('Sonata\BlockBundle\Model\Block', $templating->parameters['block']);
@@ -68,7 +68,7 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
             'code'        => 'block.code',
             'layout'      => 'before{{ CONTENT }}after',
             'class'       => '',
-            'template'    => 'SonataDashboardBundle:Block:block_container.html.twig',
+            'template'    => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 
         $service->execute($blockContext);

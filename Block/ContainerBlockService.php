@@ -53,10 +53,10 @@ class ContainerBlockService extends BaseContainerBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'code'        => '',
-            'layout'      => '{{ CONTENT }}',
-            'class'       => '',
-            'template'    => 'SonataDashboardBundle:Block:block_container.html.twig',
+            'code'     => '',
+            'layout'   => '{{ CONTENT }}',
+            'class'    => '',
+            'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
     }
 }
