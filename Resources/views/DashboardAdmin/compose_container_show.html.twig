@@ -13,17 +13,6 @@
 
         <div class="dashboard-composer__container__settings__content">
         </div>
-
-        <div class="dashboard-composer__container__settings__right">
-            <div class="dashboard-composer__container__settings__right__remove">
-                <a class="badge" href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.delete', dashboard, { 'childId': container.id }) }}">{{ 'composer.remove'|trans({}, 'SonataDashboardBundle') }} <i class="fa fa-times"></i> </a>
-                <span class="dashboard-composer__container__settings__right__remove__confirm">
-                    {{ 'composer.remove.container.confirm'|trans({}, 'SonataDashboardBundle') }}
-                    <span class="yes">{{ 'yes'|trans({}, 'SonataDashboardBundle') }}</span>
-                    <span class="cancel">{{ 'cancel'|trans({}, 'SonataDashboardBundle') }}</span>
-                </span>
-            </div>
-        </div>
     </div>
 
     <div class="dashboard-composer__block-type-selector">

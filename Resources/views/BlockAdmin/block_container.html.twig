@@ -1,7 +1,10 @@
-<a class="dashboard-composer__dashboard-preview__container block-preview-{{ object.id }}" data-block-id="{{ object.id }}" href="{{ admin.generateUrl('compose_container_show', { 'id': object.id }) }}">
+<a class="dashboard-composer__dashboard-preview__container block-preview-{{ object.id }}"
+   data-block-id="{{ object.id }}"
+   href="{{ admin.generateUrl('compose_container_show', { 'id': object.id }) }}"
+        >
     <div class="dashboard-composer__dashboard-preview__container__content">
         <strong>{{ object.name|default('') }}</strong><br>
-        <small><span class="child-count">0</span> {{ 'blocks'|trans({}, 'SonataDashboardBundle') }}</small>
+        <small><span class="child-count">{{ object.children|length|default(0) }}</span> {% transchoice object.children|length from 'SonataDashboardBundle' %}compose_blocks_label{% endtranschoice %}</small>
         <span class="dashboard-composer__dashboard-preview__add-block">
             <i class="fa fa-circle-o"></i>
             <i class="fa fa-dot-circle-o"></i>
@@ -9,5 +12,16 @@
         <span class="drop-indicator">
             <span class="fa fa-download"></span>
         </span>
+    </div>
+
+    <div class="dashboard-composer__dashboard-preview__container__content__right">
+        <div class="dashboard-composer__dashboard-preview__container__content__right__remove removeContainer">
+            <span class="badge" data-href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.delete', object.dashboard, {'childId': object.id}) }}">{{ 'composer.remove'|trans({}, 'SonataDashboardBundle') }} <i class="fa fa-times"></i> </span>
+            <span class="dashboard-composer__dashboard-preview__container__content__right__remove__confirm">
+                {{ 'composer.remove.container.confirm'|trans({}, 'SonataDashboardBundle') }}
+                <span class="yes">{{ 'yes'|trans({}, 'SonataDashboardBundle') }}</span>
+                <span class="cancel">{{ 'cancel'|trans({}, 'SonataDashboardBundle') }}</span>
+            </span>
+        </div>
     </div>
 </a>

@@ -33,22 +33,7 @@ file that was distributed with this source code.
                     <div class="dashboard-composer__dashboard-preview__containers">
                         {% for container in containers %}
                             {% if container.block is defined and container.block %}
-                                <a class="dashboard-composer__dashboard-preview__container block-preview-{{ container.block.id }}"
-                                   data-block-id="{{ container.block.id }}"
-                                   href="{{ admin.generateUrl('compose_container_show', { 'id': container.block.id }) }}"
-                                        >
-                                    <div class="dashboard-composer__dashboard-preview__container__content">
-                                        <strong>{{ container.block.name|default('') }}</strong><br>
-                                        <small><span class="child-count">{{ container.block.children|length }}</span> {% transchoice container.block.children|length from 'SonataDashboardBundle' %}compose_blocks_label{% endtranschoice %}</small>
-                                        <span class="dashboard-composer__dashboard-preview__add-block">
-                                            <i class="fa fa-circle-o"></i>
-                                            <i class="fa fa-dot-circle-o"></i>
-                                        </span>
-                                        <span class="drop-indicator">
-                                            <span class="fa fa-download"></span>
-                                        </span>
-                                    </div>
-                                </a>
+                                {% include 'SonataDashboardBundle:BlockAdmin:block_container.html.twig' with {'object': container.block} %}
                             {% endif %}
                         {% endfor %}
                     </div>
