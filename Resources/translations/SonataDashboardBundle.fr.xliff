@@ -160,7 +160,7 @@
             </trans-unit>
             <trans-unit id="39" resname="composer.remove.container.confirm">
                 <source>composer.remove.container.confirm</source>
-                <target>Confirmer la suppression ? (Attention, cela entraine la suppression de tous les widgets)</target>
+                <target>Confirmer la suppression ?</target>
             </trans-unit>
             <trans-unit id="40" resname="composer.default.container.name">
                 <source>composer.default.container.name</source>

@@ -672,12 +672,6 @@
                 $containerSettingsButton  = this.$dynamicArea.find('.dashboard-composer__container__view__cogs .btn'),
                 containerEditUrl          = $containerSettings.data('href'),
                 blockTypeSelectorUrl      = $blockTypeSelectorButton.attr('href'),
-                $remove                   = this.$dynamicArea.find('.dashboard-composer__container__settings__right__remove'),
-                $removeButton             = $remove.find('a'),
-                $removeConfirm            = $remove.find('.dashboard-composer__container__settings__right__remove__confirm'),
-                $removeCancel             = $removeConfirm.find('.cancel'),
-                $removeYes                = $removeConfirm.find('.yes'),
-                removeUrl                 = $removeButton.attr('href'),
                 $container                = this.$containersArea.find('.dashboard-composer__dashboard-preview__container.active');
 
             applyAdmin(this.$dynamicArea);
@@ -752,38 +746,6 @@
                 }
             });
 
-            $removeButton.on('click', function (e) {
-                e.preventDefault();
-                $removeButton.hide();
-                $removeConfirm.show();
-            });
-
-            $removeYes.on('click', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url:  removeUrl,
-                    type: 'POST',
-                    data: {
-                        '_method':            'DELETE',
-                        '_sonata_csrf_token': self.csrfTokens.remove
-                    },
-                    success: function (resp) {
-                        if (resp.result && resp.result === 'ok') {
-                            $container.remove();
-                            self.$containerPreviews = self.$dashboardPreview.find('.dashboard-composer__dashboard-preview__container');
-                            self.$dynamicArea.empty();
-                            self.bindDashboardPreviewHandlers();
-                        }
-                    }
-                });
-            });
-
-            $removeCancel.on('click', function (e) {
-                e.preventDefault();
-                $removeConfirm.hide();
-                $removeButton.show();
-            });
-
             $containerSettingsButton.on('click', function (e) {
                 $containerLoader.show();
                 $.ajax({
@@ -815,13 +777,52 @@
             var self = this;
             this.$containerPreviews
                 .each(function () {
-                    var $container = $(this);
+                    var $container     = $(this),
+                        $remove        = $container.find('.removeContainer'),
+                        $removeButton  = $remove.find('.badge'),
+                        $removeConfirm = $remove.find('.dashboard-composer__dashboard-preview__container__content__right__remove__confirm'),
+                        $removeCancel  = $removeConfirm.find('.cancel'),
+                        $removeYes     = $removeConfirm.find('.yes'),
+                        removeUrl      = $removeButton.data('href');
+
+                    $removeButton.unbind().on('click', function (e) {
+                        $removeButton.hide();
+                        $removeConfirm.show();
+                    });
+
+                    $removeYes.unbind().on('click', function (e) {
+                        $.ajax({
+                            url:  removeUrl,
+                            type: 'POST',
+                            data: {
+                                '_method':            'DELETE',
+                                '_sonata_csrf_token': self.csrfTokens.remove
+                            },
+                            success: function (resp) {
+                                if (resp.result && resp.result === 'ok') {
+                                    $container.remove();
+                                    self.$containerPreviews = self.$dashboardPreview.find('.dashboard-composer__dashboard-preview__container');
+                                    self.$dynamicArea.empty();
+                                    self.bindDashboardPreviewHandlers();
+                                }
+                            }
+                        });
+                    });
+
+                    $removeCancel.unbind().on('click', function (e) {
+                        $removeConfirm.hide();
+                        $removeButton.show();
+                    });
+
                     $container.unbind().on('click', function (e) {
                         e.preventDefault();
 
-                        var event = $.Event('containerclick');
-                        event.$container = $container;
-                        $(self).trigger(event);
+                        var $target = $(e.target);
+                        if (!$target.hasClass('removeContainer') && $target.parents('.removeContainer').length == 0) {
+                            var event = $.Event('containerclick');
+                            event.$container = $container;
+                            $(self).trigger(event);
+                        }
                     });
                 })
                 .droppable({
