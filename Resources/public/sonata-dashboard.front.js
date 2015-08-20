@@ -505,4 +505,4 @@ Sonata.Dashboard = {
 
         }
     }
-}
+};
