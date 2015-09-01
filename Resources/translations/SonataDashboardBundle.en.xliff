@@ -178,6 +178,26 @@
                 <source>blocks</source>
                 <target>blocks</target>
             </trans-unit>
+            <trans-unit id="44" resname="compose.preview_error">
+                <source>compose.preview_error</source>
+                <target>An error occured while fetching block preview.</target>
+            </trans-unit>    
+            <trans-unit id="45" resname="compose.update_saving">
+                <source>compose.update_saving</source>
+                <target>Saving block positions…</target>
+            </trans-unit>      
+            <trans-unit id="46" resname="compose.update_saved">
+                <source>compose.update_saved</source>
+                <target>Block positions saved</target>
+            </trans-unit>    
+            <trans-unit id="47" resname="compose.update_error">
+                <source>compose.update_error</source>
+                <target>A error occured while saving block positions.</target>
+            </trans-unit>    
+            <trans-unit id="48" resname="compose.status_error">
+                <source>compose.status_error</source>
+                <target>An error occured while saving block enabled status.</target>
+            </trans-unit>    
         </body>
     </file>
 </xliff>

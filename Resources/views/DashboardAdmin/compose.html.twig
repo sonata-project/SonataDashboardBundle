@@ -48,7 +48,12 @@ file that was distributed with this source code.
             $(document).ready(function () {
                 var composer = new DashboardComposer({{ object.id }}, {
                     translations: {
-                        cancel: "{{ 'cancel'|trans({}, 'SonataDashboardBundle') }}"
+                        cancel: "{{ 'cancel'|trans({}, 'SonataDashboardBundle') }}",
+                        preview_error: "{{ 'compose.preview_error'|trans({}, 'SonataDashboardBundle') }}",
+                        update_saving: "{{ 'compose.update_saving'|trans({}, 'SonataDashboardBundle') }}",
+                        update_saved: "{{ 'compose.update_saved'|trans({}, 'SonataDashboardBundle') }}",
+                        update_error: "{{ 'compose.update_error'|trans({}, 'SonataDashboardBundle') }}",
+                        status_error: "{{ 'compose.status_error'|trans({}, 'SonataDashboardBundle') }}"
                     },
                     routes: {
                         save_blocks_positions: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('savePosition', { 'id': object.id }) }}",
