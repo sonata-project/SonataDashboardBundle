@@ -178,6 +178,26 @@
                 <source>blocks</source>
                 <target>widgets</target>
             </trans-unit>
+            <trans-unit id="44" resname="compose.preview_error">
+                <source>compose.preview_error</source>
+                <target>compose.preview_error</target>
+            </trans-unit>
+            <trans-unit id="45" resname="compose.update_saving">
+                <source>compose.update_saving</source>
+                <target>compose.update_saving</target>
+            </trans-unit>
+            <trans-unit id="46" resname="compose.update_saved">
+                <source>compose.update_saved</source>
+                <target>compose.update_saved</target>
+            </trans-unit>
+            <trans-unit id="47" resname="compose.update_error">
+                <source>compose.update_error</source>
+                <target>compose.update_error</target>
+            </trans-unit>
+            <trans-unit id="48" resname="compose.status_error">
+                <source>compose.status_error</source>
+                <target>compose.status_error</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
