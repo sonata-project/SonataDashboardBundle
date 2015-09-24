@@ -15,7 +15,6 @@ use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Block Admin Controller.
@@ -31,9 +30,7 @@ class BlockAdminController extends Controller
      */
     public function savePositionAction(Request $request = null)
     {
-        if (!$this->admin->isGranted('EDIT')) {
-            throw new AccessDeniedException();
-        }
+        $this->admin->checkAccess('savePosition');
 
         try {
             $params = $request->get('disposition');
@@ -77,9 +74,7 @@ class BlockAdminController extends Controller
      */
     public function createAction(Request $request = null)
     {
-        if (!$this->admin->isGranted('CREATE')) {
-            throw new AccessDeniedException();
-        }
+        $this->admin->checkAccess('create');
 
         if (!$this->admin->getParent()) {
             throw new DashboardNotFoundException('You cannot create a block without a dashboard');
@@ -122,9 +117,7 @@ class BlockAdminController extends Controller
      */
     public function switchParentAction(Request $request = null)
     {
-        if (!$this->admin->isGranted('EDIT')) {
-            throw new AccessDeniedException();
-        }
+        $this->admin->checkAccess('switchParent');
 
         $blockId  = $request->get('block_id');
         $parentId = $request->get('parent_id');
@@ -155,9 +148,7 @@ class BlockAdminController extends Controller
      */
     public function composePreviewAction(Request $request = null)
     {
-        if (!$this->admin->isGranted('EDIT')) {
-            throw new AccessDeniedException();
-        }
+        $this->admin->checkAccess('composePreview');
 
         $blockId = $request->get('block_id');
 

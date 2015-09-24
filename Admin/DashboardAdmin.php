@@ -27,6 +27,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class DashboardAdmin extends Admin
 {
+    protected $accessMapping = array(
+        'compose'              => 'EDIT',
+        'composeContainerShow' => 'LIST',
+    );
+
     /**
      * {@inheritdoc}
      */

@@ -61,6 +61,12 @@ class BlockAdmin extends Admin
      */
     protected $parentAssociationMapping = 'dashboard';
 
+    protected $accessMapping = array(
+        'savePosition'   => 'EDIT',
+        'switchParent'   => 'EDIT',
+        'composePreview' => 'EDIT',
+    );
+
     /**
      * {@inheritdoc}
      */
