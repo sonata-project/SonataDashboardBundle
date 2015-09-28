@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * generated on: Mon Aug 17 2015 13:43:44 GMT+0200 (CEST)
- * revision:     2fb89dedf2ed9ecfa5dd6ea32259f6e142780dea
+ * generated on: Mon Sep 28 2015 10:47:53 GMT+0200 (CEST)
+ * revision:     19220b53c32bd61923b77bd6e70763b5288ad3aa
  *
  */
 /**
@@ -157,7 +157,7 @@
                     }
                 },
                 error: function () {
-                    self.containerNotification('an error occured while fetching block preview', 'error', true);
+                    self.containerNotification('preview_error', 'error', true);
                 }
             });
         },
@@ -192,7 +192,7 @@
                 if (type) {
                     $notice.addClass(type);
                 }
-                $notice.text(message);
+                $notice.text(this.translate(message));
                 $notice.show();
                 if (persist !== true) {
                     this.containerNotificationTimer = setTimeout(function () {
@@ -223,18 +223,18 @@
          */
         handleBlockPositionsUpdate: function (event) {
             var self = this;
-            this.containerNotification('saving block positions…');
+            this.containerNotification('update_saving');
             $.ajax({
-                url:  this.getRouteUrl('save_blocks_positions'),
+                url:  this.getRouteUrl('save_blocks_positions', { 'BLOCK_ID' : event.parent_id}),
                 type: 'POST',
                 data: { disposition: event.disposition },
                 success: function (resp) {
                     if (resp.result && resp.result === 'ok') {
-                        self.containerNotification('block positions saved', 'success');
+                        self.containerNotification('update_saved', 'success');
                     }
                 },
                 error: function () {
-                    self.containerNotification('an error occured while saving block positions', 'error', true);
+                    self.containerNotification('update_error', 'error', true);
                 }
             });
         },
@@ -623,11 +623,11 @@
                                 });
                             }
                         } else {
-                            self.containerNotification('an error occured while saving block enabled status', 'error', true);
+                            self.containerNotification('status_error', 'error', true);
                         }
                     },
                     error: function () {
-                        self.containerNotification('an error occured while saving block enabled status', 'error', true);
+                        self.containerNotification('status_error', 'error', true);
                     }
                 });
             });
@@ -754,6 +754,7 @@
                     if (newPositions.length > 0) {
                         var updateEvent = $.Event('blockpositionsupdate');
                         updateEvent.disposition = newPositions;
+                        updateEvent.parent_id = $container.data('block-id');
                         $(self).trigger(updateEvent);
                     }
                 }

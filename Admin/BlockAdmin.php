@@ -270,8 +270,10 @@ class BlockAdmin extends Admin
         parent::configureRoutes($collection);
 
         $collection->add('view', $this->getRouterIdParameter().'/view');
-        $collection->add('savePosition', 'save-position');
         $collection->add('switchParent', 'switch-parent');
+        $collection->add('savePosition', '{block_id}/save-position', array(
+            'block_id' => null,
+        ));
         $collection->add('composePreview', '{block_id}/compose_preview', array(
             'block_id' => null,
         ));

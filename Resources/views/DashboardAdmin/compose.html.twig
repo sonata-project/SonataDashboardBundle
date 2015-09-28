@@ -56,7 +56,7 @@ file that was distributed with this source code.
                         status_error: "{{ 'compose.status_error'|trans({}, 'SonataDashboardBundle') }}"
                     },
                     routes: {
-                        save_blocks_positions: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('savePosition', { 'id': object.id }) }}",
+                        save_blocks_positions: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('savePosition', { 'block_id': 'BLOCK_ID' }) }}",
                         block_switch_parent:   "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('switchParent') }}",
                         block_preview:         "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('composePreview', { 'block_id': 'BLOCK_ID' }) }}"
                     }
