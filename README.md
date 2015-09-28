@@ -3,6 +3,8 @@ Sonata Dashboard Bundle
 
 [![Build Status](https://secure.travis-ci.org/sonata-project/SonataDashboardBundle.png)](https://secure.travis-ci.org/#!/sonata-project/SonataDashboardBundle)
 
+**NOTE: This bundle is under active development and has no stable release yet!**
+
 This bundle provides a Dashboard management through container and block services
 
 Check out the documentation on [https://sonata-project.org/bundles/dashboard/master/doc/index.html](https://sonata-project.org/bundles/dashboard/master/doc/index.html)
