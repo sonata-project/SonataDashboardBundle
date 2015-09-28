@@ -212,7 +212,7 @@
             var self = this;
             this.containerNotification('update_saving');
             $.ajax({
-                url:  this.getRouteUrl('save_blocks_positions'),
+                url:  this.getRouteUrl('save_blocks_positions', { 'BLOCK_ID' : event.parent_id}),
                 type: 'POST',
                 data: { disposition: event.disposition },
                 success: function (resp) {
@@ -741,6 +741,7 @@
                     if (newPositions.length > 0) {
                         var updateEvent = $.Event('blockpositionsupdate');
                         updateEvent.disposition = newPositions;
+                        updateEvent.parent_id = $container.data('block-id');
                         $(self).trigger(updateEvent);
                     }
                 }

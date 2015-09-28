@@ -12,9 +12,10 @@
 namespace Sonata\DashboardBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
+use Sonata\DashboardBundle\Entity\BaseBlock;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Block Admin Controller.
@@ -30,6 +31,7 @@ class BlockAdminController extends Controller
      */
     public function savePositionAction(Request $request = null)
     {
+        $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('savePosition');
 
         try {
@@ -40,12 +42,7 @@ class BlockAdminController extends Controller
             }
 
             $result = $this->get('sonata.dashboard.block_interactor')->saveBlocksPosition($params, false);
-
             $status = 200;
-
-            $dashboardAdmin = $this->get('sonata.dashboard.admin.dashboard');
-            $dashboardAdmin->setRequest($request);
-            $dashboardAdmin->update($dashboardAdmin->getSubject());
         } catch (HttpException $e) {
             $status = $e->getStatusCode();
             $result = array(
@@ -77,7 +74,7 @@ class BlockAdminController extends Controller
         $this->admin->checkAccess('create');
 
         if (!$this->admin->getParent()) {
-            throw new DashboardNotFoundException('You cannot create a block without a dashboard');
+            throw new NotFoundHttpException('You cannot create a block without a dashboard');
         }
 
         $parameters = $this->admin->getPersistentParameters();
@@ -117,22 +114,18 @@ class BlockAdminController extends Controller
      */
     public function switchParentAction(Request $request = null)
     {
-        $this->admin->checkAccess('switchParent');
-
         $blockId  = $request->get('block_id');
         $parentId = $request->get('parent_id');
         if ($blockId === null or $parentId === null) {
             throw new HttpException(400, 'wrong parameters');
         }
 
-        $block = $this->admin->getObject($blockId);
-        if (!$block) {
-            throw new DashboardNotFoundException(sprintf('Unable to find block with id %d', $blockId));
-        }
+        $block = $this->setSubject($blockId);
+        $this->admin->checkAccess('switchParent');
 
         $parent = $this->admin->getObject($parentId);
         if (!$parent) {
-            throw new DashboardNotFoundException(sprintf('Unable to find parent block with id %d', $parentId));
+            throw new NotFoundHttpException(sprintf('Unable to find parent block with id %d', $parentId));
         }
 
         $parent->addChildren($block);
@@ -148,19 +141,12 @@ class BlockAdminController extends Controller
      */
     public function composePreviewAction(Request $request = null)
     {
+        $block = $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('composePreview');
-
-        $blockId = $request->get('block_id');
-
-        /** @var \Sonata\DashboardBundle\Entity\BaseBlock $block */
-        $block = $this->admin->getObject($blockId);
-        if (!$block) {
-            throw new DashboardNotFoundException(sprintf('Unable to find block with id %d', $blockId));
-        }
 
         $container = $block->getParent();
         if (!$container) {
-            throw new DashboardNotFoundException('No parent found');
+            throw new NotFoundHttpException('No parent found');
         }
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
@@ -170,5 +156,24 @@ class BlockAdminController extends Controller
             'child'         => $block,
             'blockServices' => $blockServices,
         ));
+    }
+
+    /**
+     * Initialize the admin subject, to contextualize checkAccess verification.
+     *
+     * @param $blockId
+     *
+     * @return BaseBlock
+     */
+    private function setSubject($blockId)
+    {
+        /** @var BaseBlock $block */
+        $block = $this->admin->getObject($blockId);
+        if (!$block) {
+            throw new NotFoundHttpException(sprintf('Unable to find block with id %d', $blockId));
+        }
+        $this->admin->setSubject($block);
+
+        return $block;
     }
 }
