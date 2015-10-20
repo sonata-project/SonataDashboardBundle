@@ -11,8 +11,8 @@
 
 namespace Sonata\DashboardBundle\Entity;
 
-use Sonata\BlockBundle\Model\BlockManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
+use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
@@ -34,15 +34,7 @@ class BlockManager extends BaseEntityManager implements BlockManagerInterface
     }
 
     /**
-     * Updates position for given block.
-     *
-     * @param int  $id          Block Id
-     * @param int  $position    New Position
-     * @param int  $parentId    Parent block Id (needed when partial = true)
-     * @param int  $dashboardId Dashboard Id (needed when partial = true)
-     * @param bool $partial     Should we use partial references? (Better for performance, but can lead to query issues.)
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
     public function updatePosition($id, $position, $parentId = null, $dashboardId = null, $partial = true)
     {
