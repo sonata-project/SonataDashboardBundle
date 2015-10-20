@@ -18,16 +18,39 @@ namespace Sonata\DashboardBundle\Model;
  */
 abstract class Dashboard implements DashboardInterface
 {
+    /**
+     * @var int
+     */
+    protected $id;
+
+    /**
+     * @var \DateTime
+     */
     protected $createdAt;
 
+    /**
+     * @var \DateTime
+     */
     protected $updatedAt;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var bool
+     */
     protected $enabled;
 
+    /**
+     * @var DashboardBlockInterface[]
+     */
     protected $blocks;
 
+    /**
+     * @var bool
+     */
     protected $edited;
 
     /**
@@ -45,6 +68,8 @@ abstract class Dashboard implements DashboardInterface
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -140,11 +165,13 @@ abstract class Dashboard implements DashboardInterface
     /**
      * {@inheritdoc}
      */
-    public function addBlocks(DashboardBlockInterface $blocs)
+    public function addBlocks(DashboardBlockInterface $block)
     {
-        $blocs->setDashboard($this);
+        $block->setDashboard($this);
 
-        $this->blocks[] = $blocs;
+        $this->blocks[] = $block;
+
+        return $this;
     }
 
     /**

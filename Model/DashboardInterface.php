@@ -27,6 +27,8 @@ interface DashboardInterface
 
     /**
      * @param mixed $id
+     *
+     * @return DashboardInterface
      */
     public function setId($id);
 
@@ -34,6 +36,8 @@ interface DashboardInterface
      * Set enabled.
      *
      * @param bool $enabled
+     *
+     * @return DashboardInterface
      */
     public function setEnabled($enabled);
 
@@ -48,6 +52,8 @@ interface DashboardInterface
      * Set name.
      *
      * @param string $name
+     *
+     * @return DashboardInterface
      */
     public function setName($name);
 
@@ -62,6 +68,8 @@ interface DashboardInterface
      * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
+     * @return DashboardInterface
      */
     public function setCreatedAt(\DateTime $createdAt = null);
 
@@ -76,6 +84,8 @@ interface DashboardInterface
      * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
+     * @return DashboardInterface
      */
     public function setUpdatedAt(\DateTime $updatedAt = null);
 
@@ -90,13 +100,15 @@ interface DashboardInterface
      * Add blocs.
      *
      * @param DashboardBlockInterface $block
+     *
+     * @return DashboardInterface
      */
     public function addBlocks(DashboardBlockInterface $block);
 
     /**
      * Get blocs.
      *
-     * @return array
+     * @return DashboardBlockInterface[]
      */
     public function getBlocks();
 
@@ -107,6 +119,8 @@ interface DashboardInterface
 
     /**
      * @param bool $edited
+     *
+     * @return DashboardInterface
      */
     public function setEdited($edited);
 }

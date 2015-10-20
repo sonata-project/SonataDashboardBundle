@@ -11,6 +11,7 @@
 
 namespace Sonata\DashboardBundle\Entity;
 
+use Doctrine\ORM\EntityManager;
 use Sonata\BlockBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
@@ -23,6 +24,9 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BlockInteractor implements BlockInteractorInterface
 {
+    /**
+     * @var bool[]
+     */
     protected $dashboardBlocksLoaded = array();
 
     /**
@@ -184,7 +188,7 @@ class BlockInteractor implements BlockInteractorInterface
     }
 
     /**
-     * @return \Doctrine\ORM\EntityManager
+     * @return EntityManager
      */
     private function getEntityManager()
     {
