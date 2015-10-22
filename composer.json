@@ -31,8 +31,7 @@
         "nelmio/api-doc-bundle": "~2.4"
     },
     "require-dev": {
-        "sonata-project/doctrine-orm-admin-bundle": "~2.2",
-        "fabpot/php-cs-fixer": "~0.5|~1.0"
+        "sonata-project/doctrine-orm-admin-bundle": "~2.2"
     },
     "suggest": {
         "sonata-project/doctrine-orm-admin-bundle": "~2.2"
