@@ -23,7 +23,7 @@ interface BlockInteractorInterface
      *
      * @param mixed $id
      *
-     * @return \Sonata\BlockBundle\Model\BlockInterface
+     * @return DashboardBlockInterface
      */
     public function getBlock($id);
 
@@ -32,7 +32,7 @@ interface BlockInteractorInterface
      *
      * @param DashboardInterface $dashboard
      *
-     * @return array
+     * @return DashboardBlockInterface[]
      */
     public function getBlocksById(DashboardInterface $dashboard);
 
@@ -41,7 +41,7 @@ interface BlockInteractorInterface
      *
      * @param DashboardInterface $dashboard
      *
-     * @return array $blocks
+     * @return DashboardBlockInterface[] $blocks
      */
     public function loadDashboardBlocks(DashboardInterface $dashboard);
 
@@ -59,7 +59,7 @@ interface BlockInteractorInterface
      * @param array    $values An array of values for container creation
      * @param \Closure $alter  A closure to alter container created
      *
-     * @return \Sonata\BlockBundle\Model\BlockInterface
+     * @return BlockInterface
      */
     public function createNewContainer(array $values = array(), \Closure $alter = null);
 }

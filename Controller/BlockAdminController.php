@@ -14,6 +14,7 @@ namespace Sonata\DashboardBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Sonata\DashboardBundle\Entity\BaseBlock;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -27,7 +28,7 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function savePositionAction(Request $request = null)
     {
@@ -67,7 +68,7 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function createAction(Request $request = null)
     {
@@ -110,7 +111,7 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function switchParentAction(Request $request = null)
     {
@@ -137,7 +138,7 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function composePreviewAction(Request $request = null)
     {
