@@ -197,7 +197,23 @@
             <trans-unit id="48" resname="compose.status_error">
                 <source>compose.status_error</source>
                 <target>An error occured while saving block enabled status.</target>
-            </trans-unit>    
+            </trans-unit>
+            <trans-unit id="49" resname="form.label_code">
+                <source>form.label_code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="50" resname="form.label_layout">
+                <source>form.label_layout</source>
+                <target>Layout</target>
+            </trans-unit>
+            <trans-unit id="51" resname="form.label_class">
+                <source>form.label_class</source>
+                <target>CSS Class</target>
+            </trans-unit>
+            <trans-unit id="52" resname="form.label_template">
+                <source>form.label_template</source>
+                <target>Template</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
