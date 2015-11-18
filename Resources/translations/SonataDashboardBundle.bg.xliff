@@ -198,6 +198,22 @@
                 <source>compose.status_error</source>
                 <target>compose.status_error</target>
             </trans-unit>
+            <trans-unit id="49" resname="form.label_code">
+                <source>form.label_code</source>
+                <target>form.label_code</target>
+            </trans-unit>
+            <trans-unit id="50" resname="form.label_layout">
+                <source>form.label_layout</source>
+                <target>form.label_layout</target>
+            </trans-unit>
+            <trans-unit id="51" resname="form.label_class">
+                <source>form.label_class</source>
+                <target>form.label_class</target>
+            </trans-unit>
+            <trans-unit id="52" resname="form.label_template">
+                <source>form.label_template</source>
+                <target>form.label_template</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
