@@ -56,7 +56,12 @@ class DashboardAdminController extends CRUDController
 
         $csrfProvider = $this->get('form.csrf_provider');
 
-        return $this->render('SonataDashboardBundle:DashboardAdmin:compose.html.twig', array(
+        $template = $this->admin->getTemplate('compose');
+        if (is_null($template)) {
+            $template = 'SonataDashboardBundle:DashboardAdmin:compose.html.twig';
+        }
+
+        return $this->render($template, array(
             'object'     => $dashboard,
             'action'     => 'edit',
             'containers' => $containers,
@@ -85,7 +90,12 @@ class DashboardAdminController extends CRUDController
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig', array(
+        $template = $this->admin->getTemplate('compose_container_show');
+        if (is_null($template)) {
+            $template = 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig';
+        }
+
+        return $this->render($template, array(
             'blockServices' => $blockServices,
             'container'     => $block,
             'dashboard'     => $block->getDashboard(),
