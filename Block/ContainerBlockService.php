@@ -67,6 +67,7 @@ class ContainerBlockService extends BaseContainerBlockService
             'code'     => '',
             'layout'   => '{{ CONTENT }}',
             'class'    => '',
+            'color'    => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
     }
