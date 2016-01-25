@@ -12,8 +12,8 @@
 namespace Sonata\DashboardBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
-use Sonata\BlockBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
+use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
