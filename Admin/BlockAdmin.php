@@ -255,9 +255,7 @@ class BlockAdmin extends Admin
             $parameters['composer'] = $composer;
         }
 
-        if ($composer = $this->getRequest()->get('type')) {
-            $parameters['type'] = $composer;
-        }
+        $parameters['type'] = $this->getRequest()->get('type');
 
         return $parameters;
     }
