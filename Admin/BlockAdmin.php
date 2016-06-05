@@ -401,6 +401,14 @@ class BlockAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object->getName();
+    	if (!is_object($object)) {
+    		return '';
+    	}
+    	
+    	if (method_exists($object, 'getName') && null !== $object->getName()) {
+    		return (string) $object->getName();
+    	}
+    	
+    	return parent::toString($object);
     }
 }
