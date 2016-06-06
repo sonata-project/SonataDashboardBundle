@@ -1,26 +1,41 @@
-Sonata Dashboard Bundle
-====================
+# Sonata Dashboard Bundle
 
-[![Build Status](https://secure.travis-ci.org/sonata-project/SonataDashboardBundle.png)](https://secure.travis-ci.org/#!/sonata-project/SonataDashboardBundle)
+Symfony SonataDashboardBundle
 
-**NOTE: This bundle is under active development and has no stable release yet!**
+[![Latest Stable Version](https://poser.pugx.org/sonata-project/dashboard-bundle/v/stable)](https://packagist.org/packages/sonata-project/dashboard-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/sonata-project/dashboard-bundle/v/unstable)](https://packagist.org/packages/sonata-project/dashboard-bundle)
+[![License](https://poser.pugx.org/sonata-project/dashboard-bundle/license)](https://packagist.org/packages/sonata-project/dashboard-bundle)
 
-This bundle provides a Dashboard management through container and block services
+[![Total Downloads](https://poser.pugx.org/sonata-project/dashboard-bundle/downloads)](https://packagist.org/packages/sonata-project/dashboard-bundle)
+[![Monthly Downloads](https://poser.pugx.org/sonata-project/dashboard-bundle/d/monthly)](https://packagist.org/packages/sonata-project/dashboard-bundle)
+[![Daily Downloads](https://poser.pugx.org/sonata-project/dashboard-bundle/d/daily)](https://packagist.org/packages/sonata-project/dashboard-bundle)
 
-Check out the documentation on [https://sonata-project.org/bundles/dashboard/master/doc/index.html](https://sonata-project.org/bundles/dashboard/master/doc/index.html)
+Branch | Travis | Coveralls |
+------ | ------ | --------- |
+0.x   | [![Build Status][travis_stable_badge]][travis_stable_link]     | [![Coverage Status][coveralls_stable_badge]][coveralls_stable_link]     |
+master | [![Build Status][travis_unstable_badge]][travis_unstable_link] | [![Coverage Status][coveralls_unstable_badge]][coveralls_unstable_link] |
 
-**Google Groups**: For questions and proposals you can post on this google groups
+## Documentation
 
-* [Sonata Users](https://groups.google.com/group/sonata-users): Only for user questions
-* [Sonata Devs](https://groups.google.com/group/sonata-devs): Only for devs
+Check out the documentation on the [official website](https://sonata-project.org/bundles/dashboard).
 
-License
--------
+## Support
 
-This bundle is available under the [MIT license](Resources/meta/LICENSE).
+For general support and questions, please use [StackOverflow](http://stackoverflow.com/questions/tagged/sonata).
 
+If you think you find a bug or you have a feature idea to propose, feel free to open a issue
+**after looking** at the [contributing guide](CONTRIBUTING.md).
 
-Thanks
-------
+## License
 
-Thanks to [CanalPlus](https://twitter.com/plusdedev/) who allow this Bundle to be OpenSourced
+This package is available under the [MIT license](LICENSE).
+
+[travis_stable_badge]: https://travis-ci.org/sonata-project/SonataDashboardBundle.svg?branch=0.x
+[travis_stable_link]: https://travis-ci.org/sonata-project/SonataDashboardBundle
+[travis_unstable_badge]: https://travis-ci.org/sonata-project/SonataDashboardBundle.svg?branch=master
+[travis_unstable_link]: https://travis-ci.org/sonata-project/SonataDashboardBundle
+
+[coveralls_stable_badge]: https://coveralls.io/repos/github/sonata-project/SonataDashboardBundle/badge.svg?branch=0.x
+[coveralls_stable_link]: https://coveralls.io/github/sonata-project/SonataDashboardBundle?branch=0.x
+[coveralls_unstable_badge]: https://coveralls.io/repos/github/sonata-project/SonataDashboardBundle/badge.svg?branch=master
+[coveralls_unstable_link]: https://coveralls.io/github/sonata-project/SonataDashboardBundle?branch=master
