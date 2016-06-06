@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -60,6 +60,14 @@ abstract class Dashboard implements DashboardInterface
     {
         $this->blocks = array();
         $this->edited = true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return $this->getName() ?: '-';
     }
 
     /**
@@ -180,13 +188,5 @@ abstract class Dashboard implements DashboardInterface
     public function getBlocks()
     {
         return $this->blocks;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return $this->getName() ?: '-';
     }
 }

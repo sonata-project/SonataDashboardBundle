@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -38,7 +38,7 @@ class DashboardAdminController extends CRUDController
             throw new AccessDeniedException();
         }
 
-        $id   = $request->get($this->admin->getIdParameter());
+        $id = $request->get($this->admin->getIdParameter());
         $dashboard = $this->admin->getObject($id);
         if (!$dashboard) {
             throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
@@ -57,8 +57,8 @@ class DashboardAdminController extends CRUDController
         $csrfProvider = $this->get('form.csrf_provider');
 
         return $this->render('SonataDashboardBundle:DashboardAdmin:compose.html.twig', array(
-            'object'     => $dashboard,
-            'action'     => 'edit',
+            'object' => $dashboard,
+            'action' => 'edit',
             'containers' => $containers,
             'csrfTokens' => array(
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
@@ -77,7 +77,7 @@ class DashboardAdminController extends CRUDController
             throw new AccessDeniedException();
         }
 
-        $id    = $request->get($this->admin->getIdParameter());
+        $id = $request->get($this->admin->getIdParameter());
         $block = $this->get('sonata.dashboard.admin.block')->getObject($id);
         if (!$block) {
             throw new NotFoundHttpException(sprintf('unable to find the block with id : %s', $id));
@@ -87,8 +87,8 @@ class DashboardAdminController extends CRUDController
 
         return $this->render('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig', array(
             'blockServices' => $blockServices,
-            'container'     => $block,
-            'dashboard'     => $block->getDashboard(),
+            'container' => $block,
+            'dashboard' => $block->getDashboard(),
         ));
     }
 }

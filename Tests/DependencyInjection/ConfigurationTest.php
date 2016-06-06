@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -14,9 +14,6 @@ namespace Sonata\DashboardBundleBundle\Tests\DependencyInjection;
 use Sonata\DashboardBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 
-/**
- *
- */
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testClasses()
@@ -32,7 +29,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $expected = array(
             'class' => array(
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
-                'block'     => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
+                'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
             ),
             'default_container' => 'sonata.dashboard.block.container',
         );

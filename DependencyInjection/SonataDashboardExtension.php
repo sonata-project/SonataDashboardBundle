@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -30,9 +30,9 @@ class SonataDashboardExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $processor     = new Processor();
+        $processor = new Processor();
         $configuration = new Configuration();
-        $config        = $processor->processConfiguration($configuration, $configs);
+        $config = $processor->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('admin.xml');
@@ -78,66 +78,66 @@ class SonataDashboardExtension extends Extension
         $collector = DoctrineCollector::getInstance();
 
         $collector->addAssociation($config['class']['dashboard'], 'mapOneToMany', array(
-            'fieldName'     => 'blocks',
-            'targetEntity'  => $config['class']['block'],
-            'cascade'       => array(
+            'fieldName' => 'blocks',
+            'targetEntity' => $config['class']['block'],
+            'cascade' => array(
                 'remove',
                 'persist',
                 'refresh',
                 'merge',
                 'detach',
             ),
-            'mappedBy'      => 'dashboard',
+            'mappedBy' => 'dashboard',
             'orphanRemoval' => false,
-            'orderBy'       => array(
-                'position'  => 'ASC',
+            'orderBy' => array(
+                'position' => 'ASC',
             ),
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapOneToMany', array(
-            'fieldName'    => 'children',
+            'fieldName' => 'children',
             'targetEntity' => $config['class']['block'],
-            'cascade'      => array(
+            'cascade' => array(
                 'remove',
                 'persist',
             ),
-            'mappedBy'      => 'parent',
+            'mappedBy' => 'parent',
             'orphanRemoval' => true,
-            'orderBy'       => array(
+            'orderBy' => array(
                 'position' => 'ASC',
             ),
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
-            'fieldName'    => 'parent',
+            'fieldName' => 'parent',
             'targetEntity' => $config['class']['block'],
-            'cascade'      => array(
+            'cascade' => array(
             ),
-            'mappedBy'    => null,
-            'inversedBy'  => 'children',
+            'mappedBy' => null,
+            'inversedBy' => 'children',
             'joinColumns' => array(
                 array(
-                    'name'                 => 'parent_id',
+                    'name' => 'parent_id',
                     'referencedColumnName' => 'id',
-                    'onDelete'             => 'CASCADE',
+                    'onDelete' => 'CASCADE',
                 ),
             ),
             'orphanRemoval' => false,
         ));
 
         $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
-            'fieldName'    => 'dashboard',
+            'fieldName' => 'dashboard',
             'targetEntity' => $config['class']['dashboard'],
-            'cascade'      => array(
+            'cascade' => array(
                 'persist',
             ),
-            'mappedBy'    => null,
-            'inversedBy'  => 'blocks',
+            'mappedBy' => null,
+            'inversedBy' => 'blocks',
             'joinColumns' => array(
                 array(
-                    'name'                 => 'dashboard_id',
+                    'name' => 'dashboard_id',
                     'referencedColumnName' => 'id',
-                    'onDelete'             => 'CASCADE',
+                    'onDelete' => 'CASCADE',
                 ),
             ),
             'orphanRemoval' => false,
