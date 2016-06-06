@@ -17,11 +17,20 @@ use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetName;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetNameNull;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooNoGetName;
 
+/**
+ * BlockAdminTest.
+ *
+ * @author Stéphane Paté <st.pate@orange.fr>
+ */
 class BlockAdminTest extends \PHPUnit_Framework_TestCase
 {
     public function testToString()
     {
-        $admin = new BlockAdmin('sonata.dashboard.admin.block', 'DashboardBundle\Entity\BaseBlock', 'SonataDashboardBundle:BlockAdmin');
+        $admin = new BlockAdmin(
+            'sonata.dashboard.admin.block',
+            'DashboardBundle\Entity\BaseBlock',
+            'SonataDashboardBundle:BlockAdmin'
+        );
 
         $s = new FooGetName();
         $this->assertSame('GetName', $admin->toString($s));
