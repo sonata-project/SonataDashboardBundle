@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -11,9 +11,6 @@
 
 namespace Sonata\DashboardBundle\Tests\Model;
 
-/**
- *
- */
 class Dashboard extends \Sonata\DashboardBundle\Model\Dashboard
 {
     protected $id;

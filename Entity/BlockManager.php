@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -42,9 +42,9 @@ class BlockManager extends BaseEntityManager implements BlockManagerInterface
             $meta = $this->getEntityManager()->getClassMetadata($this->getClass());
 
             // retrieve object references
-            $block             = $this->getEntityManager()->getReference($this->getClass(), $id);
+            $block = $this->getEntityManager()->getReference($this->getClass(), $id);
             $dashboardRelation = $meta->getAssociationMapping('dashboard');
-            $dashboard         = $this->getEntityManager()->getPartialReference($dashboardRelation['targetEntity'], $dashboardId);
+            $dashboard = $this->getEntityManager()->getPartialReference($dashboardRelation['targetEntity'], $dashboardId);
 
             $parentRelation = $meta->getAssociationMapping('parent');
             $parent = $this->getEntityManager()->getPartialReference($parentRelation['targetEntity'], $parentId);

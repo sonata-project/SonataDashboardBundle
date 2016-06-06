@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -62,36 +62,10 @@ class BlockAdmin extends Admin
     protected $parentAssociationMapping = 'dashboard';
 
     protected $accessMapping = array(
-        'savePosition'   => 'EDIT',
-        'switchParent'   => 'EDIT',
+        'savePosition' => 'EDIT',
+        'switchParent' => 'EDIT',
         'composePreview' => 'EDIT',
     );
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->addIdentifier('type')
-            ->add('name')
-            ->add('enabled', null, array('editable' => true))
-            ->add('updatedAt')
-            ->add('position')
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('name')
-            ->add('enabled')
-            ->add('type')
-        ;
-    }
 
     /**
      * {@inheritdoc}
@@ -263,6 +237,42 @@ class BlockAdmin extends Admin
     }
 
     /**
+     * Override needed to make the dashboard composer cleaner.
+     *
+     * {@inheritdoc}
+     */
+    public function toString($object)
+    {
+        return $object->getName();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->addIdentifier('type')
+            ->add('name')
+            ->add('enabled', null, array('editable' => true))
+            ->add('updatedAt')
+            ->add('position')
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('name')
+            ->add('enabled')
+            ->add('type')
+        ;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -334,13 +344,13 @@ class BlockAdmin extends Admin
             // need to investigate on this case where $dashboard == null ... this should not be possible
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
                 $formMapper->add('parent', 'entity', array(
-                    'class'         => $this->getClass(),
+                    'class' => $this->getClass(),
                     'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
                             ->andWhere('a.dashboard = :dashboard AND a.type IN (:types)')
                             ->setParameters(array(
                                 'dashboard' => $dashboard,
-                                'types'     => $containerBlockTypes,
+                                'types' => $containerBlockTypes,
                             ));
                     },
                 ), array(
@@ -392,15 +402,5 @@ class BlockAdmin extends Admin
                 ->end()
             ;
         }
-    }
-
-    /**
-     * Override needed to make the dashboard composer cleaner.
-     *
-     * {@inheritdoc}
-     */
-    public function toString($object)
-    {
-        return $object->getName();
     }
 }

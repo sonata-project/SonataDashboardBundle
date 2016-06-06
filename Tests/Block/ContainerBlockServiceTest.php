@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -27,7 +27,7 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
     public function testExecute()
     {
         $templating = new FakeTemplating();
-        $service    = new ContainerBlockService('core.container', $templating);
+        $service = new ContainerBlockService('core.container', $templating);
 
         $block = new Block();
         $block->setName('block.name');
@@ -37,10 +37,10 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
         ));
 
         $blockContext = new BlockContext($block, array(
-            'code'        => '',
-            'layout'      => '{{ CONTENT }}',
-            'class'       => '',
-            'template'    => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
+            'code' => '',
+            'layout' => '{{ CONTENT }}',
+            'class' => '',
+            'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 
         $service->execute($blockContext);
@@ -57,7 +57,7 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
     public function testLayout()
     {
         $templating = new FakeTemplating();
-        $service    = new ContainerBlockService('core.container', $templating);
+        $service = new ContainerBlockService('core.container', $templating);
 
         $block = new Block();
         $block->setName('block.name');
@@ -65,10 +65,10 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
 
         // we manually perform the settings merge
         $blockContext = new BlockContext($block, array(
-            'code'        => 'block.code',
-            'layout'      => 'before{{ CONTENT }}after',
-            'class'       => '',
-            'template'    => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
+            'code' => 'block.code',
+            'layout' => 'before{{ CONTENT }}after',
+            'class' => '',
+            'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 
         $service->execute($blockContext);
@@ -86,7 +86,7 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
     public function testFormBuilder()
     {
         $templating = new FakeTemplating();
-        $service    = new ContainerBlockService('core.container', $templating);
+        $service = new ContainerBlockService('core.container', $templating);
 
         $block = new Block();
         $block->setName('block.name');
