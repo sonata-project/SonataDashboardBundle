@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata project.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -34,14 +34,14 @@ class ContainerBlockService extends BaseContainerBlockService
             'keys' => array(
                 array('code', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_code',
+                    'label' => 'form.label_code',
                 )),
                 array('layout', 'textarea', array(
                     'label' => 'form.label_layout',
                 )),
                 array('class', 'text', array(
                     'required' => false,
-                    'label'    => 'form.label_class',
+                    'label' => 'form.label_class',
                 )),
                 array('template', 'sonata_type_container_template_choice', array(
                     'label' => 'form.label_template',
@@ -52,9 +52,9 @@ class ContainerBlockService extends BaseContainerBlockService
 
         $formMapper->add('children', 'sonata_type_collection', array(), array(
             'admin_code' => 'sonata.dashboard.admin.block',
-            'edit'       => 'inline',
-            'inline'     => 'table',
-            'sortable'   => 'position',
+            'edit' => 'inline',
+            'inline' => 'table',
+            'sortable' => 'position',
         ));
     }
 
@@ -64,10 +64,10 @@ class ContainerBlockService extends BaseContainerBlockService
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'code'     => '',
-            'layout'   => '{{ CONTENT }}',
-            'class'    => '',
-            'color'    => '',
+            'code' => '',
+            'layout' => '{{ CONTENT }}',
+            'class' => '',
+            'color' => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
     }

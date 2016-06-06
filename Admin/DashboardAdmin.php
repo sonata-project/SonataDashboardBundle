@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -28,7 +28,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class DashboardAdmin extends Admin
 {
     protected $accessMapping = array(
-        'compose'              => 'EDIT',
+        'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
     );
 
@@ -43,6 +43,22 @@ class DashboardAdmin extends Admin
         $collection->add('compose_container_show', 'compose/container/{id}', array(
             'id' => null,
         ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function preUpdate($object)
+    {
+        $object->setEdited(true);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prePersist($object)
+    {
+        $object->setEdited(true);
     }
 
     /**
@@ -100,22 +116,6 @@ class DashboardAdmin extends Admin
         $formMapper->setHelps(array(
             'name' => $this->trans('help_dashboard_name'),
         ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function preUpdate($object)
-    {
-        $object->setEdited(true);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function prePersist($object)
-    {
-        $object->setEdited(true);
     }
 
     /**
