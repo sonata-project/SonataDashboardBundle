@@ -1,7 +1,7 @@
 {
     "name": "sonata-project/dashboard-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony SonataDashboardBundle",
+    "description": "Provides a Dashboard management through container and block services",
     "keywords": ["dashboard", "sonata"],
     "homepage": "https://sonata-project.org/bundles/dashboard",
     "license": "MIT",
