@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -48,15 +48,15 @@ class BlockAdminController extends Controller
             $status = $e->getStatusCode();
             $result = array(
                 'exception' => get_class($e),
-                'message'   => $e->getMessage(),
-                'code'      => $e->getCode(),
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
             );
         } catch (\Exception $e) {
             $status = 500;
             $result = array(
                 'exception' => get_class($e),
-                'message'   => $e->getMessage(),
-                'code'      => $e->getCode(),
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
             );
         }
 
@@ -82,25 +82,25 @@ class BlockAdminController extends Controller
 
         if (!$parameters['type']) {
             return $this->render('SonataDashboardBundle:BlockAdmin:select_type.html.twig', array(
-                'services'      => $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle'),
+                'services' => $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle'),
                 'base_template' => $this->getBaseTemplate(),
-                'admin'         => $this->admin,
-                'action'        => 'create',
+                'admin' => $this->admin,
+                'action' => 'create',
             ));
         } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
-            $position  = count($dashboard->getBlocks()) + 1;
-            $name      = $request->get('name') != '' ? $request->get('name') : $this->admin->trans('composer.default.container.name', array('%position%' => $position), '');
+            $position = count($dashboard->getBlocks()) + 1;
+            $name = $request->get('name') != '' ? $request->get('name') : $this->admin->trans('composer.default.container.name', array('%position%' => $position), '');
 
             $container = $this->get('sonata.dashboard.block_interactor')->createNewContainer(array(
-                'name'      => $name,
+                'name' => $name,
                 'dashboard' => $dashboard,
-                'position'  => $position,
-                'code'      => $name,
+                'position' => $position,
+                'code' => $name,
             ));
 
             return $this->render('SonataDashboardBundle:BlockAdmin:block_container.html.twig', array(
-                'admin'  => $this->admin->getParent(),
+                'admin' => $this->admin->getParent(),
                 'object' => $container,
             ));
         }
@@ -115,7 +115,7 @@ class BlockAdminController extends Controller
      */
     public function switchParentAction(Request $request = null)
     {
-        $blockId  = $request->get('block_id');
+        $blockId = $request->get('block_id');
         $parentId = $request->get('parent_id');
         if ($blockId === null or $parentId === null) {
             throw new HttpException(400, 'wrong parameters');
@@ -153,8 +153,8 @@ class BlockAdminController extends Controller
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
         return $this->render('SonataDashboardBundle:BlockAdmin:compose_preview.html.twig', array(
-            'container'     => $container,
-            'child'         => $block,
+            'container' => $container,
+            'child' => $block,
             'blockServices' => $blockServices,
         ));
     }

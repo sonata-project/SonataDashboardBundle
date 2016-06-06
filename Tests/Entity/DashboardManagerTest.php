@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sonata package.
+ * This file is part of the Sonata Project package.
  *
  * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
@@ -18,39 +18,6 @@ use Sonata\DashboardBundle\Entity\DashboardManager;
  */
 class DashboardManagerTest extends \PHPUnit_Framework_TestCase
 {
-    protected function getDashboardManager($qbCallback)
-    {
-        $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', array(), '', false, true, true, array('execute'));
-        $query->expects($this->any())->method('execute')->will($this->returnValue(true));
-
-        $qb = $this->getMock('Doctrine\ORM\QueryBuilder', array(), array(
-            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
-        ));
-
-        $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
-        $qb->expects($this->any())->method('getQuery')->will($this->returnValue($query));
-
-        $qbCallback($qb);
-
-        $repository = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
-        $repository->expects($this->any())->method('createQueryBuilder')->will($this->returnValue($qb));
-
-        $metadata = $this->getMock('Doctrine\Common\Persistence\Mapping\ClassMetadata');
-        $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue(array(
-            'name',
-            'routeName',
-        )));
-
-        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock();
-        $em->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
-        $em->expects($this->any())->method('getClassMetadata')->will($this->returnValue($metadata));
-
-        $registry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
-        $registry->expects($this->any())->method('getManagerForClass')->will($this->returnValue($em));
-
-        return new DashboardManager('Sonata\DashboardBundle\Entity\BaseDashboard', $registry);
-    }
-
     public function testGetPager()
     {
         $self = $this;
@@ -74,7 +41,8 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
     {
         $self = $this;
         $this
-            ->getDashboardManager(function ($qb) use ($self) {})
+            ->getDashboardManager(function ($qb) use ($self) {
+            })
             ->getPager(array(), 1, 10, array('invalid' => 'ASC'));
     }
 
@@ -97,8 +65,8 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
             })
             ->getPager(array(), 1, 10, array(
-                'name'       => 'ASC',
-                'routeName'  => 'DESC',
+                'name' => 'ASC',
+                'routeName' => 'DESC',
             ));
     }
 
@@ -144,5 +112,38 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('edited' => false)));
             })
             ->getPager(array('edited' => false), 1);
+    }
+
+    protected function getDashboardManager($qbCallback)
+    {
+        $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', array(), '', false, true, true, array('execute'));
+        $query->expects($this->any())->method('execute')->will($this->returnValue(true));
+
+        $qb = $this->getMock('Doctrine\ORM\QueryBuilder', array(), array(
+            $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
+        ));
+
+        $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
+        $qb->expects($this->any())->method('getQuery')->will($this->returnValue($query));
+
+        $qbCallback($qb);
+
+        $repository = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
+        $repository->expects($this->any())->method('createQueryBuilder')->will($this->returnValue($qb));
+
+        $metadata = $this->getMock('Doctrine\Common\Persistence\Mapping\ClassMetadata');
+        $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue(array(
+            'name',
+            'routeName',
+        )));
+
+        $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock();
+        $em->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
+        $em->expects($this->any())->method('getClassMetadata')->will($this->returnValue($metadata));
+
+        $registry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $registry->expects($this->any())->method('getManagerForClass')->will($this->returnValue($em));
+
+        return new DashboardManager('Sonata\DashboardBundle\Entity\BaseDashboard', $registry);
     }
 }
