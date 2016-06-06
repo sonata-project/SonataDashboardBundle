@@ -13,6 +13,9 @@ namespace Sonata\DashboardBundle\Tests\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\DashboardBundle\Admin\BlockAdmin;
+use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetName;
+use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetNameNull;
+use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooNoGetName;
 
 class BlockAdminTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,42 +23,13 @@ class BlockAdminTest extends \PHPUnit_Framework_TestCase
     {
         $admin = new BlockAdmin('sonata.dashboard.admin.block', 'DashboardBundle\Entity\BaseBlock', 'SonataDashboardBundle:BlockAdmin');
 
-        $s = new DummyGetName();
+        $s = new FooGetName();
         $this->assertSame('GetName', $admin->toString($s));
 
-        $s = new DummyGetNameNull();
+        $s = new FooGetNameNull();
         $this->assertSame('GetNameNull', $admin->toString($s));
 
-        $s = new DummyNoGetName();
+        $s = new FooNoGetName();
         $this->assertSame('NoGetName', $admin->toString($s));
-    }
-}
-
-class DummyGetName
-{
-    public function getName()
-    {
-        return 'GetName';
-    }
-}
-
-class DummyGetNameNull
-{
-    public function getName()
-    {
-        return;
-    }
-
-    public function __toString()
-    {
-        return 'GetNameNull';
-    }
-}
-
-class DummyNoGetName
-{
-    public function __toString()
-    {
-        return 'NoGetName';
     }
 }
