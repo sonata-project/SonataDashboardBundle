@@ -1,62 +1,48 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<container xmlns="http://symfony.com/schema/dic/services"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <!-- DASHBOARD -->
         <parameter key="sonata.dashboard.admin.dashboard.class">Sonata\DashboardBundle\Admin\DashboardAdmin</parameter>
         <parameter key="sonata.dashboard.admin.dashboard.controller">SonataDashboardBundle:DashboardAdmin</parameter>
         <parameter key="sonata.dashboard.admin.dashboard.translation_domain">SonataDashboardBundle</parameter>
-
         <!-- BLOCK -->
         <parameter key="sonata.dashboard.admin.block.class">Sonata\DashboardBundle\Admin\BlockAdmin</parameter>
         <parameter key="sonata.dashboard.admin.block.controller">SonataDashboardBundle:BlockAdmin</parameter>
         <parameter key="sonata.dashboard.admin.block.translation_domain">%sonata.dashboard.admin.dashboard.translation_domain%</parameter>
     </parameters>
-
     <services>
         <service id="sonata.dashboard.admin.dashboard" class="%sonata.dashboard.admin.dashboard.class%">
             <tag name="sonata.admin" manager_type="orm" group="sonata_dashboard" label_catalogue="%sonata.dashboard.admin.dashboard.translation_domain%" label="dashboard" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
-            <argument />
+            <argument/>
             <argument>%sonata.dashboard.admin.dashboard.entity%</argument>
             <argument>%sonata.dashboard.admin.dashboard.controller%</argument>
-
             <call method="addChild">
-                <argument type="service" id="sonata.dashboard.admin.block" />
+                <argument type="service" id="sonata.dashboard.admin.block"/>
             </call>
-
             <call method="setTranslationDomain">
                 <argument>%sonata.dashboard.admin.dashboard.translation_domain%</argument>
             </call>
         </service>
-
         <service id="sonata.dashboard.admin.block" class="%sonata.dashboard.admin.block.class%">
-            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" group="sonata_dashboard" label_catalogue="%sonata.dashboard.admin.dashboard.translation_domain%" label="block"  label_translator_strategy="sonata.admin.label.strategy.underscore"/>
-            <argument />
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" group="sonata_dashboard" label_catalogue="%sonata.dashboard.admin.dashboard.translation_domain%" label="block" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
+            <argument/>
             <argument>%sonata.dashboard.admin.block.entity%</argument>
             <argument>%sonata.dashboard.admin.block.controller%</argument>
-
             <call method="setCacheManager">
-                <argument type="service" id="sonata.cache.manager" />
+                <argument type="service" id="sonata.cache.manager"/>
             </call>
-
             <call method="setBlockManager">
-                <argument type="service" id="sonata.block.manager" />
+                <argument type="service" id="sonata.block.manager"/>
             </call>
-
             <call method="setTranslationDomain">
                 <argument>%sonata.dashboard.admin.block.translation_domain%</argument>
             </call>
-
             <call method="setContainerBlockTypes">
                 <argument>%sonata.block.container.types%</argument>
             </call>
-
             <call method="setDefaultContainerType">
                 <argument>%sonata.dashboard.default_container%</argument>
             </call>
-
             <call method="setFormTheme">
                 <argument type="collection">
                     <argument>SonataDashboardBundle:Form:form_admin_fields.html.twig</argument>
@@ -65,5 +51,4 @@
             </call>
         </service>
     </services>
-
 </container>
