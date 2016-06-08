@@ -1,6 +1,6 @@
 # Sonata Dashboard Bundle
 
-Symfony SonataDashboardBundle
+Provides a Dashboard management through container and block services
 
 [![Latest Stable Version](https://poser.pugx.org/sonata-project/dashboard-bundle/v/stable)](https://packagist.org/packages/sonata-project/dashboard-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/sonata-project/dashboard-bundle/v/unstable)](https://packagist.org/packages/sonata-project/dashboard-bundle)
