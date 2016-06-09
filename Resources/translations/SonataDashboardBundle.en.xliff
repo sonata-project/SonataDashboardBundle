@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
@@ -181,19 +181,19 @@
             <trans-unit id="44" resname="compose.preview_error">
                 <source>compose.preview_error</source>
                 <target>An error occured while fetching block preview.</target>
-            </trans-unit>    
+            </trans-unit>
             <trans-unit id="45" resname="compose.update_saving">
                 <source>compose.update_saving</source>
                 <target>Saving block positions…</target>
-            </trans-unit>      
+            </trans-unit>
             <trans-unit id="46" resname="compose.update_saved">
                 <source>compose.update_saved</source>
                 <target>Block positions saved</target>
-            </trans-unit>    
+            </trans-unit>
             <trans-unit id="47" resname="compose.update_error">
                 <source>compose.update_error</source>
                 <target>A error occured while saving block positions.</target>
-            </trans-unit>    
+            </trans-unit>
             <trans-unit id="48" resname="compose.status_error">
                 <source>compose.status_error</source>
                 <target>An error occured while saving block enabled status.</target>
