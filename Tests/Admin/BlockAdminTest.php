@@ -16,6 +16,7 @@ use Sonata\DashboardBundle\Admin\BlockAdmin;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetName;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetNameNull;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooNoGetName;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * BlockAdminTest.
@@ -40,5 +41,19 @@ final class BlockAdminTest extends \PHPUnit_Framework_TestCase
 
         $s = new FooNoGetName();
         $this->assertSame('NoGetName', $admin->toString($s));
+    }
+
+    public function testGetPersistentParameters()
+    {
+        $admin = new BlockAdmin(
+            'sonata.dashboard.admin.block',
+            'DashboardBundle\Entity\BaseBlock',
+            'SonataDashboardBundle:BlockAdmin'
+        );
+
+        $request = new Request();
+        $admin->setRequest($request);
+
+        $this->assertArrayHasKey('type', $admin->getPersistentParameters());
     }
 }
