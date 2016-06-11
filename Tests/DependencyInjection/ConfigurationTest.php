@@ -24,6 +24,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'class' => array(
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
             ),
+            'templates' => array(
+                'compose' => 'MyBundle:MyController:my_template.html.twig',
+            ),
         )));
 
         $expected = array(
@@ -32,6 +35,10 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
             ),
             'default_container' => 'sonata.dashboard.block.container',
+            'templates' => array(
+                'compose' => 'MyBundle:MyController:my_template.html.twig',
+                'compose_container_show' => 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig',
+            ),
         );
 
         $this->assertEquals($expected, $config);

@@ -46,6 +46,19 @@ class Configuration implements ConfigurationInterface
                 ->defaultValue('sonata.dashboard.block.container')
                 ->cannotBeEmpty()
             ->end()
+            ->arrayNode('templates')
+                ->addDefaultsIfNotSet()
+                ->children()
+                    ->scalarNode('compose')
+                        ->defaultValue('SonataDashboardBundle:DashboardAdmin:compose.html.twig')
+                        ->info('This value sets the composer template.')
+                    ->end()
+                    ->scalarNode('compose_container_show')
+                        ->defaultValue('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig')
+                        ->info('This value sets the container composer template.')
+                    ->end()
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;

@@ -35,6 +35,7 @@ class SonataDashboardExtension extends Extension
         $config = $processor->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+
         $loader->load('admin.xml');
         $loader->load('block.xml');
         $loader->load('orm.xml');
@@ -56,6 +57,15 @@ class SonataDashboardExtension extends Extension
 
         $container->setParameter('sonata.dashboard.admin.block.entity', $config['class']['block']);
         $container->setParameter('sonata.dashboard.admin.dashboard.entity', $config['class']['dashboard']);
+
+        $container->setParameter(
+            'sonata.dashboard.admin.dashboard.templates.compose',
+            $config['templates']['compose']
+        );
+        $container->setParameter(
+            'sonata.dashboard.admin.dashboard.templates.compose_container_show',
+            $config['templates']['compose_container_show']
+        );
 
         //@todo : check this container is a service
         //if (!$container->hasDefinition($config['default_container'])) {
