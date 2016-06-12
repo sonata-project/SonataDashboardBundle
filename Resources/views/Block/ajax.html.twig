@@ -1,0 +1,14 @@
+{% block block %}
+    <div class="sonata-dashboard-ajax-block {{ block.settings.class }}"
+        id="block-{{ block.id }}"
+        data-url="{{ block.settings.url }}"
+    >
+        <div class="info-box">
+            <span class="info-box-icon bg-{{ block.settings.color }}"><i class="{{ block.settings.icon }}"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ block.settings.title }}</span>
+                <span class="info-box-number"></span>
+            </div>
+        </div>
+    </div>
+{% endblock block %}

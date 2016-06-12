@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * generated on: Wed Aug 05 2015 16:36:26 GMT+0200 (CEST)
- * revision:     4ac64d4ea9c19412b4dd0134a0f575df6565c5d5
+ * generated on: Mon Jun 13 2016 15:41:31 GMT+0200 (CEST)
+ * revision:     e4d37a1503dc6e1f49569677e0b381cb139b1a86
  *
  */
 /**
@@ -505,4 +505,4 @@ Sonata.Dashboard = {
 
         }
     }
-};
+}
