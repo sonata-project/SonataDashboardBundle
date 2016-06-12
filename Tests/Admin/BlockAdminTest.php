@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Stéphane Paté <st.pate@orange.fr>
  */
-final class BlockAdminTest extends \PHPUnit_Framework_TestCase
+class BlockAdminTest extends \PHPUnit_Framework_TestCase
 {
     public function testToString()
     {

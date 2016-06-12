@@ -1,0 +1,19 @@
+{% extends 'SonataDashboardBundle:Block:block_ajax.html.twig' %}
+
+{% block block_content %}
+    <div class="overlay-wrapper sonata-dashboard-ajax-block__refresh-btn">
+        <div class="info-box bg-{{ block.settings.color }}">
+            <span class="info-box-icon"><i class="{{ block.settings.icon }}"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ block.settings.title }}</span>
+                <span class="info-box-number url-data">-</span>
+                <div class="progress">
+                    <div class="progress-bar" style="width: {{ block.settings.progress*100}}%"></div>
+                </div>
+                <span class="progress-description">
+                    {{ block.settings.description }}
+                </span>
+            </div>
+        </div>
+    </div>
+{% endblock block_content %}

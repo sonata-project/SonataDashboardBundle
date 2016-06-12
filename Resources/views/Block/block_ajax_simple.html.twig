@@ -1,0 +1,13 @@
+{% extends 'SonataDashboardBundle:Block:block_ajax.html.twig' %}
+
+{% block block_content %}
+    <div class="overlay-wrapper sonata-dashboard-ajax-block__refresh-btn">
+        <div class="info-box">
+            <span class="info-box-icon bg-{{ block.settings.color }}"><i class="{{ block.settings.icon }}"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{{ block.settings.title }}</span>
+                <span class="info-box-number url-data">-</span>
+            </div>
+        </div>
+    </div>
+{% endblock block_content %}
