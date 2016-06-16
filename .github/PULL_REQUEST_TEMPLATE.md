@@ -3,9 +3,9 @@
 <!--
     Show us you choose the right branch.
     Different branches are used for different things :
-    - 0.x is for everything backwards compatible, like patches, features and deprecation notices
+    - master is for everything backwards compatible, like patches, features and deprecation notices
     - master is for deprecation removals and other changes that cannot be done without a BC-break
-    More details here: https://github.com/sonata-project/SonataDashboardBundle/blob/0.x/CONTRIBUTING.md#the-base-branch
+    More details here: https://github.com/sonata-project/SonataDashboardBundle/blob/master/CONTRIBUTING.md#the-base-branch
 -->
 I am targetting this branch, because…
 
