@@ -38,6 +38,7 @@ class SonataDashboardExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
+        $loader->load('dashboard.xml');
         $loader->load('admin.xml');
         $loader->load('block.xml');
         $loader->load('orm.xml');
