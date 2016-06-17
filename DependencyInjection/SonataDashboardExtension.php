@@ -36,6 +36,7 @@ class SonataDashboardExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
+        $loader->load('dashboard.xml');
         $loader->load('admin.xml');
         $loader->load('block.xml');
         $loader->load('orm.xml');
@@ -161,12 +162,17 @@ class SonataDashboardExtension extends Extension
     {
         $this->addClassesToCompile(array(
             'Sonata\\DashboardBundle\\Block\\ContainerBlockService',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerInterface',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerSelector',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerSelectorInterface',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsDashboardManager',
             'Sonata\\DashboardBundle\\Entity\\BaseBlock',
             'Sonata\\DashboardBundle\\Entity\\BaseDashboard',
             'Sonata\\DashboardBundle\\Entity\\BlockInteractor',
             'Sonata\\DashboardBundle\\Entity\\BlockManager',
             'Sonata\\DashboardBundle\\Entity\\DashboardManager',
             'Sonata\\DashboardBundle\\Model\\Block',
+            'Sonata\\DashboardBundle\\Model\\BlockManagerInterface',
             'Sonata\\DashboardBundle\\Model\\BlockInteractorInterface',
             'Sonata\\DashboardBundle\\Model\\Dashboard',
             'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
