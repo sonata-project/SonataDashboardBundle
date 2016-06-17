@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController;
+use Sonata\DashboardBundle\Admin\BlockAdmin;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -37,9 +38,8 @@ final class DashboardAdminController extends CRUDController
     public function composeAction(Request $request)
     {
         $this->admin->checkAccess('compose');
-        if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
-            throw $this->createAccessDeniedException();
-        }
+
+        $this->getBlockAdmin()->checkAccess('list');
 
         $id = $request->get($this->admin->getIdParameter());
         $dashboard = $this->admin->getObject($id);
@@ -57,14 +57,12 @@ final class DashboardAdminController extends CRUDController
             }
         }
 
-        $csrfProvider = $this->get('form.csrf_provider');
-
-        return $this->render($template = $this->admin->getTemplate('compose'), [
+        return $this->render($this->admin->getTemplate('compose'), [
             'object' => $dashboard,
             'action' => 'edit',
             'containers' => $containers,
             'csrfTokens' => [
-                'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
+                'remove' => $this->getCsrfToken('sonata.dashboard'),
             ],
         ]);
     }
@@ -79,22 +77,76 @@ final class DashboardAdminController extends CRUDController
      */
     public function composeContainerShowAction(Request $request)
     {
-        if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
-            throw $this->createAccessDeniedException();
-        }
+        $this->getBlockAdmin()->checkAccess('list');
 
         $id = $request->get($this->admin->getIdParameter());
-        $block = $this->get('sonata.dashboard.admin.block')->getObject($id);
+
+        $block = $this->getBlockAdmin()->getObject($id);
         if (!$block) {
             throw $this->createNotFoundException(sprintf('unable to find the block with id : %s', $id));
         }
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render($template = $this->admin->getTemplate('compose_container_show'), [
+        return $this->render($this->admin->getTemplate('compose_container_show'), [
             'blockServices' => $blockServices,
             'container' => $block,
             'dashboard' => $block->getDashboard(),
         ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @throws AccessDeniedException
+     *
+     * @return Response
+     */
+    public function renderAction(Request $request)
+    {
+        $this->admin->checkAccess('render');
+
+        $this->getBlockAdmin()->checkAccess('list');
+
+        // true when renders default dashboard from sonata_admin_dashboard redirect
+        $default = $request->query->get('default');
+        $id = $request->get($this->admin->getIdParameter());
+        $dashboard = $this->admin->getObject($id);
+        if (!$dashboard) {
+            throw $this->createNotFoundException(sprintf('unable to find the dashboard with id : %s', $id));
+        }
+
+        $containers = [];
+
+        // separate containers
+        foreach ($dashboard->getBlocks() as $block) {
+            $blockCode = $block->getSetting('code');
+            if (null === $block->getParent()) {
+                $containers[$blockCode] = $block;
+            }
+        }
+
+        $dashboards = $this->get('sonata.dashboard.manager.dashboard')->findBy(
+            [], ['updatedAt' => 'DESC'], 5
+        );
+
+        return $this->render($this->admin->getTemplate('render'), [
+            'object' => $dashboard,
+            'default' => $default,
+            'action' => 'edit',
+            'containers' => $containers,
+            'dashboards' => $dashboards,
+            'csrfTokens' => [
+                'remove' => $this->getCsrfToken('sonata.dashboard'),
+            ],
+        ]);
+    }
+
+    /**
+     * @return BlockAdmin
+     */
+    private function getBlockAdmin()
+    {
+        return $this->get('sonata.dashboard.admin.block');
     }
 }

@@ -34,6 +34,7 @@ final class DashboardAdmin extends AbstractAdmin
     protected $accessMapping = [
         'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
+        'render' => 'EDIT',
     ];
 
     public function configureRoutes(RouteCollection $collection): void
@@ -42,6 +43,9 @@ final class DashboardAdmin extends AbstractAdmin
             'id' => null,
         ]);
         $collection->add('compose_container_show', 'compose/container/{id}', [
+            'id' => null,
+        ]);
+        $collection->add('render', '{id}/render', [
             'id' => null,
         ]);
     }
@@ -67,8 +71,9 @@ final class DashboardAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->add('enabled')
             ->add('name')
+            ->add('default')
+            ->add('enabled')
             ->add('edited')
         ;
     }
@@ -77,6 +82,7 @@ final class DashboardAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('default')
             ->add('enabled', null, ['editable' => true])
             ->add('edited', null, ['editable' => true])
         ;
@@ -100,7 +106,12 @@ final class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
-                ->add('enabled', CheckboxType::class, ['required' => false])
+                ->add('default', CheckboxType::class, [
+                    'required' => false,
+                ])
+                ->add('enabled', CheckboxType::class, [
+                    'required' => false,
+                ])
             ->end()
         ;
 
@@ -127,8 +138,16 @@ final class DashboardAdmin extends AbstractAdmin
             ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
-        $menu->addChild('sidemenu.link_list_blocks',
-            ['uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', ['id' => $id])]
-        );
+        $menu->addChild('sidemenu.link_render_dashboard', [
+            'uri' => $admin->generateUrl('render', [
+                'id' => $id,
+            ]),
+        ]);
+
+        $menu->addChild('sidemenu.link_list_blocks', [
+            'uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', [
+                'id' => $id,
+            ]),
+        ]);
     }
 }

@@ -23,7 +23,9 @@
             {% endfor %}
         </select>
         <a class="btn btn-action btn-small dashboard-composer__block-type-selector__confirm"
-           href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.create', dashboard, {'composer': true}) }}"><i class="fa fa-plus"></i></a>
+           href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.create', dashboard, {'composer': true}) }}">
+            <i class="fa fa-plus"></i>
+        </a>
         <span class="dashboard-composer__block-type-selector__loader">{{ 'loading'|trans({}, 'SonataDashboardBundle') }}</span>
 
         <small class="dashboard-composer__container__child-count pull-right">

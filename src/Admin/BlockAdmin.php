@@ -81,7 +81,12 @@ final class BlockAdmin extends AbstractAdmin
             $service = $this->blockManager->get($subject);
 
             $resolver = new OptionsResolver();
-            $service->setDefaultSettings($resolver);
+
+            if (method_exists($service, 'configureSettings')) {
+                $service->configureSettings($resolver);
+            } else {
+                $service->setDefaultSettings($resolver);
+            }
 
             try {
                 $subject->setSettings($resolver->resolve($subject->getSettings()));

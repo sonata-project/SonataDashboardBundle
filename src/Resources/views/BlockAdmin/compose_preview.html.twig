@@ -2,12 +2,19 @@
     data-block-id="{{ child.id }}"
     data-parent-block-id="{{ container.id }}"
     data-block-enabled="{{ child.enabled|default('0') }}"
-        >
+    data-block-type="{{ child.type }}"
+>
     <a class="dashboard-composer__container__child__edit"
        href="{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('edit', { 'id': child.id, 'composer': true }) }}"
-            >
-        <h4 class="dashboard-composer__container__child__name">{{ child.name|default(attribute(blockServices, child.type).name) }}</h4>
-        <small>{{ attribute(blockServices, child.type).name }}</small>
+    >
+        {% set service = attribute(blockServices, child.type) %}
+        <h4 class="dashboard-composer__container__child__name">{{ child.name|default(service.name) }}</h4>
+        {% if not service.blockMetadata.image %}
+            <i class="{{ service.blockMetadata.option('class') }}"></i>
+        {% else %}
+            <img src="{{ asset(service.blockMetadata.image) }}" style="max-height: 20px; max-width: 100px;" />
+        {% endif %}
+        <small>{{ service.blockMetadata.title|trans({}, service.blockMetadata.domain|default('SonataPageBundle')) }}</small>
         <span class="dashboard-composer__container__child__toggle">
             <i class="fa fa-chevron-down"></i>
             <i class="fa fa-chevron-up"></i>
@@ -16,7 +23,8 @@
 
     <div class="dashboard-composer__container__child__right">
         <div class="dashboard-composer__container__child__remove">
-            <a class="badge" href="{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('delete', { 'id': child.id }) }}">{{ 'composer.remove'|trans({}, 'SonataDashboardBundle') }} <i class="fa fa-times"></i> </a>
+            <a class="badge" href="{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('delete', { 'id': child.id }) }}">{{ 'composer.remove'|trans({}, 'SonataDashboardBundle') }}
+                <i class="fa fa-times"></i> </a>
             <span class="dashboard-composer__container__child__remove__confirm">
                 {{ 'composer.remove.confirm'|trans({}, 'SonataDashboardBundle') }}
                 <span class="yes">{{ 'yes'|trans({}, 'SonataDashboardBundle') }}</span>
@@ -27,11 +35,14 @@
         <div class="dashboard-composer__container__child__switch-enabled"
              data-label-enable="{{ ('composer.enable'|trans({}, 'SonataDashboardBundle') ~ ' <i class="fa fa-toggle-on"></i>')|e }}"
              data-label-disable="{{ ('composer.disable'|trans({}, 'SonataDashboardBundle') ~ ' <i class="fa fa-toggle-off"></i>')|e }}">
-            <a class="badge bg-{{ child.enabled ? 'yellow' : 'green' }}" href="{{ url('sonata_admin_set_object_field_value', {'objectId': child.id, 'context': 'list', 'field': 'enabled', 'code': 'sonata.dashboard.admin.block', 'value': not child.enabled|default('0') }) }}">{% if child.enabled %}{{ 'composer.disable'|trans({}, 'SonataDashboardBundle') }} <i class="fa fa-toggle-off"></i>{% else %}{{ 'composer.enable'|trans({}, 'SonataDashboardBundle') }} <i class="fa fa-toggle-on"></i>{% endif %}</a>
+            <a class="badge bg-{{ child.enabled ? 'yellow' : 'green' }}" href="{{ path('sonata_admin_set_object_field_value', {'objectId': child.id, 'context': 'list', 'field': 'enabled', 'code': 'sonata.dashboard.admin.block', 'value': not child.enabled|default('0') }) }}">{% if child.enabled %}{{ 'composer.disable'|trans({}, 'SonataDashboardBundle') }}
+                    <i class="fa fa-toggle-off"></i>{% else %}{{ 'composer.enable'|trans({}, 'SonataDashboardBundle') }}
+                    <i class="fa fa-toggle-on"></i>{% endif %}</a>
         </div>
 
         <div class="dashboard-composer__container__child__enabled">
-            <small class="badge bg-{{ child.enabled ? 'green' : 'yellow' }}"><i class="fa fa-{{ child.enabled ? 'check' : 'times' }}"></i></small>
+            <small class="badge bg-{{ child.enabled ? 'green' : 'yellow' }}">
+                <i class="fa fa-{{ child.enabled ? 'check' : 'times' }}"></i></small>
         </div>
     </div>
 

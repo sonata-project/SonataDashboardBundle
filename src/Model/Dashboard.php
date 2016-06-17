@@ -55,6 +55,11 @@ abstract class Dashboard implements DashboardInterface
      */
     protected $edited;
 
+    /**
+     * @var bool
+     */
+    protected $default;
+
     public function __construct()
     {
         $this->blocks = [];
@@ -131,6 +136,16 @@ abstract class Dashboard implements DashboardInterface
         $this->edited = $edited;
 
         return $this;
+    }
+
+    public function setDefault($default): void
+    {
+        $this->default = $default;
+    }
+
+    public function isDefault()
+    {
+        return $this->default;
     }
 
     public function addBlocks(DashboardBlockInterface $block)
