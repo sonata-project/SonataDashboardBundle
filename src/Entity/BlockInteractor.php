@@ -63,17 +63,16 @@ final class BlockInteractor implements BlockInteractorInterface
 
     public function getBlock(int $id): ?DashboardBlockInterface
     {
-        $blocks = $this->getEntityManager()->createQueryBuilder()
+        return $this->getEntityManager()->createQueryBuilder()
             ->select('b')
             ->from($this->blockManager->getClass(), 'b')
             ->where('b.id = :id')
             ->setParameters([
                 'id' => $id,
             ])
+            ->setMaxResults(1)
             ->getQuery()
-            ->execute();
-
-        return count($blocks) > 0 ? $blocks[0] : null;
+            ->getOneOrNullResult();
     }
 
     public function getBlocksById(DashboardInterface $dashboard)

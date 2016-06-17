@@ -50,13 +50,9 @@
                 <source>breadcrumb.link_dashboard_show</source>
                 <target>Tableau de bord</target>
             </trans-unit>
-            <trans-unit id="12" resname="dashboard.compose_dashboard">
-                <source>dashboard.compose_dashboard</source>
-                <target>Mise en page du tableau de bord </target>
-            </trans-unit>
             <trans-unit id="13" resname="sidemenu.link_edit_dashboard">
                 <source>sidemenu.link_edit_dashboard</source>
-                <target>Edition du tableau de bord</target>
+                <target>Edition</target>
             </trans-unit>
             <trans-unit id="14" resname="sidemenu.link_list_blocks">
                 <source>sidemenu.link_list_blocks</source>
@@ -64,7 +60,7 @@
             </trans-unit>
             <trans-unit id="15" resname="sidemenu.link_compose_dashboard">
                 <source>sidemenu.link_compose_dashboard</source>
-                <target>Composition du tableau de bord</target>
+                <target>Composition</target>
             </trans-unit>
             <trans-unit id="16" resname="sidemenu.link_list_dashboards">
                 <source>sidemenu.link_list_dashboards</source>
@@ -249,6 +245,42 @@
             <trans-unit id="61" resname="show.label_edited">
                 <source>show.label_edited</source>
                 <target>Edité</target>
+            </trans-unit>
+            <trans-unit id="62" resname="sidemenu.link_render_dashboard">
+                <source>sidemenu.link_render_dashboard</source>
+                <target>Aperçu</target>
+            </trans-unit>
+            <trans-unit id="64" resname="breadcrumb.link_dashboard_render">
+                <source>breadcrumb.link_dashboard_render</source>
+                <target>Aperçu d'un tableau de bord</target>
+            </trans-unit>
+            <trans-unit id="65" resname="form.label_default">
+                <source>form.label_default</source>
+                <target>Par défaut</target>
+            </trans-unit>
+            <trans-unit id="66" resname="list.label_default">
+                <source>list.label_default</source>
+                <target>Par défaut</target>
+            </trans-unit>
+            <trans-unit id="67" resname="show.label_default">
+                <source>show.label_default</source>
+                <target>Par défaut</target>
+            </trans-unit>
+            <trans-unit id="68" resname="title_render">
+                <source>title_render</source>
+                <target>Apercevoir "%name%"</target>
+            </trans-unit>
+            <trans-unit id="69" resname="title_compose">
+                <source>title_compose</source>
+                <target>Composer "%name%"</target>
+            </trans-unit>
+            <trans-unit id="70" resname="title_navbar">
+                <source>title_navbar</source>
+                <target>Apercevoir</target>
+            </trans-unit>
+            <trans-unit id="71" resname="notice">
+                <source>notice</source>
+                <target>Notice</target>
             </trans-unit>
         </body>
     </file>

@@ -94,7 +94,7 @@ final class BlockAdminController extends Controller
             $position = count($dashboard->getBlocks()) + 1;
             $name = $request->get('name');
 
-            if ('' == $name) {
+            if ('' === $name) {
                 $name = $this->trans('composer.default.container.name', [
                     '%position%' => $position,
                 ], $this->admin->getTranslationDomain());

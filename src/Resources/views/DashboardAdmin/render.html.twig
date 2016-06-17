@@ -1,0 +1,71 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% if not default %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {{ 'title_render'|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataDashboardBundle') }}
+{% endblock %}
+
+{% block tab_menu_navbar_header %}
+    <div class="navbar-header">
+        <p class="navbar-text">
+            {{ 'title_navbar'|trans({}, 'SonataDashboardBundle') }}
+        </p>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ object.name }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    {% for dashboard in dashboards %}
+                        <li>
+                            <a href="{{ admin.generateUrl('render', { 'id': dashboard.id }) }}">
+                                {% if object and dashboard.id == object.id %}
+                                    <span class="pull-right">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                                {% endif %}
+                                {{ dashboard.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block sonata_page_content %}
+    {% if default %}
+        <section class="content">
+            <div class="sonata-ba-content">
+                {{ block('content') }}
+            </div>
+        </section>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for code, container in containers %}
+            {{ sonata_dashboard_render_container(container.name, object) }}
+        {% endfor %}
+    </div>
+{% endblock %}

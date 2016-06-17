@@ -26,6 +26,7 @@
                 <argument type="collection">
                     <argument key="compose">%sonata.dashboard.admin.dashboard.templates.compose%</argument>
                     <argument key="compose_container_show">%sonata.dashboard.admin.dashboard.templates.compose_container_show%</argument>
+                    <argument key="render">%sonata.dashboard.admin.dashboard.templates.render%</argument>
                 </argument>
             </call>
         </service>

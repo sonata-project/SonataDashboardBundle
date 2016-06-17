@@ -37,7 +37,10 @@ final class SonataDashboardExtension extends Extension
 
         $loader->load('admin.xml');
         $loader->load('block.xml');
+        $loader->load('dashboard.xml');
+        $loader->load('http_kernel.xml');
         $loader->load('orm.xml');
+        $loader->load('twig.xml');
 
         $this->registerDoctrineMapping($config);
         $this->registerParameters($container, $config);
@@ -65,11 +68,11 @@ final class SonataDashboardExtension extends Extension
             'sonata.dashboard.admin.dashboard.templates.compose_container_show',
             $config['templates']['compose_container_show']
         );
+        $container->setParameter(
+            'sonata.dashboard.admin.dashboard.templates.render',
+            $config['templates']['render']
+        );
 
-        //@todo : check this container is a service
-        //if (!$container->hasDefinition($config['default_container'])) {
-        //    throw new \RuntimeException(sprintf('The container %s must be an existing service', $config['default_container']));
-        //}
         $container->setParameter('sonata.dashboard.default_container', $config['default_container']);
     }
 

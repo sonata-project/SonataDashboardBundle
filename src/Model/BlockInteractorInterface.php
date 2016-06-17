@@ -41,7 +41,7 @@ interface BlockInteractorInterface
      *
      * @param bool $partial Should we use partial references? (Better for performance, but can lead to query issues.)
      */
-    public function saveBlocksPosition(array $data = [], bool $partial = true);
+    public function saveBlocksPosition(array $data = [], bool $partial = true): void;
 
     /**
      * @param array    $values An array of values for container creation

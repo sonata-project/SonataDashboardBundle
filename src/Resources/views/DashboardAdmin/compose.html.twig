@@ -13,10 +13,16 @@ file that was distributed with this source code.
 
 {% block body_attributes %}class="sonata-bc skin-black fixed dashboard-composer-dashboard sonata-ba-no-side-menu"{% endblock %}
 
+{% block title %}
+    {{ "title_compose"|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataDashboardBundle') }}
+{% endblock %}
+
+{% block navbar_title %}
+    {{ block('title') }}
+{% endblock %}
+
 {% block content %}
     <div class="dashboard-composer">
-        <h2>{{ 'dashboard.compose_dashboard'|trans({}, 'SonataDashboardBundle') }} "{{ object.name }}"</h2>
-
         <div class="row row-fluid">
             <div class="col-md-4 span4">
                 <div class="dashboard-composer__dashboard-preview">
@@ -25,7 +31,9 @@ file that was distributed with this source code.
                         <input class="dashboard-composer__block-container-header__input" type="text" />
                         <a class="btn btn-action btn-small dashboard-composer__block-container-header__confirm"
                            href="{{ admin.generateObjectUrl('sonata.dashboard.admin.block.create', object, {'composer': true, 'type': admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').getDefaultContainerType()}) }}"
-                                ><i class="fa fa-plus"></i></a>
+                        >
+                            <i class="fa fa-plus"></i>
+                        </a>
                         <span class="dashboard-composer__block-container-header__loader">{{ 'loading'|trans({}, 'SonataDashboardBundle') }}</span>
                         <div class="clearfix"></div>
                     </div>
@@ -33,7 +41,7 @@ file that was distributed with this source code.
                     <div class="dashboard-composer__dashboard-preview__containers">
                         {% for container in containers %}
                             {% if container.block is defined and container.block %}
-                                {% include '@SonataDashboard/BlockAdmin/block_container.html.twig' with {'object': container.block} %}
+                                {% include '@SonataDashboard/BlockAdmin/block_container.html.twig' with {'object': container.block } %}
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -57,8 +65,8 @@ file that was distributed with this source code.
                     },
                     routes: {
                         save_blocks_positions: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('savePosition', { 'block_id': 'BLOCK_ID' }) }}",
-                        block_switch_parent:   "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('switchParent') }}",
-                        block_preview:         "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('composePreview', { 'block_id': 'BLOCK_ID' }) }}"
+                        block_switch_parent: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('switchParent') }}",
+                        block_preview: "{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('composePreview', { 'block_id': 'BLOCK_ID' }) }}"
                     }
                 });
                 composer.csrfTokens = {{ csrfTokens|json_encode()|raw }};
@@ -66,6 +74,5 @@ file that was distributed with this source code.
                 window.SonataDashboardComposer = composer;
             });
         </script>
-
     </div>
 {% endblock %}

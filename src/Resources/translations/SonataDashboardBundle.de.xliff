@@ -250,6 +250,42 @@
                 <source>show.label_edited</source>
                 <target>Bearbeitet</target>
             </trans-unit>
+            <trans-unit id="62" resname="sidemenu.link_render_dashboard">
+                <source>sidemenu.link_render_dashboard</source>
+                <target>Vorschau</target>
+            </trans-unit>
+            <trans-unit id="64" resname="breadcrumb.link_dashboard_render">
+                <source>breadcrumb.link_dashboard_render</source>
+                <target>Dashboard Vorschau</target>
+            </trans-unit>
+            <trans-unit id="65" resname="form.label_default">
+                <source>form.label_default</source>
+                <target>Standard Dashboard</target>
+            </trans-unit>
+            <trans-unit id="66" resname="list.label_default">
+                <source>list.label_default</source>
+                <target>Standard Dashboard</target>
+            </trans-unit>
+            <trans-unit id="67" resname="show.label_default">
+                <source>show.label_default</source>
+                <target>Standard Dashboard</target>
+            </trans-unit>
+            <trans-unit id="68" resname="title_render">
+                <source>title_render</source>
+                <target>Vorschau "%name%"</target>
+            </trans-unit>
+            <trans-unit id="69" resname="title_compose">
+                <source>title_compose</source>
+                <target>Editor "%name%"</target>
+            </trans-unit>
+            <trans-unit id="70" resname="title_navbar">
+                <source>title_navbar</source>
+                <target>Vorschau</target>
+            </trans-unit>
+            <trans-unit id="71" resname="notice">
+                <source>notice</source>
+                <target>Hinweis</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
