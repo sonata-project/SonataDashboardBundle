@@ -10,4 +10,3 @@ Reference Guide
 
    reference/introduction
    reference/installation
-   reference/assets
