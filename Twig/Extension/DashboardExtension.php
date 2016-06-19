@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of sonata-project.
+ * This file is part of the Sonata Project package.
  *
- * (c) 2010 Thomas Rabaix
+ * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,10 +13,7 @@ namespace Sonata\DashboardBundle\Twig\Extension;
 
 use Sonata\BlockBundle\Templating\Helper\BlockHelper;
 use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
-use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
-use Sonata\DashboardBundle\Model\DashboardInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * DashboardExtension.
@@ -34,12 +31,12 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
      * @var BlockHelper
      */
     private $blockHelper;
-    
+
     /**
      * @var \Twig_Environment
      */
     private $environment;
-    
+
     /**
      * @var array
      */
@@ -48,13 +45,13 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
     /**
      * Constructor.
      *
-     * @param CmsManagerSelectorInterface $cmsManagerSelector  A CMS manager selector
-     * @param BlockHelper                 $blockHelper         The Block Helper
+     * @param CmsManagerSelectorInterface $cmsManagerSelector A CMS manager selector
+     * @param BlockHelper                 $blockHelper        The Block Helper
      */
     public function __construct(CmsManagerSelectorInterface $cmsManagerSelector, BlockHelper $blockHelper)
     {
-        $this->cmsManagerSelector  = $cmsManagerSelector;
-        $this->blockHelper         = $blockHelper;
+        $this->cmsManagerSelector = $cmsManagerSelector;
+        $this->blockHelper = $blockHelper;
     }
 
     /**
@@ -82,21 +79,6 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
     public function getName()
     {
         return 'sonata_dashboard';
-    }
-    
-    /**
-     * @param string $template
-     * @param array  $parameters
-     *
-     * @return string
-     */
-    private function render($template, array $parameters = array())
-    {
-        if (!isset($this->resources[$template])) {
-            $this->resources[$template] = $this->environment->loadTemplate($template);
-        }
-
-        return $this->resources[$template]->render($parameters);
     }
 
     /**
@@ -137,10 +119,25 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
 
         // build the parameters array
         $options = array_merge(array(
-            'use_cache'        => isset($options['use_cache']) ? $options['use_cache'] : true,
+            'use_cache' => isset($options['use_cache']) ? $options['use_cache'] : true,
             'extra_cache_keys' => array(),
         ), $options);
 
         return $this->blockHelper->render($block, $options);
+    }
+
+    /**
+     * @param string $template
+     * @param array  $parameters
+     *
+     * @return string
+     */
+    private function render($template, array $parameters = array())
+    {
+        if (!isset($this->resources[$template])) {
+            $this->resources[$template] = $this->environment->loadTemplate($template);
+        }
+
+        return $this->resources[$template]->render($parameters);
     }
 }

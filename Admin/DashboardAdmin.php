@@ -71,8 +71,9 @@ class DashboardAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('enabled')
             ->add('name')
+            ->add('isDefault')
+            ->add('enabled')
             ->add('edited')
         ;
     }
@@ -84,6 +85,7 @@ class DashboardAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('isDefault')
             ->add('enabled', null, array('editable' => true))
             ->add('edited', null, array('editable' => true))
         ;
@@ -113,6 +115,7 @@ class DashboardAdmin extends Admin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
+                ->add('isDefault', null, array('required' => false))
                 ->add('enabled', null, array('required' => false))
             ->end()
         ;
