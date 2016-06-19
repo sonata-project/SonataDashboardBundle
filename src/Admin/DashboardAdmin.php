@@ -33,6 +33,7 @@ class DashboardAdmin extends AbstractAdmin
     protected $accessMapping = [
         'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
+        'render' => 'EDIT',
     ];
 
     /**
@@ -46,6 +47,9 @@ class DashboardAdmin extends AbstractAdmin
         $collection->add('compose_container_show', 'compose/container/{id}', [
             'id' => null,
         ]);
+        $collection->add('render', '{id}/render', array(
+            'id' => null,
+        ));
     }
 
     /**
@@ -142,7 +146,13 @@ class DashboardAdmin extends AbstractAdmin
             ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
-        $menu->addChild('sidemenu.link_list_blocks',
+        $menu->addChild(
+            $this->trans('sidemenu.link_render_dashboard'),
+            array('uri' => $admin->generateUrl('render', array('id' => $id)))
+        );
+
+        $menu->addChild(
+            $this->trans('sidemenu.link_list_blocks'),
             ['uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', ['id' => $id])]
         );
     }

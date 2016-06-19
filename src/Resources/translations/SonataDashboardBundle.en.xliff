@@ -50,13 +50,9 @@
                 <source>breadcrumb.link_dashboard_show</source>
                 <target>Show</target>
             </trans-unit>
-            <trans-unit id="12" resname="dashboard.compose_dashboard">
-                <source>dashboard.compose_dashboard</source>
-                <target>Compose </target>
-            </trans-unit>
             <trans-unit id="13" resname="sidemenu.link_edit_dashboard">
                 <source>sidemenu.link_edit_dashboard</source>
-                <target>Edit Dashboard</target>
+                <target>Edit</target>
             </trans-unit>
             <trans-unit id="14" resname="sidemenu.link_list_blocks">
                 <source>sidemenu.link_list_blocks</source>
@@ -64,7 +60,7 @@
             </trans-unit>
             <trans-unit id="15" resname="sidemenu.link_compose_dashboard">
                 <source>sidemenu.link_compose_dashboard</source>
-                <target>Composer (beta)</target>
+                <target>Compose</target>
             </trans-unit>
             <trans-unit id="16" resname="sidemenu.link_list_dashboards">
                 <source>sidemenu.link_list_dashboards</source>
@@ -249,6 +245,34 @@
             <trans-unit id="61" resname="show.label_edited">
                 <source>show.label_edited</source>
                 <target>Edited</target>
+            </trans-unit>
+            <trans-unit id="62" resname="sidemenu.link_render_dashboard">
+                <source>sidemenu.link_render_dashboard</source>
+                <target>View Dashboard</target>
+            </trans-unit>
+            <trans-unit id="63" resname="breadcrumb.link_dashboard_render">
+                <source>breadcrumb.link_dashboard_render</source>
+                <target>View Dashboard</target>
+            </trans-unit>
+            <trans-unit id="64" resname="form.label_is_default">
+                <source>form.label_is_default</source>
+                <target>Default</target>
+            </trans-unit>
+            <trans-unit id="65" resname="list.label_is_default">
+                <source>list.label_is_default</source>
+                <target>Default</target>
+            </trans-unit>
+            <trans-unit id="66" resname="show.label_is_default">
+                <source>show.label_is_default</source>
+                <target>Default</target>
+            </trans-unit>
+            <trans-unit id="67" resname="title_render">
+                <source>title_render</source>
+                <target>View "%name%"</target>
+            </trans-unit>
+            <trans-unit id="68" resname="title_compose">
+                <source>title_compose</source>
+                <target>Compose "%name%"</target>
             </trans-unit>
         </body>
     </file>
