@@ -37,7 +37,7 @@ class BlockInteractorTest extends \PHPUnit_Framework_TestCase
 
         $container = $blockInteractor->createNewContainer(array(
             'enabled' => true,
-            'code' => 'my-code',
+            'code'    => 'my-code',
         ), function ($container) {
             $container->setSetting('layout', '<div class="custom-layout">{{ CONTENT }}</div>');
         });

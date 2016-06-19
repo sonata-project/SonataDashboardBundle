@@ -11,7 +11,6 @@
 
 namespace Sonata\DashboardBundle\CmsManager;
 
-use Sonata\DashboardBundle\CmsManager\CmsManagerInterface;
 use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
@@ -23,17 +22,17 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
 final class CmsManagerSelector implements CmsManagerSelectorInterface
-{    
+{
     private $cmsDashboardManager;
-    
+
     private $authorizationChecker;
-    
+
     public function __construct(AuthorizationCheckerInterface $authorizationChecker, CmsManagerInterface $cmsDashboardManager)
     {
-        $this->cmsDashboardManager = $cmsDashboardManager; 
+        $this->cmsDashboardManager = $cmsDashboardManager;
         $this->authorizationChecker = $authorizationChecker;
     }
-    
+
     /**
      * {@inheritdoc}
      */

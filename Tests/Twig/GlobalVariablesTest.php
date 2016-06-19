@@ -11,9 +11,8 @@
 
 namespace Sonata\DashboardBundle\Tests\Twig;
 
-use Sonata\DashboardBundle\CmsManager\CmsManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Sonata\DashboardBundle\Twig\GlobalVariables;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * GlobalVariables.

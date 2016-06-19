@@ -13,10 +13,7 @@ namespace Sonata\DashboardBundle\Twig\Extension;
 
 use Sonata\BlockBundle\Templating\Helper\BlockHelper;
 use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
-use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
-use Sonata\DashboardBundle\Model\DashboardInterface;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * DashboardExtension.
@@ -34,12 +31,12 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
      * @var BlockHelper
      */
     private $blockHelper;
-    
+
     /**
      * @var \Twig_Environment
      */
     private $environment;
-    
+
     /**
      * @var array
      */
@@ -48,8 +45,8 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
     /**
      * Constructor.
      *
-     * @param CmsManagerSelectorInterface $cmsManagerSelector  A CMS manager selector
-     * @param BlockHelper                 $blockHelper         The Block Helper
+     * @param CmsManagerSelectorInterface $cmsManagerSelector A CMS manager selector
+     * @param BlockHelper                 $blockHelper        The Block Helper
      */
     public function __construct(CmsManagerSelectorInterface $cmsManagerSelector, BlockHelper $blockHelper)
     {
@@ -83,7 +80,7 @@ class DashboardExtension extends \Twig_Extension implements \Twig_Extension_Init
     {
         return 'sonata_dashboard';
     }
-    
+
     /**
      * @param string $template
      * @param array  $parameters

@@ -11,9 +11,9 @@
 
 namespace Sonata\DashboardBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Sonata\DashboardBundle\DependencyInjection\Compiler\GlobalVariablesCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class SonataDashboardBundle.

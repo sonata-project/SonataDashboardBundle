@@ -99,11 +99,11 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
 
         if (!$container) {
             $container = $this->blockInteractor->createNewContainer(array(
-                'enabled' => true,
+                'enabled'   => true,
                 'dashboard' => $dashboard,
-                'code' => $code,
-                'position' => 1,
-                'parent' => $parentContainer,
+                'code'      => $code,
+                'position'  => 1,
+                'parent'    => $parentContainer,
             ));
         }
 

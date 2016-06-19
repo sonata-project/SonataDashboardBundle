@@ -57,8 +57,8 @@ class DashboardAdminController extends CRUDController
         $csrfProvider = $this->get('form.csrf_provider');
 
         return $this->render($this->admin->getTemplate('compose'), array(
-            'object' => $dashboard,
-            'action' => 'edit',
+            'object'     => $dashboard,
+            'action'     => 'edit',
             'containers' => $containers,
             'csrfTokens' => array(
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
@@ -87,8 +87,8 @@ class DashboardAdminController extends CRUDController
 
         return $this->render($this->admin->getTemplate('compose_container_show'), array(
             'blockServices' => $blockServices,
-            'container' => $block,
-            'dashboard' => $block->getDashboard(),
+            'container'     => $block,
+            'dashboard'     => $block->getDashboard(),
         ));
     }
 
@@ -114,9 +114,9 @@ class DashboardAdminController extends CRUDController
         if (!$dashboard) {
             throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
         }
-    
+
         $containers = array();
-    
+
         // separate containers
         foreach ($dashboard->getBlocks() as $block) {
             $blockCode = $block->getSetting('code');
@@ -124,7 +124,7 @@ class DashboardAdminController extends CRUDController
                 $containers[$blockCode] = $block;
             }
         }
-    
+
         $csrfProvider = $this->get('form.csrf_provider');
 
         return $this->render($this->admin->getTemplate('render'), array(
