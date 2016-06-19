@@ -30,6 +30,7 @@ class DashboardAdmin extends Admin
     protected $accessMapping = array(
         'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
+        'render' => 'EDIT',
     );
 
     /**
@@ -41,6 +42,9 @@ class DashboardAdmin extends Admin
             'id' => null,
         ));
         $collection->add('compose_container_show', 'compose/container/{id}', array(
+            'id' => null,
+        ));
+        $collection->add('render', '{id}/render', array(
             'id' => null,
         ));
     }
@@ -139,7 +143,13 @@ class DashboardAdmin extends Admin
             array('uri' => $admin->generateUrl('compose', array('id' => $id)))
         );
 
-        $menu->addChild('sidemenu.link_list_blocks',
+        $menu->addChild(
+            $this->trans('sidemenu.link_render_dashboard'),
+            array('uri' => $admin->generateUrl('render', array('id' => $id)))
+        );
+        
+        $menu->addChild(
+            $this->trans('sidemenu.link_list_blocks'),
             array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))
         );
     }
