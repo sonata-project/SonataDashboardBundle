@@ -74,8 +74,9 @@ class DashboardAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->add('enabled')
             ->add('name')
+            ->add('isDefault')
+            ->add('enabled')
             ->add('edited')
         ;
     }
@@ -87,6 +88,7 @@ class DashboardAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('isDefault')
             ->add('enabled', null, ['editable' => true])
             ->add('edited', null, ['editable' => true])
         ;
@@ -116,6 +118,7 @@ class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
+                ->add('isDefault', null, array('required' => false))
                 ->add('enabled', CheckboxType::class, ['required' => false])
             ->end()
         ;

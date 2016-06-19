@@ -250,6 +250,10 @@
                 <source>sidemenu.link_render_dashboard</source>
                 <target>View Dashboard</target>
             </trans-unit>
+            <trans-unit id="54" resname="dashboard.render_dashboard">
+                <source>dashboard.render_dashboard</source>
+                <target>View of </target>
+            </trans-unit>
             <trans-unit id="63" resname="breadcrumb.link_dashboard_render">
                 <source>breadcrumb.link_dashboard_render</source>
                 <target>View Dashboard</target>
