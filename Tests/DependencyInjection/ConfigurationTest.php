@@ -38,6 +38,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'templates' => array(
                 'compose' => 'MyBundle:MyController:my_template.html.twig',
                 'compose_container_show' => 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig',                            
+                'render' => 'SonataDashboardBundle:DashboardAdmin:render.html.twig',
             ),
             'is_inline_edition_on' => true,
         );
