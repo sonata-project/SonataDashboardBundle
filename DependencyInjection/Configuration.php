@@ -59,6 +59,9 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end()
+            ->scalarNode('is_inline_edition_on')
+                ->defaultTrue()
+            ->end()            
         ;
 
         return $treeBuilder;

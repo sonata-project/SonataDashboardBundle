@@ -40,6 +40,7 @@ class SonataDashboardExtension extends Extension
         $loader->load('admin.xml');
         $loader->load('block.xml');
         $loader->load('orm.xml');
+        $loader->load('twig.xml');
 
         $this->registerDoctrineMapping($config);
         $this->registerParameters($container, $config);
@@ -73,6 +74,8 @@ class SonataDashboardExtension extends Extension
         //    throw new \RuntimeException(sprintf('The container %s must be an existing service', $config['default_container']));
         //}
         $container->setParameter('sonata.dashboard.default_container', $config['default_container']);
+        $container->setParameter('sonata.dashboard.is_inline_edition_on', $config['is_inline_edition_on']);
+        
     }
 
     /**
@@ -178,6 +181,8 @@ class SonataDashboardExtension extends Extension
             'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardManagerInterface',
+            'Sonata\\DashboardBundle\\Twig\\Extension\\DashboardExtension',
+            'Sonata\\DashboardBundle\\Twig\\GlobalVariables',
         ));
     }
 }
