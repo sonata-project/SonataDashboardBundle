@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="sonata.dashboard.cms.dashboard" class="Sonata\DashboardBundle\CmsManager\CmsDashboardManager">
+            <tag name="sonata.dashboard.manager" type="dashboard"/>
+            <argument type="service" id="sonata.dashboard.manager.dashboard"/>
+            <argument type="service" id="sonata.dashboard.block_interactor"/>
+        </service>
+        <service id="sonata.dashboard.cms_manager_selector" class="Sonata\DashboardBundle\CmsManager\CmsManagerSelector">
+            <argument type="service" id="security.authorization_checker"/>
+            <argument type="service" id="sonata.dashboard.cms.dashboard"/>
+        </service>
+    </services>
+</container>

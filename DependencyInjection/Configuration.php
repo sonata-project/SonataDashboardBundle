@@ -57,7 +57,14 @@ class Configuration implements ConfigurationInterface
                         ->defaultValue('SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig')
                         ->info('This value sets the container composer template.')
                     ->end()
+                    ->scalarNode('render')
+                        ->defaultValue('SonataDashboardBundle:DashboardAdmin:render.html.twig')
+                        ->info('This value sets the render template.')
+                    ->end()
                 ->end()
+            ->end()
+            ->scalarNode('is_inline_edition_on')
+                ->defaultTrue()
             ->end()
         ;
 

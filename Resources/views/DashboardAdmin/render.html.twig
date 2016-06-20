@@ -1,0 +1,46 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% if not default == true %}
+            {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+    {{ "title_render"|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataDashboardBundle') }}
+{% endblock %}
+
+{% block navbar_title %}
+    {{ block('title') }}
+{% endblock %}
+
+{% block sonata_page_content %}
+    {% if default == true %}
+        <section class="content">
+            <div class="sonata-ba-content">                
+                {{ block('content') }}
+            </div>
+        </section> 
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for code, container in containers %}
+            {{ sonata_dashboard_render_container(container.name, object) }}
+        {% endfor %}                                    
+    </div>
+{% endblock %}

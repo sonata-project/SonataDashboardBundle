@@ -32,13 +32,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $expected = array(
             'class' => array(
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
-                'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
+                'block'     => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
             ),
             'default_container' => 'sonata.dashboard.block.container',
-            'templates' => array(
-                'compose' => 'MyBundle:MyController:my_template.html.twig',
+            'templates'         => array(
+                'compose'                => 'MyBundle:MyController:my_template.html.twig',
                 'compose_container_show' => 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig',
+                'render'                 => 'SonataDashboardBundle:DashboardAdmin:render.html.twig',
             ),
+            'is_inline_edition_on' => true,
         );
 
         $this->assertEquals($expected, $config);

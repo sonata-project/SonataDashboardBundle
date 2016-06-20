@@ -28,8 +28,9 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class DashboardAdmin extends Admin
 {
     protected $accessMapping = array(
-        'compose' => 'EDIT',
+        'compose'              => 'EDIT',
         'composeContainerShow' => 'LIST',
+        'render'               => 'EDIT',
     );
 
     /**
@@ -41,6 +42,9 @@ class DashboardAdmin extends Admin
             'id' => null,
         ));
         $collection->add('compose_container_show', 'compose/container/{id}', array(
+            'id' => null,
+        ));
+        $collection->add('render', '{id}/render', array(
             'id' => null,
         ));
     }
@@ -67,8 +71,9 @@ class DashboardAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('enabled')
             ->add('name')
+            ->add('isDefault')
+            ->add('enabled')
             ->add('edited')
         ;
     }
@@ -80,6 +85,7 @@ class DashboardAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('isDefault')
             ->add('enabled', null, array('editable' => true))
             ->add('edited', null, array('editable' => true))
         ;
@@ -109,6 +115,7 @@ class DashboardAdmin extends Admin
         $formMapper
             ->with($this->trans('form_dashboard.group_main_label'))
                 ->add('name')
+                ->add('isDefault', null, array('required' => false))
                 ->add('enabled', null, array('required' => false))
             ->end()
         ;
@@ -141,6 +148,11 @@ class DashboardAdmin extends Admin
             array('uri' => $admin->generateUrl('compose', array('id' => $id)))
         );
 
+        $menu->addChild(
+            $this->trans('sidemenu.link_render_dashboard'),
+            array('uri' => $admin->generateUrl('render', array('id' => $id)))
+        );
+        
         $menu->addChild(
             $this->trans('sidemenu.link_list_blocks'),
             array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))

@@ -37,9 +37,9 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
         ));
 
         $blockContext = new BlockContext($block, array(
-            'code' => '',
-            'layout' => '{{ CONTENT }}',
-            'class' => '',
+            'code'     => '',
+            'layout'   => '{{ CONTENT }}',
+            'class'    => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 
@@ -65,9 +65,9 @@ class ContainerBlockServiceTest extends \PHPUnit_Framework_TestCase
 
         // we manually perform the settings merge
         $blockContext = new BlockContext($block, array(
-            'code' => 'block.code',
-            'layout' => 'before{{ CONTENT }}after',
-            'class' => '',
+            'code'     => 'block.code',
+            'layout'   => 'before{{ CONTENT }}after',
+            'class'    => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
         ));
 

@@ -65,7 +65,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
             })
             ->getPager(array(), 1, 10, array(
-                'name' => 'ASC',
+                'name'      => 'ASC',
                 'routeName' => 'DESC',
             ));
     }

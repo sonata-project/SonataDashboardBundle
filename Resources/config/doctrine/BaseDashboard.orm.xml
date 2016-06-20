@@ -3,6 +3,7 @@
     <mapped-superclass name="Sonata\DashboardBundle\Entity\BaseDashboard">
         <field name="enabled" type="boolean" column="enabled" default="false"/>
         <field name="edited" type="boolean" column="edited" default="false"/>
+        <field name="isDefault" type="boolean" column="is_default" default="false"/>
         <field name="name" type="string" column="name" length="255"/>
         <field name="createdAt" type="datetime" column="created_at"/>
         <field name="updatedAt" type="datetime" column="updated_at"/>
