@@ -36,9 +36,10 @@ class SonataDashboardExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $loader->load('dashboard.xml');
         $loader->load('admin.xml');
         $loader->load('block.xml');
+        $loader->load('dashboard.xml');
+        $loader->load('http_kernel.xml');
         $loader->load('orm.xml');
         $loader->load('twig.xml');
 
@@ -72,7 +73,7 @@ class SonataDashboardExtension extends Extension
             'sonata.dashboard.admin.dashboard.templates.render',
             $config['templates']['render']
         );
-        
+
         //@todo : check this container is a service
         //if (!$container->hasDefinition($config['default_container'])) {
         //    throw new \RuntimeException(sprintf('The container %s must be an existing service', $config['default_container']));
@@ -176,6 +177,7 @@ class SonataDashboardExtension extends Extension
             'Sonata\\DashboardBundle\\Entity\\BlockInteractor',
             'Sonata\\DashboardBundle\\Entity\\BlockManager',
             'Sonata\\DashboardBundle\\Entity\\DashboardManager',
+            'Sonata\\DashboardBundle\\Listener\\RequestListener',
             'Sonata\\DashboardBundle\\Model\\Block',
             'Sonata\\DashboardBundle\\Model\\BlockManagerInterface',
             'Sonata\\DashboardBundle\\Model\\BlockInteractorInterface',

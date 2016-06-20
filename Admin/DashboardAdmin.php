@@ -150,7 +150,7 @@ class DashboardAdmin extends Admin
             $this->trans('sidemenu.link_render_dashboard'),
             array('uri' => $admin->generateUrl('render', array('id' => $id)))
         );
-        
+
         $menu->addChild(
             $this->trans('sidemenu.link_list_blocks'),
             array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))
