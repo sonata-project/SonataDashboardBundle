@@ -130,6 +130,10 @@ class DashboardAdminController extends CRUDController
             }
         }
 
+        $dashboards = $this->get('sonata.dashboard.manager.dashboard')->findBy(
+            array(), array('updatedAt' => 'DESC'), 5
+        );
+
         $csrfProvider = $this->get('form.csrf_provider');
 
         return $this->render($this->admin->getTemplate('render'), array(
@@ -137,6 +141,7 @@ class DashboardAdminController extends CRUDController
             'default' => $default,
             'action' => 'edit',
             'containers' => $containers,
+            'dashboards' => $dashboards,
             'csrfTokens' => array(
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
             ),

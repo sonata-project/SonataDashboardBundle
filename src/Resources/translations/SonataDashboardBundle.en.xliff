@@ -278,6 +278,10 @@
                 <source>title_compose</source>
                 <target>Compose "%name%"</target>
             </trans-unit>
+            <trans-unit id="61" resname="title_navbar">
+                <source>title_navbar</source>
+                <target>View</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
