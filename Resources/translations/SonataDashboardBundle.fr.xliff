@@ -274,6 +274,10 @@
                 <source>title_compose</source>
                 <target>Composer "%name%"</target>
             </trans-unit>
+            <trans-unit id="70" resname="title_navbar">
+                <source>title_navbar</source>
+                <target>Apercevoir</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
