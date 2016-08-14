@@ -114,7 +114,7 @@ class DashboardAdmin extends Admin
         ;
 
         $formMapper->setHelps(array(
-            'name' => $this->trans('help_dashboard_name'),
+            'name' => 'help_dashboard_name',
         ));
     }
 
