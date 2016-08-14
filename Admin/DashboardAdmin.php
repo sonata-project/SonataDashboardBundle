@@ -103,11 +103,11 @@ class DashboardAdmin extends Admin
     {
         // define group zoning
         $formMapper
-            ->with($this->trans('form_dashboard.group_main_label'), array('class' => 'col-md-12'))->end()
+            ->with('form_dashboard.group_main_label', array('class' => 'col-md-12'))->end()
         ;
 
         $formMapper
-            ->with($this->trans('form_dashboard.group_main_label'))
+            ->with('form_dashboard.group_main_label')
                 ->add('name')
                 ->add('enabled', null, array('required' => false))
             ->end()
