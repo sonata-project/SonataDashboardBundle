@@ -131,18 +131,15 @@ class DashboardAdmin extends Admin
 
         $id = $admin->getRequest()->get('id');
 
-        $menu->addChild(
-            $this->trans('sidemenu.link_edit_dashboard'),
+        $menu->addChild('sidemenu.link_edit_dashboard',
             array('uri' => $admin->generateUrl('edit', array('id' => $id)))
         );
 
-        $menu->addChild(
-            $this->trans('sidemenu.link_compose_dashboard'),
+        $menu->addChild('sidemenu.link_compose_dashboard',
             array('uri' => $admin->generateUrl('compose', array('id' => $id)))
         );
 
-        $menu->addChild(
-            $this->trans('sidemenu.link_list_blocks'),
+        $menu->addChild('sidemenu.link_list_blocks',
             array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))
         );
     }
