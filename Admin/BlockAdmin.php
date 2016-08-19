@@ -327,7 +327,7 @@ class BlockAdmin extends Admin
             $optionsGroupOptions['name'] = '';
         }
 
-        $formMapper->with($this->trans('form.field_group_general'), $generalGroupOptions);
+        $formMapper->with('form.field_group_general', $generalGroupOptions);
 
         $containerBlockTypes = $this->containerBlockTypes;
         $isContainerRoot = $block && in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
@@ -342,7 +342,7 @@ class BlockAdmin extends Admin
         $formMapper->end();
 
         if ($isContainerRoot || $isStandardBlock) {
-            $formMapper->with($this->trans('form.field_group_general'), $generalGroupOptions);
+            $formMapper->with('form.field_group_general', $generalGroupOptions);
 
             $service = $this->blockManager->get($block);
 
@@ -375,7 +375,7 @@ class BlockAdmin extends Admin
 
             $formMapper->end();
 
-            $formMapper->with($this->trans('form.field_group_options'), $optionsGroupOptions);
+            $formMapper->with('form.field_group_options', $optionsGroupOptions);
 
             if ($block->getId() > 0) {
                 $service->buildEditForm($formMapper, $block);
@@ -398,7 +398,7 @@ class BlockAdmin extends Admin
             $formMapper->end();
         } else {
             $formMapper
-                ->with($this->trans('form.field_group_options'), $optionsGroupOptions)
+                ->with('form.field_group_options', $optionsGroupOptions)
                     ->add('type', 'sonata_block_service_choice', array(
                         'context' => 'sonata_dashboard_bundle',
                     ))
