@@ -12,7 +12,7 @@
 namespace Sonata\DashboardBundle\Admin;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -25,7 +25,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class DashboardAdmin extends Admin
+class DashboardAdmin extends AbstractAdmin
 {
     protected $accessMapping = array(
         'compose' => 'EDIT',

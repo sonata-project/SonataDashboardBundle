@@ -12,7 +12,7 @@
 namespace Sonata\DashboardBundle\Admin;
 
 use Doctrine\ORM\EntityRepository;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -29,7 +29,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class BlockAdmin extends Admin
+class BlockAdmin extends AbstractAdmin
 {
     /**
      * @var BlockServiceManagerInterface

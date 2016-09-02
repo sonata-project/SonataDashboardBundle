@@ -11,7 +11,6 @@
 
 namespace Sonata\DashboardBundle\Tests\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\DashboardBundle\Admin\BlockAdmin;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetName;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetNameNull;
