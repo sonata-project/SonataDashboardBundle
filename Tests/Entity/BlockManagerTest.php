@@ -41,6 +41,7 @@ class BlockManagerTest extends \PHPUnit_Framework_TestCase
 
         $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
         $qb->expects($this->any())->method('getQuery')->will($this->returnValue($query));
+        $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
 
         $qbCallback($qb);
 
