@@ -29,6 +29,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                     $self->equalTo('ASC')
                 );
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array(), 1);
     }
@@ -63,6 +64,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                     )
                 );
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array(), 1, 10, array(
                 'name' => 'ASC',
@@ -77,6 +79,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('enabled' => true)));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array('enabled' => true), 1);
     }
@@ -88,6 +91,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('enabled' => false)));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array('enabled' => false), 1);
     }
@@ -99,6 +103,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('edited' => true)));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array('edited' => true), 1);
     }
@@ -110,6 +115,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('edited' => false)));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
             })
             ->getPager(array('edited' => false), 1);
     }
