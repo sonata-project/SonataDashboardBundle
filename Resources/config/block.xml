@@ -9,5 +9,11 @@
             <argument>sonata.dashboard.block.container</argument>
             <argument type="service" id="templating"/>
         </service>
+
+        <service id="sonata.dashboard.block.ajax" class="Sonata\DashboardBundle\Block\AjaxBlockService">
+            <tag name="sonata.block" />
+            <argument>sonata.dashboard.block.ajax</argument>
+            <argument type="service" id="templating" />
+        </service>
     </services>
 </container>
