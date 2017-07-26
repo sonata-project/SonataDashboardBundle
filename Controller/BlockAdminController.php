@@ -66,16 +66,14 @@ class BlockAdminController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
-     * @return Response
+     * {@inheritdoc}
      */
     public function createAction(Request $request = null)
     {
         $this->admin->checkAccess('create');
 
         if (!$this->admin->getParent()) {
-            throw new NotFoundHttpException('You cannot create a block without a dashboard');
+            throw $this->createNotFoundException('You cannot create a block without a dashboard');
         }
 
         $parameters = $this->admin->getPersistentParameters();
@@ -118,6 +116,9 @@ class BlockAdminController extends Controller
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws HttpException
+     * @throws NotFoundHttpException
      */
     public function switchParentAction(Request $request)
     {
@@ -132,7 +133,7 @@ class BlockAdminController extends Controller
 
         $parent = $this->admin->getObject($parentId);
         if (!$parent) {
-            throw new NotFoundHttpException(sprintf('Unable to find parent block with id %d', $parentId));
+            throw $this->createNotFoundException(sprintf('Unable to find parent block with id %d', $parentId));
         }
 
         $parent->addChildren($block);
@@ -145,6 +146,8 @@ class BlockAdminController extends Controller
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws NotFoundHttpException
      */
     public function composePreviewAction(Request $request)
     {
@@ -153,7 +156,7 @@ class BlockAdminController extends Controller
 
         $container = $block->getParent();
         if (!$container) {
-            throw new NotFoundHttpException('No parent found');
+            throw $this->createNotFoundException('No parent found');
         }
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
@@ -171,13 +174,15 @@ class BlockAdminController extends Controller
      * @param $blockId
      *
      * @return BaseBlock
+     *
+     * @throws NotFoundHttpException
      */
     private function setSubject($blockId)
     {
         /** @var BaseBlock $block */
         $block = $this->admin->getObject($blockId);
         if (!$block) {
-            throw new NotFoundHttpException(sprintf('Unable to find block with id %d', $blockId));
+            throw $this->createNotFoundException(sprintf('Unable to find block with id %d', $blockId));
         }
         $this->admin->setSubject($block);
 
