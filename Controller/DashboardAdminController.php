@@ -31,7 +31,7 @@ class DashboardAdminController extends CRUDController
      *
      * @throws AccessDeniedException
      */
-    public function composeAction(Request $request = null)
+    public function composeAction(Request $request)
     {
         $this->admin->checkAccess('compose');
         if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
@@ -71,7 +71,7 @@ class DashboardAdminController extends CRUDController
      *
      * @return Response
      */
-    public function composeContainerShowAction(Request $request = null)
+    public function composeContainerShowAction(Request $request)
     {
         if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
             throw new AccessDeniedException();
