@@ -90,7 +90,13 @@ class BlockAdminController extends Controller
         } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
             $position = count($dashboard->getBlocks()) + 1;
-            $name = $request->get('name') != '' ? $request->get('name') : $this->admin->trans('composer.default.container.name', array('%position%' => $position), '');
+            $name = $request->get('name');
+
+            if ($name == '') {
+                $name = $this->trans('composer.default.container.name', array(
+                    '%position%' => $position,
+                ), $this->admin->getTranslationDomain());
+            }
 
             $container = $this->get('sonata.dashboard.block_interactor')->createNewContainer(array(
                 'name' => $name,
