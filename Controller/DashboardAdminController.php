@@ -56,7 +56,7 @@ class DashboardAdminController extends CRUDController
 
         $csrfProvider = $this->get('form.csrf_provider');
 
-        return $this->render($template = $this->admin->getTemplate('compose'), array(
+        return $this->render($this->admin->getTemplate('compose'), array(
             'object' => $dashboard,
             'action' => 'edit',
             'containers' => $containers,
@@ -85,10 +85,61 @@ class DashboardAdminController extends CRUDController
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render($template = $this->admin->getTemplate('compose_container_show'), array(
+        return $this->render($this->admin->getTemplate('compose_container_show'), array(
             'blockServices' => $blockServices,
             'container' => $block,
             'dashboard' => $block->getDashboard(),
+        ));
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     *
+     * @throws AccessDeniedException
+     */
+    public function renderAction(Request $request = null)
+    {
+        $this->admin->checkAccess('render');
+        if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
+            throw new AccessDeniedException();
+        }
+
+        // true when renders default dashboard from sonata_admin_dashboard redirect
+        $default = $request->query->get('default');
+
+        $id = $request->get($this->admin->getIdParameter());
+        $dashboard = $this->admin->getObject($id);
+        if (!$dashboard) {
+            throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
+        }
+
+        $containers = array();
+
+        // separate containers
+        foreach ($dashboard->getBlocks() as $block) {
+            $blockCode = $block->getSetting('code');
+            if ($block->getParent() === null) {
+                $containers[$blockCode] = $block;
+            }
+        }
+
+        $dashboards = $this->get('sonata.dashboard.manager.dashboard')->findBy(
+            array(), array('updatedAt' => 'DESC'), 5
+        );
+
+        $csrfProvider = $this->get('form.csrf_provider');
+
+        return $this->render($this->admin->getTemplate('render'), array(
+            'object' => $dashboard,
+            'default' => $default,
+            'action' => 'edit',
+            'containers' => $containers,
+            'dashboards' => $dashboards,
+            'csrfTokens' => array(
+                'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
+            ),
         ));
     }
 }

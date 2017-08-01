@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="sonata.dashboard.twig.extension" class="Sonata\DashboardBundle\Twig\Extension\DashboardExtension" public="false">
+            <tag name="twig.extension"/>
+            <argument type="service" id="sonata.dashboard.cms_manager_selector"/>
+            <argument type="service" id="sonata.block.templating.helper"/>
+        </service>
+        <service id="sonata.dashboard.twig.global" class="Sonata\DashboardBundle\Twig\GlobalVariables">
+            <argument type="service" id="sonata.dashboard.cms_manager_selector"/>
+        </service>
+    </services>
+</container>

@@ -11,6 +11,8 @@
 
 namespace Sonata\DashboardBundle;
 
+use Sonata\DashboardBundle\DependencyInjection\Compiler\GlobalVariablesCompilerPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -20,4 +22,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SonataDashboardBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new GlobalVariablesCompilerPass());
+    }
 }

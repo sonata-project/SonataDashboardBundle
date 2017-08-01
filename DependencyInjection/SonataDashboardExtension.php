@@ -38,7 +38,10 @@ class SonataDashboardExtension extends Extension
 
         $loader->load('admin.xml');
         $loader->load('block.xml');
+        $loader->load('dashboard.xml');
+        $loader->load('http_kernel.xml');
         $loader->load('orm.xml');
+        $loader->load('twig.xml');
 
         $this->registerDoctrineMapping($config);
         $this->registerParameters($container, $config);
@@ -65,6 +68,10 @@ class SonataDashboardExtension extends Extension
         $container->setParameter(
             'sonata.dashboard.admin.dashboard.templates.compose_container_show',
             $config['templates']['compose_container_show']
+        );
+        $container->setParameter(
+            'sonata.dashboard.admin.dashboard.templates.render',
+            $config['templates']['render']
         );
 
         //@todo : check this container is a service
@@ -161,17 +168,25 @@ class SonataDashboardExtension extends Extension
     {
         $this->addClassesToCompile(array(
             'Sonata\\DashboardBundle\\Block\\ContainerBlockService',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerInterface',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerSelector',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsManagerSelectorInterface',
+            'Sonata\\DashboardBundle\\CmsManager\\CmsDashboardManager',
             'Sonata\\DashboardBundle\\Entity\\BaseBlock',
             'Sonata\\DashboardBundle\\Entity\\BaseDashboard',
             'Sonata\\DashboardBundle\\Entity\\BlockInteractor',
             'Sonata\\DashboardBundle\\Entity\\BlockManager',
             'Sonata\\DashboardBundle\\Entity\\DashboardManager',
+            'Sonata\\DashboardBundle\\Listener\\RequestListener',
             'Sonata\\DashboardBundle\\Model\\Block',
+            'Sonata\\DashboardBundle\\Model\\BlockManagerInterface',
             'Sonata\\DashboardBundle\\Model\\BlockInteractorInterface',
             'Sonata\\DashboardBundle\\Model\\Dashboard',
             'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardManagerInterface',
+            'Sonata\\DashboardBundle\\Twig\\Extension\\DashboardExtension',
+            'Sonata\\DashboardBundle\\Twig\\GlobalVariables',
         ));
     }
 }

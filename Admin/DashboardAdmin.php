@@ -30,6 +30,7 @@ class DashboardAdmin extends AbstractAdmin
     protected $accessMapping = array(
         'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
+        'render' => 'EDIT',
     );
 
     /**
@@ -41,6 +42,9 @@ class DashboardAdmin extends AbstractAdmin
             'id' => null,
         ));
         $collection->add('compose_container_show', 'compose/container/{id}', array(
+            'id' => null,
+        ));
+        $collection->add('render', '{id}/render', array(
             'id' => null,
         ));
     }
@@ -67,8 +71,9 @@ class DashboardAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('enabled')
             ->add('name')
+            ->add('isDefault')
+            ->add('enabled')
             ->add('edited')
         ;
     }
@@ -80,6 +85,7 @@ class DashboardAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('isDefault')
             ->add('enabled', null, array('editable' => true))
             ->add('edited', null, array('editable' => true))
         ;
@@ -109,6 +115,7 @@ class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
+                ->add('isDefault', null, array('required' => false))
                 ->add('enabled', null, array('required' => false))
             ->end()
         ;
@@ -139,7 +146,13 @@ class DashboardAdmin extends AbstractAdmin
             array('uri' => $admin->generateUrl('compose', array('id' => $id)))
         );
 
-        $menu->addChild('sidemenu.link_list_blocks',
+        $menu->addChild(
+            $this->trans('sidemenu.link_render_dashboard'),
+            array('uri' => $admin->generateUrl('render', array('id' => $id)))
+        );
+
+        $menu->addChild(
+            $this->trans('sidemenu.link_list_blocks'),
             array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))
         );
     }

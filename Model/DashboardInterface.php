@@ -97,6 +97,18 @@ interface DashboardInterface
     public function getUpdatedAt();
 
     /**
+     * @return bool
+     */
+    public function getIsDefault();
+
+    /**
+     * @param bool $default
+     *
+     * @return DashboardInterface
+     */
+    public function setIsDefault($default);
+
+    /**
      * Add blocs.
      *
      * @param DashboardBlockInterface $block
