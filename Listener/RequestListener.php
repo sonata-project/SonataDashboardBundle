@@ -21,12 +21,12 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-class RequestListener
+final class RequestListener
 {
     /**
      * @var AdminInterface
      */
-    protected $admin;
+    private $admin;
 
     /**
      * Constructor.

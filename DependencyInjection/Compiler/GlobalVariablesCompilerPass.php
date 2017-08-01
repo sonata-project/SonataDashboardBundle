@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-class GlobalVariablesCompilerPass implements CompilerPassInterface
+final class GlobalVariablesCompilerPass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}

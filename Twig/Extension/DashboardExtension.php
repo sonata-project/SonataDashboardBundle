@@ -20,7 +20,7 @@ use Sonata\DashboardBundle\Model\DashboardBlockInterface;
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-class DashboardExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+final class DashboardExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
 {
     /**
      * @var CmsManagerSelectorInterface
