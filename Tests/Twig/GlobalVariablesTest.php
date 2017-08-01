@@ -11,6 +11,7 @@
 
 namespace Sonata\DashboardBundle\Tests\Twig;
 
+use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
 use Sonata\DashboardBundle\Twig\GlobalVariables;
 
 /**
@@ -21,7 +22,7 @@ use Sonata\DashboardBundle\Twig\GlobalVariables;
 final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var CmsManagerSelector
+     * @var CmsManagerSelectorInterface
      */
     private $cmsManagerSelector;
 
@@ -36,9 +37,6 @@ final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
         $this->globals = new GlobalVariables($this->cmsManagerSelector);
     }
 
-    /**
-     * @return CmsManagerInterface
-     */
     public function testGetCmsManager()
     {
         $this->assertInstanceOf('Sonata\DashboardBundle\CmsManager\CmsManagerInterface', $this->globals->getCmsManager());

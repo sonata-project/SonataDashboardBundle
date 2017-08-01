@@ -11,6 +11,7 @@
 
 namespace Sonata\DashboardBundle\Twig;
 
+use Sonata\DashboardBundle\CmsManager\CmsManagerInterface;
 use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
 
 /**
@@ -21,12 +22,12 @@ use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
 final class GlobalVariables
 {
     /**
-     * @var ContainerInterface
+     * @var CmsManagerSelectorInterface
      */
     private $cmsManagerSelector;
 
     /**
-     * @param CmsManagerSelector $cmsManagerSelector
+     * @param CmsManagerSelectorInterface $cmsManagerSelector
      */
     public function __construct(CmsManagerSelectorInterface $cmsManagerSelector)
     {
