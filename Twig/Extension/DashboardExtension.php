@@ -14,13 +14,14 @@ namespace Sonata\DashboardBundle\Twig\Extension;
 use Sonata\BlockBundle\Templating\Helper\BlockHelper;
 use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * DashboardExtension.
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-final class DashboardExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
+final class DashboardExtension extends \Twig_Extension
 {
     /**
      * @var CmsManagerSelectorInterface
@@ -31,16 +32,6 @@ final class DashboardExtension extends \Twig_Extension implements \Twig_Extensio
      * @var BlockHelper
      */
     private $blockHelper;
-
-    /**
-     * @var \Twig_Environment
-     */
-    private $environment;
-
-    /**
-     * @var array
-     */
-    private $resources;
 
     /**
      * Constructor.
@@ -63,14 +54,6 @@ final class DashboardExtension extends \Twig_Extension implements \Twig_Extensio
             new \Twig_SimpleFunction('sonata_dashboard_render_container', array($this, 'renderContainer'), array('is_safe' => array('html'))),
             new \Twig_SimpleFunction('sonata_dashboard_render_block', array($this, 'renderBlock'), array('is_safe' => array('html'))),
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function initRuntime(\Twig_Environment $environment)
-    {
-        $this->environment = $environment;
     }
 
     /**
@@ -124,20 +107,5 @@ final class DashboardExtension extends \Twig_Extension implements \Twig_Extensio
         ), $options);
 
         return $this->blockHelper->render($block, $options);
-    }
-
-    /**
-     * @param string $template
-     * @param array  $parameters
-     *
-     * @return string
-     */
-    private function render($template, array $parameters = array())
-    {
-        if (!isset($this->resources[$template])) {
-            $this->resources[$template] = $this->environment->loadTemplate($template);
-        }
-
-        return $this->resources[$template]->render($parameters);
     }
 }
