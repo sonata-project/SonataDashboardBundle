@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Reference;
 /**
  * GlobalVariablesCompilerPass.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 class GlobalVariablesCompilerPass implements CompilerPassInterface
 {

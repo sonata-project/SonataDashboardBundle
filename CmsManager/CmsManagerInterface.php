@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * The CmsManagerInterface class is in charge of retrieving the correct dashboard.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 interface CmsManagerInterface
 {

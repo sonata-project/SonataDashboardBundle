@@ -16,7 +16,7 @@ use Sonata\DashboardBundle\Twig\GlobalVariables;
 /**
  * GlobalVariables.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
 {

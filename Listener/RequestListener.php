@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  * This class redirect the onKernelRequest event
  * to the correct DashboardAdminController action.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 class RequestListener
 {

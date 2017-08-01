@@ -16,7 +16,7 @@ use Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface;
 /**
  * GlobalVariables.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 final class GlobalVariables
 {

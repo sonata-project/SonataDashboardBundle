@@ -20,7 +20,7 @@ use Sonata\DashboardBundle\Model\DashboardManagerInterface;
 /**
  * The CmsDashboardManager class is in charge of retrieving the dashboard.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 final class CmsDashboardManager extends BaseCmsDashboardManager
 {

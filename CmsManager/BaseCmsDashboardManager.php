@@ -17,7 +17,7 @@ use Sonata\DashboardBundle\Model\DashboardInterface;
 /**
  * Base class CMS Manager.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 abstract class BaseCmsDashboardManager implements CmsManagerInterface
 {

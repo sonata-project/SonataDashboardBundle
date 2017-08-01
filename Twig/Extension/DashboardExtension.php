@@ -18,7 +18,7 @@ use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 /**
  * DashboardExtension.
  *
- * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author Stephane PY <py.stephane1@gmail.com>
  */
 class DashboardExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface
 {
