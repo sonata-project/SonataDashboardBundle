@@ -149,10 +149,11 @@ class DashboardAdmin extends AbstractAdmin
             ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
-        $menu->addChild(
-            $this->trans('sidemenu.link_render_dashboard'),
-            array('uri' => $admin->generateUrl('render', array('id' => $id)))
-        );
+        $menu->addChild('sidemenu.link_render_dashboard', array(
+            'uri' => $admin->generateUrl('render', array(
+                'id' => $id,
+            )),
+        ));
 
         $menu->addChild(
             $this->trans('sidemenu.link_list_blocks'),
