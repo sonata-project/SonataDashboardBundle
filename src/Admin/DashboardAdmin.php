@@ -75,7 +75,7 @@ class DashboardAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('isDefault')
+            ->add('default')
             ->add('enabled')
             ->add('edited')
         ;
@@ -88,7 +88,7 @@ class DashboardAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('isDefault')
+            ->add('default')
             ->add('enabled', null, ['editable' => true])
             ->add('edited', null, ['editable' => true])
         ;
@@ -118,7 +118,7 @@ class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
-                ->add('isDefault', null, array('required' => false))
+                ->add('default', null, array('required' => false))
                 ->add('enabled', CheckboxType::class, ['required' => false])
             ->end()
         ;

@@ -101,14 +101,14 @@ interface DashboardInterface
     /**
      * @return bool
      */
-    public function getIsDefault();
+    public function isDefault();
 
     /**
      * @param bool $default
      *
      * @return DashboardInterface
      */
-    public function setIsDefault($default);
+    public function setDefault($default);
 
     /**
      * Add blocs.

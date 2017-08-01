@@ -58,7 +58,7 @@ abstract class Dashboard implements DashboardInterface
     /**
      * @var bool
      */
-    protected $isDefault;
+    protected $default;
 
     /**
      * {@inheritdoc}
@@ -180,17 +180,17 @@ abstract class Dashboard implements DashboardInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsDefault($default)
+    public function setDefault($default)
     {
-        $this->isDefault = $default;
+        $this->default = $default;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getIsDefault()
+    public function isDefault()
     {
-        return $this->isDefault;
+        return $this->default;
     }
 
     /**
