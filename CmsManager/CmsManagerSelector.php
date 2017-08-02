@@ -23,10 +23,20 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  */
 final class CmsManagerSelector implements CmsManagerSelectorInterface
 {
+    /**
+     * @var CmsManagerInterface
+     */
     private $cmsDashboardManager;
 
+    /**
+     * @var AuthorizationCheckerInterface
+     */
     private $authorizationChecker;
 
+    /**
+     * @param AuthorizationCheckerInterface $authorizationChecker
+     * @param CmsManagerInterface           $cmsDashboardManager
+     */
     public function __construct(AuthorizationCheckerInterface $authorizationChecker, CmsManagerInterface $cmsDashboardManager)
     {
         $this->cmsDashboardManager = $cmsDashboardManager;
@@ -39,7 +49,7 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface
     public function retrieve()
     {
         if ($this->isEditor()) {
-            return $manager = $this->cmsDashboardManager;
+            return $this->cmsDashboardManager;
         }
 
         throw new DashboardNotFoundException('Unable to retrieve the cms manager');

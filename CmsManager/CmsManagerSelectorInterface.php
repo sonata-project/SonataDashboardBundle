@@ -11,6 +11,8 @@
 
 namespace Sonata\DashboardBundle\CmsManager;
 
+use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
+
 /**
  * The CmsManagerSelectorInterface is in charge of retrieving the correct CmsManagerInterface instance.
  *
@@ -20,6 +22,8 @@ interface CmsManagerSelectorInterface
 {
     /**
      * @return CmsManagerInterface
+     *
+     * @throws DashboardNotFoundException
      */
     public function retrieve();
 

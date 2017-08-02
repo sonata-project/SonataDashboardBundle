@@ -108,8 +108,9 @@ class DashboardAdminController extends CRUDController
     public function renderAction(Request $request = null)
     {
         $this->admin->checkAccess('render');
-        if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
-            throw new AccessDeniedException();
+
+        if ($this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
+            throw $this->createAccessDeniedException();
         }
 
         // true when renders default dashboard from sonata_admin_dashboard redirect
@@ -117,7 +118,7 @@ class DashboardAdminController extends CRUDController
         $id = $request->get($this->admin->getIdParameter());
         $dashboard = $this->admin->getObject($id);
         if (!$dashboard) {
-            throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
+            throw $this->createNotFoundException(sprintf('unable to find the dashboard with id : %s', $id));
         }
 
         $containers = array();
