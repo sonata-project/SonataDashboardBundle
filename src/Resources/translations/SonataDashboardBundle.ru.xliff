@@ -250,6 +250,38 @@
                 <source>show.label_edited</source>
                 <target>Отредактирован</target>
             </trans-unit>
+            <trans-unit id="62" resname="sidemenu.link_render_dashboard">
+                <source>sidemenu.link_render_dashboard</source>
+                <target>sidemenu.link_render_dashboard</target>
+            </trans-unit>
+            <trans-unit id="64" resname="breadcrumb.link_dashboard_render">
+                <source>breadcrumb.link_dashboard_render</source>
+                <target>breadcrumb.link_dashboard_render</target>
+            </trans-unit>
+            <trans-unit id="65" resname="form.label_default">
+                <source>form.label_default</source>
+                <target>form.label_default</target>
+            </trans-unit>
+            <trans-unit id="66" resname="list.label_default">
+                <source>list.label_default</source>
+                <target>list.label_default</target>
+            </trans-unit>
+            <trans-unit id="67" resname="show.label_default">
+                <source>show.label_default</source>
+                <target>show.label_default</target>
+            </trans-unit>
+            <trans-unit id="68" resname="title_render">
+                <source>title_render</source>
+                <target>title_render</target>
+            </trans-unit>
+            <trans-unit id="69" resname="title_compose">
+                <source>title_compose</source>
+                <target>title_compose</target>
+            </trans-unit>
+            <trans-unit id="70" resname="title_navbar">
+                <source>title_navbar</source>
+                <target>title_navbar</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

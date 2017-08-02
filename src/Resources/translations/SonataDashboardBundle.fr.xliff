@@ -254,16 +254,16 @@
                 <source>breadcrumb.link_dashboard_render</source>
                 <target>Aperçu d'un tableau de bord</target>
             </trans-unit>
-            <trans-unit id="65" resname="form.label_is_default">
-                <source>form.label_is_default</source>
+            <trans-unit id="65" resname="form.label_default">
+                <source>form.label_default</source>
                 <target>Par défaut</target>
             </trans-unit>
-            <trans-unit id="66" resname="list.label_is_default">
-                <source>list.label_is_default</source>
+            <trans-unit id="66" resname="list.label_default">
+                <source>list.label_default</source>
                 <target>Par défaut</target>
             </trans-unit>
-            <trans-unit id="67" resname="show.label_is_default">
-                <source>show.label_is_default</source>
+            <trans-unit id="67" resname="show.label_default">
+                <source>show.label_default</source>
                 <target>Par défaut</target>
             </trans-unit>
             <trans-unit id="68" resname="title_render">
