@@ -180,23 +180,23 @@
             </trans-unit>
             <trans-unit id="44" resname="compose.preview_error">
                 <source>compose.preview_error</source>
-                <target>compose.preview_error</target>
+                <target>Une erreur s'est produite lors du chargement</target>
             </trans-unit>
             <trans-unit id="45" resname="compose.update_saving">
                 <source>compose.update_saving</source>
-                <target>compose.update_saving</target>
+                <target>Sauvegarde des positions des blocks…</target>
             </trans-unit>
             <trans-unit id="46" resname="compose.update_saved">
                 <source>compose.update_saved</source>
-                <target>compose.update_saved</target>
+                <target>Positions des blocks sauvergardées</target>
             </trans-unit>
             <trans-unit id="47" resname="compose.update_error">
                 <source>compose.update_error</source>
-                <target>compose.update_error</target>
+                <target>Une erreur s'est produite lors de la sauvegarde des positions.</target>
             </trans-unit>
             <trans-unit id="48" resname="compose.status_error">
                 <source>compose.status_error</source>
-                <target>compose.status_error</target>
+                <target>Une erreur s'est produite lors de la sauvgarde des statuts.</target>
             </trans-unit>
             <trans-unit id="49" resname="form.label_code">
                 <source>form.label_code</source>
@@ -212,7 +212,7 @@
             </trans-unit>
             <trans-unit id="52" resname="form.label_template">
                 <source>form.label_template</source>
-                <target>Modèle de page</target>
+                <target>Modèle</target>
             </trans-unit>
             <trans-unit id="53" resname="filter.label_enabled">
                 <source>filter.label_enabled</source>
@@ -249,6 +249,106 @@
             <trans-unit id="61" resname="show.label_edited">
                 <source>show.label_edited</source>
                 <target>Edité</target>
+            </trans-unit>
+            <trans-unit id="62" resname="form.label_title">
+                <source>form.label_title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="63" resname="form.label_url">
+                <source>form.label_url</source>
+                <target>Url</target>
+            </trans-unit>
+            <trans-unit id="64" resname="form.label_icon">
+                <source>form.label_icon</source>
+                <target>Icône</target>
+            </trans-unit>
+            <trans-unit id="65" resname="form.label_color">
+                <source>form.label_color</source>
+                <target>Couleur</target>
+            </trans-unit>
+            <trans-unit id="66" resname="template.widget_simple">
+                <source>template.widget_simple</source>
+                <target>Widget simple</target>
+            </trans-unit>
+            <trans-unit id="67" resname="template.widget_progress">
+                <source>template.widget_progress</source>
+                <target>Widget avec progression</target>
+            </trans-unit>
+            <trans-unit id="68" resname="template.widget_link">
+                <source>template.widget_link</source>
+                <target>Widget avec lien</target>
+            </trans-unit>
+            <trans-unit id="69" resname="form.label_progress">
+                <source>form.label_progress</source>
+                <target>Progression</target>
+            </trans-unit>
+            <trans-unit id="70" resname="form.label_description">
+                <source>form.label_description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="71" resname="form.label_link">
+                <source>form.label_link</source>
+                <target>Lien</target>
+            </trans-unit>
+            <trans-unit id="72" resname="red_color">
+                <source>red_color</source>
+                <target>Rouge</target>
+            </trans-unit>
+            <trans-unit id="73" resname="yellow_color">
+                <source>yellow_color</source>
+                <target>Jaune</target>
+            </trans-unit>
+            <trans-unit id="74" resname="aqua_color">
+                <source>aqua_color</source>
+                <target>Aqua</target>
+            </trans-unit>
+            <trans-unit id="75" resname="blue_color">
+                <source>blue_color</source>
+                <target>Bleu</target>
+            </trans-unit>
+            <trans-unit id="76" resname="light-blue_color">
+                <source>light-blue_color</source>
+                <target>Bleu clair</target>
+            </trans-unit>
+            <trans-unit id="77" resname="green_color">
+                <source>green_color</source>
+                <target>Vert</target>
+            </trans-unit>
+            <trans-unit id="78" resname="navy_color">
+                <source>navy_color</source>
+                <target>Marine</target>
+            </trans-unit>
+            <trans-unit id="79" resname="teal_color">
+                <source>teal_color</source>
+                <target>Ciel</target>
+            </trans-unit>
+            <trans-unit id="80" resname="olive_color">
+                <source>olive_color</source>
+                <target>Olive</target>
+            </trans-unit>
+            <trans-unit id="81" resname="lime_color">
+                <source>lime_color</source>
+                <target>Citron</target>
+            </trans-unit>
+            <trans-unit id="82" resname="orange_color">
+                <source>orange_color</source>
+                <target>Orange</target>
+            </trans-unit>
+            <trans-unit id="83" resname="fuschia_color">
+                <source>fuschia_color</source>
+                <target>Fuschia</target>
+            </trans-unit>
+            <trans-unit id="84" resname="purple_color">
+                <source>purple_color</source>
+                <target>Violet</target>
+            </trans-unit>
+            <trans-unit id="85" resname="maroon_color">
+                <source>maroon_color</source>
+                <target>Marron</target>
+            </trans-unit>
+            <trans-unit id="86" resname="black_color">
+                <source>black_color</source>
+                <target>Noir</target>
             </trans-unit>
         </body>
     </file>

@@ -1,0 +1,16 @@
+{% extends 'SonataDashboardBundle:Block:block_ajax.html.twig' %}
+
+{% block block_content %}
+    <div class="small-box bg-{{ block.settings.color }}">
+        <div class="inner overlay-wrapper sonata-dashboard-ajax-block__refresh-btn">
+            <h3 class="url-data">-</h3>
+            <p>{{ block.settings.title }}</p>
+        </div>
+        <div class="icon">
+            <i class="{{ block.settings.icon }}"></i>
+        </div>
+        <a href="{{ block.settings.link }}" class="small-box-footer">
+            {{ 'form.more_info'|trans({},'SonataDashboardBundle') }} <i class="fa fa-arrow-circle-right"></i>
+        </a>
+    </div>
+{% endblock block_content %}
