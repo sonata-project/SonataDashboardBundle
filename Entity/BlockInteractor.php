@@ -112,6 +112,7 @@ class BlockInteractor implements BlockInteractorInterface
             $em->getConnection()->commit();
         } catch (\Exception $e) {
             $em->getConnection()->rollback();
+
             throw $e;
         }
 
