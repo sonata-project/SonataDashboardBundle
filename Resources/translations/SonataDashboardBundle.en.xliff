@@ -214,6 +214,42 @@
                 <source>form.label_template</source>
                 <target>Template</target>
             </trans-unit>
+            <trans-unit id="53" resname="filter.label_enabled">
+                <source>filter.label_enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="54" resname="filter.label_name">
+                <source>filter.label_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="55" resname="filter.label_edited">
+                <source>filter.label_edited</source>
+                <target>Edited</target>
+            </trans-unit>
+            <trans-unit id="56" resname="filter.label_type">
+                <source>filter.label_type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="57" resname="breadcrumb.link_block_create">
+                <source>breadcrumb.link_block_create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="58" resname="title_select_block_type">
+                <source>title_select_block_type</source>
+                <target>Select a block type</target>
+            </trans-unit>
+            <trans-unit id="59" resname="show.label_enabled">
+                <source>show.label_enabled</source>
+                <target>Enabled</target>
+            </trans-unit>
+            <trans-unit id="60" resname="show.label_name">
+                <source>show.label_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="61" resname="show.label_edited">
+                <source>show.label_edited</source>
+                <target>Edited</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

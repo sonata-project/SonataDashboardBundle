@@ -214,6 +214,42 @@
                 <source>form.label_template</source>
                 <target>form.label_template</target>
             </trans-unit>
+            <trans-unit id="53" resname="filter.label_enabled">
+                <source>filter.label_enabled</source>
+                <target>filter.label_enabled</target>
+            </trans-unit>
+            <trans-unit id="54" resname="filter.label_name">
+                <source>filter.label_name</source>
+                <target>filter.label_name</target>
+            </trans-unit>
+            <trans-unit id="55" resname="filter.label_edited">
+                <source>filter.label_edited</source>
+                <target>filter.label_edited</target>
+            </trans-unit>
+            <trans-unit id="56" resname="filter.label_type">
+                <source>filter.label_type</source>
+                <target>filter.label_type</target>
+            </trans-unit>
+            <trans-unit id="57" resname="breadcrumb.link_block_create">
+                <source>breadcrumb.link_block_create</source>
+                <target>breadcrumb.link_block_create</target>
+            </trans-unit>
+            <trans-unit id="58" resname="title_select_block_type">
+                <source>title_select_block_type</source>
+                <target>title_select_block_type</target>
+            </trans-unit>
+            <trans-unit id="59" resname="show.label_enabled">
+                <source>show.label_enabled</source>
+                <target>show.label_enabled</target>
+            </trans-unit>
+            <trans-unit id="60" resname="show.label_name">
+                <source>show.label_name</source>
+                <target>show.label_name</target>
+            </trans-unit>
+            <trans-unit id="61" resname="show.label_edited">
+                <source>show.label_edited</source>
+                <target>show.label_edited</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
