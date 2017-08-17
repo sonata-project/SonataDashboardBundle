@@ -59,7 +59,7 @@ interface BlockInteractorInterface
      * @param array    $values An array of values for container creation
      * @param \Closure $alter  A closure to alter container created
      *
-     * @return BlockInterface
+     * @return DashboardBlockInterface
      */
     public function createNewContainer(array $values = array(), \Closure $alter = null);
 }

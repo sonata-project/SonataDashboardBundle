@@ -30,18 +30,19 @@ class DashboardAdminController extends CRUDController
      * @return Response
      *
      * @throws AccessDeniedException
+     * @throws NotFoundHttpException
      */
-    public function composeAction(Request $request = null)
+    public function composeAction(Request $request)
     {
         $this->admin->checkAccess('compose');
         if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
-            throw new AccessDeniedException();
+            throw $this->createAccessDeniedException();
         }
 
         $id = $request->get($this->admin->getIdParameter());
         $dashboard = $this->admin->getObject($id);
         if (!$dashboard) {
-            throw new NotFoundHttpException(sprintf('unable to find the dashboard with id : %s', $id));
+            throw $this->createNotFoundException(sprintf('unable to find the dashboard with id : %s', $id));
         }
 
         $containers = array();
@@ -70,17 +71,20 @@ class DashboardAdminController extends CRUDController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws AccessDeniedException
+     * @throws NotFoundHttpException
      */
-    public function composeContainerShowAction(Request $request = null)
+    public function composeContainerShowAction(Request $request)
     {
         if (false === $this->get('sonata.dashboard.admin.block')->isGranted('LIST')) {
-            throw new AccessDeniedException();
+            throw $this->createAccessDeniedException();
         }
 
         $id = $request->get($this->admin->getIdParameter());
         $block = $this->get('sonata.dashboard.admin.block')->getObject($id);
         if (!$block) {
-            throw new NotFoundHttpException(sprintf('unable to find the block with id : %s', $id));
+            throw $this->createNotFoundException(sprintf('unable to find the block with id : %s', $id));
         }
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);

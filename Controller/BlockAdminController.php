@@ -30,7 +30,7 @@ class BlockAdminController extends Controller
      *
      * @return Response
      */
-    public function savePositionAction(Request $request = null)
+    public function savePositionAction(Request $request)
     {
         $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('savePosition');
@@ -66,16 +66,14 @@ class BlockAdminController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
-     * @return Response
+     * {@inheritdoc}
      */
     public function createAction(Request $request = null)
     {
         $this->admin->checkAccess('create');
 
         if (!$this->admin->getParent()) {
-            throw new NotFoundHttpException('You cannot create a block without a dashboard');
+            throw $this->createNotFoundException('You cannot create a block without a dashboard');
         }
 
         $parameters = $this->admin->getPersistentParameters();
@@ -90,7 +88,13 @@ class BlockAdminController extends Controller
         } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
             $position = count($dashboard->getBlocks()) + 1;
-            $name = $request->get('name') != '' ? $request->get('name') : $this->admin->trans('composer.default.container.name', array('%position%' => $position), '');
+            $name = $request->get('name');
+
+            if ($name == '') {
+                $name = $this->trans('composer.default.container.name', array(
+                    '%position%' => $position,
+                ), $this->admin->getTranslationDomain());
+            }
 
             $container = $this->get('sonata.dashboard.block_interactor')->createNewContainer(array(
                 'name' => $name,
@@ -112,8 +116,11 @@ class BlockAdminController extends Controller
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws HttpException
+     * @throws NotFoundHttpException
      */
-    public function switchParentAction(Request $request = null)
+    public function switchParentAction(Request $request)
     {
         $blockId = $request->get('block_id');
         $parentId = $request->get('parent_id');
@@ -126,7 +133,7 @@ class BlockAdminController extends Controller
 
         $parent = $this->admin->getObject($parentId);
         if (!$parent) {
-            throw new NotFoundHttpException(sprintf('Unable to find parent block with id %d', $parentId));
+            throw $this->createNotFoundException(sprintf('Unable to find parent block with id %d', $parentId));
         }
 
         $parent->addChildren($block);
@@ -139,15 +146,17 @@ class BlockAdminController extends Controller
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws NotFoundHttpException
      */
-    public function composePreviewAction(Request $request = null)
+    public function composePreviewAction(Request $request)
     {
         $block = $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('composePreview');
 
         $container = $block->getParent();
         if (!$container) {
-            throw new NotFoundHttpException('No parent found');
+            throw $this->createNotFoundException('No parent found');
         }
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
@@ -165,13 +174,15 @@ class BlockAdminController extends Controller
      * @param $blockId
      *
      * @return BaseBlock
+     *
+     * @throws NotFoundHttpException
      */
     private function setSubject($blockId)
     {
         /** @var BaseBlock $block */
         $block = $this->admin->getObject($blockId);
         if (!$block) {
-            throw new NotFoundHttpException(sprintf('Unable to find block with id %d', $blockId));
+            throw $this->createNotFoundException(sprintf('Unable to find block with id %d', $blockId));
         }
         $this->admin->setSubject($block);
 
