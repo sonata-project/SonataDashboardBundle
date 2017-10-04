@@ -336,7 +336,7 @@ class BlockAdmin extends AbstractAdmin
         if (!$isComposer) {
             $formMapper->add('name');
         } elseif (!$isContainerRoot) {
-            $formMapper->add('name', 'hidden');
+            $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\HiddenType');
         }
 
         $formMapper->end();
@@ -348,7 +348,7 @@ class BlockAdmin extends AbstractAdmin
 
             // need to investigate on this case where $dashboard == null ... this should not be possible
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
-                $formMapper->add('parent', 'entity', array(
+                $formMapper->add('parent', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
                     'class' => $this->getClass(),
                     'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
@@ -364,13 +364,15 @@ class BlockAdmin extends AbstractAdmin
             }
 
             if ($isComposer) {
-                $formMapper->add('enabled', 'hidden', array('data' => true));
+                $formMapper->add('enabled', 'Symfony\Component\Form\Extension\Core\Type\HiddenType', array(
+                    'data' => true,
+                ));
             } else {
                 $formMapper->add('enabled');
             }
 
             if ($isStandardBlock) {
-                $formMapper->add('position', 'integer');
+                $formMapper->add('position', 'Symfony\Component\Form\Extension\Core\Type\IntegerType');
             }
 
             $formMapper->end();
@@ -386,7 +388,9 @@ class BlockAdmin extends AbstractAdmin
             // When editing a container in composer view, hide some settings
             if ($isContainerRoot && $isComposer) {
                 $formMapper->remove('children');
-                $formMapper->add('name', 'text', array('required' => true));
+                $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
+                    'required' => true,
+                ));
 
                 $formSettings = $formMapper->get('settings');
 
@@ -399,11 +403,11 @@ class BlockAdmin extends AbstractAdmin
         } else {
             $formMapper
                 ->with('form.field_group_options', $optionsGroupOptions)
-                    ->add('type', 'sonata_block_service_choice', array(
+                    ->add('type', 'Sonata\BlockBundle\Form\Type\ServiceListType', array(
                         'context' => 'sonata_dashboard_bundle',
                     ))
                     ->add('enabled')
-                    ->add('position', 'integer')
+                    ->add('position', 'Symfony\Component\Form\Extension\Core\Type\IntegerType')
                 ->end()
             ;
         }

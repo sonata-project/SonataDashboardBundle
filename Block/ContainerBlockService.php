@@ -32,18 +32,18 @@ class ContainerBlockService extends BaseContainerBlockService
 
         $formMapper->add('settings', 'sonata_type_immutable_array', array(
             'keys' => array(
-                array('code', 'text', array(
+                array('code', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
                     'required' => false,
                     'label' => 'form.label_code',
                 )),
-                array('layout', 'textarea', array(
+                array('layout', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array(
                     'label' => 'form.label_layout',
                 )),
-                array('class', 'text', array(
+                array('class', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
                     'required' => false,
                     'label' => 'form.label_class',
                 )),
-                array('template', 'sonata_type_container_template_choice', array(
+                array('template', 'Sonata\BlockBundle\Form\Type\ContainerTemplateType', array(
                     'label' => 'form.label_template',
                 )),
             ),
