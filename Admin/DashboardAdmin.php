@@ -27,22 +27,22 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 class DashboardAdmin extends AbstractAdmin
 {
-    protected $accessMapping = array(
+    protected $accessMapping = [
         'compose' => 'EDIT',
         'composeContainerShow' => 'LIST',
-    );
+    ];
 
     /**
      * {@inheritdoc}
      */
     public function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('compose', '{id}/compose', array(
+        $collection->add('compose', '{id}/compose', [
             'id' => null,
-        ));
-        $collection->add('compose_container_show', 'compose/container/{id}', array(
+        ]);
+        $collection->add('compose_container_show', 'compose/container/{id}', [
             'id' => null,
-        ));
+        ]);
     }
 
     /**
@@ -80,8 +80,8 @@ class DashboardAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('enabled', null, array('editable' => true))
-            ->add('edited', null, array('editable' => true))
+            ->add('enabled', null, ['editable' => true])
+            ->add('edited', null, ['editable' => true])
         ;
     }
 
@@ -103,19 +103,19 @@ class DashboardAdmin extends AbstractAdmin
     {
         // define group zoning
         $formMapper
-            ->with('form_dashboard.group_main_label', array('class' => 'col-md-12'))->end()
+            ->with('form_dashboard.group_main_label', ['class' => 'col-md-12'])->end()
         ;
 
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
-                ->add('enabled', null, array('required' => false))
+                ->add('enabled', null, ['required' => false])
             ->end()
         ;
 
-        $formMapper->setHelps(array(
+        $formMapper->setHelps([
             'name' => 'help_dashboard_name',
-        ));
+        ]);
     }
 
     /**
@@ -123,7 +123,7 @@ class DashboardAdmin extends AbstractAdmin
      */
     protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
     {
-        if (!$childAdmin && !in_array($action, array('edit'))) {
+        if (!$childAdmin && !in_array($action, ['edit'])) {
             return;
         }
 
@@ -132,15 +132,15 @@ class DashboardAdmin extends AbstractAdmin
         $id = $admin->getRequest()->get('id');
 
         $menu->addChild('sidemenu.link_edit_dashboard',
-            array('uri' => $admin->generateUrl('edit', array('id' => $id)))
+            ['uri' => $admin->generateUrl('edit', ['id' => $id])]
         );
 
         $menu->addChild('sidemenu.link_compose_dashboard',
-            array('uri' => $admin->generateUrl('compose', array('id' => $id)))
+            ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
         $menu->addChild('sidemenu.link_list_blocks',
-            array('uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', array('id' => $id)))
+            ['uri' => $admin->generateUrl('sonata.dashboard.admin.dashboard|sonata.dashboard.admin.block.list', ['id' => $id])]
         );
     }
 }

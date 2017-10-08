@@ -53,7 +53,7 @@ interface BlockInteractorInterface
      *
      * @return bool
      */
-    public function saveBlocksPosition(array $data = array(), $partial = true);
+    public function saveBlocksPosition(array $data = [], $partial = true);
 
     /**
      * @param array    $values An array of values for container creation
@@ -61,5 +61,5 @@ interface BlockInteractorInterface
      *
      * @return DashboardBlockInterface
      */
-    public function createNewContainer(array $values = array(), \Closure $alter = null);
+    public function createNewContainer(array $values = [], \Closure $alter = null);
 }

@@ -45,7 +45,7 @@ class DashboardAdminController extends CRUDController
             throw $this->createNotFoundException(sprintf('unable to find the dashboard with id : %s', $id));
         }
 
-        $containers = array();
+        $containers = [];
 
         // separate containers.
         foreach ($dashboard->getBlocks() as $block) {
@@ -57,14 +57,14 @@ class DashboardAdminController extends CRUDController
 
         $csrfProvider = $this->get('form.csrf_provider');
 
-        return $this->render($template = $this->admin->getTemplate('compose'), array(
+        return $this->render($template = $this->admin->getTemplate('compose'), [
             'object' => $dashboard,
             'action' => 'edit',
             'containers' => $containers,
-            'csrfTokens' => array(
+            'csrfTokens' => [
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
-            ),
-        ));
+            ],
+        ]);
     }
 
     /**
@@ -89,10 +89,10 @@ class DashboardAdminController extends CRUDController
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render($template = $this->admin->getTemplate('compose_container_show'), array(
+        return $this->render($template = $this->admin->getTemplate('compose_container_show'), [
             'blockServices' => $blockServices,
             'container' => $block,
             'dashboard' => $block->getDashboard(),
-        ));
+        ]);
     }
 }

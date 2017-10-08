@@ -87,71 +87,71 @@ class SonataDashboardExtension extends Extension
 
         $collector = DoctrineCollector::getInstance();
 
-        $collector->addAssociation($config['class']['dashboard'], 'mapOneToMany', array(
+        $collector->addAssociation($config['class']['dashboard'], 'mapOneToMany', [
             'fieldName' => 'blocks',
             'targetEntity' => $config['class']['block'],
-            'cascade' => array(
+            'cascade' => [
                 'remove',
                 'persist',
                 'refresh',
                 'merge',
                 'detach',
-            ),
+            ],
             'mappedBy' => 'dashboard',
             'orphanRemoval' => false,
-            'orderBy' => array(
+            'orderBy' => [
                 'position' => 'ASC',
-            ),
-        ));
+            ],
+        ]);
 
-        $collector->addAssociation($config['class']['block'], 'mapOneToMany', array(
+        $collector->addAssociation($config['class']['block'], 'mapOneToMany', [
             'fieldName' => 'children',
             'targetEntity' => $config['class']['block'],
-            'cascade' => array(
+            'cascade' => [
                 'remove',
                 'persist',
-            ),
+            ],
             'mappedBy' => 'parent',
             'orphanRemoval' => true,
-            'orderBy' => array(
+            'orderBy' => [
                 'position' => 'ASC',
-            ),
-        ));
+            ],
+        ]);
 
-        $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
+        $collector->addAssociation($config['class']['block'], 'mapManyToOne', [
             'fieldName' => 'parent',
             'targetEntity' => $config['class']['block'],
-            'cascade' => array(
-            ),
+            'cascade' => [
+            ],
             'mappedBy' => null,
             'inversedBy' => 'children',
-            'joinColumns' => array(
-                array(
+            'joinColumns' => [
+                [
                     'name' => 'parent_id',
                     'referencedColumnName' => 'id',
                     'onDelete' => 'CASCADE',
-                ),
-            ),
+                ],
+            ],
             'orphanRemoval' => false,
-        ));
+        ]);
 
-        $collector->addAssociation($config['class']['block'], 'mapManyToOne', array(
+        $collector->addAssociation($config['class']['block'], 'mapManyToOne', [
             'fieldName' => 'dashboard',
             'targetEntity' => $config['class']['dashboard'],
-            'cascade' => array(
+            'cascade' => [
                 'persist',
-            ),
+            ],
             'mappedBy' => null,
             'inversedBy' => 'blocks',
-            'joinColumns' => array(
-                array(
+            'joinColumns' => [
+                [
                     'name' => 'dashboard_id',
                     'referencedColumnName' => 'id',
                     'onDelete' => 'CASCADE',
-                ),
-            ),
+                ],
+            ],
             'orphanRemoval' => false,
-        ));
+        ]);
     }
 
     /**
@@ -159,7 +159,7 @@ class SonataDashboardExtension extends Extension
      */
     public function configureClassesToCompile()
     {
-        $this->addClassesToCompile(array(
+        $this->addClassesToCompile([
             'Sonata\\DashboardBundle\\Block\\ContainerBlockService',
             'Sonata\\DashboardBundle\\Entity\\BaseBlock',
             'Sonata\\DashboardBundle\\Entity\\BaseDashboard',
@@ -172,6 +172,6 @@ class SonataDashboardExtension extends Extension
             'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardInterface',
             'Sonata\\DashboardBundle\\Model\\DashboardManagerInterface',
-        ));
+        ]);
     }
 }
