@@ -20,26 +20,26 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $processor = new Processor();
 
-        $config = $processor->processConfiguration(new Configuration(), array(array(
-            'class' => array(
+        $config = $processor->processConfiguration(new Configuration(), [[
+            'class' => [
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
-            ),
-            'templates' => array(
+            ],
+            'templates' => [
                 'compose' => 'MyBundle:MyController:my_template.html.twig',
-            ),
-        )));
+            ],
+        ]]);
 
-        $expected = array(
-            'class' => array(
+        $expected = [
+            'class' => [
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
                 'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
-            ),
+            ],
             'default_container' => 'sonata.dashboard.block.container',
-            'templates' => array(
+            'templates' => [
                 'compose' => 'MyBundle:MyController:my_template.html.twig',
                 'compose_container_show' => 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig',
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $config);
     }

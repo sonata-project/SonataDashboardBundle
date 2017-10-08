@@ -49,7 +49,7 @@ class BlockAdmin extends AbstractAdmin
     /**
      * @var array
      */
-    protected $containerBlockTypes = array();
+    protected $containerBlockTypes = [];
 
     /**
      * @var string
@@ -61,11 +61,11 @@ class BlockAdmin extends AbstractAdmin
      */
     protected $parentAssociationMapping = 'dashboard';
 
-    protected $accessMapping = array(
+    protected $accessMapping = [
         'savePosition' => 'EDIT',
         'switchParent' => 'EDIT',
         'composePreview' => 'EDIT',
-    );
+    ];
 
     /**
      * {@inheritdoc}
@@ -220,7 +220,7 @@ class BlockAdmin extends AbstractAdmin
     public function getPersistentParameters()
     {
         if (!$this->hasRequest()) {
-            return array();
+            return [];
         }
 
         $parameters = parent::getPersistentParameters();
@@ -259,7 +259,7 @@ class BlockAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('type')
             ->add('name')
-            ->add('enabled', null, array('editable' => true))
+            ->add('enabled', null, ['editable' => true])
             ->add('updatedAt')
             ->add('position')
         ;
@@ -286,12 +286,12 @@ class BlockAdmin extends AbstractAdmin
 
         $collection->add('view', $this->getRouterIdParameter().'/view');
         $collection->add('switchParent', 'switch-parent');
-        $collection->add('savePosition', '{block_id}/save-position', array(
+        $collection->add('savePosition', '{block_id}/save-position', [
             'block_id' => null,
-        ));
-        $collection->add('composePreview', '{block_id}/compose_preview', array(
+        ]);
+        $collection->add('composePreview', '{block_id}/compose_preview', [
             'block_id' => null,
-        ));
+        ]);
     }
 
     /**
@@ -321,7 +321,7 @@ class BlockAdmin extends AbstractAdmin
         }
 
         $isComposer = $this->hasRequest() ? $this->getRequest()->get('composer', false) : false;
-        $generalGroupOptions = $optionsGroupOptions = array();
+        $generalGroupOptions = $optionsGroupOptions = [];
         if ($isComposer) {
             $generalGroupOptions['class'] = 'hidden';
             $optionsGroupOptions['name'] = '';
@@ -348,25 +348,25 @@ class BlockAdmin extends AbstractAdmin
 
             // need to investigate on this case where $dashboard == null ... this should not be possible
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
-                $formMapper->add('parent', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
+                $formMapper->add('parent', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', [
                     'class' => $this->getClass(),
                     'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
                             ->andWhere('a.dashboard = :dashboard AND a.type IN (:types)')
-                            ->setParameters(array(
+                            ->setParameters([
                                 'dashboard' => $dashboard,
                                 'types' => $containerBlockTypes,
-                            ));
+                            ]);
                     },
-                ), array(
+                ], [
                     'admin_code' => $this->getCode(),
-                ));
+                ]);
             }
 
             if ($isComposer) {
-                $formMapper->add('enabled', 'Symfony\Component\Form\Extension\Core\Type\HiddenType', array(
+                $formMapper->add('enabled', 'Symfony\Component\Form\Extension\Core\Type\HiddenType', [
                     'data' => true,
-                ));
+                ]);
             } else {
                 $formMapper->add('enabled');
             }
@@ -388,9 +388,9 @@ class BlockAdmin extends AbstractAdmin
             // When editing a container in composer view, hide some settings
             if ($isContainerRoot && $isComposer) {
                 $formMapper->remove('children');
-                $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
+                $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
                     'required' => true,
-                ));
+                ]);
 
                 $formSettings = $formMapper->get('settings');
 
@@ -403,9 +403,9 @@ class BlockAdmin extends AbstractAdmin
         } else {
             $formMapper
                 ->with('form.field_group_options', $optionsGroupOptions)
-                    ->add('type', 'Sonata\BlockBundle\Form\Type\ServiceListType', array(
+                    ->add('type', 'Sonata\BlockBundle\Form\Type\ServiceListType', [
                         'context' => 'sonata_dashboard_bundle',
-                    ))
+                    ])
                     ->add('enabled')
                     ->add('position', 'Symfony\Component\Form\Extension\Core\Type\IntegerType')
                 ->end()

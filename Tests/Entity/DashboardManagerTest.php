@@ -28,10 +28,10 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                     $self->equalTo('d.name'),
                     $self->equalTo('ASC')
                 );
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo([]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array(), 1);
+            ->getPager([], 1);
     }
 
     /**
@@ -44,7 +44,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $this
             ->getDashboardManager(function ($qb) use ($self) {
             })
-            ->getPager(array(), 1, 10, array('invalid' => 'ASC'));
+            ->getPager([], 1, 10, ['invalid' => 'ASC']);
     }
 
     public function testGetPagerWithMultipleSort()
@@ -63,13 +63,13 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
                         $self->equalTo('DESC')
                     )
                 );
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array()));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo([]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array(), 1, 10, array(
+            ->getPager([], 1, 10, [
                 'name' => 'ASC',
                 'routeName' => 'DESC',
-            ));
+            ]);
     }
 
     public function testGetPagerWithEnabledPages()
@@ -78,10 +78,10 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $this
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('enabled' => true)));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['enabled' => true]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array('enabled' => true), 1);
+            ->getPager(['enabled' => true], 1);
     }
 
     public function testGetPagerWithDisabledPages()
@@ -90,10 +90,10 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $this
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('enabled' => false)));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['enabled' => false]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array('enabled' => false), 1);
+            ->getPager(['enabled' => false], 1);
     }
 
     public function testGetPagerWithEditedPages()
@@ -102,10 +102,10 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $this
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('edited' => true)));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => true]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array('edited' => true), 1);
+            ->getPager(['edited' => true], 1);
     }
 
     public function testGetPagerWithNonEditedPages()
@@ -114,20 +114,20 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $this
             ->getDashboardManager(function ($qb) use ($self) {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(array('edited' => false)));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue(array()));
+                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => false]));
+                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
             })
-            ->getPager(array('edited' => false), 1);
+            ->getPager(['edited' => false], 1);
     }
 
     protected function getDashboardManager($qbCallback)
     {
-        $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', array(), '', false, true, true, array('execute'));
+        $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', [], '', false, true, true, ['execute']);
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));
 
-        $qb = $this->getMock('Doctrine\ORM\QueryBuilder', array(), array(
+        $qb = $this->getMock('Doctrine\ORM\QueryBuilder', [], [
             $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
-        ));
+        ]);
 
         $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
         $qb->expects($this->any())->method('getQuery')->will($this->returnValue($query));
@@ -138,10 +138,10 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $repository->expects($this->any())->method('createQueryBuilder')->will($this->returnValue($qb));
 
         $metadata = $this->getMock('Doctrine\Common\Persistence\Mapping\ClassMetadata');
-        $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue(array(
+        $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue([
             'name',
             'routeName',
-        )));
+        ]));
 
         $em = $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock();
         $em->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
