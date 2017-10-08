@@ -58,7 +58,7 @@ abstract class Dashboard implements DashboardInterface
      */
     public function __construct()
     {
-        $this->blocks = array();
+        $this->blocks = [];
         $this->edited = true;
     }
 

@@ -30,32 +30,32 @@ class ContainerBlockService extends BaseContainerBlockService
     {
         $formMapper->add('enabled');
 
-        $formMapper->add('settings', 'sonata_type_immutable_array', array(
-            'keys' => array(
-                array('code', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
+        $formMapper->add('settings', 'sonata_type_immutable_array', [
+            'keys' => [
+                ['code', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
                     'required' => false,
                     'label' => 'form.label_code',
-                )),
-                array('layout', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', array(
+                ]],
+                ['layout', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', [
                     'label' => 'form.label_layout',
-                )),
-                array('class', 'Symfony\Component\Form\Extension\Core\Type\TextType', array(
+                ]],
+                ['class', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
                     'required' => false,
                     'label' => 'form.label_class',
-                )),
-                array('template', 'Sonata\BlockBundle\Form\Type\ContainerTemplateType', array(
+                ]],
+                ['template', 'Sonata\BlockBundle\Form\Type\ContainerTemplateType', [
                     'label' => 'form.label_template',
-                )),
-            ),
+                ]],
+            ],
             'translation_domain' => 'SonataDashboardBundle',
-        ));
+        ]);
 
-        $formMapper->add('children', 'sonata_type_collection', array(), array(
+        $formMapper->add('children', 'sonata_type_collection', [], [
             'admin_code' => 'sonata.dashboard.admin.block',
             'edit' => 'inline',
             'inline' => 'table',
             'sortable' => 'position',
-        ));
+        ]);
     }
 
     /**
@@ -63,12 +63,12 @@ class ContainerBlockService extends BaseContainerBlockService
      */
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'code' => '',
             'layout' => '{{ CONTENT }}',
             'class' => '',
             'color' => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
-        ));
+        ]);
     }
 }

@@ -46,23 +46,23 @@ class BlockAdminController extends Controller
             $status = 200;
         } catch (HttpException $e) {
             $status = $e->getStatusCode();
-            $result = array(
+            $result = [
                 'exception' => get_class($e),
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
-            );
+            ];
         } catch (\Exception $e) {
             $status = 500;
-            $result = array(
+            $result = [
                 'exception' => get_class($e),
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
-            );
+            ];
         }
 
         $result = ($result === true) ? 'ok' : $result;
 
-        return $this->renderJson(array('result' => $result), $status);
+        return $this->renderJson(['result' => $result], $status);
     }
 
     /**
@@ -79,34 +79,34 @@ class BlockAdminController extends Controller
         $parameters = $this->admin->getPersistentParameters();
 
         if (!$parameters['type']) {
-            return $this->render('SonataDashboardBundle:BlockAdmin:select_type.html.twig', array(
+            return $this->render('SonataDashboardBundle:BlockAdmin:select_type.html.twig', [
                 'services' => $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle'),
                 'base_template' => $this->getBaseTemplate(),
                 'admin' => $this->admin,
                 'action' => 'create',
-            ));
+            ]);
         } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
             $position = count($dashboard->getBlocks()) + 1;
             $name = $request->get('name');
 
             if ($name == '') {
-                $name = $this->trans('composer.default.container.name', array(
+                $name = $this->trans('composer.default.container.name', [
                     '%position%' => $position,
-                ), $this->admin->getTranslationDomain());
+                ], $this->admin->getTranslationDomain());
             }
 
-            $container = $this->get('sonata.dashboard.block_interactor')->createNewContainer(array(
+            $container = $this->get('sonata.dashboard.block_interactor')->createNewContainer([
                 'name' => $name,
                 'dashboard' => $dashboard,
                 'position' => $position,
                 'code' => $name,
-            ));
+            ]);
 
-            return $this->render('SonataDashboardBundle:BlockAdmin:block_container.html.twig', array(
+            return $this->render('SonataDashboardBundle:BlockAdmin:block_container.html.twig', [
                 'admin' => $this->admin->getParent(),
                 'object' => $container,
-            ));
+            ]);
         }
 
         return parent::createAction();
@@ -139,7 +139,7 @@ class BlockAdminController extends Controller
         $parent->addChildren($block);
         $this->admin->update($parent);
 
-        return $this->renderJson(array('result' => 'ok'));
+        return $this->renderJson(['result' => 'ok']);
     }
 
     /**
@@ -161,11 +161,11 @@ class BlockAdminController extends Controller
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render('SonataDashboardBundle:BlockAdmin:compose_preview.html.twig', array(
+        return $this->render('SonataDashboardBundle:BlockAdmin:compose_preview.html.twig', [
             'container' => $container,
             'child' => $block,
             'blockServices' => $blockServices,
-        ));
+        ]);
     }
 
     /**

@@ -31,16 +31,16 @@ class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
         $block = new Block();
         $block->setName('block.name');
         $block->setType('core.container');
-        $block->setSettings(array(
+        $block->setSettings([
             'code' => 'block.code',
-        ));
+        ]);
 
-        $blockContext = new BlockContext($block, array(
+        $blockContext = new BlockContext($block, [
             'code' => '',
             'layout' => '{{ CONTENT }}',
             'class' => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
-        ));
+        ]);
 
         $service->execute($blockContext);
 
@@ -62,12 +62,12 @@ class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
         $block->setType('core.container');
 
         // we manually perform the settings merge
-        $blockContext = new BlockContext($block, array(
+        $blockContext = new BlockContext($block, [
             'code' => 'block.code',
             'layout' => 'before{{ CONTENT }}after',
             'class' => '',
             'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
-        ));
+        ]);
 
         $service->execute($blockContext);
 
@@ -88,11 +88,11 @@ class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
         $block = new Block();
         $block->setName('block.name');
         $block->setType('core.container');
-        $block->setSettings(array(
+        $block->setSettings([
             'name' => 'block.code',
-        ));
+        ]);
 
-        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', array(), array(), '', false);
+        $formMapper = $this->getMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
         $formMapper->expects($this->exactly(6))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
