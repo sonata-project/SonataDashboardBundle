@@ -19,6 +19,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * Admin definition for the Dashboard class.
@@ -109,7 +110,7 @@ class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
-                ->add('enabled', null, ['required' => false])
+                ->add('enabled', CheckboxType::class, ['required' => false])
             ->end()
         ;
 

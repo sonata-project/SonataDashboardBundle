@@ -13,7 +13,12 @@ namespace Sonata\DashboardBundle\Block;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\Service\ContainerBlockService as BaseContainerBlockService;
+use Sonata\BlockBundle\Form\Type\ContainerTemplateType;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\CoreBundle\Form\Type\CollectionType;
+use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
@@ -30,27 +35,27 @@ class ContainerBlockService extends BaseContainerBlockService
     {
         $formMapper->add('enabled');
 
-        $formMapper->add('settings', 'sonata_type_immutable_array', [
+        $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
-                ['code', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
+                ['code', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_code',
                 ]],
-                ['layout', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', [
+                ['layout', TextareaType::class, [
                     'label' => 'form.label_layout',
                 ]],
-                ['class', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
+                ['class', TextType::class, [
                     'required' => false,
                     'label' => 'form.label_class',
                 ]],
-                ['template', 'Sonata\BlockBundle\Form\Type\ContainerTemplateType', [
+                ['template', ContainerTemplateType::class, [
                     'label' => 'form.label_template',
                 ]],
             ],
             'translation_domain' => 'SonataDashboardBundle',
         ]);
 
-        $formMapper->add('children', 'sonata_type_collection', [], [
+        $formMapper->add('children', CollectionType::class, [], [
             'admin_code' => 'sonata.dashboard.admin.block',
             'edit' => 'inline',
             'inline' => 'table',
