@@ -18,9 +18,14 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\BlockBundle\Block\BlockServiceManagerInterface;
+use Sonata\BlockBundle\Form\Type\ServiceListType;
 use Sonata\Cache\CacheManagerInterface;
 use Sonata\DashboardBundle\Entity\BaseBlock;
 use Sonata\DashboardBundle\Model\DashboardInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -336,7 +341,7 @@ class BlockAdmin extends AbstractAdmin
         if (!$isComposer) {
             $formMapper->add('name');
         } elseif (!$isContainerRoot) {
-            $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\HiddenType');
+            $formMapper->add('name', HiddenType::class);
         }
 
         $formMapper->end();
@@ -348,7 +353,7 @@ class BlockAdmin extends AbstractAdmin
 
             // need to investigate on this case where $dashboard == null ... this should not be possible
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
-                $formMapper->add('parent', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', [
+                $formMapper->add('parent', EntityType::class, [
                     'class' => $this->getClass(),
                     'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
@@ -364,7 +369,7 @@ class BlockAdmin extends AbstractAdmin
             }
 
             if ($isComposer) {
-                $formMapper->add('enabled', 'Symfony\Component\Form\Extension\Core\Type\HiddenType', [
+                $formMapper->add('enabled', HiddenType::class, [
                     'data' => true,
                 ]);
             } else {
@@ -372,7 +377,7 @@ class BlockAdmin extends AbstractAdmin
             }
 
             if ($isStandardBlock) {
-                $formMapper->add('position', 'Symfony\Component\Form\Extension\Core\Type\IntegerType');
+                $formMapper->add('position', IntegerType::class);
             }
 
             $formMapper->end();
@@ -388,7 +393,7 @@ class BlockAdmin extends AbstractAdmin
             // When editing a container in composer view, hide some settings
             if ($isContainerRoot && $isComposer) {
                 $formMapper->remove('children');
-                $formMapper->add('name', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
+                $formMapper->add('name', TextType::class, [
                     'required' => true,
                 ]);
 
@@ -403,11 +408,11 @@ class BlockAdmin extends AbstractAdmin
         } else {
             $formMapper
                 ->with('form.field_group_options', $optionsGroupOptions)
-                    ->add('type', 'Sonata\BlockBundle\Form\Type\ServiceListType', [
+                    ->add('type', ServiceListType::class, [
                         'context' => 'sonata_dashboard_bundle',
                     ])
                     ->add('enabled')
-                    ->add('position', 'Symfony\Component\Form\Extension\Core\Type\IntegerType')
+                    ->add('position', IntegerType::class)
                 ->end()
             ;
         }
