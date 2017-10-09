@@ -153,25 +153,4 @@ class SonataDashboardExtension extends Extension
             'orphanRemoval' => false,
         ]);
     }
-
-    /**
-     * Add class to compile.
-     */
-    public function configureClassesToCompile()
-    {
-        $this->addClassesToCompile([
-            'Sonata\\DashboardBundle\\Block\\ContainerBlockService',
-            'Sonata\\DashboardBundle\\Entity\\BaseBlock',
-            'Sonata\\DashboardBundle\\Entity\\BaseDashboard',
-            'Sonata\\DashboardBundle\\Entity\\BlockInteractor',
-            'Sonata\\DashboardBundle\\Entity\\BlockManager',
-            'Sonata\\DashboardBundle\\Entity\\DashboardManager',
-            'Sonata\\DashboardBundle\\Model\\Block',
-            'Sonata\\DashboardBundle\\Model\\BlockInteractorInterface',
-            'Sonata\\DashboardBundle\\Model\\Dashboard',
-            'Sonata\\DashboardBundle\\Model\\DashboardBlockInterface',
-            'Sonata\\DashboardBundle\\Model\\DashboardInterface',
-            'Sonata\\DashboardBundle\\Model\\DashboardManagerInterface',
-        ]);
-    }
 }
