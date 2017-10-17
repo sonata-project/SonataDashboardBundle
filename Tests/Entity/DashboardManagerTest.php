@@ -11,12 +11,13 @@
 
 namespace Sonata\DashboardBundle\Tests\Entity;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\DashboardBundle\Entity\DashboardManager;
 
 /**
  * Class DashboardManagerTest.
  */
-class DashboardManagerTest extends \PHPUnit_Framework_TestCase
+class DashboardManagerTest extends TestCase
 {
     public function testGetPager()
     {
@@ -125,7 +126,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', [], '', false, true, true, ['execute']);
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));
 
-        $qb = $this->getMock('Doctrine\ORM\QueryBuilder', [], [
+        $qb = $this->createMock('Doctrine\ORM\QueryBuilder', [], [
             $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock(),
         ]);
 
@@ -137,7 +138,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $repository = $this->getMockBuilder('Doctrine\ORM\EntityRepository')->disableOriginalConstructor()->getMock();
         $repository->expects($this->any())->method('createQueryBuilder')->will($this->returnValue($qb));
 
-        $metadata = $this->getMock('Doctrine\Common\Persistence\Mapping\ClassMetadata');
+        $metadata = $this->createMock('Doctrine\Common\Persistence\Mapping\ClassMetadata');
         $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue([
             'name',
             'routeName',
@@ -147,7 +148,7 @@ class DashboardManagerTest extends \PHPUnit_Framework_TestCase
         $em->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
         $em->expects($this->any())->method('getClassMetadata')->will($this->returnValue($metadata));
 
-        $registry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $registry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
         $registry->expects($this->any())->method('getManagerForClass')->will($this->returnValue($em));
 
         return new DashboardManager('Sonata\DashboardBundle\Entity\BaseDashboard', $registry);
