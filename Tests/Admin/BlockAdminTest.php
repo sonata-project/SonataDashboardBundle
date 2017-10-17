@@ -11,6 +11,7 @@
 
 namespace Sonata\DashboardBundle\Tests\Admin;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\DashboardBundle\Admin\BlockAdmin;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetName;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooGetNameNull;
@@ -22,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Stéphane Paté <st.pate@orange.fr>
  */
-final class BlockAdminTest extends \PHPUnit_Framework_TestCase
+final class BlockAdminTest extends TestCase
 {
     public function testToString()
     {

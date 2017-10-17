@@ -11,9 +11,10 @@
 
 namespace Sonata\DashboardBundle\Tests\Entity;
 
+use PHPUnit\Framework\TestCase;
 use Sonata\DashboardBundle\Tests\Model\Dashboard;
 
-class DashboardTest extends \PHPUnit_Framework_TestCase
+class DashboardTest extends TestCase
 {
     public function testGetterSetter()
     {
