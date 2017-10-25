@@ -13,7 +13,7 @@ php:
   - nightly
 
 sudo: false
-dist: precise
+dist: trusty
 
 cache:
   pip: true
@@ -60,7 +60,6 @@ matrix:
     - php: '7.1'
       env: SYMFONY_DEPRECATIONS_HELPER=0
     - php: hhvm
-      dist: trusty
   allow_failures:
     - php: nightly
     - php: hhvm
