@@ -315,7 +315,7 @@ class BlockAdmin extends AbstractAdmin
                 throw new \RuntimeException('The BlockAdmin must be attached to a parent DashboardAdmin');
             }
 
-            if ($block->getId() === null) { // new block
+            if (null === $block->getId()) { // new block
                 $block->setType($this->request->get('type'));
                 $block->setDashboard($dashboard);
             }

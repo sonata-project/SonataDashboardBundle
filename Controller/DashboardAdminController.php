@@ -50,7 +50,7 @@ class DashboardAdminController extends CRUDController
         // separate containers.
         foreach ($dashboard->getBlocks() as $block) {
             $blockCode = $block->getSetting('code');
-            if ($block->getParent() === null) {
+            if (null === $block->getParent()) {
                 $containers[$blockCode]['block'] = $block;
             }
         }
