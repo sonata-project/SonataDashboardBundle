@@ -22,7 +22,7 @@ enabled:
 
 finder:
   exclude:
-    - 'tests/Fixtures'
+    - 'Tests/Fixtures'
     - 'tests/Fixtures'
     # ecommerce special case:
     - 'Resources/skeleton'
