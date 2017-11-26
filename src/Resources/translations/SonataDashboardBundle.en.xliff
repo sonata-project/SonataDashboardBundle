@@ -192,7 +192,7 @@
             </trans-unit>
             <trans-unit id="47" resname="compose.update_error">
                 <source>compose.update_error</source>
-                <target>A error occured while saving block positions.</target>
+                <target>An error occured while saving block positions.</target>
             </trans-unit>
             <trans-unit id="48" resname="compose.status_error">
                 <source>compose.status_error</source>

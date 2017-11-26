@@ -180,23 +180,23 @@
             </trans-unit>
             <trans-unit id="44" resname="compose.preview_error">
                 <source>compose.preview_error</source>
-                <target>compose.preview_error</target>
+                <target>Une erreur est survenue lors de la generation de l'aperçu du bloc</target>
             </trans-unit>
             <trans-unit id="45" resname="compose.update_saving">
                 <source>compose.update_saving</source>
-                <target>compose.update_saving</target>
+                <target>Sauvegarde des positions des blocs…</target>
             </trans-unit>
             <trans-unit id="46" resname="compose.update_saved">
                 <source>compose.update_saved</source>
-                <target>compose.update_saved</target>
+                <target>Positions des blocs sauvegardées</target>
             </trans-unit>
             <trans-unit id="47" resname="compose.update_error">
                 <source>compose.update_error</source>
-                <target>compose.update_error</target>
+                <target>Une erreur est survenue lors de la sauvegarde des blocs</target>
             </trans-unit>
             <trans-unit id="48" resname="compose.status_error">
                 <source>compose.status_error</source>
-                <target>compose.status_error</target>
+                <target>Une erreur est survenue lors de l'activation du bloc</target>
             </trans-unit>
             <trans-unit id="49" resname="form.label_code">
                 <source>form.label_code</source>
