@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -25,7 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 final class BlockAdminTest extends TestCase
 {
-    public function testToString()
+    public function testToString(): void
     {
         $admin = new BlockAdmin(
             'sonata.dashboard.admin.block',
@@ -43,7 +45,7 @@ final class BlockAdminTest extends TestCase
         $this->assertSame('NoGetName', $admin->toString($s));
     }
 
-    public function testGetPersistentParameters()
+    public function testGetPersistentParameters(): void
     {
         $admin = new BlockAdmin(
             'sonata.dashboard.admin.block',

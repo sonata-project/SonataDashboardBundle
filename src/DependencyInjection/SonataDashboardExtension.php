@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -28,7 +30,7 @@ class SonataDashboardExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $processor = new Processor();
         $configuration = new Configuration();
@@ -50,7 +52,7 @@ class SonataDashboardExtension extends Extension
      * @param ContainerBuilder $container Container builder
      * @param array            $config    Array of configuration
      */
-    public function registerParameters(ContainerBuilder $container, array $config)
+    public function registerParameters(ContainerBuilder $container, array $config): void
     {
         $container->setParameter('sonata.dashboard.block.class', $config['class']['block']);
         $container->setParameter('sonata.dashboard.dashboard.class', $config['class']['dashboard']);
@@ -79,7 +81,7 @@ class SonataDashboardExtension extends Extension
      *
      * @param array $config
      */
-    public function registerDoctrineMapping(array $config)
+    public function registerDoctrineMapping(array $config): void
     {
         if (!class_exists($config['class']['dashboard'])) {
             return;

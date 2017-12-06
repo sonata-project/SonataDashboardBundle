@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -27,10 +29,10 @@ class DashboardAdminController extends CRUDController
     /**
      * @param Request $request
      *
-     * @return Response
-     *
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
+     *
+     * @return Response
      */
     public function composeAction(Request $request)
     {
@@ -70,10 +72,10 @@ class DashboardAdminController extends CRUDController
     /**
      * @param Request $request
      *
-     * @return Response
-     *
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
+     *
+     * @return Response
      */
     public function composeContainerShowAction(Request $request)
     {

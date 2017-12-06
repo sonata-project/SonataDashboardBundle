@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -115,10 +117,10 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return Response
-     *
      * @throws HttpException
      * @throws NotFoundHttpException
+     *
+     * @return Response
      */
     public function switchParentAction(Request $request)
     {
@@ -145,9 +147,9 @@ class BlockAdminController extends Controller
     /**
      * @param Request $request
      *
-     * @return Response
-     *
      * @throws NotFoundHttpException
+     *
+     * @return Response
      */
     public function composePreviewAction(Request $request)
     {
@@ -173,9 +175,9 @@ class BlockAdminController extends Controller
      *
      * @param $blockId
      *
-     * @return BaseBlock
-     *
      * @throws NotFoundHttpException
+     *
+     * @return BaseBlock
      */
     private function setSubject($blockId)
     {
