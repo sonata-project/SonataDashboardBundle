@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -16,7 +18,7 @@ use Sonata\DashboardBundle\Tests\Model\Dashboard;
 
 class DashboardTest extends TestCase
 {
-    public function testGetterSetter()
+    public function testGetterSetter(): void
     {
         $dashboard = new Dashboard();
         $dashboard->setEnabled(true);

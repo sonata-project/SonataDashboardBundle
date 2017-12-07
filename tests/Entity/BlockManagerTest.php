@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -19,11 +21,11 @@ use Sonata\DashboardBundle\Entity\BlockManager;
  */
 class BlockManagerTest extends TestCase
 {
-    public function testGetPager()
+    public function testGetPager(): void
     {
         $self = $this;
         $this
-            ->getBlockManager(function ($qb) use ($self) {
+            ->getBlockManager(function ($qb) use ($self): void {
                 $qb->expects($self->never())->method('join');
                 $qb->expects($self->never())->method('andWhere');
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo([]));

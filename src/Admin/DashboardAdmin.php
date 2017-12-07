@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -36,7 +38,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    public function configureRoutes(RouteCollection $collection)
+    public function configureRoutes(RouteCollection $collection): void
     {
         $collection->add('compose', '{id}/compose', [
             'id' => null,
@@ -49,7 +51,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    public function preUpdate($object)
+    public function preUpdate($object): void
     {
         $object->setEdited(true);
     }
@@ -57,7 +59,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    public function prePersist($object)
+    public function prePersist($object): void
     {
         $object->setEdited(true);
     }
@@ -65,7 +67,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
             ->add('enabled')
@@ -77,7 +79,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
             ->addIdentifier('name')
@@ -89,7 +91,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
             ->add('name')
@@ -100,7 +102,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         // define group zoning
         $formMapper
@@ -122,7 +124,7 @@ class DashboardAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+    protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null): void
     {
         if (!$childAdmin && !in_array($action, ['edit'])) {
             return;

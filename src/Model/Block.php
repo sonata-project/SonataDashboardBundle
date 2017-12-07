@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -29,7 +31,7 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
     /**
      * {@inheritdoc}
      */
-    public function addChildren(BlockInterface $child)
+    public function addChildren(BlockInterface $child): void
     {
         $this->children[] = $child;
 
@@ -43,7 +45,7 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
     /**
      * {@inheritdoc}
      */
-    public function setDashboard(DashboardInterface $dashboard = null)
+    public function setDashboard(DashboardInterface $dashboard = null): void
     {
         $this->dashboard = $dashboard;
     }
