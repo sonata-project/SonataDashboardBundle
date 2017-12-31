@@ -32,7 +32,6 @@ env:
     - SYMFONY_DEPRECATIONS_HELPER=weak
     - TARGET=test
     - UPSTREAM_URL=https://github.com/sonata-project/SonataDashboardBundle.git
-    - XMLLINT_INDENT="    "
 
 matrix:
   fast_finish: true
