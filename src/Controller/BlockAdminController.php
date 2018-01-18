@@ -81,7 +81,7 @@ class BlockAdminController extends Controller
         $parameters = $this->admin->getPersistentParameters();
 
         if (!$parameters['type']) {
-            return $this->render('SonataDashboardBundle:BlockAdmin:select_type.html.twig', [
+            return $this->render('@SonataDashboard/BlockAdmin/select_type.html.twig', [
                 'services' => $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle'),
                 'base_template' => $this->getBaseTemplate(),
                 'admin' => $this->admin,
@@ -105,7 +105,7 @@ class BlockAdminController extends Controller
                 'code' => $name,
             ]);
 
-            return $this->render('SonataDashboardBundle:BlockAdmin:block_container.html.twig', [
+            return $this->render('@SonataDashboard/BlockAdmin/block_container.html.twig', [
                 'admin' => $this->admin->getParent(),
                 'object' => $container,
             ]);
@@ -163,7 +163,7 @@ class BlockAdminController extends Controller
 
         $blockServices = $this->get('sonata.block.manager')->getServicesByContext('sonata_dashboard_bundle', false);
 
-        return $this->render('SonataDashboardBundle:BlockAdmin:compose_preview.html.twig', [
+        return $this->render('@SonataDashboard/BlockAdmin/compose_preview.html.twig', [
             'container' => $container,
             'child' => $block,
             'blockServices' => $blockServices,

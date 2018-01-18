@@ -41,12 +41,12 @@ class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
             'code' => '',
             'layout' => '{{ CONTENT }}',
             'class' => '',
-            'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
+            'template' => '@SonataDashboard/BlockAdmin/block_container.html.twig',
         ]);
 
         $service->execute($blockContext);
 
-        $this->assertEquals('SonataDashboardBundle:BlockAdmin:block_container.html.twig', $this->templating->view);
+        $this->assertEquals('@SonataDashboard/BlockAdmin/block_container.html.twig', $this->templating->view);
         $this->assertEquals('block.code', $this->templating->parameters['block']->getSetting('code'));
         $this->assertEquals('block.name', $this->templating->parameters['block']->getName());
         $this->assertInstanceOf('Sonata\BlockBundle\Model\Block', $this->templating->parameters['block']);
@@ -68,7 +68,7 @@ class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
             'code' => 'block.code',
             'layout' => 'before{{ CONTENT }}after',
             'class' => '',
-            'template' => 'SonataDashboardBundle:BlockAdmin:block_container.html.twig',
+            'template' => '@SonataDashboard/BlockAdmin/block_container.html.twig',
         ]);
 
         $service->execute($blockContext);

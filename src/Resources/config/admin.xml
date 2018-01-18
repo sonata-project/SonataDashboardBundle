@@ -51,8 +51,8 @@
             </call>
             <call method="setFormTheme">
                 <argument type="collection">
-                    <argument>SonataDashboardBundle:Form:form_admin_fields.html.twig</argument>
-                    <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>
+                    <argument>@SonataDashboard/Form/form_admin_fields.html.twig</argument>
+                    <argument>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</argument>
                 </argument>
             </call>
         </service>
