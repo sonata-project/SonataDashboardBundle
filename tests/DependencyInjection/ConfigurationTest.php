@@ -28,7 +28,7 @@ class ConfigurationTest extends TestCase
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
             ],
             'templates' => [
-                'compose' => 'MyBundle:MyController:my_template.html.twig',
+                'compose' => '@My/MyController/my_template.html.twig',
             ],
         ]]);
 
@@ -39,8 +39,8 @@ class ConfigurationTest extends TestCase
             ],
             'default_container' => 'sonata.dashboard.block.container',
             'templates' => [
-                'compose' => 'MyBundle:MyController:my_template.html.twig',
-                'compose_container_show' => 'SonataDashboardBundle:DashboardAdmin:compose_container_show.html.twig',
+                'compose' => '@My/MyController/my_template.html.twig',
+                'compose_container_show' => '@SonataDashboard/DashboardAdmin/compose_container_show.html.twig',
             ],
         ];
 

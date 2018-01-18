@@ -9,7 +9,7 @@ file that was distributed with this source code.
 
 #}
 
-{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
+{% extends '@SonataAdmin/CRUD/action.html.twig' %}
 
 {% block body_attributes %}class="sonata-bc skin-black fixed dashboard-composer-dashboard sonata-ba-no-side-menu"{% endblock %}
 
@@ -33,7 +33,7 @@ file that was distributed with this source code.
                     <div class="dashboard-composer__dashboard-preview__containers">
                         {% for container in containers %}
                             {% if container.block is defined and container.block %}
-                                {% include 'SonataDashboardBundle:BlockAdmin:block_container.html.twig' with {'object': container.block} %}
+                                {% include '@SonataDashboard/BlockAdmin/block_container.html.twig' with {'object': container.block} %}
                             {% endif %}
                         {% endfor %}
                     </div>
