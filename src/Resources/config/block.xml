@@ -7,7 +7,7 @@
         <service id="sonata.dashboard.block.container" class="%sonata.dashboard.block.container.class%">
             <tag name="sonata.block"/>
             <argument>sonata.dashboard.block.container</argument>
-            <argument type="service" id="templating"/>
+            <argument type="service" id="sonata.templating"/>
         </service>
     </services>
 </container>
