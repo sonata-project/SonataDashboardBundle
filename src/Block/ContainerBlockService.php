@@ -21,7 +21,7 @@ use Sonata\CoreBundle\Form\Type\CollectionType;
 use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Render children dashboards.
@@ -68,7 +68,7 @@ final class ContainerBlockService extends BaseContainerBlockService
     /**
      * {@inheritdoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver): void
+    public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'code' => '',
