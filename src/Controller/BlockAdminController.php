@@ -33,7 +33,7 @@ final class BlockAdminController extends Controller
      *
      * @return Response
      */
-    public function savePositionAction(Request $request)
+    public function savePositionAction(Request $request): Response
     {
         $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('savePosition');
@@ -124,7 +124,7 @@ final class BlockAdminController extends Controller
      *
      * @return Response
      */
-    public function switchParentAction(Request $request)
+    public function switchParentAction(Request $request): Response
     {
         $blockId = $request->get('block_id');
         $parentId = $request->get('parent_id');
@@ -153,7 +153,7 @@ final class BlockAdminController extends Controller
      *
      * @return Response
      */
-    public function composePreviewAction(Request $request)
+    public function composePreviewAction(Request $request): Response
     {
         $block = $this->setSubject($request->get('block_id'));
         $this->admin->checkAccess('composePreview');
@@ -181,7 +181,7 @@ final class BlockAdminController extends Controller
      *
      * @return BaseBlock
      */
-    private function setSubject($blockId)
+    private function setSubject($blockId): BaseBlock
     {
         /** @var BaseBlock $block */
         $block = $this->admin->getObject($blockId);

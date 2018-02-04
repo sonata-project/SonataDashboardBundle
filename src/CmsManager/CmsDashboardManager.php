@@ -16,6 +16,7 @@ namespace Sonata\DashboardBundle\CmsManager;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
+use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Sonata\DashboardBundle\Model\DashboardManagerInterface;
 
@@ -102,7 +103,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         ]);
     }
 
-    public function getBlock(int $id)
+    public function getBlock(int $id): DashboardBlockInterface
     {
         if (!isset($this->blocks[$id])) {
             $this->blocks[$id] = $this->blockInteractor->getBlock($id);
