@@ -23,7 +23,7 @@ use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class BlockManager extends BaseEntityManager implements BlockManagerInterface
+final class BlockManager extends BaseEntityManager implements BlockManagerInterface
 {
     /**
      * {@inheritdoc}

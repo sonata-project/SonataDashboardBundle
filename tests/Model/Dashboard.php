@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Tests\Model;
 
-class Dashboard extends \Sonata\DashboardBundle\Model\Dashboard
+final class Dashboard extends \Sonata\DashboardBundle\Model\Dashboard
 {
     protected $id;
 

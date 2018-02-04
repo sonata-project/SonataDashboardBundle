@@ -24,7 +24,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class Configuration implements ConfigurationInterface
+final class Configuration implements ConfigurationInterface
 {
     /**
      * Generates the configuration tree.

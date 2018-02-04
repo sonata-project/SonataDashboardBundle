@@ -21,7 +21,7 @@ use Sonata\DashboardBundle\Block\ContainerBlockService;
 /**
  * Test Container Block service.
  */
-class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
+final class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
 {
     /**
      * test the block execute() method.

@@ -23,7 +23,7 @@ use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class DashboardManager extends BaseEntityManager implements DashboardManagerInterface
+final class DashboardManager extends BaseEntityManager implements DashboardManagerInterface
 {
     /**
      * {@inheritdoc}

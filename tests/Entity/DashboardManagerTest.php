@@ -19,7 +19,7 @@ use Sonata\DashboardBundle\Entity\DashboardManager;
 /**
  * Class DashboardManagerTest.
  */
-class DashboardManagerTest extends TestCase
+final class DashboardManagerTest extends TestCase
 {
     public function testGetPager(): void
     {
@@ -122,7 +122,7 @@ class DashboardManagerTest extends TestCase
             ->getPager(['edited' => false], 1);
     }
 
-    protected function getDashboardManager($qbCallback)
+    private function getDashboardManager($qbCallback)
     {
         $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', [], '', false, true, true, ['execute']);
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));

@@ -20,6 +20,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
-class SonataDashboardBundle extends Bundle
+final class SonataDashboardBundle extends Bundle
 {
 }

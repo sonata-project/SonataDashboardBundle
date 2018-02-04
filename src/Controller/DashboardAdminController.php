@@ -24,7 +24,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class DashboardAdminController extends CRUDController
+final class DashboardAdminController extends CRUDController
 {
     /**
      * @param Request $request

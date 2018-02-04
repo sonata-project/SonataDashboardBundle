@@ -36,33 +36,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class BlockAdmin extends AbstractAdmin
+final class BlockAdmin extends AbstractAdmin
 {
-    /**
-     * @var BlockServiceManagerInterface
-     */
-    protected $blockManager;
-
-    /**
-     * @var CacheManagerInterface
-     */
-    protected $cacheManager;
-
-    /**
-     * @var bool
-     */
-    protected $inValidate = false;
-
-    /**
-     * @var array
-     */
-    protected $containerBlockTypes = [];
-
-    /**
-     * @var string
-     */
-    protected $defaultContainerType;
-
     /**
      * @var string
      */
@@ -73,6 +48,30 @@ class BlockAdmin extends AbstractAdmin
         'switchParent' => 'EDIT',
         'composePreview' => 'EDIT',
     ];
+    /**
+     * @var BlockServiceManagerInterface
+     */
+    private $blockManager;
+
+    /**
+     * @var CacheManagerInterface
+     */
+    private $cacheManager;
+
+    /**
+     * @var bool
+     */
+    private $inValidate = false;
+
+    /**
+     * @var array
+     */
+    private $containerBlockTypes = [];
+
+    /**
+     * @var string
+     */
+    private $defaultContainerType;
 
     /**
      * {@inheritdoc}
