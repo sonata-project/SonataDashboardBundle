@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -37,12 +39,12 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
     /**
      * @var array
      */
-    private $dashboardReferences = array();
+    private $dashboardReferences = [];
 
     /**
      * @var DashboardInterface[]
      */
-    private $dashboards = array();
+    private $dashboards = [];
 
     /**
      * @param DashboardManagerInterface $dashboardManager
@@ -98,13 +100,13 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         }
 
         if (!$container) {
-            $container = $this->blockInteractor->createNewContainer(array(
+            $container = $this->blockInteractor->createNewContainer([
                 'enabled' => true,
                 'dashboard' => $dashboard,
                 'code' => $code,
                 'position' => 1,
                 'parent' => $parentContainer,
-            ));
+            ]);
         }
 
         return $container;
@@ -138,9 +140,9 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         if (null === $id || !isset($this->dashboards[$id])) {
             $this->dashboards[$id] = false;
 
-            $parameters = array(
+            $parameters = [
                 $fieldName => $value,
-            );
+            ];
 
             $dashboard = $this->dashboardManager->findOneBy($parameters);
 
@@ -151,7 +153,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
             $this->loadBlocks($dashboard);
             $id = $dashboard->getId();
 
-            if ($fieldName != 'id') {
+            if ('id' != $fieldName) {
                 $this->dashboardReferences[$fieldName][$value] = $id;
             }
 
@@ -166,7 +168,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
      *
      * @param DashboardInterface $dashboard
      */
-    private function loadBlocks(DashboardInterface $dashboard)
+    private function loadBlocks(DashboardInterface $dashboard): void
     {
         $blocks = $this->blockInteractor->loadDashboardBlocks($dashboard);
 

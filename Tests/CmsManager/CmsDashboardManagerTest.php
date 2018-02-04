@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -15,7 +17,7 @@ use Sonata\DashboardBundle\CmsManager\CmsDashboardManager;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\CmsBlock;
 use Sonata\DashboardBundle\Tests\Model\Dashboard;
 
-final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
+final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var CmsDashboardManager
@@ -25,20 +27,20 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Setup manager object to test.
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->blockInteractor = $this->getMockBlockInteractor();
-        $this->dashboardManager = $this->getMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
+        $this->dashboardManager = $this->createMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
         $this->manager = new CmsDashboardManager($this->dashboardManager, $this->blockInteractor);
     }
 
     /**
      * Test finding an existing container in a dashboard.
      */
-    public function testFindExistingContainer()
+    public function testFindExistingContainer(): void
     {
         $block = new CmsBlock();
-        $block->setSettings(array('code' => 'findme'));
+        $block->setSettings(['code' => 'findme']);
 
         $dashboard = new Dashboard();
         $dashboard->addBlocks($block);
@@ -52,7 +54,7 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test finding an non-existing container in a dashboard does create a new block.
      */
-    public function testFindNonExistingContainerCreatesNewBlock()
+    public function testFindNonExistingContainerCreatesNewBlock(): void
     {
         $dashboard = new Dashboard();
 
@@ -65,12 +67,12 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test get Dashboard method with id return Dashboard.
      */
-    public function testGetDashboardWithId()
+    public function testGetDashboardWithId(): void
     {
-        $dashboardManager = $this->getMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
+        $dashboardManager = $this->createMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
 
         $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(new Dashboard()));
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue(array()));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
@@ -82,11 +84,11 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test get Dashboard method with id throw Exception.
      */
-    public function testGetDashboardWithIdException()
+    public function testGetDashboardWithIdException(): void
     {
-        $dashboardManager = $this->getMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
+        $dashboardManager = $this->createMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
 
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue(array()));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
@@ -95,19 +97,19 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
         $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(null));
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
-        $this->setExpectedException('\Sonata\DashboardBundle\Exception\DashboardNotFoundException');
+        $this->expectException('\Sonata\DashboardBundle\Exception\DashboardNotFoundException');
         $manager->getDashboard($dashboard);
     }
 
     /**
      * Test get Dashboard method without param return Dashboard.
      */
-    public function testGetDashboardWithoutParam()
+    public function testGetDashboardWithoutParam(): void
     {
-        $dashboardManager = $this->getMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
+        $dashboardManager = $this->createMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
 
         $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(new Dashboard()));
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue(array()));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
         $manager->setCurrentDashboard(new Dashboard());
@@ -119,11 +121,11 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
     /**
      * Test get Dashboard method without param throw Exception.
      */
-    public function testGetDashboardWithoutParamException()
+    public function testGetDashboardWithoutParamException(): void
     {
-        $dashboardManager = $this->getMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
+        $dashboardManager = $this->createMock('Sonata\DashboardBundle\Model\DashboardManagerInterface');
 
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue(array()));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
@@ -132,7 +134,7 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
         $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(null));
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
-        $this->setExpectedException('\Sonata\DashboardBundle\Exception\DashboardNotFoundException');
+        $this->expectException('\Sonata\DashboardBundle\Exception\DashboardNotFoundException');
         $manager->getDashboard($dashboard);
     }
 
@@ -150,7 +152,7 @@ final class CmsDashboardManagerTest extends \PHPUnit_Framework_TestCase
             return $block;
         };
 
-        $mock = $this->getMock('Sonata\DashboardBundle\Model\BlockInteractorInterface');
+        $mock = $this->createMock('Sonata\DashboardBundle\Model\BlockInteractorInterface');
         $mock->expects($this->any())->method('createNewContainer')->will($this->returnCallback($callback));
 
         return $mock;

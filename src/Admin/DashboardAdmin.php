@@ -47,9 +47,9 @@ class DashboardAdmin extends AbstractAdmin
         $collection->add('compose_container_show', 'compose/container/{id}', [
             'id' => null,
         ]);
-        $collection->add('render', '{id}/render', array(
+        $collection->add('render', '{id}/render', [
             'id' => null,
-        ));
+        ]);
     }
 
     /**
@@ -118,7 +118,7 @@ class DashboardAdmin extends AbstractAdmin
         $formMapper
             ->with('form_dashboard.group_main_label')
                 ->add('name')
-                ->add('default', null, array('required' => false))
+                ->add('default', null, ['required' => false])
                 ->add('enabled', CheckboxType::class, ['required' => false])
             ->end()
         ;
@@ -149,11 +149,11 @@ class DashboardAdmin extends AbstractAdmin
             ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
-        $menu->addChild('sidemenu.link_render_dashboard', array(
-            'uri' => $admin->generateUrl('render', array(
+        $menu->addChild('sidemenu.link_render_dashboard', [
+            'uri' => $admin->generateUrl('render', [
                 'id' => $id,
-            )),
-        ));
+            ]),
+        ]);
 
         $menu->addChild(
             $this->trans('sidemenu.link_list_blocks'),

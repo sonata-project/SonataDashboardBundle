@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -19,7 +21,7 @@ use Sonata\DashboardBundle\Twig\GlobalVariables;
  *
  * @author Stephane PY <py.stephane1@gmail.com>
  */
-final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
+final class GlobalVariablesTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var CmsManagerSelectorInterface
@@ -31,13 +33,13 @@ final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
      */
     private $globals;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->cmsManagerSelector = $this->getMockCmsManagerSelector();
         $this->globals = new GlobalVariables($this->cmsManagerSelector);
     }
 
-    public function testGetCmsManager()
+    public function testGetCmsManager(): void
     {
         $this->assertInstanceOf('Sonata\DashboardBundle\CmsManager\CmsManagerInterface', $this->globals->getCmsManager());
     }
@@ -57,9 +59,9 @@ final class GlobalVariablesTest extends \PHPUnit_Framework_TestCase
      */
     private function getMockCmsManagerSelector()
     {
-        $cms = $this->getMock('Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface');
+        $cms = $this->createMock('Sonata\DashboardBundle\CmsManager\CmsManagerSelectorInterface');
 
-        $mock = $this->getMock('Sonata\DashboardBundle\CmsManager\CmsManagerInterface');
+        $mock = $this->createMock('Sonata\DashboardBundle\CmsManager\CmsManagerInterface');
         $cms->expects($this->any())->method('retrieve')->willReturn($mock);
         $cms->expects($this->any())->method('isEditor')->willReturn(true);
 

@@ -101,9 +101,9 @@ class DashboardAdminController extends CRUDController
     /**
      * @param Request $request
      *
-     * @return Response
-     *
      * @throws AccessDeniedException
+     *
+     * @return Response
      */
     public function renderAction(Request $request = null)
     {
@@ -121,31 +121,31 @@ class DashboardAdminController extends CRUDController
             throw $this->createNotFoundException(sprintf('unable to find the dashboard with id : %s', $id));
         }
 
-        $containers = array();
+        $containers = [];
 
         // separate containers
         foreach ($dashboard->getBlocks() as $block) {
             $blockCode = $block->getSetting('code');
-            if ($block->getParent() === null) {
+            if (null === $block->getParent()) {
                 $containers[$blockCode] = $block;
             }
         }
 
         $dashboards = $this->get('sonata.dashboard.manager.dashboard')->findBy(
-            array(), array('updatedAt' => 'DESC'), 5
+            [], ['updatedAt' => 'DESC'], 5
         );
 
         $csrfProvider = $this->get('form.csrf_provider');
 
-        return $this->render($this->admin->getTemplate('render'), array(
+        return $this->render($this->admin->getTemplate('render'), [
             'object' => $dashboard,
             'default' => $default,
             'action' => 'edit',
             'containers' => $containers,
             'dashboards' => $dashboards,
-            'csrfTokens' => array(
+            'csrfTokens' => [
                 'remove' => $csrfProvider->generateCsrfToken('sonata.delete'),
-            ),
-        ));
+            ],
+        ]);
     }
 }

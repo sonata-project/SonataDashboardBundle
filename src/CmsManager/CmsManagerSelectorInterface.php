@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -21,9 +23,9 @@ use Sonata\DashboardBundle\Exception\DashboardNotFoundException;
 interface CmsManagerSelectorInterface
 {
     /**
-     * @return CmsManagerInterface
-     *
      * @throws DashboardNotFoundException
+     *
+     * @return CmsManagerInterface
      */
     public function retrieve();
 

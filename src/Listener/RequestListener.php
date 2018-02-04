@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -43,18 +45,18 @@ final class RequestListener
      *
      * @param GetResponseEvent $event
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(GetResponseEvent $event): void
     {
-        if ($event->getRequest()->get('_route') == 'sonata_admin_dashboard') {
+        if ('sonata_admin_dashboard' == $event->getRequest()->get('_route')) {
             $modelManager = $this->admin->getModelManager();
 
             $defaultDashboard = $modelManager->findOneBy(
                 $this->admin->getClass(),
-                array('isDefault' => true, 'enabled' => true)
+                ['isDefault' => true, 'enabled' => true]
             );
 
             if ($defaultDashboard) {
-                $url = $this->admin->generateObjectUrl('render', $defaultDashboard, array('default' => true));
+                $url = $this->admin->generateObjectUrl('render', $defaultDashboard, ['default' => true]);
                 $event->setResponse(new RedirectResponse($url));
             }
         }

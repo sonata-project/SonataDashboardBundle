@@ -180,7 +180,7 @@ abstract class Dashboard implements DashboardInterface
     /**
      * {@inheritdoc}
      */
-    public function setDefault($default)
+    public function setDefault($default): void
     {
         $this->default = $default;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -50,10 +52,10 @@ final class DashboardExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('sonata_dashboard_render_container', array($this, 'renderContainer'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('sonata_dashboard_render_block', array($this, 'renderBlock'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_SimpleFunction('sonata_dashboard_render_container', [$this, 'renderContainer'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('sonata_dashboard_render_block', [$this, 'renderBlock'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**
@@ -71,7 +73,7 @@ final class DashboardExtension extends \Twig_Extension
      *
      * @return Response
      */
-    public function renderContainer($name, $dashboard = null, array $options = array())
+    public function renderContainer($name, $dashboard = null, array $options = [])
     {
         $cms = $this->cmsManagerSelector->retrieve();
 
@@ -94,17 +96,17 @@ final class DashboardExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function renderBlock(DashboardBlockInterface $block, array $options = array())
+    public function renderBlock(DashboardBlockInterface $block, array $options = [])
     {
-        if ($block->getEnabled() === false && !$this->cmsManagerSelector->isEditor()) {
+        if (false === $block->getEnabled() && !$this->cmsManagerSelector->isEditor()) {
             return '';
         }
 
         // build the parameters array
-        $options = array_merge(array(
-            'use_cache' => isset($options['use_cache']) ? $options['use_cache'] : true,
-            'extra_cache_keys' => array(),
-        ), $options);
+        $options = array_merge([
+            'use_cache' => $options['use_cache'] ?? true,
+            'extra_cache_keys' => [],
+        ], $options);
 
         return $this->blockHelper->render($block, $options);
     }

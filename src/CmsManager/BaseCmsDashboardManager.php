@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sonata Project package.
  *
@@ -29,7 +31,7 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
     /**
      * @var BlockInterface[]
      */
-    protected $blocks = array();
+    protected $blocks = [];
 
     /**
      * {@inheritdoc}
@@ -42,7 +44,7 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setCurrentDashboard(DashboardInterface $dashboard)
+    public function setCurrentDashboard(DashboardInterface $dashboard): void
     {
         $this->currentDashboard = $dashboard;
     }
