@@ -25,50 +25,22 @@ use Symfony\Component\HttpFoundation\Request;
  */
 interface CmsManagerInterface
 {
-    /**
-     * @param string              $name
-     * @param DashboardInterface  $dashboard
-     * @param null|BlockInterface $parentContainer
-     *
-     * @return null|BlockInterface
-     */
     public function findContainer(string $name, DashboardInterface $dashboard, BlockInterface $parentContainer = null): ?BlockInterface;
 
     /**
      * Returns a fully loaded dashboard (+ blocks) from a name.
-     *
-     * @param string $name
-     *
-     * @return DashboardInterface
      */
     public function getDashboardByName(string $name): DashboardInterface;
 
     /**
-     * Returns a fully loaded pag (+ blocks) from a dashboard id.
-     *
-     * @param int $id
-     *
-     * @return DashboardInterface
+     * Returns a fully loaded page (+ blocks) from a dashboard id.
      */
     public function getDashboardById(int $id): DashboardInterface;
 
-    /**
-     * @param int $id
-     *
-     * @return DashboardBlockInterface
-     */
     public function getBlock(int $id): DashboardBlockInterface;
 
-    /**
-     * Returns the current dashboard.
-     *
-     * @return DashboardInterface|null
-     */
     public function getCurrentDashboard(): ?DashboardInterface;
 
-    /**
-     * @param DashboardInterface $dashboard
-     */
     public function setCurrentDashboard(DashboardInterface $dashboard): void;
 
     /**
@@ -78,10 +50,5 @@ interface CmsManagerInterface
      */
     public function getBlocks(): iterable;
 
-    /**
-     * @param mixed $dashboard
-     *
-     * @return DashboardInterface
-     */
     public function getDashboard($dashboard): DashboardInterface;
 }

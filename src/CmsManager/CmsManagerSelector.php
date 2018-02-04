@@ -24,7 +24,7 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 
 /**
- * This class return the correct manager instance :
+ * This class returns the correct manager instance :
  *   - sonata.dashboard.cms.dashboard if the user is an editor (ROLE_SONATA_DASHBOARD_ADMIN_DASHBOARD_EDIT)
  *   - not found exception if the user is a standard user.
  *
@@ -57,15 +57,6 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
      */
     private $admin;
 
-    /**
-     * CmsManagerSelector constructor.
-     *
-     * @param CmsManagerInterface   $cmsDashboardManager
-     * @param AdminInterface        $admin
-     * @param RequestStack          $requestStack
-     * @param SessionInterface      $session
-     * @param TokenStorageInterface $tokenStorage
-     */
     public function __construct(CmsManagerInterface $cmsDashboardManager, AdminInterface $admin, RequestStack $requestStack, SessionInterface $session, TokenStorageInterface $tokenStorage)
     {
         $this->cmsDashboardManager = $cmsDashboardManager;
@@ -75,9 +66,6 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
         $this->tokenStorage = $tokenStorage;
     }
 
-    /**
-     * @param InteractiveLoginEvent $event
-     */
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event): void
     {
         if ($this->tokenStorage->getToken() &&
@@ -103,9 +91,9 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
     public function isEditor(): bool
     {
         /*
-         * The current order of event is not suitable for the selector to be call
+         * The current order of events is not suitable for the selector to be called
          * by the router chain, so we need to use another mechanism. It is not perfect
-         * but do the job for now.
+         * but does the job for now.
          */
 
         $request = $this->getRequest();
@@ -114,9 +102,6 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
         return $sessionAvailable && $this->session->get('sonata/dashboard/isEditor', false);
     }
 
-    /**
-     * @return null|Request
-     */
     private function getRequest(): ?Request
     {
         return $this->requestStack->getCurrentRequest();

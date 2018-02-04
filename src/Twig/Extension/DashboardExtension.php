@@ -37,12 +37,6 @@ final class DashboardExtension extends AbstractExtension
      */
     private $blockHelper;
 
-    /**
-     * Constructor.
-     *
-     * @param CmsManagerSelectorInterface $cmsManagerSelector A CMS manager selector
-     * @param BlockHelper                 $blockHelper        The Block Helper
-     */
     public function __construct(CmsManagerSelectorInterface $cmsManagerSelector, BlockHelper $blockHelper)
     {
         $this->cmsManagerSelector = $cmsManagerSelector;
@@ -62,13 +56,6 @@ final class DashboardExtension extends AbstractExtension
         return 'sonata_dashboard';
     }
 
-    /**
-     * @param string                  $name
-     * @param DashboardInterface|null $dashboard
-     * @param array                   $options
-     *
-     * @return string
-     */
     public function renderContainer(string $name, ?DashboardInterface $dashboard = null, array $options = []): ?string
     {
         $cms = $this->cmsManagerSelector->retrieve();
@@ -86,12 +73,6 @@ final class DashboardExtension extends AbstractExtension
         return $this->renderBlock($container, $options);
     }
 
-    /**
-     * @param DashboardBlockInterface $block
-     * @param array                   $options
-     *
-     * @return string
-     */
     public function renderBlock(DashboardBlockInterface $block, array $options = []): ?string
     {
         if (false === $block->getEnabled() && !$this->cmsManagerSelector->isEditor()) {

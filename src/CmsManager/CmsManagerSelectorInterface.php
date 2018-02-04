@@ -24,13 +24,8 @@ interface CmsManagerSelectorInterface
 {
     /**
      * @throws DashboardNotFoundException
-     *
-     * @return CmsManagerInterface
      */
     public function retrieve(): CmsManagerInterface;
 
-    /**
-     * @return bool
-     */
     public function isEditor(): bool;
 }

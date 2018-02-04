@@ -31,8 +31,6 @@ final class RequestListener
     private $admin;
 
     /**
-     * Constructor.
-     *
      * @param AdminInterface $admin Dashboard admin
      */
     public function __construct(AdminInterface $admin)
@@ -42,8 +40,6 @@ final class RequestListener
 
     /**
      * Filter the `kernel.request` event to catch the dashboardAction.
-     *
-     * @param GetResponseEvent $event
      */
     public function onKernelRequest(GetResponseEvent $event): void
     {
