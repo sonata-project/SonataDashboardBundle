@@ -30,6 +30,11 @@ abstract class BaseBlock extends Block
         parent::__construct();
     }
 
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
     /**
      * Updates dates before creating/updating entity.
      */

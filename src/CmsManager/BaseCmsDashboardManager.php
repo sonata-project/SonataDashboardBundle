@@ -33,41 +33,26 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
      */
     protected $blocks = [];
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCurrentDashboard(): ?DashboardInterface
     {
         return $this->currentDashboard;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCurrentDashboard(DashboardInterface $dashboard): void
     {
         $this->currentDashboard = $dashboard;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlocks()
     {
         return $this->blocks;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDashboardByName(string $name)
     {
         return $this->getDashboardBy('name', $name);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDashboardById(int $id)
     {
         return $this->getDashboardBy('id', $id);

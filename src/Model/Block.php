@@ -33,16 +33,6 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
      */
     protected $dashboard;
 
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function addChildren(BlockInterface $child): void
     {
         $this->children[] = $child;
