@@ -23,14 +23,14 @@ interface DashboardInterface
     /**
      * Returns the id.
      *
-     * @return mixed
+     * @return mixed|null
      */
     public function getId();
 
     /**
      * @param mixed $id
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setId($id);
 
@@ -39,7 +39,7 @@ interface DashboardInterface
      *
      * @param bool $enabled
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setEnabled($enabled);
 
@@ -55,14 +55,14 @@ interface DashboardInterface
      *
      * @param string $name
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setName($name);
 
     /**
      * Get name.
      *
-     * @return string $name
+     * @return string|null $name
      */
     public function getName();
 
@@ -71,14 +71,14 @@ interface DashboardInterface
      *
      * @param \DateTime $createdAt
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setCreatedAt(\DateTime $createdAt = null);
 
     /**
      * Get createdAt.
      *
-     * @return \DateTime $createdAt
+     * @return \DateTime|null $createdAt
      */
     public function getCreatedAt();
 
@@ -87,14 +87,14 @@ interface DashboardInterface
      *
      * @param \DateTime $updatedAt
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setUpdatedAt(\DateTime $updatedAt = null);
 
     /**
      * Get updatedAt.
      *
-     * @return \DateTime $updatedAt
+     * @return \DateTime|null $updatedAt
      */
     public function getUpdatedAt();
 
@@ -103,7 +103,7 @@ interface DashboardInterface
      *
      * @param DashboardBlockInterface $block
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function addBlocks(DashboardBlockInterface $block);
 
@@ -122,7 +122,7 @@ interface DashboardInterface
     /**
      * @param bool $edited
      *
-     * @return DashboardInterface
+     * @return $this
      */
     public function setEdited($edited);
 }
