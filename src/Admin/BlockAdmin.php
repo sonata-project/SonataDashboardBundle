@@ -23,6 +23,7 @@ use Sonata\BlockBundle\Block\BlockServiceManagerInterface;
 use Sonata\BlockBundle\Form\Type\ServiceListType;
 use Sonata\Cache\CacheManagerInterface;
 use Sonata\DashboardBundle\Entity\BaseBlock;
+use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -105,6 +106,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function preUpdate($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->preUpdate($object);
 
         // fix weird bug with setter object not being call
@@ -122,6 +127,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function postUpdate($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->postUpdate($object);
 
         $service = $this->blockManager->get($object);
@@ -136,6 +145,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function prePersist($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->prePersist($object);
 
         if ($object->getDashboard() instanceof DashboardInterface) {
@@ -153,6 +166,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function postPersist($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->postPersist($object);
 
         $service = $this->blockManager->get($object);
@@ -167,6 +184,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function preRemove($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->preRemove($object);
     }
 
@@ -177,6 +198,10 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function postRemove($object): void
     {
+        if (!$object instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block object');
+        }
+
         $this->blockManager->get($object)->postRemove($object);
     }
 

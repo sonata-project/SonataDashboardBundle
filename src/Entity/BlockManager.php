@@ -15,6 +15,8 @@ namespace Sonata\DashboardBundle\Entity;
 
 use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DashboardBundle\Model\BlockManagerInterface;
+use Sonata\DashboardBundle\Model\DashboardBlockInterface;
+use Sonata\DashboardBundle\Model\DashboardInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
@@ -45,11 +47,24 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
 
             // retrieve object references
             $block = $this->getEntityManager()->getReference($this->getClass(), $id);
+
+            if (!$block instanceof DashboardBlockInterface) {
+                throw new \InvalidArgumentException('Invalid block element found');
+            }
+
             $dashboardRelation = $meta->getAssociationMapping('dashboard');
             $dashboard = $this->getEntityManager()->getPartialReference($dashboardRelation['targetEntity'], $dashboardId);
 
+            if (!$dashboard instanceof DashboardInterface) {
+                throw new \InvalidArgumentException('Invalid dashboard block element found');
+            }
+
             $parentRelation = $meta->getAssociationMapping('parent');
             $parent = $this->getEntityManager()->getPartialReference($parentRelation['targetEntity'], $parentId);
+
+            if (!$parent instanceof DashboardBlockInterface) {
+                throw new \InvalidArgumentException('Invalid parent block element found');
+            }
 
             $block->setDashboard($dashboard);
             $block->setParent($parent);
