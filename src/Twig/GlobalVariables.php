@@ -28,25 +28,16 @@ final class GlobalVariables
      */
     private $cmsManagerSelector;
 
-    /**
-     * @param CmsManagerSelectorInterface $cmsManagerSelector
-     */
     public function __construct(CmsManagerSelectorInterface $cmsManagerSelector)
     {
         $this->cmsManagerSelector = $cmsManagerSelector;
     }
 
-    /**
-     * @return CmsManagerInterface
-     */
     public function getCmsManager(): CmsManagerInterface
     {
         return $this->cmsManagerSelector->retrieve();
     }
 
-    /**
-     * @return bool
-     */
     public function isEditor(): bool
     {
         return $this->cmsManagerSelector->isEditor();

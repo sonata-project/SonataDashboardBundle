@@ -28,12 +28,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 final class DashboardAdminController extends CRUDController
 {
     /**
-     * @param Request $request
-     *
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
-     *
-     * @return Response
      */
     public function composeAction(Request $request): Response
     {
@@ -68,12 +64,8 @@ final class DashboardAdminController extends CRUDController
     }
 
     /**
-     * @param Request $request
-     *
      * @throws AccessDeniedException
      * @throws NotFoundHttpException
-     *
-     * @return Response
      */
     public function composeContainerShowAction(Request $request): Response
     {
@@ -96,11 +88,7 @@ final class DashboardAdminController extends CRUDController
     }
 
     /**
-     * @param Request $request
-     *
      * @throws AccessDeniedException
-     *
-     * @return Response
      */
     public function renderAction(Request $request): Response
     {
@@ -142,9 +130,6 @@ final class DashboardAdminController extends CRUDController
         ]);
     }
 
-    /**
-     * @return BlockAdmin
-     */
     private function getBlockAdmin(): BlockAdmin
     {
         return $this->get('sonata.dashboard.admin.block');

@@ -47,10 +47,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
      */
     private $dashboards = [];
 
-    /**
-     * @param DashboardManagerInterface $dashboardManager
-     * @param BlockInteractorInterface  $blockInteractor
-     */
     public function __construct(DashboardManagerInterface $dashboardManager, BlockInteractorInterface $blockInteractor)
     {
         $this->dashboardManager = $dashboardManager;
@@ -79,8 +75,10 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         $container = null;
 
         if ($parentContainer) {
-            // parent container is set, nothing to find, don't need to loop across the
-            // name to find the correct container (main template level)
+            /**
+             * parent container is set, nothing to find, don't need to loop across the
+             * names to find the correct container (main template level).
+             */
             $container = $parentContainer;
         }
 
@@ -152,8 +150,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
 
     /**
      * load all the related nested blocks linked to one dashboard.
-     *
-     * @param DashboardInterface $dashboard
      */
     private function loadBlocks(DashboardInterface $dashboard): void
     {
