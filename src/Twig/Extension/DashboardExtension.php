@@ -69,7 +69,7 @@ final class DashboardExtension extends AbstractExtension
      *
      * @return string
      */
-    public function renderContainer(string $name, ?DashboardInterface $dashboard = null, array $options = [])
+    public function renderContainer(string $name, ?DashboardInterface $dashboard = null, array $options = []): ?string
     {
         $cms = $this->cmsManagerSelector->retrieve();
 
@@ -92,7 +92,7 @@ final class DashboardExtension extends AbstractExtension
      *
      * @return string
      */
-    public function renderBlock(DashboardBlockInterface $block, array $options = [])
+    public function renderBlock(DashboardBlockInterface $block, array $options = []): ?string
     {
         if (false === $block->getEnabled() && !$this->cmsManagerSelector->isEditor()) {
             return '';

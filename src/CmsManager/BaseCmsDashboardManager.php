@@ -42,17 +42,17 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
         $this->currentDashboard = $dashboard;
     }
 
-    public function getBlocks()
+    public function getBlocks(): iterable
     {
         return $this->blocks;
     }
 
-    public function getDashboardByName(string $name)
+    public function getDashboardByName(string $name): DashboardInterface
     {
         return $this->getDashboardBy('name', $name);
     }
 
-    public function getDashboardById(int $id)
+    public function getDashboardById(int $id): DashboardInterface
     {
         return $this->getDashboardBy('id', $id);
     }

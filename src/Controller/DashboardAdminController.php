@@ -35,7 +35,7 @@ final class DashboardAdminController extends CRUDController
      *
      * @return Response
      */
-    public function composeAction(Request $request)
+    public function composeAction(Request $request): Response
     {
         $this->admin->checkAccess('compose');
 
@@ -75,7 +75,7 @@ final class DashboardAdminController extends CRUDController
      *
      * @return Response
      */
-    public function composeContainerShowAction(Request $request)
+    public function composeContainerShowAction(Request $request): Response
     {
         $this->getBlockAdmin()->checkAccess('list');
 
@@ -102,7 +102,7 @@ final class DashboardAdminController extends CRUDController
      *
      * @return Response
      */
-    public function renderAction(Request $request)
+    public function renderAction(Request $request): Response
     {
         $this->admin->checkAccess('render');
 
@@ -145,7 +145,7 @@ final class DashboardAdminController extends CRUDController
     /**
      * @return BlockAdmin
      */
-    private function getBlockAdmin()
+    private function getBlockAdmin(): BlockAdmin
     {
         return $this->get('sonata.dashboard.admin.block');
     }

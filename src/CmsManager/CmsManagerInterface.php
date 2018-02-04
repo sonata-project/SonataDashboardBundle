@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\CmsManager;
 
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -40,7 +41,7 @@ interface CmsManagerInterface
      *
      * @return DashboardInterface
      */
-    public function getDashboardByName(string $name);
+    public function getDashboardByName(string $name): DashboardInterface;
 
     /**
      * Returns a fully loaded pag (+ blocks) from a dashboard id.
@@ -49,14 +50,14 @@ interface CmsManagerInterface
      *
      * @return DashboardInterface
      */
-    public function getDashboardById(int $id);
+    public function getDashboardById(int $id): DashboardInterface;
 
     /**
      * @param int $id
      *
-     * @return DashboardInterface
+     * @return DashboardBlockInterface
      */
-    public function getBlock(int $id);
+    public function getBlock(int $id): DashboardBlockInterface;
 
     /**
      * Returns the current dashboard.
@@ -73,9 +74,9 @@ interface CmsManagerInterface
     /**
      * Returns the list of loaded block from the current http request.
      *
-     * @return BlockInterface[]
+     * @return BlockInterface[]|iterable
      */
-    public function getBlocks();
+    public function getBlocks(): iterable;
 
     /**
      * @param mixed $dashboard
