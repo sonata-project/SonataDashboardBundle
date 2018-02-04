@@ -13,10 +13,16 @@ file that was distributed with this source code.
 
 {% block body_attributes %}class="sonata-bc skin-black fixed dashboard-composer-dashboard sonata-ba-no-side-menu"{% endblock %}
 
+{% block title %}
+    {{ "title_compose"|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataDashboardBundle') }}
+{% endblock %}
+
+{% block navbar_title %}
+    {{ block('title') }}
+{% endblock %}
+
 {% block content %}
     <div class="dashboard-composer">
-        <h2>{{ 'dashboard.compose_dashboard'|trans({}, 'SonataDashboardBundle') }} "{{ object.name }}"</h2>
-
         <div class="row row-fluid">
             <div class="col-md-4 span4">
                 <div class="dashboard-composer__dashboard-preview">
@@ -66,6 +72,5 @@ file that was distributed with this source code.
                 window.SonataDashboardComposer = composer;
             });
         </script>
-
     </div>
 {% endblock %}

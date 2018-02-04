@@ -41,6 +41,7 @@ final class ConfigurationTest extends TestCase
             'templates' => [
                 'compose' => '@My/MyController/my_template.html.twig',
                 'compose_container_show' => '@SonataDashboard/DashboardAdmin/compose_container_show.html.twig',
+                'render' => '@SonataDashboard/DashboardAdmin/render.html.twig',
             ],
         ];
 

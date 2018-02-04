@@ -56,6 +56,11 @@ abstract class Dashboard implements DashboardInterface
     protected $edited;
 
     /**
+     * @var bool
+     */
+    protected $default;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct()
@@ -170,6 +175,22 @@ abstract class Dashboard implements DashboardInterface
         $this->edited = $edited;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefault($default): void
+    {
+        $this->default = $default;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isDefault()
+    {
+        return $this->default;
     }
 
     /**
