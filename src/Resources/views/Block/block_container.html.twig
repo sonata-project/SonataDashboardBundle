@@ -12,7 +12,10 @@ file that was distributed with this source code.
 {% extends sonata_block.templates.block_base %}
 
 {# block classes are prepended with a container class #}
-{% block block_class %} cms-container{% if not block.hasParent() %} cms-container-root{% endif %}{% if settings.class %} {{ settings.class }}{% endif %}{% endblock %}
+{% block block_class %} cms-container
+    {% if not block.hasParent() %} cms-container-root{% endif %}
+    {% if settings.class %} {{ settings.class }}{% endif %}
+{% endblock %}
 
 {# identify a block role used by the page editor #}
 {% block block_role %}container{% endblock %}
