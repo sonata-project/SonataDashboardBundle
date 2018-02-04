@@ -28,7 +28,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class DashboardAdmin extends AbstractAdmin
+final class DashboardAdmin extends AbstractAdmin
 {
     protected $accessMapping = [
         'compose' => 'EDIT',

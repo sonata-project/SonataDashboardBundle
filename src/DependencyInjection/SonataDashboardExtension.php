@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
-class SonataDashboardExtension extends Extension
+final class SonataDashboardExtension extends Extension
 {
     /**
      * {@inheritdoc}

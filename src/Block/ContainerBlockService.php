@@ -28,7 +28,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class ContainerBlockService extends BaseContainerBlockService
+final class ContainerBlockService extends BaseContainerBlockService
 {
     /**
      * {@inheritdoc}

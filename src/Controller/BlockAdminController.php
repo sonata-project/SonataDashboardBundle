@@ -25,7 +25,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class BlockAdminController extends Controller
+final class BlockAdminController extends Controller
 {
     /**
      * @param Request $request

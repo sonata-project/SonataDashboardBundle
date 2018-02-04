@@ -19,7 +19,7 @@ use Sonata\DashboardBundle\Entity\BlockManager;
 /**
  * Class BlockManagerTest.
  */
-class BlockManagerTest extends TestCase
+final class BlockManagerTest extends TestCase
 {
     public function testGetPager(): void
     {
@@ -33,7 +33,7 @@ class BlockManagerTest extends TestCase
             ->getPager(['root' => true], 1);
     }
 
-    protected function getBlockManager($qbCallback)
+    private function getBlockManager($qbCallback)
     {
         $query = $this->getMockForAbstractClass('Doctrine\ORM\AbstractQuery', [], '', false, true, true, ['execute']);
         $query->expects($this->any())->method('execute')->will($this->returnValue(true));

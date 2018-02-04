@@ -24,27 +24,27 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class BlockInteractor implements BlockInteractorInterface
+final class BlockInteractor implements BlockInteractorInterface
 {
     /**
      * @var bool[]
      */
-    protected $dashboardBlocksLoaded = [];
+    private $dashboardBlocksLoaded = [];
 
     /**
      * @var RegistryInterface
      */
-    protected $registry;
+    private $registry;
 
     /**
      * @var BlockManagerInterface
      */
-    protected $blockManager;
+    private $blockManager;
 
     /**
      * @var string
      */
-    protected $defaultContainer;
+    private $defaultContainer;
 
     /**
      * Constructor.

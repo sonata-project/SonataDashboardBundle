@@ -24,7 +24,7 @@ use Sonata\DashboardBundle\Entity\BlockInteractor;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class BlockInteractorTest extends TestCase
+final class BlockInteractorTest extends TestCase
 {
     /**
      * Test createNewContainer() method with some values.

@@ -20,6 +20,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
-class DashboardNotFoundException extends NotFoundHttpException
+final class DashboardNotFoundException extends NotFoundHttpException
 {
 }
