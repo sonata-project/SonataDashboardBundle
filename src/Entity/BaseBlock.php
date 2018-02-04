@@ -34,14 +34,6 @@ abstract class BaseBlock extends Block
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
      * Updates dates before creating/updating entity.
      */
     public function prePersist(): void

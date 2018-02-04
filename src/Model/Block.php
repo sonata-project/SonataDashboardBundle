@@ -24,9 +24,30 @@ use Sonata\BlockBundle\Model\BlockInterface;
 abstract class Block extends BaseBlock implements DashboardBlockInterface
 {
     /**
+     * @var mixed
+     */
+    protected $id;
+
+    /**
      * @var DashboardInterface
      */
     protected $dashboard;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * {@inheritdoc}
