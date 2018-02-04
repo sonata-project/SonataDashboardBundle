@@ -16,6 +16,7 @@ namespace Sonata\DashboardBundle\Entity;
 use Doctrine\ORM\EntityManager;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
 use Sonata\DashboardBundle\Model\BlockManagerInterface;
+use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -127,6 +128,11 @@ final class BlockInteractor implements BlockInteractorInterface
     public function createNewContainer(array $values = [], \Closure $alter = null)
     {
         $container = $this->blockManager->create();
+
+        if (!$container instanceof DashboardBlockInterface) {
+            throw new \InvalidArgumentException('Invalid block created');
+        }
+
         $container->setEnabled($values['enabled'] ?? true);
         $container->setCreatedAt(new \DateTime());
         $container->setUpdatedAt(new \DateTime());

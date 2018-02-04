@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use Sonata\DashboardBundle\Admin\BlockAdmin;
 use Sonata\DashboardBundle\Entity\BaseBlock;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,6 +77,10 @@ final class BlockAdminController extends Controller
 
         if (!$this->admin->getParent()) {
             throw $this->createNotFoundException('You cannot create a block without a dashboard');
+        }
+
+        if (!$this->admin instanceof BlockAdmin) {
+            throw $this->createNotFoundException('You need a BlockAdmin for this action');
         }
 
         $parameters = $this->admin->getPersistentParameters();

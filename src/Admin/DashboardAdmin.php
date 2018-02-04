@@ -21,6 +21,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
@@ -53,6 +54,10 @@ final class DashboardAdmin extends AbstractAdmin
      */
     public function preUpdate($object): void
     {
+        if (!$object instanceof DashboardInterface) {
+            throw new \InvalidArgumentException('Invalid dashboard object');
+        }
+
         $object->setEdited(true);
     }
 
@@ -61,6 +66,10 @@ final class DashboardAdmin extends AbstractAdmin
      */
     public function prePersist($object): void
     {
+        if (!$object instanceof DashboardInterface) {
+            throw new \InvalidArgumentException('Invalid dashboard object');
+        }
+
         $object->setEdited(true);
     }
 
