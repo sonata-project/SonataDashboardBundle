@@ -131,7 +131,9 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
             $dashboard = $this->dashboardManager->findOneBy($parameters);
 
             if (!$dashboard) {
-                throw new DashboardNotFoundException(sprintf('Unable to find the dashboard : %s = %s', $fieldName, $value));
+                throw new DashboardNotFoundException(
+                    sprintf('Unable to find the dashboard : %s = %s', $fieldName, $value)
+                );
             }
 
             $this->loadBlocks($dashboard);
