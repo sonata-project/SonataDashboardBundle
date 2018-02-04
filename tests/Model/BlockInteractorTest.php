@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Tests\Model;
 
 use PHPUnit\Framework\TestCase;
-use Sonata\BlockBundle\Model\Block;
 use Sonata\DashboardBundle\Entity\BlockInteractor;
+use Sonata\DashboardBundle\Tests\Fixtures\Entity\Block;
 
 /**
  * BlockInteractorTest class.
