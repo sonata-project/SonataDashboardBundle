@@ -24,14 +24,13 @@ use Sonata\DashboardBundle\Model\DashboardInterface;
 abstract class BaseCmsDashboardManager implements CmsManagerInterface
 {
     /**
-     * @var DashboardInterface|null
-     */
-    protected $currentDashboard;
-
-    /**
      * @var BlockInterface[]
      */
     protected $blocks = [];
+    /**
+     * @var DashboardInterface|null
+     */
+    private $currentDashboard;
 
     public function getCurrentDashboard(): ?DashboardInterface
     {
@@ -59,8 +58,7 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
     }
 
     /**
-     * @param string $fieldName
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return DashboardInterface
      */
