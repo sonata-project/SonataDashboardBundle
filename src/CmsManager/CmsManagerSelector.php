@@ -86,9 +86,6 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function logout(Request $request, Response $response, TokenInterface $token): void
     {
         $this->session->set('sonata/dashboard/isEditor', false);
@@ -98,17 +95,11 @@ final class CmsManagerSelector implements CmsManagerSelectorInterface, LogoutHan
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function retrieve(): CmsManagerInterface
     {
         return $this->cmsDashboardManager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isEditor(): bool
     {
         /*

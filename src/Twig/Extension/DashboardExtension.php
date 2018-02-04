@@ -49,9 +49,6 @@ final class DashboardExtension extends AbstractExtension
         $this->blockHelper = $blockHelper;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions()
     {
         return [
@@ -60,9 +57,6 @@ final class DashboardExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'sonata_dashboard';

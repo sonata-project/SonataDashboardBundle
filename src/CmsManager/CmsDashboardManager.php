@@ -56,9 +56,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         $this->blockInteractor = $blockInteractor;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDashboard($dashboard): DashboardInterface
     {
         if (is_string($dashboard)) {
@@ -76,9 +73,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         return $dashboard;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findContainer(string $name, DashboardInterface $dashboard, BlockInterface $parentContainer = null): ?BlockInterface
     {
         $container = null;
@@ -112,9 +106,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         return $container;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlock(int $id)
     {
         if (!isset($this->blocks[$id])) {
@@ -124,9 +115,6 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         return $this->blocks[$id];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getDashboardBy(string $fieldName, $value): DashboardInterface
     {
         if ('id' === $fieldName) {
