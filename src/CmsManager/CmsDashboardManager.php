@@ -93,17 +93,13 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
             }
         }
 
-        if (!$container) {
-            $container = $this->blockInteractor->createNewContainer([
-                'enabled' => true,
-                'dashboard' => $dashboard,
-                'code' => $name,
-                'position' => 1,
-                'parent' => $parentContainer,
-            ]);
-        }
-
-        return $container;
+        return $container ?? $this->blockInteractor->createNewContainer([
+            'enabled' => true,
+            'dashboard' => $dashboard,
+            'code' => $name,
+            'position' => 1,
+            'parent' => $parentContainer,
+        ]);
     }
 
     public function getBlock(int $id)
