@@ -21,22 +21,22 @@ namespace Sonata\DashboardBundle\Model;
 abstract class Dashboard implements DashboardInterface
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $id;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     protected $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     protected $updatedAt;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
 

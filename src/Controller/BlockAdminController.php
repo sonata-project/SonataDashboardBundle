@@ -178,7 +178,7 @@ final class BlockAdminController extends Controller
     /**
      * Initialize the admin subject, to contextualize checkAccess verification.
      *
-     * @param $blockId
+     * @param mixed $blockId
      *
      * @throws NotFoundHttpException
      *

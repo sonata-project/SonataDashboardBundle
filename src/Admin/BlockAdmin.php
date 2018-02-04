@@ -230,7 +230,7 @@ final class BlockAdmin extends AbstractAdmin
     }
 
     /**
-     * @param $defaultContainerType
+     * @param string $defaultContainerType
      */
     public function setDefaultContainerType($defaultContainerType): void
     {

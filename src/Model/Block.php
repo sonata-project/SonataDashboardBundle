@@ -24,12 +24,12 @@ use Sonata\BlockBundle\Model\BlockInterface;
 abstract class Block extends BaseBlock implements DashboardBlockInterface
 {
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $id;
 
     /**
-     * @var DashboardInterface
+     * @var DashboardInterface|null
      */
     protected $dashboard;
 
