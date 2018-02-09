@@ -27,9 +27,6 @@ use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
  */
 final class BlockManager extends BaseEntityManager implements BlockManagerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function save($dashboard, $andFlush = true)
     {
         parent::save($dashboard, $andFlush);
@@ -37,9 +34,6 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
         return $dashboard;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function updatePosition($id, $position, $parentId = null, $dashboardId = null, $partial = true)
     {
         if ($partial) {
@@ -79,9 +73,6 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
         return $block;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPager(array $criteria, $page, $limit = 10, array $sort = [])
     {
         $query = $this->getRepository()

@@ -23,9 +23,6 @@ use Sonata\DashboardBundle\Model\Block;
  */
 abstract class BaseBlock extends Block
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -50,9 +47,6 @@ abstract class BaseBlock extends Block
         $this->updatedAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setChildren($children): void
     {
         $this->children = new ArrayCollection();

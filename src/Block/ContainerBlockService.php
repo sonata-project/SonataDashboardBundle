@@ -30,9 +30,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class ContainerBlockService extends BaseContainerBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('enabled');
@@ -65,9 +62,6 @@ final class ContainerBlockService extends BaseContainerBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

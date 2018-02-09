@@ -25,9 +25,6 @@ use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
  */
 final class DashboardManager extends BaseEntityManager implements DashboardManagerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getPager(array $criteria, $page, $limit = 10, array $sort = [])
     {
         $query = $this->getRepository()

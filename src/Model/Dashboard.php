@@ -55,26 +55,17 @@ abstract class Dashboard implements DashboardInterface
      */
     protected $edited;
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct()
     {
         $this->blocks = [];
         $this->edited = true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString()
     {
         return $this->getName() ?: '-';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setId($id)
     {
         $this->id = $id;
@@ -82,17 +73,11 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCreatedAt(\DateTime $createdAt = null)
     {
         $this->createdAt = $createdAt;
@@ -100,17 +85,11 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setUpdatedAt(\DateTime $updatedAt = null)
     {
         $this->updatedAt = $updatedAt;
@@ -118,17 +97,11 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName($name)
     {
         $this->name = $name;
@@ -136,17 +109,11 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEnabled()
     {
         return $this->enabled;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
@@ -154,17 +121,11 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getEdited()
     {
         return $this->edited;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setEdited($edited)
     {
         $this->edited = $edited;
@@ -172,9 +133,6 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function addBlocks(DashboardBlockInterface $block)
     {
         $block->setDashboard($this);
@@ -184,9 +142,6 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlocks()
     {
         return $this->blocks;
