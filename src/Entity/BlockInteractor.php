@@ -61,9 +61,6 @@ final class BlockInteractor implements BlockInteractorInterface
         $this->defaultContainer = $defaultContainer;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlock($id)
     {
         $blocks = $this->getEntityManager()->createQueryBuilder()
@@ -79,9 +76,6 @@ final class BlockInteractor implements BlockInteractorInterface
         return count($blocks) > 0 ? $blocks[0] : false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlocksById(DashboardInterface $dashboard)
     {
         $blocks = $this->getEntityManager()
@@ -94,9 +88,6 @@ final class BlockInteractor implements BlockInteractorInterface
         return $blocks;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function saveBlocksPosition(array $data = [], $partial = true)
     {
         $em = $this->getEntityManager();
@@ -122,9 +113,6 @@ final class BlockInteractor implements BlockInteractorInterface
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createNewContainer(array $values = [], \Closure $alter = null)
     {
         $container = $this->blockManager->create();
@@ -164,9 +152,6 @@ final class BlockInteractor implements BlockInteractorInterface
         return $container;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function loadDashboardBlocks(DashboardInterface $dashboard)
     {
         if (isset($this->dashboardBlocksLoaded[$dashboard->getId()])) {

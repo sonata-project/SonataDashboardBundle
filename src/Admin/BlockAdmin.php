@@ -70,13 +70,10 @@ final class BlockAdmin extends AbstractAdmin
     private $containerBlockTypes = [];
 
     /**
-     * @var string
+     * @var string|null
      */
     private $defaultContainerType;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getObject($id)
     {
         $subject = parent::getObject($id);
@@ -99,11 +96,6 @@ final class BlockAdmin extends AbstractAdmin
         return $subject;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function preUpdate($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -120,11 +112,6 @@ final class BlockAdmin extends AbstractAdmin
         }
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function postUpdate($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -138,11 +125,6 @@ final class BlockAdmin extends AbstractAdmin
         $this->cacheManager->invalidate($service->getCacheKeys($object));
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function prePersist($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -159,11 +141,6 @@ final class BlockAdmin extends AbstractAdmin
         $object->setChildren($object->getChildren());
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function postPersist($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -177,11 +154,6 @@ final class BlockAdmin extends AbstractAdmin
         $this->cacheManager->invalidate($service->getCacheKeys($object));
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function preRemove($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -191,11 +163,6 @@ final class BlockAdmin extends AbstractAdmin
         $this->blockManager->get($object)->preRemove($object);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @param BaseBlock $object
-     */
     public function postRemove($object): void
     {
         if (!$object instanceof DashboardBlockInterface) {
@@ -205,49 +172,31 @@ final class BlockAdmin extends AbstractAdmin
         $this->blockManager->get($object)->postRemove($object);
     }
 
-    /**
-     * @param BlockServiceManagerInterface $blockManager
-     */
     public function setBlockManager(BlockServiceManagerInterface $blockManager): void
     {
         $this->blockManager = $blockManager;
     }
 
-    /**
-     * @param CacheManagerInterface $cacheManager
-     */
     public function setCacheManager(CacheManagerInterface $cacheManager): void
     {
         $this->cacheManager = $cacheManager;
     }
 
-    /**
-     * @param array $containerBlockTypes
-     */
     public function setContainerBlockTypes(array $containerBlockTypes): void
     {
         $this->containerBlockTypes = $containerBlockTypes;
     }
 
-    /**
-     * @param string $defaultContainerType
-     */
-    public function setDefaultContainerType($defaultContainerType): void
+    public function setDefaultContainerType(string $defaultContainerType): void
     {
         $this->defaultContainerType = $defaultContainerType;
     }
 
-    /**
-     * @return string
-     */
-    public function getDefaultContainerType()
+    public function getDefaultContainerType():?string
     {
         return $this->defaultContainerType;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPersistentParameters()
     {
         if (!$this->hasRequest()) {
@@ -282,9 +231,6 @@ final class BlockAdmin extends AbstractAdmin
         return parent::toString($object);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
@@ -296,9 +242,6 @@ final class BlockAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -308,9 +251,6 @@ final class BlockAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureRoutes(RouteCollection $collection): void
     {
         parent::configureRoutes($collection);
@@ -325,9 +265,6 @@ final class BlockAdmin extends AbstractAdmin
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $block = $this->getSubject();

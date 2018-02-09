@@ -23,9 +23,6 @@ use Sonata\DashboardBundle\Model\Dashboard;
  */
 abstract class BaseDashboard extends Dashboard
 {
-    /**
-     * {@inheritdoc}
-     */
     public function __construct()
     {
         parent::__construct();
@@ -33,18 +30,12 @@ abstract class BaseDashboard extends Dashboard
         $this->blocks = new ArrayCollection();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function prePersist(): void
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function preUpdate(): void
     {
         $this->updatedAt = new \DateTime();

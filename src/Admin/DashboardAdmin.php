@@ -36,9 +36,6 @@ final class DashboardAdmin extends AbstractAdmin
         'composeContainerShow' => 'LIST',
     ];
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureRoutes(RouteCollection $collection): void
     {
         $collection->add('compose', '{id}/compose', [
@@ -49,9 +46,6 @@ final class DashboardAdmin extends AbstractAdmin
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function preUpdate($object): void
     {
         if (!$object instanceof DashboardInterface) {
@@ -61,9 +55,6 @@ final class DashboardAdmin extends AbstractAdmin
         $object->setEdited(true);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function prePersist($object): void
     {
         if (!$object instanceof DashboardInterface) {
@@ -73,9 +64,6 @@ final class DashboardAdmin extends AbstractAdmin
         $object->setEdited(true);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
@@ -85,9 +73,6 @@ final class DashboardAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
@@ -97,9 +82,6 @@ final class DashboardAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -108,9 +90,6 @@ final class DashboardAdmin extends AbstractAdmin
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureFormFields(FormMapper $formMapper): void
     {
         // define group zoning
@@ -130,9 +109,6 @@ final class DashboardAdmin extends AbstractAdmin
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null): void
     {
         if (!$childAdmin && !in_array($action, ['edit'])) {

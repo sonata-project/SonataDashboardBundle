@@ -27,9 +27,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 final class SonataDashboardExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $processor = new Processor();
