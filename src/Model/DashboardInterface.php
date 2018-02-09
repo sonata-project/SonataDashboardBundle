@@ -23,16 +23,16 @@ interface DashboardInterface
     /**
      * Returns the id.
      *
-     * @return mixed|null
+     * @return int|null
      */
-    public function getId();
+    public function getId(): ?int;
 
     /**
-     * @param mixed $id
+     * @param int $id
      *
      * @return $this
      */
-    public function setId($id);
+    public function setId(?int $id);
 
     /**
      * Set enabled.
@@ -41,46 +41,46 @@ interface DashboardInterface
      *
      * @return $this
      */
-    public function setEnabled($enabled);
+    public function setEnabled(bool $enabled);
 
     /**
      * Get enabled.
      *
      * @return bool $enabled
      */
-    public function getEnabled();
+    public function getEnabled(): bool;
 
     /**
      * Set name.
      *
-     * @param string $name
+     * @param string|null $name
      *
      * @return $this
      */
-    public function setName($name);
+    public function setName(?string $name);
 
     /**
      * Get name.
      *
      * @return string|null $name
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Set createdAt.
      *
-     * @param \DateTime $createdAt
+     * @param \DateTime|null $createdAt
      *
      * @return $this
      */
-    public function setCreatedAt(\DateTime $createdAt = null);
+    public function setCreatedAt(?\DateTime $createdAt);
 
     /**
      * Get createdAt.
      *
      * @return \DateTime|null $createdAt
      */
-    public function getCreatedAt();
+    public function getCreatedAt(): ?\DateTime;
 
     /**
      * Set updatedAt.
@@ -89,14 +89,14 @@ interface DashboardInterface
      *
      * @return $this
      */
-    public function setUpdatedAt(\DateTime $updatedAt = null);
+    public function setUpdatedAt(?\DateTime $updatedAt);
 
     /**
      * Get updatedAt.
      *
      * @return \DateTime|null $updatedAt
      */
-    public function getUpdatedAt();
+    public function getUpdatedAt(): ?\DateTime;
 
     /**
      * Add blocs.
@@ -117,12 +117,12 @@ interface DashboardInterface
     /**
      * @return bool
      */
-    public function getEdited();
+    public function getEdited(): bool;
 
     /**
      * @param bool $edited
      *
      * @return $this
      */
-    public function setEdited($edited);
+    public function setEdited(bool $edited);
 }

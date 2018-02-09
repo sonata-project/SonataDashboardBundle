@@ -22,7 +22,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\BlockBundle\Block\BlockServiceManagerInterface;
 use Sonata\BlockBundle\Form\Type\ServiceListType;
 use Sonata\Cache\CacheManagerInterface;
-use Sonata\DashboardBundle\Entity\BaseBlock;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -192,7 +191,7 @@ final class BlockAdmin extends AbstractAdmin
         $this->defaultContainerType = $defaultContainerType;
     }
 
-    public function getDefaultContainerType():?string
+    public function getDefaultContainerType(): ?string
     {
         return $this->defaultContainerType;
     }

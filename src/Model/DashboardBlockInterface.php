@@ -17,13 +17,7 @@ use Sonata\BlockBundle\Model\BlockInterface;
 
 interface DashboardBlockInterface extends BlockInterface
 {
-    /**
-     * @return DashboardInterface|null
-     */
-    public function getDashboard();
+    public function getDashboard(): ?DashboardInterface;
 
-    /**
-     * @param DashboardInterface $dashboard The related dashboard
-     */
-    public function setDashboard(DashboardInterface $dashboard = null);
+    public function setDashboard(?DashboardInterface $dashboard);
 }

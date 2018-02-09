@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Entity;
 
+use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
@@ -34,7 +35,7 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
         return $dashboard;
     }
 
-    public function updatePosition($id, $position, $parentId = null, $dashboardId = null, $partial = true)
+    public function updatePosition(int $id, int $position, ?int $parentId = null, ?int $dashboardId = null, bool $partial = true): ?BlockInterface
     {
         if ($partial) {
             $meta = $this->getEntityManager()->getClassMetadata($this->getClass());

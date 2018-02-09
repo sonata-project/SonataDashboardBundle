@@ -66,67 +66,67 @@ abstract class Dashboard implements DashboardInterface
         return $this->getName() ?: '-';
     }
 
-    public function setId($id)
+    public function setId(?int $id)
     {
         $this->id = $id;
 
         return $this;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTime $createdAt = null)
+    public function setCreatedAt(?\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTime $updatedAt = null)
+    public function setUpdatedAt(?\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(?string $name)
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getEnabled()
+    public function getEnabled(): bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
 
         return $this;
     }
 
-    public function getEdited()
+    public function getEdited(): bool
     {
         return $this->edited;
     }
 
-    public function setEdited($edited)
+    public function setEdited(bool $edited)
     {
         $this->edited = $edited;
 

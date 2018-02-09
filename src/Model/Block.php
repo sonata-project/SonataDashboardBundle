@@ -54,12 +54,12 @@ abstract class Block extends BaseBlock implements DashboardBlockInterface
         }
     }
 
-    public function setDashboard(DashboardInterface $dashboard = null): void
+    public function setDashboard(?DashboardInterface $dashboard): void
     {
         $this->dashboard = $dashboard;
     }
 
-    public function getDashboard()
+    public function getDashboard(): ?DashboardInterface
     {
         return $this->dashboard;
     }
