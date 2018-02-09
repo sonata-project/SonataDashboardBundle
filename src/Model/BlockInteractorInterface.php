@@ -20,19 +20,10 @@ namespace Sonata\DashboardBundle\Model;
  */
 interface BlockInteractorInterface
 {
-    /**
-     * return a block with the given id.
-     *
-     * @param mixed $id
-     *
-     * @return DashboardBlockInterface
-     */
-    public function getBlock($id);
+    public function getBlock(int $id): ?DashboardBlockInterface;
 
     /**
      * return a flat list if dashboard's blocks.
-     *
-     * @param DashboardInterface $dashboard
      *
      * @return DashboardBlockInterface[]
      */
@@ -41,8 +32,6 @@ interface BlockInteractorInterface
     /**
      * load blocks attached the given dashboard.
      *
-     * @param DashboardInterface $dashboard
-     *
      * @return DashboardBlockInterface[] $blocks
      */
     public function loadDashboardBlocks(DashboardInterface $dashboard);
@@ -50,18 +39,13 @@ interface BlockInteractorInterface
     /**
      * save the blocks positions.
      *
-     * @param array $data
-     * @param bool  $partial Should we use partial references? (Better for performance, but can lead to query issues.)
-     *
-     * @return bool
+     * @param bool $partial Should we use partial references? (Better for performance, but can lead to query issues.)
      */
-    public function saveBlocksPosition(array $data = [], $partial = true);
+    public function saveBlocksPosition(array $data = [], bool $partial = true);
 
     /**
      * @param array    $values An array of values for container creation
      * @param \Closure $alter  A closure to alter container created
-     *
-     * @return DashboardBlockInterface
      */
-    public function createNewContainer(array $values = [], \Closure $alter = null);
+    public function createNewContainer(array $values = [], \Closure $alter = null): DashboardBlockInterface;
 }

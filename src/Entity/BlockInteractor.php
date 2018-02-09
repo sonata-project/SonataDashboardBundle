@@ -61,7 +61,7 @@ final class BlockInteractor implements BlockInteractorInterface
         $this->defaultContainer = $defaultContainer;
     }
 
-    public function getBlock($id)
+    public function getBlock(int $id): ?DashboardBlockInterface
     {
         $blocks = $this->getEntityManager()->createQueryBuilder()
             ->select('b')
@@ -73,7 +73,7 @@ final class BlockInteractor implements BlockInteractorInterface
             ->getQuery()
             ->execute();
 
-        return count($blocks) > 0 ? $blocks[0] : false;
+        return count($blocks) > 0 ? $blocks[0] : null;
     }
 
     public function getBlocksById(DashboardInterface $dashboard)
@@ -88,7 +88,7 @@ final class BlockInteractor implements BlockInteractorInterface
         return $blocks;
     }
 
-    public function saveBlocksPosition(array $data = [], $partial = true)
+    public function saveBlocksPosition(array $data = [], bool $partial = true): void
     {
         $em = $this->getEntityManager();
         $em->getConnection()->beginTransaction();
@@ -109,11 +109,9 @@ final class BlockInteractor implements BlockInteractorInterface
 
             throw $e;
         }
-
-        return true;
     }
 
-    public function createNewContainer(array $values = [], \Closure $alter = null)
+    public function createNewContainer(array $values = [], \Closure $alter = null): DashboardBlockInterface
     {
         $container = $this->blockManager->create();
 
@@ -181,10 +179,7 @@ final class BlockInteractor implements BlockInteractorInterface
         return $blocks;
     }
 
-    /**
-     * @return EntityManager
-     */
-    private function getEntityManager()
+    private function getEntityManager(): EntityManager
     {
         return $this->registry->getManagerForClass($this->blockManager->getClass());
     }

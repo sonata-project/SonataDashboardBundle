@@ -30,5 +30,5 @@ interface BlockManagerInterface extends ManagerInterface, PageableManagerInterfa
      *
      * @return BlockInterface
      */
-    public function updatePosition($id, $position, $parentId = null, $dashboardId = null, $partial = true);
+    public function updatePosition(int $id, int $position, ?int $parentId = null, ?int $dashboardId = null, bool $partial = true): ?BlockInterface;
 }
