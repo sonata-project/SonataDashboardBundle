@@ -71,6 +71,11 @@ abstract class Dashboard implements DashboardInterface
         return $this->getName() ?: '-';
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function setId(?int $id)
     {
         $this->id = $id;
