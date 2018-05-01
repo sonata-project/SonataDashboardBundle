@@ -6,15 +6,15 @@
         <parameter key="sonata.dashboard.block_interactor.class">Sonata\DashboardBundle\Entity\BlockInteractor</parameter>
     </parameters>
     <services>
-        <service id="sonata.dashboard.manager.dashboard" class="%sonata.dashboard.manager.dashboard.class%">
+        <service id="sonata.dashboard.manager.dashboard" class="%sonata.dashboard.manager.dashboard.class%" public="true">
             <argument>%sonata.dashboard.dashboard.class%</argument>
             <argument type="service" id="doctrine"/>
         </service>
-        <service id="sonata.dashboard.manager.block" class="%sonata.dashboard.manager.block.class%">
+        <service id="sonata.dashboard.manager.block" class="%sonata.dashboard.manager.block.class%" public="true">
             <argument>%sonata.dashboard.block.class%</argument>
             <argument type="service" id="doctrine"/>
         </service>
-        <service id="sonata.dashboard.block_interactor" class="%sonata.dashboard.block_interactor.class%">
+        <service id="sonata.dashboard.block_interactor" class="%sonata.dashboard.block_interactor.class%" public="true">
             <argument type="service" id="doctrine"/>
             <argument type="service" id="sonata.dashboard.manager.block"/>
             <argument>%sonata.dashboard.default_container%</argument>
