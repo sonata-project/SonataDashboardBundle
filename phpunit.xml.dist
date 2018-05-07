@@ -10,23 +10,17 @@
          stopOnFailure="false"
          syntaxCheck="false"
          verbose="true"
-         bootstrap="Tests/tests/bootstrap.php"
+         bootstrap="tests/bootstrap.php"
 >
     <testsuites>
         <testsuite name="DashboardBundle Test Suite">
-            <directory>./Tests</directory>
+            <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./Tests/</directory>
-                <directory>./Resources/</directory>
-                <directory>./DependencyInjection/</directory>
-                <directory>./vendor/</directory>
-            </exclude>
+            <directory>./src/</directory>
         </whitelist>
     </filter>
 </phpunit>

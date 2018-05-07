@@ -39,10 +39,14 @@
         "sonata-project/doctrine-orm-admin-bundle": "^2.2"
     },
     "autoload": {
-        "psr-4": { "Sonata\\DashboardBundle\\": "" },
-        "exclude-from-classmap": [
-            "Tests/"
-        ]
+        "psr-4": {
+            "Sonata\\DashboardBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sonata\\DashboardBundle\\Tests\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": true
