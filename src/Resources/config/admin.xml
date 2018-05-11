@@ -18,6 +18,7 @@
             <argument>%sonata.dashboard.admin.dashboard.controller%</argument>
             <call method="addChild">
                 <argument type="service" id="sonata.dashboard.admin.block"/>
+                <argument>dashboard</argument>
             </call>
             <call method="setTranslationDomain">
                 <argument>%sonata.dashboard.admin.dashboard.translation_domain%</argument>
