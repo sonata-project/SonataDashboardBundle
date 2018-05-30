@@ -4,7 +4,7 @@
         <parameter key="sonata.dashboard.block.container.class">Sonata\DashboardBundle\Block\ContainerBlockService</parameter>
     </parameters>
     <services>
-        <service id="sonata.dashboard.block.container" class="%sonata.dashboard.block.container.class%">
+        <service id="sonata.dashboard.block.container" class="%sonata.dashboard.block.container.class%" public="true">
             <tag name="sonata.block"/>
             <argument>sonata.dashboard.block.container</argument>
             <argument type="service" id="sonata.templating"/>

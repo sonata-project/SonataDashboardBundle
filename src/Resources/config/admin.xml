@@ -11,7 +11,7 @@
         <parameter key="sonata.dashboard.admin.block.translation_domain">%sonata.dashboard.admin.dashboard.translation_domain%</parameter>
     </parameters>
     <services>
-        <service id="sonata.dashboard.admin.dashboard" class="%sonata.dashboard.admin.dashboard.class%">
+        <service id="sonata.dashboard.admin.dashboard" class="%sonata.dashboard.admin.dashboard.class%" public="true">
             <tag name="sonata.admin" manager_type="orm" group="sonata_dashboard" label_catalogue="%sonata.dashboard.admin.dashboard.translation_domain%" label="dashboard" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
             <argument/>
             <argument>%sonata.dashboard.admin.dashboard.entity%</argument>
@@ -31,7 +31,7 @@
                 </argument>
             </call>
         </service>
-        <service id="sonata.dashboard.admin.block" class="%sonata.dashboard.admin.block.class%">
+        <service id="sonata.dashboard.admin.block" class="%sonata.dashboard.admin.block.class%" public="true">
             <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" group="sonata_dashboard" label_catalogue="%sonata.dashboard.admin.dashboard.translation_domain%" label="block" label_translator_strategy="sonata.admin.label.strategy.underscore"/>
             <argument/>
             <argument>%sonata.dashboard.admin.block.entity%</argument>
