@@ -38,16 +38,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 final class BlockAdmin extends AbstractAdmin
 {
-    /**
-     * @var string
-     */
-    protected $parentAssociationMapping = 'dashboard';
-
     protected $accessMapping = [
         'savePosition' => 'EDIT',
         'switchParent' => 'EDIT',
         'composePreview' => 'EDIT',
     ];
+
     /**
      * @var BlockServiceManagerInterface
      */
