@@ -9,3 +9,4 @@ Dashboard Bundle
 
    reference/introduction
    reference/installation
+   reference/assets
