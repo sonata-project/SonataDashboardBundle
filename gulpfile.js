@@ -9,8 +9,6 @@
     To add a new task, simply add a new task file to gulp/tasks.
 */
 
-var gutil = require('gulp-util');
-
 var banner = [
 "                              __",
 "      _________  ____  ____ _/ /_____ _",
@@ -23,4 +21,4 @@ var banner = [
 
 console.log(banner);
 
-require('./gulp');
+require('./assets/gulp');
