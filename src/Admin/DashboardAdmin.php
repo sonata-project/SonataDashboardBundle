@@ -122,7 +122,7 @@ final class DashboardAdmin extends AbstractAdmin
 
     protected function configureTabMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null): void
     {
-        if (!$childAdmin && !in_array($action, ['edit'])) {
+        if (!$childAdmin && !\in_array($action, ['edit'])) {
             return;
         }
 
