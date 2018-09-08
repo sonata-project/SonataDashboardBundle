@@ -221,7 +221,7 @@ final class BlockAdmin extends AbstractAdmin
      */
     public function toString($object)
     {
-        if (!is_object($object)) {
+        if (!\is_object($object)) {
             return '';
         }
         if (method_exists($object, 'getName') && null !== $object->getName()) {
@@ -298,8 +298,8 @@ final class BlockAdmin extends AbstractAdmin
         $formMapper->with('form.field_group_general', $generalGroupOptions);
 
         $containerBlockTypes = $this->containerBlockTypes;
-        $isContainerRoot = $block && in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
-        $isStandardBlock = $block && !in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isContainerRoot = $block && \in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isStandardBlock = $block && !\in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
 
         if (!$isComposer) {
             $formMapper->add('name');

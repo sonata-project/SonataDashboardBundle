@@ -55,7 +55,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
 
     public function getDashboard($dashboard): DashboardInterface
     {
-        if (is_string($dashboard)) {
+        if (\is_string($dashboard)) {
             $dashboard = $this->getDashboardByName($dashboard);
         } elseif (is_numeric($dashboard)) {
             $dashboard = $this->getDashboardById($dashboard);
