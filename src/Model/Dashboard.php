@@ -41,7 +41,7 @@ abstract class Dashboard implements DashboardInterface
     protected $name;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $enabled;
 
@@ -51,12 +51,12 @@ abstract class Dashboard implements DashboardInterface
     protected $blocks;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $edited;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $default;
 
@@ -121,7 +121,7 @@ abstract class Dashboard implements DashboardInterface
 
     public function getEnabled(): bool
     {
-        return $this->enabled;
+        return $this->enabled ?? false;
     }
 
     public function setEnabled(bool $enabled)
@@ -133,7 +133,7 @@ abstract class Dashboard implements DashboardInterface
 
     public function getEdited(): bool
     {
-        return $this->edited;
+        return $this->edited ?? false;
     }
 
     public function setEdited(bool $edited)
@@ -148,9 +148,9 @@ abstract class Dashboard implements DashboardInterface
         $this->default = $default;
     }
 
-    public function isDefault()
+    public function isDefault(): bool
     {
-        return $this->default;
+        return $this->default ?? false;
     }
 
     public function addBlocks(DashboardBlockInterface $block)
