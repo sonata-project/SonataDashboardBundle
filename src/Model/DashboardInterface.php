@@ -101,7 +101,7 @@ interface DashboardInterface
     /**
      * @return bool
      */
-    public function isDefault();
+    public function isDefault(): bool;
 
     /**
      * @param bool $default
