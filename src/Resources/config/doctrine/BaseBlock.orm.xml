@@ -4,7 +4,11 @@
         <field name="name" type="string" column="name" length="255" nullable="true"/>
         <field name="type" type="string" column="type" length="64"/>
         <field name="settings" type="json" column="settings"/>
-        <field name="enabled" type="boolean" column="enabled" nullable="true" default="false"/>
+        <field name="enabled" type="boolean" column="enabled" nullable="true">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
         <field name="position" type="integer" column="position" nullable="true"/>
         <field name="createdAt" type="datetime" column="created_at"/>
         <field name="updatedAt" type="datetime" column="updated_at"/>
