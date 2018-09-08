@@ -41,7 +41,7 @@ final class BlockAdminController extends Controller
         try {
             $params = $request->get('disposition');
 
-            if (!is_array($params)) {
+            if (!\is_array($params)) {
                 throw new HttpException(400, 'wrong parameters');
             }
 
@@ -50,14 +50,14 @@ final class BlockAdminController extends Controller
         } catch (HttpException $e) {
             $status = $e->getStatusCode();
             $result = [
-                'exception' => get_class($e),
+                'exception' => \get_class($e),
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
             ];
         } catch (\Exception $e) {
             $status = 500;
             $result = [
-                'exception' => get_class($e),
+                'exception' => \get_class($e),
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
             ];
@@ -91,7 +91,7 @@ final class BlockAdminController extends Controller
             ]);
         } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
-            $position = count($dashboard->getBlocks()) + 1;
+            $position = \count($dashboard->getBlocks()) + 1;
             $name = $request->get('name');
 
             if ('' === $name) {
