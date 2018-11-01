@@ -286,6 +286,10 @@
                 <source>notice</source>
                 <target>notice</target>
             </trans-unit>
+            <trans-unit id="72" resname="sonata_dashboard">
+                <source>sonata_dashboard</source>
+                <target>Dashboard</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
