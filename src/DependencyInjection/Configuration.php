@@ -33,8 +33,14 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $node = $treeBuilder->root('sonata_dashboard')->children();
+        $treeBuilder = new TreeBuilder('sonata_dashboard');
+
+        // Keep compatibility with symfony/config < 4.2
+        if (!\method_exists($treeBuilder, 'getRootNode')) {
+            $node = $treeBuilder->root('sonata_dashboard')->children();
+        } else {
+            $node = $treeBuilder->getRootNode()->children();
+        }
 
         $node
             ->arrayNode('class')
