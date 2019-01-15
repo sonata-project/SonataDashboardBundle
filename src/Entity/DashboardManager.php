@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Entity;
 
-use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DashboardBundle\Model\DashboardManagerInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
+use Sonata\Doctrine\Entity\BaseEntityManager;
 
 /**
  * This class manages DashboardInterface persistency with the Doctrine ORM.

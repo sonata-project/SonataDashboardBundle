@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Entity;
 
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
+use Sonata\Doctrine\Entity\BaseEntityManager;
 
 /**
  * This class manages BlockInterface persistency with the Doctrine ORM.

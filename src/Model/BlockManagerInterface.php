@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Model;
 
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Model\ManagerInterface;
-use Sonata\CoreBundle\Model\PageableManagerInterface;
+use Sonata\Doctrine\Model\ManagerInterface;
+use Sonata\Doctrine\Model\PageableManagerInterface;
 
 interface BlockManagerInterface extends ManagerInterface, PageableManagerInterface
 {
