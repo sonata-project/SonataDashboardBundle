@@ -47,7 +47,7 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
 
         $container = $this->manager->findContainer('findme', $dashboard);
 
-        $this->assertEquals(spl_object_hash($block), spl_object_hash($container),
+        $this->assertSame(spl_object_hash($block), spl_object_hash($container),
             'should retrieve the block of the dashboard');
     }
 
@@ -61,7 +61,7 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
         $container = $this->manager->findContainer('newcontainer', $dashboard);
 
         $this->assertInstanceOf('Sonata\DashboardBundle\Model\DashboardBlockInterface', $container, 'should be a block');
-        $this->assertEquals('newcontainer', $container->getSetting('code'));
+        $this->assertSame('newcontainer', $container->getSetting('code'));
     }
 
     /**

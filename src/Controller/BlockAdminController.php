@@ -89,7 +89,7 @@ final class BlockAdminController extends Controller
                 'admin' => $this->admin,
                 'action' => 'create',
             ]);
-        } elseif ($parameters['type'] == $this->admin->getDefaultContainerType()) {
+        } elseif ($parameters['type'] === $this->admin->getDefaultContainerType()) {
             $dashboard = $this->admin->getParent()->getSubject();
             $position = \count($dashboard->getBlocks()) + 1;
             $name = $request->get('name');

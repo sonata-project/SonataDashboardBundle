@@ -45,6 +45,6 @@ final class ConfigurationTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($expected, $config);
+        $this->assertSame($expected, $config);
     }
 }
