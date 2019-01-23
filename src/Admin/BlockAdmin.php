@@ -283,7 +283,7 @@ final class BlockAdmin extends AbstractAdmin
                 $block->setDashboard($dashboard);
             }
 
-            if ($block->getDashboard()->getId() != $dashboard->getId()) {
+            if ($block->getDashboard()->getId() !== $dashboard->getId()) {
                 throw new \RuntimeException('The dashboard reference on BlockAdmin and parent admin are not the same');
             }
         }
@@ -298,8 +298,8 @@ final class BlockAdmin extends AbstractAdmin
         $formMapper->with('form.field_group_general', $generalGroupOptions);
 
         $containerBlockTypes = $this->containerBlockTypes;
-        $isContainerRoot = $block && \in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
-        $isStandardBlock = $block && !\in_array($block->getType(), $containerBlockTypes) && !$this->hasParentFieldDescription();
+        $isContainerRoot = $block && \in_array($block->getType(), $containerBlockTypes, true) && !$this->hasParentFieldDescription();
+        $isStandardBlock = $block && !\in_array($block->getType(), $containerBlockTypes, true) && !$this->hasParentFieldDescription();
 
         if (!$isComposer) {
             $formMapper->add('name');
