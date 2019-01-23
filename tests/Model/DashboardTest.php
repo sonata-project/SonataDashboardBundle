@@ -27,12 +27,12 @@ final class DashboardTest extends TestCase
         $time = new \DateTime();
         $dashboard->setCreatedAt($time);
         $dashboard->setUpdatedAt($time);
-        $this->assertEquals($time, $dashboard->getCreatedAt());
-        $this->assertEquals($time, $dashboard->getUpdatedAt());
+        $this->assertSame($time, $dashboard->getCreatedAt());
+        $this->assertSame($time, $dashboard->getUpdatedAt());
 
         $dashboard->setName(null);
-        $this->assertEquals('-', (string) $dashboard);
+        $this->assertSame('-', (string) $dashboard);
         $dashboard->setName('Salut');
-        $this->assertEquals('Salut', (string) $dashboard);
+        $this->assertSame('Salut', (string) $dashboard);
     }
 }

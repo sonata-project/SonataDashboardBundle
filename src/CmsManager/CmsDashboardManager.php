@@ -85,7 +85,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         // first level blocks are containers
         if (!$container && $dashboard->getBlocks()) {
             foreach ($dashboard->getBlocks() as $block) {
-                if ($block->getSetting('code') == $name) {
+                if ($block->getSetting('code') === $name) {
                     $container = $block;
                     break;
                 }
