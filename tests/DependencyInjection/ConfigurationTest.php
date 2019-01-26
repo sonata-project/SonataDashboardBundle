@@ -37,12 +37,12 @@ final class ConfigurationTest extends TestCase
                 'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
                 'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
             ],
-            'default_container' => 'sonata.dashboard.block.container',
             'templates' => [
                 'compose' => '@My/MyController/my_template.html.twig',
                 'compose_container_show' => '@SonataDashboard/DashboardAdmin/compose_container_show.html.twig',
                 'render' => '@SonataDashboard/DashboardAdmin/render.html.twig',
             ],
+            'default_container' => 'sonata.dashboard.block.container',
         ];
 
         $this->assertSame($expected, $config);

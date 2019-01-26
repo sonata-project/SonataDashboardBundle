@@ -13,14 +13,13 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Tests\Block;
 
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
+use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
 use Sonata\DashboardBundle\Block\ContainerBlockService;
 
-/**
- * Test Container Block service.
- */
 final class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
 {
     /**
@@ -49,7 +48,7 @@ final class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
         $this->assertSame('@SonataDashboard/BlockAdmin/block_container.html.twig', $this->templating->view);
         $this->assertSame('block.code', $this->templating->parameters['block']->getSetting('code'));
         $this->assertSame('block.name', $this->templating->parameters['block']->getName());
-        $this->assertInstanceOf('Sonata\BlockBundle\Model\Block', $this->templating->parameters['block']);
+        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
     }
 
     /**
@@ -94,7 +93,7 @@ final class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
             'name' => 'block.code',
         ]);
 
-        $formMapper = $this->createMock('Sonata\\AdminBundle\\Form\\FormMapper', [], [], '', false);
+        $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
         $formMapper->expects($this->exactly(6))->method('add');
 
         $service->buildCreateForm($formMapper, $block);

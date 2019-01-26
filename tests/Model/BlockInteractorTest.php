@@ -14,14 +14,13 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Tests\Model;
 
 use PHPUnit\Framework\TestCase;
+use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\DashboardBundle\Entity\BlockInteractor;
+use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Tests\Fixtures\Entity\Block;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * BlockInteractorTest class.
- *
- * This is the BlockInteractor test class
- *
  * @author Vincent Composieux <composieux@ekino.com>
  */
 final class BlockInteractorTest extends TestCase
@@ -31,27 +30,35 @@ final class BlockInteractorTest extends TestCase
      */
     public function testCreateNewContainer(): void
     {
-        $registry = $this->getMockBuilder('Symfony\Bridge\Doctrine\RegistryInterface')->disableOriginalConstructor()->getMock();
-
-        $blockManager = $this->createMock('Sonata\DashboardBundle\Model\BlockManagerInterface');
+        $blockManager = $this->createMock(BlockManagerInterface::class);
         $blockManager->expects($this->any())->method('create')->will($this->returnValue(new Block()));
 
-        $blockInteractor = new BlockInteractor($registry, $blockManager, 'sonata.dashboard.block.container');
+        $blockInteractor = new BlockInteractor(
+            $this->createMock(RegistryInterface::class),
+            $blockManager,
+            'sonata.dashboard.block.container'
+        );
 
         $container = $blockInteractor->createNewContainer([
             'enabled' => true,
             'code' => 'my-code',
         ], function ($container): void {
-            $container->setSetting('layout', '<div class="custom-layout">{{ CONTENT }}</div>');
+            $container->setSetting(
+                'layout',
+                '<div class="custom-layout">{{ CONTENT }}</div>'
+            );
         });
 
-        $this->assertInstanceOf('\Sonata\BlockBundle\Model\BlockInterface', $container);
+        $this->assertInstanceOf(BlockInterface::class, $container);
 
         $settings = $container->getSettings();
 
         $this->assertTrue($container->getEnabled());
 
         $this->assertSame('my-code', $settings['code']);
-        $this->assertSame('<div class="custom-layout">{{ CONTENT }}</div>', $settings['layout']);
+        $this->assertSame(
+            '<div class="custom-layout">{{ CONTENT }}</div>',
+            $settings['layout']
+        );
     }
 }
