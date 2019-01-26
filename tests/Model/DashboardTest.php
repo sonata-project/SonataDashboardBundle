@@ -24,11 +24,11 @@ final class DashboardTest extends TestCase
         $dashboard->setEnabled(true);
         $this->assertTrue($dashboard->getEnabled());
 
-        $time = new \DateTime();
-        $dashboard->setCreatedAt($time);
-        $dashboard->setUpdatedAt($time);
-        $this->assertSame($time, $dashboard->getCreatedAt());
-        $this->assertSame($time, $dashboard->getUpdatedAt());
+        $datetime = new \DateTime();
+        $dashboard->setCreatedAt($datetime);
+        $dashboard->setUpdatedAt($datetime);
+        $this->assertSame($datetime, $dashboard->getCreatedAt());
+        $this->assertSame($datetime, $dashboard->getUpdatedAt());
 
         $dashboard->setName(null);
         $this->assertSame('-', (string) $dashboard);

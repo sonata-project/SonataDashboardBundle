@@ -21,8 +21,6 @@ use Sonata\DashboardBundle\Tests\Fixtures\Entity\FooNoGetName;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * BlockAdminTest.
- *
  * @author Stéphane Paté <st.pate@orange.fr>
  */
 final class BlockAdminTest extends TestCase
