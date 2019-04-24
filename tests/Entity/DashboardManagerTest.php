@@ -53,7 +53,7 @@ final class DashboardManagerTest extends TestCase
 
         $self = $this;
         $this
-            ->getDashboardManager(function ($qb) use ($self): void {
+            ->getDashboardManager(static function ($qb) use ($self): void {
             })
             ->getPager([], 1, 10, ['invalid' => 'ASC']);
     }
