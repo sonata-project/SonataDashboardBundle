@@ -150,7 +150,7 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
      */
     private function getMockBlockInteractor()
     {
-        $callback = function ($options) {
+        $callback = static function ($options) {
             $block = new CmsBlock();
             $block->setSettings($options);
 

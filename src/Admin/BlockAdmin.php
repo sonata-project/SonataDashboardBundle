@@ -318,7 +318,7 @@ final class BlockAdmin extends AbstractAdmin
             if ($isStandardBlock && $dashboard && !empty($containerBlockTypes)) {
                 $formMapper->add('parent', EntityType::class, [
                     'class' => $this->getClass(),
-                    'query_builder' => function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
+                    'query_builder' => static function (EntityRepository $repository) use ($dashboard, $containerBlockTypes) {
                         return $repository->createQueryBuilder('a')
                             ->andWhere('a.dashboard = :dashboard AND a.type IN (:types)')
                             ->setParameters([
