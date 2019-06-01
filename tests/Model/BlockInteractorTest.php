@@ -31,7 +31,7 @@ final class BlockInteractorTest extends TestCase
     public function testCreateNewContainer(): void
     {
         $blockManager = $this->createMock(BlockManagerInterface::class);
-        $blockManager->expects($this->any())->method('create')->will($this->returnValue(new Block()));
+        $blockManager->expects($this->any())->method('create')->willReturn(new Block());
 
         $blockInteractor = new BlockInteractor(
             $this->createMock(RegistryInterface::class),
