@@ -39,7 +39,7 @@ final class DashboardManagerTest extends TestCase
                     $self->equalTo('ASC')
                 );
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo([]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager([], 1);
     }
@@ -75,7 +75,7 @@ final class DashboardManagerTest extends TestCase
                     )
                 );
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo([]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager([], 1, 10, [
                 'name' => 'ASC',
@@ -90,7 +90,7 @@ final class DashboardManagerTest extends TestCase
             ->getDashboardManager(function ($qb) use ($self): void {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['enabled' => true]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager(['enabled' => true], 1);
     }
@@ -102,7 +102,7 @@ final class DashboardManagerTest extends TestCase
             ->getDashboardManager(function ($qb) use ($self): void {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.enabled = :enabled'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['enabled' => false]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager(['enabled' => false], 1);
     }
@@ -114,7 +114,7 @@ final class DashboardManagerTest extends TestCase
             ->getDashboardManager(function ($qb) use ($self): void {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => true]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager(['edited' => true], 1);
     }
@@ -126,7 +126,7 @@ final class DashboardManagerTest extends TestCase
             ->getDashboardManager(function ($qb) use ($self): void {
                 $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
                 $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => false]));
-                $qb->expects($this->any())->method('getRootAliases')->will($this->returnValue([]));
+                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
             })
             ->getPager(['edited' => false], 1);
     }
@@ -134,32 +134,32 @@ final class DashboardManagerTest extends TestCase
     private function getDashboardManager($qbCallback)
     {
         $query = $this->getMockForAbstractClass(AbstractQuery::class, [], '', false, true, true, ['execute']);
-        $query->expects($this->any())->method('execute')->will($this->returnValue(true));
+        $query->expects($this->any())->method('execute')->willReturn(true);
 
         $qb = $this->createMock(QueryBuilder::class, [], [
             $this->getMockBuilder(EntityManager::class)->disableOriginalConstructor()->getMock(),
         ]);
 
-        $qb->expects($this->any())->method('select')->will($this->returnValue($qb));
-        $qb->expects($this->any())->method('getQuery')->will($this->returnValue($query));
+        $qb->expects($this->any())->method('select')->willReturn($qb);
+        $qb->expects($this->any())->method('getQuery')->willReturn($query);
 
         $qbCallback($qb);
 
         $repository = $this->getMockBuilder(EntityRepository::class)->disableOriginalConstructor()->getMock();
-        $repository->expects($this->any())->method('createQueryBuilder')->will($this->returnValue($qb));
+        $repository->expects($this->any())->method('createQueryBuilder')->willReturn($qb);
 
         $metadata = $this->createMock(ClassMetadata::class);
-        $metadata->expects($this->any())->method('getFieldNames')->will($this->returnValue([
+        $metadata->expects($this->any())->method('getFieldNames')->willReturn([
             'name',
             'routeName',
-        ]));
+        ]);
 
         $em = $this->getMockBuilder(EntityManager::class)->disableOriginalConstructor()->getMock();
-        $em->expects($this->any())->method('getRepository')->will($this->returnValue($repository));
-        $em->expects($this->any())->method('getClassMetadata')->will($this->returnValue($metadata));
+        $em->expects($this->any())->method('getRepository')->willReturn($repository);
+        $em->expects($this->any())->method('getClassMetadata')->willReturn($metadata);
 
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->any())->method('getManagerForClass')->will($this->returnValue($em));
+        $registry->expects($this->any())->method('getManagerForClass')->willReturn($em);
 
         return new DashboardManager(BaseDashboard::class, $registry);
     }
