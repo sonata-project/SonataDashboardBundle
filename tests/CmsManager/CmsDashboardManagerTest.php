@@ -76,8 +76,8 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
     {
         $dashboardManager = $this->createMock(DashboardManagerInterface::class);
 
-        $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(new Dashboard()));
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
+        $dashboardManager->expects($this->any())->method('findOneBy')->willReturn(new Dashboard());
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->willReturn([]);
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
@@ -93,13 +93,13 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
     {
         $dashboardManager = $this->createMock(DashboardManagerInterface::class);
 
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->willReturn([]);
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
         $dashboard = 1;
 
-        $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(null));
+        $dashboardManager->expects($this->any())->method('findOneBy')->willReturn(null);
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
         $this->expectException(DashboardNotFoundException::class);
@@ -113,8 +113,8 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
     {
         $dashboardManager = $this->createMock(DashboardManagerInterface::class);
 
-        $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(new Dashboard()));
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
+        $dashboardManager->expects($this->any())->method('findOneBy')->willReturn(new Dashboard());
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->willReturn([]);
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
         $manager->setCurrentDashboard(new Dashboard());
@@ -130,13 +130,13 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
     {
         $dashboardManager = $this->createMock(DashboardManagerInterface::class);
 
-        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->will($this->returnValue([]));
+        $this->blockInteractor->expects($this->any())->method('loadDashboardBlocks')->willReturn([]);
 
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
         $dashboard = null;
 
-        $dashboardManager->expects($this->any())->method('findOneBy')->will($this->returnValue(null));
+        $dashboardManager->expects($this->any())->method('findOneBy')->willReturn(null);
         $manager = $this->createManager($dashboardManager, $this->blockInteractor);
 
         $this->expectException(DashboardNotFoundException::class);
@@ -158,7 +158,7 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
         };
 
         $mock = $this->createMock(BlockInteractorInterface::class);
-        $mock->expects($this->any())->method('createNewContainer')->will($this->returnCallback($callback));
+        $mock->expects($this->any())->method('createNewContainer')->willReturnCallback($callback);
 
         return $mock;
     }
