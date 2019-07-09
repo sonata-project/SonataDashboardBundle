@@ -22,8 +22,6 @@ interface DashboardInterface
 {
     /**
      * Returns the id.
-     *
-     * @return int|null
      */
     public function getId(): ?int;
 
@@ -37,7 +35,6 @@ interface DashboardInterface
     /**
      * Set enabled.
      *
-     * @param bool $enabled
      *
      * @return $this
      */
@@ -53,7 +50,6 @@ interface DashboardInterface
     /**
      * Set name.
      *
-     * @param string|null $name
      *
      * @return $this
      */
@@ -69,7 +65,6 @@ interface DashboardInterface
     /**
      * Set createdAt.
      *
-     * @param \DateTime|null $createdAt
      *
      * @return $this
      */
@@ -98,9 +93,6 @@ interface DashboardInterface
      */
     public function getUpdatedAt(): ?\DateTime;
 
-    /**
-     * @return bool
-     */
     public function isDefault(): bool;
 
     /**
@@ -113,7 +105,6 @@ interface DashboardInterface
     /**
      * Add blocs.
      *
-     * @param DashboardBlockInterface $block
      *
      * @return $this
      */
@@ -126,14 +117,9 @@ interface DashboardInterface
      */
     public function getBlocks();
 
-    /**
-     * @return bool
-     */
     public function getEdited(): bool;
 
     /**
-     * @param bool $edited
-     *
      * @return $this
      */
     public function setEdited(bool $edited);

@@ -59,8 +59,6 @@ abstract class BaseCmsDashboardManager implements CmsManagerInterface
 
     /**
      * @param mixed $value
-     *
-     * @return DashboardInterface
      */
     abstract protected function getDashboardBy(string $fieldName, $value): DashboardInterface;
 }
