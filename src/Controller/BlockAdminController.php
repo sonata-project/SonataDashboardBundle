@@ -28,11 +28,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 final class BlockAdminController extends Controller
 {
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     public function savePositionAction(Request $request): Response
     {
         $this->setSubject($request->get('block_id'));
@@ -117,12 +112,8 @@ final class BlockAdminController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
      * @throws HttpException
      * @throws NotFoundHttpException
-     *
-     * @return Response
      */
     public function switchParentAction(Request $request): Response
     {
@@ -147,11 +138,7 @@ final class BlockAdminController extends Controller
     }
 
     /**
-     * @param Request $request
-     *
      * @throws NotFoundHttpException
-     *
-     * @return Response
      */
     public function composePreviewAction(Request $request): Response
     {
@@ -178,8 +165,6 @@ final class BlockAdminController extends Controller
      * @param mixed $blockId
      *
      * @throws NotFoundHttpException
-     *
-     * @return BaseBlock
      */
     private function setSubject($blockId): BaseBlock
     {

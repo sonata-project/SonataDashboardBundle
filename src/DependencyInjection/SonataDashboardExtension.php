@@ -78,8 +78,6 @@ final class SonataDashboardExtension extends Extension
 
     /**
      * Registers doctrine mapping on concrete dashboard entities.
-     *
-     * @param array $config
      */
     public function registerDoctrineMapping(array $config): void
     {
