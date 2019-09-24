@@ -21,8 +21,6 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * Class SonataDashboardExtension.
- *
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
 final class SonataDashboardExtension extends Extension

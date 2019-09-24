@@ -14,113 +14,45 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Model;
 
 /**
- * DashboardInterface.
- *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
  */
 interface DashboardInterface
 {
-    /**
-     * Returns the id.
-     */
     public function getId(): ?int;
 
-    /**
-     * @param int $id
-     *
-     * @return $this
-     */
     public function setId(?int $id);
 
-    /**
-     * Set enabled.
-     *
-     *
-     * @return $this
-     */
     public function setEnabled(bool $enabled);
 
-    /**
-     * Get enabled.
-     *
-     * @return bool $enabled
-     */
     public function getEnabled(): bool;
 
-    /**
-     * Set name.
-     *
-     *
-     * @return $this
-     */
     public function setName(?string $name);
 
-    /**
-     * Get name.
-     *
-     * @return string|null $name
-     */
     public function getName(): ?string;
 
-    /**
-     * Set createdAt.
-     *
-     *
-     * @return $this
-     */
     public function setCreatedAt(?\DateTime $createdAt);
 
-    /**
-     * Get createdAt.
-     *
-     * @return \DateTime|null $createdAt
-     */
     public function getCreatedAt(): ?\DateTime;
 
-    /**
-     * Set updatedAt.
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return $this
-     */
     public function setUpdatedAt(?\DateTime $updatedAt);
 
-    /**
-     * Get updatedAt.
-     *
-     * @return \DateTime|null $updatedAt
-     */
     public function getUpdatedAt(): ?\DateTime;
 
     public function isDefault(): bool;
 
     /**
      * @param bool $default
-     *
-     * @return DashboardInterface
      */
     public function setDefault($default);
 
-    /**
-     * Add blocs.
-     *
-     *
-     * @return $this
-     */
     public function addBlocks(DashboardBlockInterface $block);
 
     /**
-     * Get blocs.
-     *
      * @return DashboardBlockInterface[]
      */
     public function getBlocks();
 
     public function getEdited(): bool;
 
-    /**
-     * @return $this
-     */
     public function setEdited(bool $edited);
 }

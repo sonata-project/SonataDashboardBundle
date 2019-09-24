@@ -48,8 +48,6 @@ final class BlockInteractor implements BlockInteractorInterface
     private $defaultContainer;
 
     /**
-     * Constructor.
-     *
      * @param RegistryInterface     $registry         Doctrine registry
      * @param BlockManagerInterface $blockManager     Block manager
      * @param string                $defaultContainer

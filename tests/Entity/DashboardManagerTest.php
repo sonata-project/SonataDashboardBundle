@@ -23,9 +23,6 @@ use PHPUnit\Framework\TestCase;
 use Sonata\DashboardBundle\Entity\BaseDashboard;
 use Sonata\DashboardBundle\Entity\DashboardManager;
 
-/**
- * Class DashboardManagerTest.
- */
 final class DashboardManagerTest extends TestCase
 {
     public function testGetPager(): void
