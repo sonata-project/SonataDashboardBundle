@@ -40,10 +40,7 @@ interface DashboardInterface
 
     public function isDefault(): bool;
 
-    /**
-     * @param bool $default
-     */
-    public function setDefault($default);
+    public function setDefault(bool $default);
 
     public function addBlocks(DashboardBlockInterface $block);
 

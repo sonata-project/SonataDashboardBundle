@@ -143,7 +143,7 @@ abstract class Dashboard implements DashboardInterface
         return $this;
     }
 
-    public function setDefault($default): void
+    public function setDefault(bool $default)
     {
         $this->default = $default;
     }
