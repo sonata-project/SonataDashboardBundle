@@ -216,8 +216,6 @@ final class BlockAdmin extends AbstractAdmin
 
     /**
      * Override needed to make the dashboard composer cleaner.
-     *
-     * {@inheritdoc}
      */
     public function toString($object)
     {

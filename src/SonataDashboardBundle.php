@@ -18,8 +18,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class SonataDashboardBundle.
- *
  * @author  Quentin Somazzi <qsomazzi@ekino.com>
  */
 final class SonataDashboardBundle extends Bundle
