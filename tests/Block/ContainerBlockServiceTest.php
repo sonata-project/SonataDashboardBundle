@@ -17,10 +17,10 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 use Sonata\DashboardBundle\Block\ContainerBlockService;
 
-final class ContainerBlockServiceTest extends AbstractBlockServiceTestCase
+final class ContainerBlockServiceTest extends BlockServiceTestCase
 {
     /**
      * test the block execute() method.
