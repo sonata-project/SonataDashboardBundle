@@ -19,9 +19,13 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\BlockBundle\Block\BlockServiceInterface;
 use Sonata\BlockBundle\Block\BlockServiceManagerInterface;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
 use Sonata\BlockBundle\Form\Type\ServiceListType;
+use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Cache\CacheManagerInterface;
+use Sonata\DashboardBundle\Mapper\DashboardFormMapper;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -102,7 +106,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->preUpdate($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'preUpdate'])) {
+            $block->preUpdate($object);
+
+            @trigger_error(
+                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                 E_USER_DEPRECATED
+             );
+        }
 
         // fix weird bug with setter object not being call
         $object->setChildren($object->getChildren());
@@ -118,7 +131,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->postUpdate($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'postUpdate'])) {
+            $block->postUpdate($object);
+
+            @trigger_error(
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
+        }
 
         $service = $this->blockManager->get($object);
 
@@ -131,7 +153,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->prePersist($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'prePersist'])) {
+            $block->prePersist($object);
+
+            @trigger_error(
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
+        }
 
         if ($object->getDashboard() instanceof DashboardInterface) {
             $object->getDashboard()->setEdited(true);
@@ -147,7 +178,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->postPersist($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'postPersist'])) {
+            $block->postPersist($object);
+
+            @trigger_error(
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
+        }
 
         $service = $this->blockManager->get($object);
 
@@ -160,7 +200,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->preRemove($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'preRemove'])) {
+            $block->preRemove($object);
+
+            @trigger_error(
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
+        }
     }
 
     public function postRemove($object): void
@@ -169,7 +218,16 @@ final class BlockAdmin extends AbstractAdmin
             throw new \InvalidArgumentException('Invalid block object');
         }
 
-        $this->blockManager->get($object)->postRemove($object);
+        $block = $this->blockManager->get($object);
+
+        if (\is_callable([$block, 'postRemove'])) {
+            $block->postRemove($object);
+
+            @trigger_error(
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
+        }
     }
 
     public function setBlockManager(BlockServiceManagerInterface $blockManager): void
@@ -345,11 +403,7 @@ final class BlockAdmin extends AbstractAdmin
 
             $formMapper->with('form.field_group_options', $optionsGroupOptions);
 
-            if ($block->getId() > 0) {
-                $service->buildEditForm($formMapper, $block);
-            } else {
-                $service->buildCreateForm($formMapper, $block);
-            }
+            $this->configureBlockFields($formMapper, $block);
 
             // When editing a container in composer view, hide some settings
             if ($isContainerRoot && $isComposer) {
@@ -376,6 +430,44 @@ final class BlockAdmin extends AbstractAdmin
                     ->add('position', IntegerType::class)
                 ->end()
             ;
+        }
+    }
+
+    private function configureBlockFields(FormMapper $formMapper, BlockInterface $block): void
+    {
+        $service = $this->blockManager->get($block);
+        $blockType = $block->getType();
+
+        if (!$service instanceof BlockServiceInterface) {
+            throw new \RuntimeException(sprintf(
+                'The block "%s" must implement %s',
+                $blockType,
+                BlockServiceInterface::class
+            ));
+        }
+
+        if ($service instanceof EditableBlockService) {
+            $blockMapper = new DashboardFormMapper($formMapper);
+
+            if ($block->getId() > 0) {
+                $service->configureEditForm($blockMapper, $block);
+            } else {
+                $service->configureCreateForm($blockMapper, $block);
+            }
+        } else {
+            @trigger_error(
+                sprintf(
+                    'Editing a block service which doesn\'t implement %s is deprecated since sonata-project/dashboard-bundle 0.x and will not be allowed with version 1.0.',
+                    EditableBlockService::class
+                ),
+                E_USER_DEPRECATED
+            );
+
+            if ($block->getId() > 0) {
+                $service->buildEditForm($formMapper, $block);
+            } else {
+                $service->buildCreateForm($formMapper, $block);
+            }
         }
     }
 }
