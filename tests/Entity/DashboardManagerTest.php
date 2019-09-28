@@ -104,30 +104,6 @@ final class DashboardManagerTest extends TestCase
             ->getPager(['enabled' => false], 1);
     }
 
-    public function testGetPagerWithEditedPages(): void
-    {
-        $self = $this;
-        $this
-            ->getDashboardManager(function ($qb) use ($self): void {
-                $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => true]));
-                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
-            })
-            ->getPager(['edited' => true], 1);
-    }
-
-    public function testGetPagerWithNonEditedPages(): void
-    {
-        $self = $this;
-        $this
-            ->getDashboardManager(function ($qb) use ($self): void {
-                $qb->expects($self->once())->method('andWhere')->with($self->equalTo('d.edited = :edited'));
-                $qb->expects($self->once())->method('setParameters')->with($self->equalTo(['edited' => false]));
-                $qb->expects($this->any())->method('getRootAliases')->willReturn([]);
-            })
-            ->getPager(['edited' => false], 1);
-    }
-
     private function getDashboardManager($qbCallback)
     {
         $query = $this->getMockForAbstractClass(AbstractQuery::class, [], '', false, true, true, ['execute']);

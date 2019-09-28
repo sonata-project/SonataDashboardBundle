@@ -52,11 +52,6 @@ final class DashboardManager extends BaseEntityManager implements DashboardManag
             $parameters['enabled'] = $criteria['enabled'];
         }
 
-        if (isset($criteria['edited'])) {
-            $query->andWhere('d.edited = :edited');
-            $parameters['edited'] = $criteria['edited'];
-        }
-
         $query->setParameters($parameters);
 
         $pager = new Pager();

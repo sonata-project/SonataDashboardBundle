@@ -70,10 +70,6 @@
                 <source>list.label_enabled</source>
                 <target>Habilitado</target>
             </trans-unit>
-            <trans-unit id="18" resname="list.label_edited">
-                <source>list.label_edited</source>
-                <target>Editado</target>
-            </trans-unit>
             <trans-unit id="19" resname="list.label_name">
                 <source>list.label_name</source>
                 <target>Nombre</target>
@@ -218,10 +214,6 @@
                 <source>filter.label_name</source>
                 <target>Nombre</target>
             </trans-unit>
-            <trans-unit id="55" resname="filter.label_edited">
-                <source>filter.label_edited</source>
-                <target>Editado</target>
-            </trans-unit>
             <trans-unit id="56" resname="filter.label_type">
                 <source>filter.label_type</source>
                 <target>Tipo</target>
@@ -241,10 +233,6 @@
             <trans-unit id="60" resname="show.label_name">
                 <source>show.label_name</source>
                 <target>Nombre</target>
-            </trans-unit>
-            <trans-unit id="61" resname="show.label_edited">
-                <source>show.label_edited</source>
-                <target>Editado</target>
             </trans-unit>
             <trans-unit id="62" resname="sidemenu.link_render_dashboard">
                 <source>sidemenu.link_render_dashboard</source>
