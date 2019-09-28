@@ -8,13 +8,18 @@
        href="{{ admin_pool.getAdminByAdminCode('sonata.dashboard.admin.block').generateUrl('edit', { 'id': child.id, 'composer': true }) }}"
     >
         {% set service = attribute(blockServices, child.type) %}
-        <h4 class="dashboard-composer__container__child__name">{{ child.name|default(service.name) }}</h4>
-        {% if not service.blockMetadata.image %}
-            <i class="{{ service.blockMetadata.option('class') }}"></i>
+        {% if service.metadata is defined %}
+            {% set metadata = service.metadata %}
         {% else %}
-            <img src="{{ asset(service.blockMetadata.image) }}" style="max-height: 20px; max-width: 100px;" />
+            {% set metadata = service.blockMetadata %}
         {% endif %}
-        <small>{{ service.blockMetadata.title|trans({}, service.blockMetadata.domain|default('SonataPageBundle')) }}</small>
+        <h4 class="dashboard-composer__container__child__name">{{ child.name|default(service.name) }}</h4>
+        {% if not metadata.image %}
+            <i class="{{ metadata.option('class') }}"></i>
+        {% else %}
+            <img src="{{ asset(metadata.image) }}" style="max-height: 20px; max-width: 100px;" />
+        {% endif %}
+        <small>{{ metadata.title|trans({}, metadata.domain|default('SonataPageBundle')) }}</small>
         <span class="dashboard-composer__container__child__toggle">
             <i class="fa fa-chevron-down"></i>
             <i class="fa fa-chevron-up"></i>
