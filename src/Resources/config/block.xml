@@ -5,7 +5,7 @@
     </parameters>
     <services>
         <service id="sonata.dashboard.block.container" class="%sonata.dashboard.block.container.class%" public="true">
-            <tag name="sonata.block"/>
+            <tag name="sonata.block" context="internal"/>
             <argument>sonata.dashboard.block.container</argument>
             <argument type="service" id="sonata.templating"/>
         </service>
