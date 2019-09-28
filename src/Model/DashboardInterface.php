@@ -48,8 +48,4 @@ interface DashboardInterface
      * @return DashboardBlockInterface[]
      */
     public function getBlocks();
-
-    public function getEdited(): bool;
-
-    public function setEdited(bool $edited);
 }

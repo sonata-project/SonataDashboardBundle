@@ -119,10 +119,6 @@ final class BlockAdmin extends AbstractAdmin
 
         // fix weird bug with setter object not being call
         $object->setChildren($object->getChildren());
-
-        if ($object->getDashboard() instanceof DashboardInterface) {
-            $object->getDashboard()->setEdited(true);
-        }
     }
 
     public function postUpdate($object): void
@@ -162,10 +158,6 @@ final class BlockAdmin extends AbstractAdmin
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
                 E_USER_DEPRECATED
             );
-        }
-
-        if ($object->getDashboard() instanceof DashboardInterface) {
-            $object->getDashboard()->setEdited(true);
         }
 
         // fix weird bug with setter object not being call

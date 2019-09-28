@@ -53,17 +53,11 @@ abstract class Dashboard implements DashboardInterface
     /**
      * @var bool|null
      */
-    protected $edited;
-
-    /**
-     * @var bool|null
-     */
     protected $default;
 
     public function __construct()
     {
         $this->blocks = [];
-        $this->edited = true;
     }
 
     public function __toString()
@@ -127,18 +121,6 @@ abstract class Dashboard implements DashboardInterface
     public function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
-
-        return $this;
-    }
-
-    public function getEdited(): bool
-    {
-        return $this->edited ?? false;
-    }
-
-    public function setEdited(bool $edited)
-    {
-        $this->edited = $edited;
 
         return $this;
     }

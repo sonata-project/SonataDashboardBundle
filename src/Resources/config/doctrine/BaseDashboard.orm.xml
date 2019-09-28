@@ -6,11 +6,6 @@
                 <option name="default">0</option>
             </options>
         </field>
-        <field name="edited" type="boolean" column="edited">
-            <options>
-                <option name="default">0</option>
-            </options>
-        </field>
         <field name="default" type="boolean" column="is_default">
             <options>
                 <option name="default">0</option>

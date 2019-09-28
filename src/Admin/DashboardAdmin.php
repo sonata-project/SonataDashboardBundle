@@ -55,8 +55,6 @@ final class DashboardAdmin extends AbstractAdmin
         if (!$object instanceof DashboardInterface) {
             throw new \InvalidArgumentException('Invalid dashboard object');
         }
-
-        $object->setEdited(true);
     }
 
     public function prePersist($object): void
@@ -64,8 +62,6 @@ final class DashboardAdmin extends AbstractAdmin
         if (!$object instanceof DashboardInterface) {
             throw new \InvalidArgumentException('Invalid dashboard object');
         }
-
-        $object->setEdited(true);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -74,7 +70,6 @@ final class DashboardAdmin extends AbstractAdmin
             ->add('name')
             ->add('default')
             ->add('enabled')
-            ->add('edited')
         ;
     }
 
@@ -84,7 +79,6 @@ final class DashboardAdmin extends AbstractAdmin
             ->addIdentifier('name')
             ->add('default')
             ->add('enabled', null, ['editable' => true])
-            ->add('edited', null, ['editable' => true])
         ;
     }
 
@@ -92,7 +86,6 @@ final class DashboardAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('edited')
         ;
     }
 
