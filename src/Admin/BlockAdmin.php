@@ -431,11 +431,7 @@ final class BlockAdmin extends AbstractAdmin
         $blockType = $block->getType();
 
         if (!$service instanceof BlockServiceInterface) {
-            throw new \RuntimeException(sprintf(
-                'The block "%s" must implement %s',
-                $blockType,
-                BlockServiceInterface::class
-            ));
+            throw new \RuntimeException(sprintf('The block "%s" must implement %s', $blockType, BlockServiceInterface::class));
         }
 
         if ($service instanceof EditableBlockService) {
