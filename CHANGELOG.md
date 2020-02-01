@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0](https://github.com/sonata-project/SonataDashboardBundle/compare/0.3.0...0.4.0) - 2020-02-01
+### Added
+- Added Spanish translations.
+- Added support for new `EditableBlockService`
+- Add missing translation for breadcrumbs
+- Add missing translation for admin menu
+
+### Removed
+- Remove `edited` property from `Dashboard` entity
+
 ## [0.3.0](https://github.com/sonata-project/SonataMediaBundle/compare/0.2.0...0.3.0) - 2018-03-12
 ### Added
 - missing french translations
