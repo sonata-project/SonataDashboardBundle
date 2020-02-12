@@ -112,9 +112,9 @@ final class BlockAdmin extends AbstractAdmin
             $block->preUpdate($object);
 
             @trigger_error(
-                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                 E_USER_DEPRECATED
-             );
+                'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
+                E_USER_DEPRECATED
+            );
         }
 
         // fix weird bug with setter object not being call

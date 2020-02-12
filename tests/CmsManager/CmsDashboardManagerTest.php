@@ -52,8 +52,11 @@ final class CmsDashboardManagerTest extends \PHPUnit\Framework\TestCase
 
         $container = $this->manager->findContainer('findme', $dashboard);
 
-        $this->assertSame(spl_object_hash($block), spl_object_hash($container),
-            'should retrieve the block of the dashboard');
+        $this->assertSame(
+            spl_object_hash($block),
+            spl_object_hash($container),
+            'should retrieve the block of the dashboard'
+        );
     }
 
     /**

@@ -115,7 +115,9 @@ final class DashboardAdminController extends CRUDController
         }
 
         $dashboards = $this->get('sonata.dashboard.manager.dashboard')->findBy(
-            [], ['updatedAt' => 'DESC'], 5
+            [],
+            ['updatedAt' => 'DESC'],
+            5
         );
 
         return $this->render($this->admin->getTemplate('render'), [

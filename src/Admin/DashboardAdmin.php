@@ -123,11 +123,13 @@ final class DashboardAdmin extends AbstractAdmin
 
         $id = $admin->getRequest()->get('id');
 
-        $menu->addChild('sidemenu.link_edit_dashboard',
+        $menu->addChild(
+            'sidemenu.link_edit_dashboard',
             ['uri' => $admin->generateUrl('edit', ['id' => $id])]
         );
 
-        $menu->addChild('sidemenu.link_compose_dashboard',
+        $menu->addChild(
+            'sidemenu.link_compose_dashboard',
             ['uri' => $admin->generateUrl('compose', ['id' => $id])]
         );
 
