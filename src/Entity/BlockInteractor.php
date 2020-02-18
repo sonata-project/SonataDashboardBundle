@@ -14,11 +14,11 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\Persistence\ManagerRegistry;
 use Sonata\DashboardBundle\Model\BlockInteractorInterface;
 use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * This class interacts with blocks.
@@ -33,7 +33,7 @@ final class BlockInteractor implements BlockInteractorInterface
     private $dashboardBlocksLoaded = [];
 
     /**
-     * @var RegistryInterface
+     * @var ManagerRegistry
      */
     private $registry;
 
@@ -48,11 +48,11 @@ final class BlockInteractor implements BlockInteractorInterface
     private $defaultContainer;
 
     /**
-     * @param RegistryInterface     $registry         Doctrine registry
+     * @param ManagerRegistry       $registry         Doctrine registry
      * @param BlockManagerInterface $blockManager     Block manager
      * @param string                $defaultContainer
      */
-    public function __construct(RegistryInterface $registry, BlockManagerInterface $blockManager, $defaultContainer)
+    public function __construct(ManagerRegistry $registry, BlockManagerInterface $blockManager, $defaultContainer)
     {
         $this->blockManager = $blockManager;
         $this->registry = $registry;
