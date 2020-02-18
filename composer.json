@@ -36,9 +36,12 @@
         "symfony/config": "^3.4 || ^4.0",
         "symfony/dependency-injection": "^3.4 || ^4.0",
         "symfony/doctrine-bridge": "^3.4 || ^4.0",
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/http-foundation": "^3.4 || ^4.0",
         "symfony/http-kernel": "^3.4 || ^4.0",
         "symfony/options-resolver": "^3.4 || ^4.0",
         "symfony/security-core": "^3.4 || ^4.0",
+        "symfony/security-http": "^3.4 || ^4.0",
         "twig/twig": "^1.41 || ^2.10"
     },
     "require-dev": {
