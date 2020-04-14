@@ -70,7 +70,7 @@ final class CmsDashboardManager extends BaseCmsDashboardManager
         return $dashboard;
     }
 
-    public function findContainer(string $name, DashboardInterface $dashboard, BlockInterface $parentContainer = null): ?BlockInterface
+    public function findContainer(string $name, DashboardInterface $dashboard, ?BlockInterface $parentContainer = null): ?BlockInterface
     {
         $container = null;
 

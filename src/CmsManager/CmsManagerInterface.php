@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 interface CmsManagerInterface
 {
-    public function findContainer(string $name, DashboardInterface $dashboard, BlockInterface $parentContainer = null): ?BlockInterface;
+    public function findContainer(string $name, DashboardInterface $dashboard, ?BlockInterface $parentContainer = null): ?BlockInterface;
 
     /**
      * Returns a fully loaded dashboard (+ blocks) from a name.

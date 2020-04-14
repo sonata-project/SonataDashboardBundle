@@ -108,7 +108,7 @@ final class BlockInteractor implements BlockInteractorInterface
         }
     }
 
-    public function createNewContainer(array $values = [], \Closure $alter = null): DashboardBlockInterface
+    public function createNewContainer(array $values = [], ?\Closure $alter = null): DashboardBlockInterface
     {
         $container = $this->blockManager->create();
 
