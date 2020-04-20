@@ -32,7 +32,7 @@ final class GlobalVariablesTest extends \PHPUnit\Framework\TestCase
      */
     private $globals;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->cmsManagerSelector = $this->getMockCmsManagerSelector();
         $this->globals = new GlobalVariables($this->cmsManagerSelector);
