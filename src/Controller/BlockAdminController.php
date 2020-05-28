@@ -119,7 +119,7 @@ final class BlockAdminController extends Controller
     {
         $blockId = $request->get('block_id');
         $parentId = $request->get('parent_id');
-        if (null === $blockId or null === $parentId) {
+        if (null === $blockId || null === $parentId) {
             throw new HttpException(400, 'wrong parameters');
         }
 
