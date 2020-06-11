@@ -44,6 +44,9 @@
         "symfony/security-http": "^3.4 || ^4.0",
         "twig/twig": "^1.41 || ^2.10"
     },
+    "conflict": {
+        "sonata-project/core-bundle": "<3.20"
+    },
     "require-dev": {
         "symfony/phpunit-bridge": "^5.0"
     },
