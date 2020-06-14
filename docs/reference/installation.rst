@@ -1,20 +1,29 @@
+.. index::
+    single: Installation
+    single: Configuration
+
 Installation
 ============
 
 Prerequisites
 -------------
 
-PHP 7.1 and Symfony 3.4 are needed to make this bundle work ; there are also some
-Sonata dependencies that need to be installed and configured beforehand:
+PHP ^7.2 and Symfony ^4.4 are needed to make this bundle work, there are
+also some Sonata dependencies that need to be installed and configured beforehand.
 
-    - `SonataCacheBundle <https://sonata-project.org/bundles/cache>`_
-    - `SonataBlockBundle <https://sonata-project.org/bundles/block>`_
-    - `SonataEasyExtendsBundle <https://sonata-project.org/bundles/easy-extends>`_
-    - `SonataNotificationBundle <https://sonata-project.org/bundles/notification>`_
-    - `SonataAdminBundle <https://sonata-project.org/bundles/admin>`_
-    - `SonataDoctrineORMAdminBundle <https://sonata-project.org/bundles/doctrine-orm-admin>`_
+Required dependencies:
 
-Follow also their configuration steps; you will find everything you need in their installation chapter.
+* `SonataAdminBundle <https://sonata-project.org/bundles/admin>`_
+* `SonataCacheBundle <https://sonata-project.org/bundles/cache>`_
+* `SonataBlockBundle <https://sonata-project.org/bundles/block>`_
+* `SonataNotificationBundle <https://sonata-project.org/bundles/notification>`_
+
+And the persistence bundle (currently, not all the implementations of the Sonata persistence bundles are available):
+
+* `SonataDoctrineOrmAdminBundle <https://sonata-project.org/bundles/doctrine-orm-admin>`_
+
+Follow also their configuration step; you will find everything you need in
+their own installation chapter.
 
 .. note::
 
@@ -24,102 +33,107 @@ Follow also their configuration steps; you will find everything you need in thei
 Enable the Bundle
 -----------------
 
-Add the dependant bundles to the vendor/bundles directory:
+Add ``SonataDashboardBundle`` via composer::
 
-.. code-block:: bash
+    composer require sonata-project/dashboard-bundle
 
-    composer require sonata-project/dashboard-bundle --no-update
-    composer require sonata-project/datagrid-bundle 2.2.*@dev --no-update
-    composer require sonata-project/doctrine-orm-admin-bundle --no-update
-    composer update
+Next, be sure to enable the bundles in your ``config/bundles.php`` file if they
+are not already enabled::
 
-.. note::
+    // config/bundles.php
 
-    The SonataAdminBundle and SonataDoctrineORMAdminBundle must be installed, please refer to `the dedicated documentation for more information <https://sonata-project.org/bundles/admin>`_.
+    return [
+        // ...
+        Sonata\DashboardBundle\SonataDashboardBundle::class => ['all' => true],
+    ];
 
-    The `SonataDatagridBundle <https://github.com/sonata-project/SonataDatagridBundle>`_ must be added in ``composer.json`` for SonataPageBundle versions above 2.3.6
+Configuration
+=============
 
-Next, be sure to enable the ``Dashboard`` and ``EasyExtends`` bundles in your application kernel::
-
-    // app/AppKernel.php
-
-    public function registerBundles()
-    {
-        return [
-            // ...
-            new Sonata\DashboardBundle\SonataDashboardBundle(),
-            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            // ...
-        ];
-    }
-
-Before we can go on with generating our Application files trough the ``EasyExtends`` bundle,
-we need to add some lines which we will override later (we need them now only for the following step):
+SonataDashboardBundle Configuration
+-----------------------------------
 
 .. code-block:: yaml
 
+    # config/packages/sonata_dashboard.yaml
+
     sonata_dashboard:
         default_container: sonata.dashboard.block.container
-        # Entity Classes
         class:
-            dashboard: Application\Sonata\DashboardBundle\Entity\Dashboard
-            block:     Application\Sonata\DashboardBundle\Entity\Block
+            dashboard: App\Entity\SonataDashboardDashboard
+            block: App\Entity\SonataDashboardBlock
 
+Doctrine ORM Configuration
+--------------------------
 
-Configuration
--------------
-To use the ``DashboardBundle``, add the following lines to your application
-configuration file.
+Add the in the config mapping definition (or enable `auto_mapping`_)::
 
-.. note::
+    # config/packages/doctrine.yaml
 
-    If your ``auto_mapping`` have a ``false`` value, add these lines to your
-    mapping configuration:
+    doctrine:
+        orm:
+            entity_managers:
+                default:
+                    mappings:
+                        SonataDashboardBundle: ~
 
-    .. code-block:: yaml
+And then create the corresponding entities, ``src/Entity/SonataDashboardDashboard``::
 
-        # app/config/config.yml
+    // src/Entity/SonataDashboardDashboard.php
 
-        doctrine:
-            orm:
-                entity_managers:
-                    default:
-                        mappings:
-                            ApplicationSonataDashboardBundle: ~ # only once the ApplicationSonataDashboardBundle is generated
-                            SonataDashboardBundle: ~
+    use Doctrine\ORM\Mapping as ORM;
+    use Sonata\DashboardBundle\Entity\BaseDashboard;
 
-Extend the Bundle
------------------
-
-At this point, the bundle is usable, but not quite ready yet. You need to
-generate the correct entities for the dashboard:
-
-.. code-block:: bash
-
-    app/console sonata:easy-extends:generate SonataDashboardBundle
-
-If you specify no parameter, the files are generated in app/Application/Sonata... but you can specify the path with --dest=src
-
-.. note::
-
-    The command will generate domain objects in an ``Application`` namespace.
-    So you can point entities associations to a global and common namespace.
-    This will make entities sharing very easily as your models are accessible
-    through a global namespace. For instance the dashboard will be
-    ``Application\Sonata\DashboardBundle\Entity\Dashboard``.
-
-Now, add the new `Application` Bundle to the kernel::
-
-    public function registerBundles()
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="dashboard__tag")
+     */
+    class SonataDashboardDashboard extends BaseDashboard
     {
-        return [
-            // ...
-
-            // Application Bundles
-            new Application\Sonata\DashboardBundle\ApplicationSonataDashboardBundle(),
-
-            // ...
-        ];
+        /**
+         * @ORM\Id
+         * @ORM\GeneratedValue
+         * @ORM\Column(type="integer")
+         */
+        protected $id;
     }
 
-And now, you're good to go!
+and ``src/Entity/SonataDashboardBlock``::
+
+    // src/Entity/SonataDashboardBlock.php
+
+    use Doctrine\ORM\Mapping as ORM;
+    use Sonata\DashboardBundle\Entity\BaseBlock;
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="dashboard__context")
+     */
+    class SonataDashboardBlock extends BaseBlock
+    {
+        /**
+         * @ORM\Id
+         * @ORM\GeneratedValue
+         * @ORM\Column(type="integer")
+         */
+        protected $id;
+    }
+
+The only thing left is to update your schema::
+
+    bin/console doctrine:schema:update --force
+
+Next Steps
+----------
+
+At this point, your Symfony installation should be fully functional, without errors
+showing up from SonataDashboardBundle. If, at this point or during the installation,
+you come across any errors, don't panic:
+
+    - Read the error message carefully. Try to find out exactly which bundle is causing the error.
+      Is it SonataDashboardBundle or one of the dependencies?
+    - Make sure you followed all the instructions correctly, for both SonataDashboardBundle and its dependencies.
+    - Still no luck? Try checking the project's `open issues on GitHub`_.
+
+.. _`open issues on GitHub`: https://github.com/sonata-project/SonataDashboardBundle/issues
+.. _`auto_mapping`: http://symfony.com/doc/4.4/reference/configuration/doctrine.html#configuration-overviews

@@ -13,7 +13,8 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\DependencyInjection;
 
-use Sonata\EasyExtendsBundle\Mapper\DoctrineCollector;
+use Sonata\Doctrine\Mapper\Builder\OptionsBuilder;
+use Sonata\Doctrine\Mapper\DoctrineCollector;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -30,6 +31,7 @@ final class SonataDashboardExtension extends Extension
         $processor = new Processor();
         $configuration = new Configuration();
         $config = $processor->processConfiguration($configuration, $configs);
+        $bundles = $container->getParameter('kernel.bundles');
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
@@ -40,7 +42,12 @@ final class SonataDashboardExtension extends Extension
         $loader->load('orm.xml');
         $loader->load('twig.xml');
 
-        $this->registerDoctrineMapping($config);
+        if (isset($bundles['SonataDoctrineBundle'])) {
+            $this->registerSonataDoctrineMapping($config);
+        } else {
+            throw new \RuntimeException('You must register SonataDoctrineBundle to use SonataDashboardBundle.');
+        }
+
         $this->registerParameters($container, $config);
     }
 
@@ -74,10 +81,7 @@ final class SonataDashboardExtension extends Extension
         $container->setParameter('sonata.dashboard.default_container', $config['default_container']);
     }
 
-    /**
-     * Registers doctrine mapping on concrete dashboard entities.
-     */
-    public function registerDoctrineMapping(array $config): void
+    private function registerSonataDoctrineMapping(array $config): void
     {
         if (!class_exists($config['class']['dashboard'])) {
             return;
@@ -85,70 +89,48 @@ final class SonataDashboardExtension extends Extension
 
         $collector = DoctrineCollector::getInstance();
 
-        $collector->addAssociation($config['class']['dashboard'], 'mapOneToMany', [
-            'fieldName' => 'blocks',
-            'targetEntity' => $config['class']['block'],
-            'cascade' => [
-                'remove',
-                'persist',
-                'refresh',
-                'merge',
-                'detach',
-            ],
-            'mappedBy' => 'dashboard',
-            'orphanRemoval' => false,
-            'orderBy' => [
-                'position' => 'ASC',
-            ],
-        ]);
+        $collector->addAssociation(
+            $config['class']['dashboard'],
+            'mapOneToMany',
+            OptionsBuilder::createOneToMany('blocks', $config['class']['block'])
+                ->cascade(['remove', 'persist', 'refresh', 'merge', 'detach'])
+                ->mappedBy('dashboard')
+                ->addOrder('position', 'ASC')
+        );
 
-        $collector->addAssociation($config['class']['block'], 'mapOneToMany', [
-            'fieldName' => 'children',
-            'targetEntity' => $config['class']['block'],
-            'cascade' => [
-                'remove',
-                'persist',
-            ],
-            'mappedBy' => 'parent',
-            'orphanRemoval' => true,
-            'orderBy' => [
-                'position' => 'ASC',
-            ],
-        ]);
+        $collector->addAssociation(
+            $config['class']['block'],
+            'mapOneToMany',
+            OptionsBuilder::createOneToMany('children', $config['class']['block'])
+                ->cascade(['remove', 'persist'])
+                ->mappedBy('parent')
+                ->orphanRemoval()
+                ->addOrder('position', 'ASC')
+        );
 
-        $collector->addAssociation($config['class']['block'], 'mapManyToOne', [
-            'fieldName' => 'parent',
-            'targetEntity' => $config['class']['block'],
-            'cascade' => [
-            ],
-            'mappedBy' => null,
-            'inversedBy' => 'children',
-            'joinColumns' => [
-                [
+        $collector->addAssociation(
+            $config['class']['block'],
+            'mapManyToOne',
+            OptionsBuilder::createManyToOne('parent', $config['class']['block'])
+                ->inversedBy('children')
+                ->addJoin([
                     'name' => 'parent_id',
                     'referencedColumnName' => 'id',
                     'onDelete' => 'CASCADE',
-                ],
-            ],
-            'orphanRemoval' => false,
-        ]);
+                ])
+        );
 
-        $collector->addAssociation($config['class']['block'], 'mapManyToOne', [
-            'fieldName' => 'dashboard',
-            'targetEntity' => $config['class']['dashboard'],
-            'cascade' => [
-                'persist',
-            ],
-            'mappedBy' => null,
-            'inversedBy' => 'blocks',
-            'joinColumns' => [
-                [
+        $collector->addAssociation(
+            $config['class']['block'],
+            'mapManyToOne',
+            OptionsBuilder::createManyToOne('dashboard', $config['class']['dashboard'])
+                ->cascade(['persist'])
+                ->inversedBy('blocks')
+                ->addJoin([
                     'name' => 'dashboard_id',
                     'referencedColumnName' => 'id',
                     'onDelete' => 'CASCADE',
-                ],
-            ],
-            'orphanRemoval' => false,
-        ]);
+                ])
+        );
     }
 }

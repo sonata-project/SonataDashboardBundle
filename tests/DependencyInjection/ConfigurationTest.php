@@ -11,40 +11,41 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Sonata\DashboardBundleBundle\Tests\DependencyInjection;
+namespace Sonata\DashboardBundle\Tests\DependencyInjection;
 
-use PHPUnit\Framework\TestCase;
+use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionConfigurationTestCase;
 use Sonata\DashboardBundle\DependencyInjection\Configuration;
-use Symfony\Component\Config\Definition\Processor;
+use Sonata\DashboardBundle\DependencyInjection\SonataDashboardExtension;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
-final class ConfigurationTest extends TestCase
+final class ConfigurationTest extends AbstractExtensionConfigurationTestCase
 {
-    public function testClasses(): void
+    public function testDefault(): void
     {
-        $processor = new Processor();
-
-        $config = $processor->processConfiguration(new Configuration(), [[
+        $this->assertProcessedConfigurationEquals([
             'class' => [
-                'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
+                'dashboard' => 'Application\Sonata\DashboardBundle\Entity\Dashboard',
+                'block' => 'Application\Sonata\DashboardBundle\Entity\Block',
             ],
             'templates' => [
-                'compose' => '@My/MyController/my_template.html.twig',
-            ],
-        ]]);
-
-        $expected = [
-            'class' => [
-                'dashboard' => 'MyApp\\Sonata\\DashboardBundle\\Entity\\Dashboard',
-                'block' => 'Application\\Sonata\\DashboardBundle\\Entity\\Block',
-            ],
-            'templates' => [
-                'compose' => '@My/MyController/my_template.html.twig',
+                'compose' => '@SonataDashboard/DashboardAdmin/compose.html.twig',
                 'compose_container_show' => '@SonataDashboard/DashboardAdmin/compose_container_show.html.twig',
                 'render' => '@SonataDashboard/DashboardAdmin/render.html.twig',
             ],
             'default_container' => 'sonata.dashboard.block.container',
-        ];
+        ], [
+            __DIR__.'/../Fixtures/configuration.yaml',
+        ]);
+    }
 
-        $this->assertSame($expected, $config);
+    protected function getContainerExtension(): ExtensionInterface
+    {
+        return new SonataDashboardExtension();
+    }
+
+    protected function getConfiguration(): ConfigurationInterface
+    {
+        return new Configuration();
     }
 }
