@@ -45,7 +45,7 @@ final class SonataDashboardExtension extends Extension
         if (!isset($bundles['SonataDoctrineBundle'])) {
             throw new \RuntimeException('You must register SonataDoctrineBundle to use SonataDashboardBundle.');
         }
-            
+       
         $this->registerSonataDoctrineMapping($config);
 
         $this->registerParameters($container, $config);
