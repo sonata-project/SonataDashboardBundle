@@ -42,11 +42,11 @@ final class SonataDashboardExtension extends Extension
         $loader->load('orm.xml');
         $loader->load('twig.xml');
 
-        if (isset($bundles['SonataDoctrineBundle'])) {
-            $this->registerSonataDoctrineMapping($config);
-        } else {
+        if (!isset($bundles['SonataDoctrineBundle'])) {
             throw new \RuntimeException('You must register SonataDoctrineBundle to use SonataDashboardBundle.');
         }
+            
+        $this->registerSonataDoctrineMapping($config);
 
         $this->registerParameters($container, $config);
     }
