@@ -2,6 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.0](https://github.com/sonata-project/SonataDashboardBundle/compare/0.4.0...0.5.0) - 2020-08-30
+### Added
+- [[#240](https://github.com/sonata-project/SonataDashboardBundle/pull/240)] Added support for "symfony/options-resolver:^5.1" ([@phansys](https://github.com/phansys))
+- [[#240](https://github.com/sonata-project/SonataDashboardBundle/pull/240)] Added support for "twig/twig:^3.0" ([@phansys](https://github.com/phansys))
+- [[#208](https://github.com/sonata-project/SonataDashboardBundle/pull/208)] Add missing symfony dependencies ([@core23](https://github.com/core23))
+
+### Changed
+- [[#225](https://github.com/sonata-project/SonataDashboardBundle/pull/225)] SonataEasyExtendsBundle is not used anymore, use SonataDoctrineBundle ([@jordisala1991](https://github.com/jordisala1991))
+
+### Fixed
+- [[#208](https://github.com/sonata-project/SonataDashboardBundle/pull/208)] Fix doctrine deprecations ([@core23](https://github.com/core23))
+
+### Removed
+- [[#232](https://github.com/sonata-project/SonataDashboardBundle/pull/232)] Remove `sonata-project/notification-bundle` dependency ([@core23](https://github.com/core23))
+- [[#225](https://github.com/sonata-project/SonataDashboardBundle/pull/225)] Support for Symfony < 4.4 ([@jordisala1991](https://github.com/jordisala1991))
+
 ## [0.4.0](https://github.com/sonata-project/SonataDashboardBundle/compare/0.3.0...0.4.0) - 2020-02-01
 ### Added
 - Added Spanish translations.
