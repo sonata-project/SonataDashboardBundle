@@ -33,6 +33,3 @@ rules:
     kernel_instead_of_app_kernel: ~
     no_app_console: ~
 
-whitelist:
-    lines:
-        - '.. versionadded:: master'
