@@ -1,6 +1,10 @@
 UPGRADE 0.x
 ===========
 
+### Dependencies
+
+The constraint for `sonata-project/datagrid-bundle` was bumped to `^3.2`.
+
 UPGRADE FROM 0.4.0 to 0.5.0
 ===========================
 
