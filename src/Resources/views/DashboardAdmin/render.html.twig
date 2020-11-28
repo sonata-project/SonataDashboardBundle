@@ -18,7 +18,7 @@ file that was distributed with this source code.
 {% endblock %}
 
 {% block title %}
-    {{ 'title_render'|trans({'%name%': admin.toString(object)|truncate(15) }, 'SonataDashboardBundle') }}
+    {{ 'title_render'|trans({'%name%': admin.toString(object)|u.truncate(15, '...') }, 'SonataDashboardBundle') }}
 {% endblock %}
 
 {% block tab_menu_navbar_header %}
