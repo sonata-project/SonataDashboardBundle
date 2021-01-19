@@ -113,7 +113,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
 
@@ -134,7 +134,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
 
@@ -156,7 +156,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
 
@@ -177,7 +177,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
 
@@ -199,7 +199,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
     }
@@ -217,7 +217,7 @@ final class BlockAdmin extends AbstractAdmin
 
             @trigger_error(
                 'The '.__METHOD__.'() method is deprecated since sonata-project/dashboard-bundle 0.x and will be removed in version 1.0.',
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
         }
     }
@@ -452,7 +452,7 @@ final class BlockAdmin extends AbstractAdmin
                     'Editing a block service which doesn\'t implement %s is deprecated since sonata-project/dashboard-bundle 0.x and will not be allowed with version 1.0.',
                     EditableBlockService::class
                 ),
-                E_USER_DEPRECATED
+                \E_USER_DEPRECATED
             );
 
             if ($block->getId() > 0) {
