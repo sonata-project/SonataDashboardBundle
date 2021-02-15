@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.1](https://github.com/sonata-project/SonataDashboardBundle/compare/0.5.0...0.5.1) - 2021-02-15
+### Fixed
+- [[#277](https://github.com/sonata-project/SonataDashboardBundle/pull/277)] Fix calling unknown `truncate` function ([@core23](https://github.com/core23))
+
 ## [0.5.0](https://github.com/sonata-project/SonataDashboardBundle/compare/0.4.0...0.5.0) - 2020-08-30
 ### Added
 - [[#240](https://github.com/sonata-project/SonataDashboardBundle/pull/240)] Added support for "symfony/options-resolver:^5.1" ([@phansys](https://github.com/phansys))
