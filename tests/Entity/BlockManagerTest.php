@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Tests\Entity;
 
-use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 use Sonata\DashboardBundle\Entity\BaseDashboard;
 use Sonata\DashboardBundle\Entity\BlockManager;
