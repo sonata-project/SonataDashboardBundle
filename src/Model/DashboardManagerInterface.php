@@ -13,14 +13,17 @@ declare(strict_types=1);
 
 namespace Sonata\DashboardBundle\Model;
 
+use Sonata\DatagridBundle\Pager\PageableInterface;
 use Sonata\Doctrine\Model\ManagerInterface;
-use Sonata\Doctrine\Model\PageableManagerInterface;
 
 /**
  * Defines methods to interact with the persistency layer of a DashboardInterface.
  *
  * @author Quentin Somazzi <qsomazzi@ekino.com>
+ *
+ * @phpstan-implements ManagerInterface<BlockInterface>
+ * @phpstan-implements PageableInterface<BlockInterface>
  */
-interface DashboardManagerInterface extends ManagerInterface, PageableManagerInterface
+interface DashboardManagerInterface extends ManagerInterface, PageableInterface
 {
 }
