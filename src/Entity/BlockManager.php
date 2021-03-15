@@ -18,7 +18,7 @@ use Sonata\DashboardBundle\Model\BlockManagerInterface;
 use Sonata\DashboardBundle\Model\DashboardBlockInterface;
 use Sonata\DashboardBundle\Model\DashboardInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
-use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
+use Sonata\DatagridBundle\Pager\PagerInterface;
 use Sonata\Doctrine\Entity\BaseEntityManager;
 
 /**
@@ -74,7 +74,7 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
         return $block;
     }
 
-    public function getPager(array $criteria, $page, $limit = 10, array $sort = [])
+    public function getPager(array $criteria, int $page, int $limit = 10, array $sort = []): PagerInterface
     {
         $query = $this->getRepository()
             ->createQueryBuilder('b')
@@ -94,12 +94,6 @@ final class BlockManager extends BaseEntityManager implements BlockManagerInterf
 
         $query->setParameters($parameters);
 
-        $pager = new Pager();
-        $pager->setMaxPerPage($limit);
-        $pager->setQuery(new ProxyQuery($query));
-        $pager->setPage($page);
-        $pager->init();
-
-        return $pager;
+        return Pager::create($query, $limit, $page);
     }
 }

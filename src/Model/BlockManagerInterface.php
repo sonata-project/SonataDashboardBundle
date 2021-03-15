@@ -14,10 +14,14 @@ declare(strict_types=1);
 namespace Sonata\DashboardBundle\Model;
 
 use Sonata\BlockBundle\Model\BlockInterface;
+use Sonata\DatagridBundle\Pager\PageableInterface;
 use Sonata\Doctrine\Model\ManagerInterface;
-use Sonata\Doctrine\Model\PageableManagerInterface;
 
-interface BlockManagerInterface extends ManagerInterface, PageableManagerInterface
+/**
+ * @phpstan-implements ManagerInterface<BlockInterface>
+ * @phpstan-implements PageableInterface<BlockInterface>
+ */
+interface BlockManagerInterface extends ManagerInterface, PageableInterface
 {
     /**
      * Updates position for given block.
