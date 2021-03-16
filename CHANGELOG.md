@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.0](https://github.com/sonata-project/SonataDashboardBundle/compare/0.5.1...0.6.0) - 2021-03-16
+### Added
+- [[#298](https://github.com/sonata-project/SonataDashboardBundle/pull/298)] Add support for doctrine persistence 2 ([@core23](https://github.com/core23))
+
+### Changed
+- [[#300](https://github.com/sonata-project/SonataDashboardBundle/pull/300)] Update to `sonata-project/datagrid-bundle` 3 ([@core23](https://github.com/core23))
+
 ## [0.5.1](https://github.com/sonata-project/SonataDashboardBundle/compare/0.5.0...0.5.1) - 2021-02-15
 ### Fixed
 - [[#277](https://github.com/sonata-project/SonataDashboardBundle/pull/277)] Fix calling unknown `truncate` function ([@core23](https://github.com/core23))
