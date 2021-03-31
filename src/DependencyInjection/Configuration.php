@@ -64,8 +64,7 @@ final class Configuration implements ConfigurationInterface
                         ->info('This value sets the render template.')
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
 
         return $treeBuilder;
     }
