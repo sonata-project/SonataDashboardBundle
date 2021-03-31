@@ -69,8 +69,7 @@ final class DashboardAdmin extends AbstractAdmin
         $showMapper
             ->add('name')
             ->add('default')
-            ->add('enabled')
-        ;
+            ->add('enabled');
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -78,23 +77,20 @@ final class DashboardAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('name')
             ->add('default')
-            ->add('enabled', null, ['editable' => true])
-        ;
+            ->add('enabled', null, ['editable' => true]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('name')
-        ;
+            ->add('name');
     }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
         // define group zoning
         $formMapper
-            ->with('form_dashboard.group_main_label', ['class' => 'col-md-12'])->end()
-        ;
+            ->with('form_dashboard.group_main_label', ['class' => 'col-md-12'])->end();
 
         $formMapper
             ->with('form_dashboard.group_main_label')
@@ -105,8 +101,7 @@ final class DashboardAdmin extends AbstractAdmin
                 ->add('enabled', CheckboxType::class, [
                     'required' => false,
                 ])
-            ->end()
-        ;
+            ->end();
 
         $formMapper->setHelps([
             'name' => 'help_dashboard_name',

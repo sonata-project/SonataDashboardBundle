@@ -286,8 +286,7 @@ final class BlockAdmin extends AbstractAdmin
             ->add('name')
             ->add('enabled', null, ['editable' => true])
             ->add('updatedAt')
-            ->add('position')
-        ;
+            ->add('position');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -295,8 +294,7 @@ final class BlockAdmin extends AbstractAdmin
         $datagridMapper
             ->add('name')
             ->add('enabled')
-            ->add('type')
-        ;
+            ->add('type');
     }
 
     protected function configureRoutes(RouteCollection $collection): void
@@ -420,8 +418,7 @@ final class BlockAdmin extends AbstractAdmin
                     ])
                     ->add('enabled')
                     ->add('position', IntegerType::class)
-                ->end()
-            ;
+                ->end();
         }
     }
 
