@@ -8,7 +8,7 @@ branches:
 maintained_branches:
     - master
 
-doc_dir: 'doc/'
+doc_dir: 'docs/'
 
 current_branch: master
 
