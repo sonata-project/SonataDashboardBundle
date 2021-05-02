@@ -11,7 +11,6 @@ phpunit.xml
 phpstan.neon
 /.phpunit.result.cache
 /docs/_build/
-
 /.sass-cache
 /node_modules
 
