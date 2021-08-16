@@ -8,19 +8,19 @@ Installation
 Prerequisites
 -------------
 
-PHP ^7.2 and Symfony ^4.4 are needed to make this bundle work, there are
+PHP ^7.3 and Symfony ^4.4 are needed to make this bundle work, there are
 also some Sonata dependencies that need to be installed and configured beforehand.
 
 Required dependencies:
 
-* `SonataAdminBundle <https://sonata-project.org/bundles/admin>`_
-* `SonataCacheBundle <https://sonata-project.org/bundles/cache>`_
-* `SonataBlockBundle <https://sonata-project.org/bundles/block>`_
-* `SonataNotificationBundle <https://sonata-project.org/bundles/notification>`_
+* `SonataAdminBundle <https://docs.sonata-project.org/projects/SonataAdminBundle/en/3.x/>`_
+* `SonataCacheBundle <https://docs.sonata-project.org/projects/SonataCacheBundle/en/3.x/>`_
+* `SonataBlockBundle <https://docs.sonata-project.org/projects/SonataBlockBundle/en/3.x/>`_
+* `SonataNotificationBundle <https://docs.sonata-project.org/projects/SonataNotificationBundle/en/3.x/>`_
 
 And the persistence bundle (currently, not all the implementations of the Sonata persistence bundles are available):
 
-* `SonataDoctrineOrmAdminBundle <https://sonata-project.org/bundles/doctrine-orm-admin>`_
+* `SonataDoctrineOrmAdminBundle <https://docs.sonata-project.org/projects/SonataDoctrineORMAdminBundle/en/3.x/>`_
 
 Follow also their configuration step; you will find everything you need in
 their own installation chapter.
