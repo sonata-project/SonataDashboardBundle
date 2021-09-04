@@ -34,13 +34,13 @@ final class BlockAdminTest extends TestCase
         );
 
         $s = new FooGetName();
-        $this->assertSame('GetName', $admin->toString($s));
+        static::assertSame('GetName', $admin->toString($s));
 
         $s = new FooGetNameNull();
-        $this->assertSame('GetNameNull', $admin->toString($s));
+        static::assertSame('GetNameNull', $admin->toString($s));
 
         $s = new FooNoGetName();
-        $this->assertSame('NoGetName', $admin->toString($s));
+        static::assertSame('NoGetName', $admin->toString($s));
     }
 
     public function testGetPersistentParameters(): void
@@ -54,6 +54,6 @@ final class BlockAdminTest extends TestCase
         $request = new Request();
         $admin->setRequest($request);
 
-        $this->assertArrayHasKey('type', $admin->getPersistentParameters());
+        static::assertArrayHasKey('type', $admin->getPersistentParameters());
     }
 }
