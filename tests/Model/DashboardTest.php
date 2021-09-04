@@ -22,17 +22,17 @@ final class DashboardTest extends TestCase
     {
         $dashboard = new Dashboard();
         $dashboard->setEnabled(true);
-        $this->assertTrue($dashboard->getEnabled());
+        static::assertTrue($dashboard->getEnabled());
 
         $datetime = new \DateTime();
         $dashboard->setCreatedAt($datetime);
         $dashboard->setUpdatedAt($datetime);
-        $this->assertSame($datetime, $dashboard->getCreatedAt());
-        $this->assertSame($datetime, $dashboard->getUpdatedAt());
+        static::assertSame($datetime, $dashboard->getCreatedAt());
+        static::assertSame($datetime, $dashboard->getUpdatedAt());
 
         $dashboard->setName(null);
-        $this->assertSame('-', (string) $dashboard);
+        static::assertSame('-', (string) $dashboard);
         $dashboard->setName('Salut');
-        $this->assertSame('Salut', (string) $dashboard);
+        static::assertSame('Salut', (string) $dashboard);
     }
 }

@@ -31,7 +31,7 @@ final class BlockInteractorTest extends TestCase
     public function testCreateNewContainer(): void
     {
         $blockManager = $this->createMock(BlockManagerInterface::class);
-        $blockManager->expects($this->any())->method('create')->willReturn(new Block());
+        $blockManager->expects(static::any())->method('create')->willReturn(new Block());
 
         $blockInteractor = new BlockInteractor(
             $this->createMock(ManagerRegistry::class),
@@ -49,14 +49,14 @@ final class BlockInteractorTest extends TestCase
             );
         });
 
-        $this->assertInstanceOf(BlockInterface::class, $container);
+        static::assertInstanceOf(BlockInterface::class, $container);
 
         $settings = $container->getSettings();
 
-        $this->assertTrue($container->getEnabled());
+        static::assertTrue($container->getEnabled());
 
-        $this->assertSame('my-code', $settings['code']);
-        $this->assertSame(
+        static::assertSame('my-code', $settings['code']);
+        static::assertSame(
             '<div class="custom-layout">{{ CONTENT }}</div>',
             $settings['layout']
         );

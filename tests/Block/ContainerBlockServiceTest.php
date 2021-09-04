@@ -45,10 +45,10 @@ final class ContainerBlockServiceTest extends BlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertSame('@SonataDashboard/BlockAdmin/block_container.html.twig', $this->templating->view);
-        $this->assertSame('block.code', $this->templating->parameters['block']->getSetting('code'));
-        $this->assertSame('block.name', $this->templating->parameters['block']->getName());
-        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        static::assertSame('@SonataDashboard/BlockAdmin/block_container.html.twig', $this->templating->view);
+        static::assertSame('block.code', $this->templating->parameters['block']->getSetting('code'));
+        static::assertSame('block.name', $this->templating->parameters['block']->getName());
+        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
     }
 
     /**
@@ -72,11 +72,11 @@ final class ContainerBlockServiceTest extends BlockServiceTestCase
 
         $service->execute($blockContext);
 
-        $this->assertIsArray($this->templating->parameters['decorator']);
-        $this->assertArrayHasKey('pre', $this->templating->parameters['decorator']);
-        $this->assertArrayHasKey('post', $this->templating->parameters['decorator']);
-        $this->assertSame('before', $this->templating->parameters['decorator']['pre']);
-        $this->assertSame('after', $this->templating->parameters['decorator']['post']);
+        static::assertIsArray($this->templating->parameters['decorator']);
+        static::assertArrayHasKey('pre', $this->templating->parameters['decorator']);
+        static::assertArrayHasKey('post', $this->templating->parameters['decorator']);
+        static::assertSame('before', $this->templating->parameters['decorator']['pre']);
+        static::assertSame('after', $this->templating->parameters['decorator']['post']);
     }
 
     /**
@@ -94,7 +94,7 @@ final class ContainerBlockServiceTest extends BlockServiceTestCase
         ]);
 
         $formMapper = $this->createMock(FormMapper::class, [], [], '', false);
-        $formMapper->expects($this->exactly(6))->method('add');
+        $formMapper->expects(static::exactly(6))->method('add');
 
         $service->buildCreateForm($formMapper, $block);
         $service->buildEditForm($formMapper, $block);

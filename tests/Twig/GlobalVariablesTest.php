@@ -40,7 +40,7 @@ final class GlobalVariablesTest extends \PHPUnit\Framework\TestCase
 
     public function testGetCmsManager(): void
     {
-        $this->assertInstanceOf(CmsManagerInterface::class, $this->globals->getCmsManager());
+        static::assertInstanceOf(CmsManagerInterface::class, $this->globals->getCmsManager());
     }
 
     /**
@@ -48,7 +48,7 @@ final class GlobalVariablesTest extends \PHPUnit\Framework\TestCase
      */
     public function testIsEditor()
     {
-        $this->assertTrue($this->globals->isEditor());
+        static::assertTrue($this->globals->isEditor());
     }
 
     private function getMockCmsManagerSelector(): CmsManagerSelectorInterface
@@ -56,8 +56,8 @@ final class GlobalVariablesTest extends \PHPUnit\Framework\TestCase
         $cmsManagerSelector = $this->createMock(CmsManagerSelectorInterface::class);
 
         $cmsManager = $this->createMock(CmsManagerInterface::class);
-        $cmsManagerSelector->expects($this->any())->method('retrieve')->willReturn($cmsManager);
-        $cmsManagerSelector->expects($this->any())->method('isEditor')->willReturn(true);
+        $cmsManagerSelector->expects(static::any())->method('retrieve')->willReturn($cmsManager);
+        $cmsManagerSelector->expects(static::any())->method('isEditor')->willReturn(true);
 
         return $cmsManagerSelector;
     }
