@@ -55,11 +55,6 @@
     "config": {
         "sort-packages": true
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.x-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Sonata\\DashboardBundle\\": "src/"
