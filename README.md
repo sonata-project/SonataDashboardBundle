@@ -43,9 +43,7 @@ This package is available under the [MIT license](LICENSE).
 
 [test_unstable_badge]: https://github.com/sonata-project/SonataDashboardBundle/workflows/Test/badge.svg?branch=0.x
 [test_unstable_link]: https://github.com/sonata-project/SonataDashboardBundle/actions?query=workflow:test+branch:0.x
-
 [coverage_unstable_badge]: https://codecov.io/gh/sonata-project/SonataDashboardBundle/branch/0.x/graph/badge.svg
 [coverage_unstable_link]: https://codecov.io/gh/sonata-project/SonataDashboardBundle/branch/0.x
-
 [documentation_unstable_badge]: https://readthedocs.org/projects/sonatadashboardbundle/badge/?version=0.x
 [documentation_unstable_link]: https://docs.sonata-project.org/projects/SonataDashboardBundle/en/0.x/?badge=0.x
