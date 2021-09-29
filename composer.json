@@ -6,7 +6,7 @@
         "dashboard",
         "sonata"
     ],
-    "homepage": "https://sonata-project.org/bundles/dashboard",
+    "homepage": "https://docs.sonata-project.org/projects/SonataDashboardBundle",
     "license": "MIT",
     "authors": [
         {
